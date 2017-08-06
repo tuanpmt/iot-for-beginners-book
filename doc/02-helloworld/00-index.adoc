@@ -1,0 +1,13 @@
+[[_hello_world]]
+= Hello World
+
+Bất kỳ một chương trình học nào cũng cần nên bắt đầu một cách từ từ. Bởi vì thời điểm này chúng ta đều mới bất đầu, nhiều khái niệm, kiến thức về lĩnh mực này gần như không có nhiều. Helloworld giúp các bạn có thể nắm được các kiến thức cơ bản, làm sao để biên dịch, nạp được chương trình. Làm sao để sử dụng các thư viện công cộng. Cũng như nắm được một số kiến thức về kiến trúc chương trình Arduino.
+
+
+include::01-blink.adoc[]
+include::02-button.adoc[]
+include::03-oled.adoc[]
+
+== Tổng kết
+
+Tổng kết chương

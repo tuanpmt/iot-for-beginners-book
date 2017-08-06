@@ -1,0 +1,43 @@
+== Internet Of Things (IoT)
+
+=== Internet of Things (IoT) là gì?
+
+[quote, Wikipedia]
+Internet of Things (IoT) - Mạng lưới vạn vật kết nối Internet là một kịch bản của thế giới, khi mà mỗi đồ vật, con người được cung cấp một định danh của riêng mình, và tất cả có khả năng truyền tải, trao đổi thông tin, dữ liệu qua một mạng duy nhất mà không cần đến sự tương tác trực tiếp giữa người với người, hay người với máy tính. IoT đã phát triển từ sự hội tụ của công nghệ không dây, công nghệ vi cơ điện tử và Internet[1]. Nói đơn giản là một tập hợp các thiết bị có khả năng kết nối với nhau, với Internet và với thế giới bên ngoài để thực hiện một công việc nào đó.
+**Link**: http://vi.wikipedia.org/wiki/Mạng_lưới_vạn_vật_kết_nối_Internet
+
+
+Thuật ngữ **IoT** được đưa ra bởi Kevin Ashton vào năm 1999 (Kevin Ashton là một nhà khoa học đã sáng lập ra Trung tâm Auto-ID ở đại
+học MIT, nơi thiết lập các quy chuẩn toàn cầu cho RFID (một phương thức giao tiếp không dây dùng sóng radio) cũng như một số loại cảm biến khác. IoT nói đến hệ
+thống các thiết bị liên kết với nhau mà ở đó mỗi đồ vật, con người được cung cấp một định danh của riêng mình, và tất cả có khả năng truyền tải
+trao đổi thông tin, dữ liệu qua một mạng duy nhất mà không cần đến sự tương tác trực tiếp giữa người với người, hay giữa người với máy tính.
+
+
+Các hashtag: https://www.google.com/search?q=iot[*#IoT*] https://www.google.com/search?q=iot[*#InternetOfThings*]
+
+
+[.right.text-center]
+.Hình minh họa
+image::01-intro/01.iot-concept.png[Hình minh họa IoT, role="center", align="center", width=500]
+
+
+.Sự phát triển của iot dự đoán đến năm 2020
+image::01-intro/01.iot_growth_technology.png[Sự phát triển của iot dự đoán đến năm 2020, align="center", width=500]
+
+.Video khái niệm về IoT
+video::M8FKl0kRuVM[youtube]
+
+=== Những ứng dụng thực tế trong cuộc sống
+
+
+.Smarthome
+video::NjYTzvAVozo[youtube]
+
+.Smart wifi video car
+video::ZteX4BI46nc[youtube]
+
+.Smart light
+video::c6MsG3oIehY[youtube]
+
+.Smart city
+video::Br5aJa6MkBc[youtube]

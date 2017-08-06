@@ -1,0 +1,4 @@
+:toc-title: Mục lục
+:figure-caption: Hình
+:table-caption: Bảng
+:esp: ESP8266

@@ -1,0 +1,8 @@
+[[_cheat_sheet]]
+= Cheatsheet
+
+include::01-c-cheatsheet.adoc[]
+include::02-arduino-cheatsheet.adoc[]
+
+
+== Tổng kết

@@ -1,0 +1,16 @@
+[[_wifi]]
+= ESP8266 WiFi
+
+Kết nối WiFi chính điểm mạnh nhất của chip ESP8266, nó có thể kết nối đến các Router sẵn có trong gia đình, các Access Point với các tiêu chuẩn kết nối thông dụng hiện nay ở tần số 2.4GHz - ở chế độ STA. Ngoài ra, ESP8266 còn hỗ trợ chế độ AP (Access Point), tức là nó có thể khởi động một (hoặc nhiều) Access Point và cho phép các Client khác có thể kết nối vào, hoặc chạy đồng thời cả chế độ STA và AP.
+
+Trong đa phần các ứng dụng thì chế độ STA được sử dụng rất nhiều, nó giúp thiết bị kết nối đến  mạng WiFi cục bộ, có internet để kết nối về Server và gởi dữ liệu. Một số trường hợp khác thì chế độ AP được sử dụng để trao đổi dữ liệu với ESP8266 và máy tính (hoặc thiết bị có hỗ trợ trình duyệt). Ví dụ như điều khiển đóng tắt đèn thông qua Web Server chạy trên ESP8266.
+
+include::01-wifi-sta.adoc[]
+include::02-http-client.adoc[]
+include::03-wifi-ap.adoc[]
+include::04-webserver.adoc[]
+include::05-wifi-p2p.adoc[]
+
+== Tổng kết
+
+Tổng kết chương

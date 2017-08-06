@@ -1,0 +1,43 @@
+== IoT Starter Kit
+
+=== Hình ảnh
+
+.Hình ảnh thực tế
+image::01-intro/01.staterkit_real-image.png[width=500, align="center"]
+
+.Các vật tư
+image::01-intro/01.staterkit.png[width=500, align="center"]
+
+=== Breadboard
+
+Breadboard dùng để kết nối các đường mạch điện tử một cách nhanh chóng bằng các dây có 1 đầu M (Male)
+
+image::01-intro/breadboard.png[width=500, align="center"]
+
+=== Thông tin
+
+*IoT Starter Kit - Wifi Uno* là bộ dụng cụ các sản phẩm điện tử dùng
+trong các chương trình giảng dạy STEM
+(Science-Technnology-Engineering-Math) và phát triển ứng dụng IoT.
+
+Bộ Kit sử dụng Board ESP8266 làm bộ điều khiển, tương thích với hầu hết
+các thư viện cho Arduino, mạnh mẽ với nhiều ứng dụng mẫu và dễ dàng bắt
+đầu với người mới.
+
+Những linh kiện trong bộ Starter Kit- Wifi Uno và chức năng của các linh
+kiện :
+.Các vật tư trong bộ IoT Staterkit
+|===
+|**STT** | *Tên*|**Số lượng**| *Chức năng*
+
+| 1 | Esp8266 Wifi-Uno | 1 | Nhận, xử lí, điều khiển thiết bị
+| 2 | OLED LCD 128X640.96 inch | 1 | Hiển thị thông tin người dùng yêu cầu
+| 3 | Breadboard 830 Point | 1 | Linh kiện giúp kết nối các thiết bị (kích thước lớn)
+| 4 | Cảm biến chuyển động | 1 | Phát hiện chuyển động nếu trong vùng hoạt động của cảm biến
+| 5 | Cảm biến khoảng cách | 1 | Xác định khoảng cách đến vật cản
+| 6 | Cảm biến nhiệt độ, độ ẩm DHT11 | 1 | Đo nhiệt độ, độ ẩm của môi trường
+| 7 | Cảm biến phát hiện lửa | 1 | Phát hiện có lửa hay không
+| 8 | Module RGB LED 3 màu | 1 | Hiển thị nhiều màu sắc bằng LED
+|===
+
+<<<

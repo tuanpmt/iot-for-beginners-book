@@ -1,0 +1,8 @@
+== Server Nodejs
+
+=== Kiến thức
+
+[source, javascript]
+----
+include::code/server.js[]
+----

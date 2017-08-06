@@ -1,0 +1,49 @@
+= Khởi đầu Internet Of Things với ESP8266
+
+
+
+== Tạo sách từ mã nguồn
+
+Có 2 cách để đọc sách: đơn giản và dễ dàng nhất là tải về tại địa chỉ: https://esp8266.vn
+
+Cách thứ 2, bạn thực hiện thủ công bằng phần mềm Asciidoctor, bạn có thể tạo ra file html, epub, mobi hay pdf đều được:
+----
+$ bundle install
+$ bundle exec rake book:build
+Converting to HTML...
+ -- HTML output at iot-with-esp8266.html
+Converting to EPub...
+ -- Epub output at iot-with-esp8266.epub
+Converting to Mobi (kf8)...
+ -- Mobi output at iot-with-esp8266.mobi
+Converting to PDF...
+ -- PDF  output at iot-with-esp8266.pdf
+----
+
+Dự án này sử dụng `asciidoctor`, `asciidoctor-pdf` và `asciidoctor-epub`.
+
+== Cover
+
+https://www.canva.com/design/DACdV5lAwLk/BhC23oPRb5KIXh5CgrZVMw/edit?layouts=&layoutQuery=free&utm_source=onboarding
+
+INSTALL wavedrom follow instal phatomjs and wavedrom-cli
+
+[bash]
+....
+npm install -g mermaid
+....
+
+Table: http://mrhaki.blogspot.com/2014/11/awesome-asciidoctor-styling-columns-and.html
+
+
+Update ruby
+....
+I suggest that you use RVM to install Ruby.
+
+curl -sSL https://get.rvm.io | bash -s stable --ruby
+You need to restart the terminal in order to run rvm:
+
+rvm install 2.2
+rvm use 2.2 --default
+gem install bundle
+....

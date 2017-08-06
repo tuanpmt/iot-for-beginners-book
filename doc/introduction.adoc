@@ -1,0 +1,43 @@
+[abstract]
+== Giới thiệu nội dung
+
+Nội dung quyển sách này sẽ hướng dẫn chi tiết cho người đọc lập trình ứng dụng cho Chip WiFi ESP8266 kết nối với Server, gởi dữ liệu, và thực thi các lệnh từ Server. Từ đó người đọc có thể có những kiến thức cơ bản, dùng nó để xây dựng các ứng dụng Internet Of Things thực tế.
+
+Toàn bộ nội dung biên tập sử dụng phần cứng là System On Chip (SoC) **ESP8266** - có khả năng kết nối WiFi và lập trình được giá rẻ, phổ biến hỗ trên thế giới. Board mạch sử dụng là board phần cứng mở https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno] có sơ đồ chân tương thích với các board Arduino Uno.
+
+Phần mềm sử dụng lập trên máy tính là https://arduino.cc[*Arduino*], ngôn ngữ lập trình `C/C++`
+
+Một chút về Server sử dụng https://nodejs.org[NodeJS] với ngôn ngữ lập trình `Javascript`
+
+Bạn sẽ cần tìm hiểu một số công cụ và khái niệm được sử dụng trong quyển sách này như sau:
+
+* **Git** Trình quản lý phiên bản sử dụng rất rộng rãi trên thế giới, **Github** là một mạng xã hội cho lập trình viên dựa trên Git. Git giúp bạn quản lý được mã nguồn, làm việc nhóm, xử lý các thao tác hợp nhất, lịch sử mã nguồn ... Có thể trong quá trình làm việc với quyển sách này, bạn sẽ cần sử dụng các thư viện mã nguồn mỡ cho Arduino từ Github, nên việc cài đặt và sử dụng công cụ khá cần thiết cho việc đó. Chưa kể, nó sẽ giúp bạn quản lý mã nguồn và dự án ngày càng chuyên nghiệp hơn.
+* **Sublime Text** là một trình soạn thảo phổ biến, nhanh, nhẹ và nhiều tính năng hay. Sử dụng để lập trình Javascript (NodeJS)
+* Code formater
+* Editorconfig
+
+
+NOTE: Bạn có thể sử dụng bất kỳ board ESP8266 nào khác trên thị trường cho cuốn sách này, ví dụ như: `NODEMCU`, `Wemos`, ...
+
+TIP: Ngoài nội dung trong cuốn sách này, thì còn nhiều dự án mẫu cũng như các hướng dẫn trực tuyến tại **https://arduino.esp8266.vn**
+
+=== Ai có thể sử dụng?
+
+- Các lập trình viên phần mềm/Mobile App, Web App… muốn tham gia làm sản phẩm `IoT`
+- Sinh viên muốn nâng cao kỹ năng, bổ sung kiến thức
+- Cá nhân muốn tự mình làm các sản phẩm phục vụ cuộc sống - phục vụ công việc
+- Startup Tech không chuyên về phần cứng hoặc phần mềm
+
+=== Mục tiêu mang lại cho người đọc
+
+- Giúp cho người không chuyên về phần cứng tiếp cận để làm sản phẩm IoT dễ dàng
+- Có thể tự phát triển hệ thống tích hợp cho sản phẩm IoT
+- Hiểu biết về quy trình tạo ra sản phẩm phần cứng, đi vào mảng sản xuất thiết bị
+- Tránh những sai sót không đáng có khi phát triển và thiết kế sai hệ thống
+
+=== Chuẩn bị
+
+- 1 bộ IoT Starter Kit bao gồm các cảm biến, cơ cấu + ESP8266 WiFi Uno
+- 1 máy tính cá nhân (Windows, MacOS hoặc Linux)
+- Tài liệu hướng dẫn nội bộ, được phát qua mỗi bài học
+- Arduino ESP8266 Cheatsheet (Mục lục cuối quyển sách này)
