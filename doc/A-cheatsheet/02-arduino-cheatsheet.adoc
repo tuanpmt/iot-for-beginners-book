@@ -1,1 +1,149 @@
-== Arduino Cheatsheet
+== Arduino - Cheatsheet
+[cols="a,a", frame=none, grid=none]
+|===
+|
+[source, c, linenums]
+----
+/* Basic Program Structure */
+
+void setup() {
+  /* Runs once when sketch starts */
+}
+void loop() {
+  /* Runs repeatedly */
+}
+
+/* condition */
+if (x < 5) { ... }
+else if (x > 10) { ... } //option
+else { ... }             //option
+
+/* loop */
+while (x < 5) { ... }
+
+do { ... } while(x < 0);
+
+for (int i = 0; i < 10; i++) { ... }
+
+
+break;    // Exit a loop immediately
+continue; // Go to next iteration
+
+switch (var) {
+case 1:
+...
+break;
+case 2:
+...
+break;
+default:
+...
+}
+
+/* Function Definitions */
+/* <ret. type> <name>(<params>) { ... } */
+int func_name(int x) { return x*2; }
+
+return x; // x must match return type
+return;   // For void return type
+
+/* Include */
+#include <stdio.h>        //standard library
+#include "your-library.h" //Custom library
+
+/* Strings */
+/* Includes \0 null termination */
+char str1[8] = {'A','r','d','u','i','n','o','\0'};
+
+/* Compiler adds null termination */
+char str2[8] = {'A','r','d','u','i','n','o'};
+char str3[] = "Arduino";
+char str4[8] = "Arduino";
+
+/*Arrays*/
+int myPins[] = {2, 4, 8, 3, 6}; // Array of 6 ints
+int myInts[6];
+myInts[0] = 42; // Assigning first
+myInts[6] = 12; // ERROR! Indexes, are 0 though 5
+
+/*Qualifiers*/
+static       persists between calls
+volatile     in RAM (nice for ISR)
+const        read-only
+PROGMEM      in flash
+
+----
+|
+
+[source, c, linenums]
+----
+/* General Operators */
+=   assignment
++   add
+-   subtract
+*   multiply
+/   divide
+%   modulo
+==  equal to
+!=  not equal to
+<   less than
+>   greater than
+<=  less than or equal to
+>=  greater than or equal to
+&&  and
+\|\|  or
+!   not
+
+/* Compound Operators */
+++ increment
+-- decrement
++= compound addition
+-= compound subtraction
+*= compound multiplication
+/= compound division
+&= compound bitwise and
+\|= compound bitwise or
+
+/* Bitwise Operators */
+& bitwise and  \|  bitwise or
+^ bitwise xor  ~  bitwise not
+<< shift left  >> shift right
+/* Pointer Access */
+& reference: get a pointer
+* dereference: follow a pointer
+
+/*Numeric Constants*/
+123         decimal
+0b01111011  binary
+0173        octal - base 8
+0x7B        hexadecimal base 16
+123U        force unsigned
+123L        force long
+123UL       force unsigned long
+123.0       force floating point
+1.23e6      1.23*10^6 = 1230000
+
+/* Data types */
+boolean       true \| false
+char          -128        - 127, 'a' '$' etc.
+unsigned char 0           - 255
+byte          0           - 255
+int           -32768      - 32767
+unsigned int  0           - 65535
+word          0           - 65535
+long          -2147483648 - 2147483647
+unsigned long 0           - 4294967295
+float         -3.4028e+38 - 3.4028e+38
+double        -3.4028e+38 - 3.4028e+38
+void          i.e., no return value
+
+/* Variable declare */
+int       a;
+int       a = 0b01111011, b = 0123, c = 1, d;
+float     fa = 1.0f;
+double    da = 1.0;
+char      *pointer;
+char      *other_pointer = NULL;
+----
+
+|===

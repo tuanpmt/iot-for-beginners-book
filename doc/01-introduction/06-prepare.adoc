@@ -1,7 +1,5 @@
 == Cài đặt và chuẩn bị
 
-=== Git
-
 === Arduino IDE
 
 *Bước 1*: Cài đặt Arduino IDE.
@@ -91,5 +89,18 @@ image::01-intro/port-setup.png[Cấu hình Board ESP8266 WiFi Uno, align="center
 * Port: chọn cổng khi gắn thiết bị vào sẽ thấy xuất hiện
 * Upload speed: Chọn cao nhất, nếu nạp không được chọn thấp dần
 
-=== Node JS
+=== Serial Terminal
+==== Sử dụng Arduino IDE Serial Monitor
+==== Một số phần mềm miễn phí khác
+
+=== Node.js
+
+Tải và cài đặt Node.js tại: https://nodejs.org/en/download/
+
 === Sublime Text
+
+Tải và cài đặt tại: https://www.sublimetext.com/
+
+=== Git
+
+Một công cụ hỗ trợ khác bạn cũng nên cài đặt và tập sử dụng, nó không giúp bạn trở thành 1 lập trình viên, nhưng nó giúp 1 lập trình viên trở nên chuyên nghiệp và làm việc hiệu quả: https://git-scm.com/

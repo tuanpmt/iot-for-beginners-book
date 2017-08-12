@@ -13,3 +13,5 @@ ref
 diag*
 *.lock
 .asciidoctor
+*.zip
+*.pdf

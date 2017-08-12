@@ -1,3 +1,9 @@
 == Trao đổi dữ liệu giữa 2 ESP8266
 
-=== Kiến thức
+=== Yêu cầu
+
+Ứng dụng kiến thức đã học thực hiện việc
+
+=== Hướng dẫn thực hiện
+
+=== Những vướng mắc thường gặp

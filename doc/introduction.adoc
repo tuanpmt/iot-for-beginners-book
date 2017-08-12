@@ -3,7 +3,7 @@
 
 Nội dung quyển sách này sẽ hướng dẫn chi tiết cho người đọc lập trình ứng dụng cho Chip WiFi ESP8266 kết nối với Server, gởi dữ liệu, và thực thi các lệnh từ Server. Từ đó người đọc có thể có những kiến thức cơ bản, dùng nó để xây dựng các ứng dụng Internet Of Things thực tế.
 
-Toàn bộ nội dung biên tập sử dụng phần cứng là System On Chip (SoC) **ESP8266** - có khả năng kết nối WiFi và lập trình được giá rẻ, phổ biến hỗ trên thế giới. Board mạch sử dụng là board phần cứng mở https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno] có sơ đồ chân tương thích với các board Arduino Uno.
+Toàn bộ nội dung biên tập sử dụng phần cứng là System On Chip (SoC) **ESP8266** - có khả năng kết nối WiFi và lập trình được giá rẻ, phổ biến trên thế giới. Board mạch sử dụng là board phần cứng mở https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno] có sơ đồ chân tương thích với các board Arduino Uno.
 
 Phần mềm sử dụng lập trên máy tính là https://arduino.cc[*Arduino*], ngôn ngữ lập trình `C/C++`
 
@@ -20,6 +20,8 @@ Bạn sẽ cần tìm hiểu một số công cụ và khái niệm được s�
 NOTE: Bạn có thể sử dụng bất kỳ board ESP8266 nào khác trên thị trường cho cuốn sách này, ví dụ như: `NODEMCU`, `Wemos`, ...
 
 TIP: Ngoài nội dung trong cuốn sách này, thì còn nhiều dự án mẫu cũng như các hướng dẫn trực tuyến tại **https://arduino.esp8266.vn**
+
+TIP: Tất cả các phần Code đều không giải thích rõ chi tiết API cho mỗi tính năng. Mà thay vào đó được cung cấp tại phụ lục Cheat Sheet (Arduino và C)
 
 === Ai có thể sử dụng?
 

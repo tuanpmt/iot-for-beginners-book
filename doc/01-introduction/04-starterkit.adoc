@@ -12,20 +12,16 @@ image::01-intro/01.staterkit.png[width=500, align="center"]
 
 Breadboard dùng để kết nối các đường mạch điện tử một cách nhanh chóng bằng các dây có 1 đầu M (Male)
 
+.Breadboard
 image::01-intro/breadboard.png[width=500, align="center"]
 
 === Thông tin
 
-*IoT Starter Kit - Wifi Uno* là bộ dụng cụ các sản phẩm điện tử dùng
-trong các chương trình giảng dạy STEM
-(Science-Technnology-Engineering-Math) và phát triển ứng dụng IoT.
+*IoT Starter Kit - Wifi Uno* là bộ dụng cụ các sản phẩm điện tử dùng trong các chương trình giảng dạy STEM (Science-Technnology-Engineering-Math) và phát triển ứng dụng IoT.
 
-Bộ Kit sử dụng Board ESP8266 làm bộ điều khiển, tương thích với hầu hết
-các thư viện cho Arduino, mạnh mẽ với nhiều ứng dụng mẫu và dễ dàng bắt
-đầu với người mới.
+Bộ Kit sử dụng Board ESP8266 làm bộ điều khiển, tương thích với hầu hết các thư viện cho Arduino, mạnh mẽ với nhiều ứng dụng mẫu và dễ dàng bắt đầu với người mới.
 
-Những linh kiện trong bộ Starter Kit- Wifi Uno và chức năng của các linh
-kiện :
+Những linh kiện trong bộ Starter Kit- Wifi Uno và chức năng của các linh kiện :
 .Các vật tư trong bộ IoT Staterkit
 |===
 |**STT** | *Tên*|**Số lượng**| *Chức năng*

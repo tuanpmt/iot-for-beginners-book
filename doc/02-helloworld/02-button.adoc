@@ -19,78 +19,20 @@ TIP: Mạch ESP8266 WiFi Uno đấu sẵn nút nhấn vào GPIO0
 
 [source, c]
 ----
-int ledPin = 16;                 // LED nối vào chân 16
-int btnPin = 0;                  // Nút nhấn nối vào chân 0
-int ledState = LOW;
-
-void blink()
-{
-  if (ledState == LOW) {
-    ledState = HIGH;
-  } else {
-    ledState = LOW;
-  }
-  digitalWrite(ledPin, ledState); //Đảo trạng thái LED & in ra serial
-  Serial.println("Pressed, value=" + String(ledState));
-}
-
-bool isPressed()
-{
-  return (digitalRead(PIN_BUTTON) == 0)
-}
-void setup()
-{
-  pinMode(ledPin, OUTPUT);       // Cấu hình LED là ngõ ra
-  pinMode(btnPin, INPUT_PULLUP); // Cấu hình nút nhấn là ngõ vào pull-up
-
-  Serial.begin(115200);
-}
-
-void loop()
-{
-  if(isPressed()) {
-    blink();
-  }
-}
+include::code/button-poll/button-poll.ino[]
 ----
 
 === Mã nguồn dùng ngắt
 
 [source, c]
 ----
-
-int ledPin = 16;                 // LED nối vào chân 16
-int btnPin = 0;                  // Nút nhấn nối vào chân 0
-int ledState = LOW;
-
-void blink()
-{
-  if (ledState == LOW) {
-    ledState = HIGH;
-  } else {
-    ledState = LOW;
-  }
-  digitalWrite(ledPin, ledState);
-  Serial.println("Pressed, value=" + String(ledState));
-}
-void setup()
-{
-  pinMode(ledPin, OUTPUT);      // sets the digital pin as output
-  pinMode(btnPin, INPUT_PULLUP); // Cấu hình nút nhấn là ngõ vào pull-up
-  attachInterrupt(btnPin, blink, FALLING); //cài đặt ngắt cho chân LED
-  Serial.begin(115200);
-}
-
-void loop()
-{
-  //Không phải làm gì
-}
+include::code/button/button.ino[]
 ----
 
 .Video kết quả
 video::wE-yc_CGpfE[youtube, align="left", role="left"]
 
-=== Các khái niệm mới
+=== Các khái niệm
 * **Ngắt**
 * **pull-up**
 

@@ -1,4 +1,3 @@
-<<<
 == Arduino là gì?
 
 .Board mạch Arduino

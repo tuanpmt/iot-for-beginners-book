@@ -28,46 +28,14 @@ image::02-helloworld/btn-led.png[width=300, role="center", align="center"]
 
 [source, c]
 ----
-int pin_led = 16;
-/* hàm này được gọi 1 lần duy nhất khi khởi động */
-void setup() {
-
-  pinMode(pin_led, OUTPUT);    // cấu hình pin 16 là ngõ ra
-}
-
-/* hàm loop sẽ được gọi liên tục */
-void loop() {
-  digitalWrite(pin_led, HIGH); // tắt LED (HIGH - có nghĩa là mức cao)
-  delay(1000);                 // chờ 1 giây
-  digitalWrite(pin_led, LOW);  // bật LED bởi mức điện áp LOW
-  delay(1000);                 // chờ 1 giây
-}
+include::code/blink-delay/blink-delay.ino[]
 ----
 
 === Mã nguồn chớp tắt dùng định thời
 
 [source, c]
 ----
-int ledPin = 16;
-int ledState = LOW;
-unsigned long previousMillis = 0;
-const long interval = 1000;
-
-void setup() {
-  pinMode(ledPin, OUTPUT);
-}
-
-void loop() {
-  unsigned long currentMillis = millis();
-  if(currentMillis - previousMillis >= interval) {
-    previousMillis = currentMillis;
-    if (ledState == LOW)
-      ledState = HIGH;  // Đổi trạng thái
-    else
-      ledState = LOW;   // Đổi trạng thái
-    digitalWrite(ledPin, ledState);
-  }
-}
+include::code/blink-poll/blink-poll.ino[]
 ----
 
 .Video kết quả

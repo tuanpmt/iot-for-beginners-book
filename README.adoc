@@ -1,6 +1,4 @@
-= Khởi đầu Internet Of Things với ESP8266
-
-
+= Internet Of Things cơ bản
 
 == Tạo sách từ mã nguồn
 
@@ -8,16 +6,9 @@ Có 2 cách để đọc sách: đơn giản và dễ dàng nhất là tải v�
 
 Cách thứ 2, bạn thực hiện thủ công bằng phần mềm Asciidoctor, bạn có thể tạo ra file html, epub, mobi hay pdf đều được:
 ----
+=> install ruby, bundle
 $ bundle install
 $ bundle exec rake book:build
-Converting to HTML...
- -- HTML output at iot-with-esp8266.html
-Converting to EPub...
- -- Epub output at iot-with-esp8266.epub
-Converting to Mobi (kf8)...
- -- Mobi output at iot-with-esp8266.mobi
-Converting to PDF...
- -- PDF  output at iot-with-esp8266.pdf
 ----
 
 Dự án này sử dụng `asciidoctor`, `asciidoctor-pdf` và `asciidoctor-epub`.

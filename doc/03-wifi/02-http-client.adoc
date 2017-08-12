@@ -1,3 +1,73 @@
 == HTTP Client
 
-=== Kiến thức
+=== Giao thức HTTP
+`HTTP` - Hypertext Transfer Protocol (giao thức truyền dẫn siêu văn bản), là giao thức để truyền dữ liệu giữa các máy tính qua `www` (World Wide Web), với dữ liệu có thể là dạng text, file, ảnh, hoặc video.
+
+HTTP được thiết kế để trao đổi dữ liệu giữa Client và Server trên nền TCP/IP, nó vận hành theo cơ chế `yêu cầu/trả lời`, `stateless - không lưu trữ trạng thái`. Trình duyệt Web chính là Client, và một máy chủ chứa Web Site là Server. Client sẽ kết nối tới Server, gởi dữ liệu đến server bao gồm các thông tin header. Server nhận được thông tin và căn cứ trên đó gởi phản hồi lại cho Client. Đồng thời đóng kết nối.
+
+Một ví dụ điển hình là khi bạn gõ địa chỉ vào thanh địa chỉ của trình duyệt và nhấn `Enter`, thì ngay lập tức Web Client sẽ thực hiện việc gởi yêu cầu tới Web Server có địa chỉ mà bạn vừa gõ. Web Server sẽ trả lời bằng nội dung Web Site mà bạn cần xem.
+
+.Cách thức HTTP hoạt động
+image::03-wifi/http1-req-res-details.png[Cách thức HTTP hoạt động, role="center", align="center", width=400]
+
+Khi nhắc tới HTTP thì Hyperlink, hay URL (Uniform Resource Locator) là những khái niệm được thấy hàng ngày
+
+**URL** được dùng để định dạng địa chỉ Website, chưa các thông tin yêu cầu từ client và server dựa vào đó xử lý, cấu trúc của nó như hình
+.Cấu trúc 1 URL
+image::03-wifi/http1-url-structure.png[URL, role="center", align="center", width=400]
+
+Ví dụ bạn có thể gởi thông tin về nhiệt độ đến server thông qua đường dẫn: `http://esp8266.vn/log.php?nhiet_do=30`
+
+.Cấu trúc 1 URL
+[source]
+....
+
+|scheme  | host      |port |path            |query                |fragment|
+ http:// server.com: 8080  /path/to/log.php ?nhiet_do=30&do_am=80 #test
+....
+<1> `scheme` xác định giao thức truyền tới server, nếu là `https` thì sẽ được mã hóa
+<2> `host` địa chỉ server
+<3> `port` port server dùng để phục vụ, nếu ko có thì mặc định là `80` cho web
+<4> `path` thông tin client muốn truy suất
+<5> `query` thông tin client muốn gởi lên
+<6> `fragment` thuộc tính này giúp browser đi đến vị trí của trang
+
+Với đường dẫn như trên, khi bạn gõ vào trình duyệt, thì quá browser sẽ thực hiện kết nối và gởi dữ liệu như sau
+
+----
+GET /log.php?nhiet_do=30 HTTP/1.1
+Host: esp8266.vn
+User-Agent: curl/7.49.1
+Accept: */*
+
+----
+
+Giao thức HTTP định nghĩa một số phương thức truyền đến Server:
+
+* `GET`
+* `POST`
+* `PUT`
+* `DELETE`
+* `HEAD`
+
+Đa phần chúng ta chỉ dùng `GET` và `POST`, các phương thức còn lại thường sử dụng trong API server
+
+=== JSON
+
+`JSON` với tên gọi đầy đủ là `JavaScript Object Notation`, là một chuẩn để định dạng, lưu trữ có tổ chức và trao đổi dữ liệu với dung lượng nhỏ giữ trình duyệt web và máy chủ một cách dễ dàng.
+
+**Cú pháp**
+
+[source, json]
+----
+{
+    "username" : "your-user-name",
+    "email" : "your-email@email.com",
+    "website" : "iota.edu.vn",
+    "title" : "IoT Stater Cource"
+}
+----
+
+=== Ứng dụng xem giá Bitcoin
+
+

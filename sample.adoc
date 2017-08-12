@@ -1,6 +1,6 @@
 Internet Of Things (IoT) : cho người mới bắt đầu
 ================================================
-include::variable.adoc[]
+include::variable_sample.adoc[]
 
 include::lang-vi.adoc[]
 

@@ -7,11 +7,17 @@ Internet of Things (IoT) - Mạng lưới vạn vật kết nối Internet là m
 **Link**: http://vi.wikipedia.org/wiki/Mạng_lưới_vạn_vật_kết_nối_Internet
 
 
-Thuật ngữ **IoT** được đưa ra bởi Kevin Ashton vào năm 1999 (Kevin Ashton là một nhà khoa học đã sáng lập ra Trung tâm Auto-ID ở đại
-học MIT, nơi thiết lập các quy chuẩn toàn cầu cho RFID (một phương thức giao tiếp không dây dùng sóng radio) cũng như một số loại cảm biến khác. IoT nói đến hệ
-thống các thiết bị liên kết với nhau mà ở đó mỗi đồ vật, con người được cung cấp một định danh của riêng mình, và tất cả có khả năng truyền tải
-trao đổi thông tin, dữ liệu qua một mạng duy nhất mà không cần đến sự tương tác trực tiếp giữa người với người, hay giữa người với máy tính.
+Internet of things (IoT) dùng để chỉ các đối tượng có thể được nhận biết cũng như chỉ sự tồn tại của chúng trong một kiến trúc tổng hòa mang tính kết nối: Mạng lưới vạn vật kết nối Internet, hay gọi đơn giản hơn là `Things`.
 
+IoT có thể là bộ cảm ứng được lắp ráp trong một chiếc tủ lạnh để ghi lại nhiệt độ, là một trái tim được cấy ghép trong cơ thể con người,... Hiểu đơn giản, IoT có thể khiến mọi vật giờ đây có thể giao tiếp với nhau dễ dàng hơn và ưu điểm lớn nhất của `“Thông minh”` là khả năng phòng ngừa và cảnh báo tại bất kì đâu.
+
+Cụm từ Internet of things được đưa ra bởi Kevin Ashton vào năm 1999, tiếp sau đó nó cũng được dùng nhiều trong các ấn phẩm đến từ các hãng và nhà phân tích. Họ cho rằng IoT là một hệ thống phức tạp, bởi nó là một lượng lớn các đường liên kết giữa máy móc, thiết bị và dịch vụ với nhau. Ban đầu, IoT không mang ý nghĩa tự động và thông minh. Về sau, người ta đã nghĩ đến khả năng kết hợp giữa hai khái niệm IoT - Autonomous control lại với nhau. Nó có thể quan sát sự thay đổi và phản hồi với môi trường xung quanh, cũng có thể tự điều khiển bản thân mà không cần kết nối mạng. Việc tích hợp trí thông minh vào IoT còn có thể giúp các thiết bị, máy móc, phần mềm thu thập và phân tích các dữ liệu điện tử của con người khi chúng ta tương tác với chúng. Xu hướng tất yếu trong tương lai, con người có thể giao tiếp với máy móc chỉ qua mạng internet không dây mà không cần thêm bất cứ hình thức trung gian nào khác.
+
+Câu hỏi đặt ra là, điều gì giúp IoT “thông minh” và “hiểu” con người? Ban đầu, người ta cho rằng Internet của vạn vật chủ yếu xoay quanh giao tiếp M2M (các thiết bị kết nối với nhau thông qua một thiết bị khác điều khiển). Nhưng khi hướng đến sự “thông minh hóa”, đó không chỉ là giao tiếp giữa M2M nữa mà cần phải đề cập đến các cảm biến (sensor). Và cũng đừng lầm tưởng rằng Sensor là một cỗ máy hoạt động dưới sự vận hành của các thiết bị khác mà thực chất, nó tương tự như đôi mắt và đôi tai của loài người với sự ghi nhận liên tục những đo lường, định lượng, thu thập dữ liệu từ thế giới bên ngoài. Suy cho cùng, Internet of things đem đến sự kết nối giữa máy móc và cảm biến, và nhờ đến dữ liệu điện toán đám mây để mã hóa dữ liệu. Những ứng dụng điện toán đám mây là mắt xích quan trọng giúp cho Internet of things có thể hoạt động nhờ sự phân tích, xử lí và sử dụng dữ liệu mà các cảm biến thu thập được.
+
+Tình hình trên thế giới hiện nay, tác động của IOT rất đa dạng và tích cực ở nhiều lĩnh vực: quản lý hạ tầng, y tế, xây dựng và tự động hóa, giao thông…. John Chambers (CEO của Cisco) đã công bố: Cho đến năm 2024 sẽ có 500 tỷ thiết bị được kết nối. Thực tế, con số này lớn hơn gần 100 lần số người trên Trái đất, điều đó cho thấy “vạn vật” nhiều hơn con người rất nhiều. Chúng ta đều biết ứng dụng IoT có thể “nói chuyện” với con người thông qua bàn phím, thiết bị cũng được thiết kế ngày càng hoàn thiện với nhiều cảm biến hơn để có thể giao tiếp một cách nhanh nhất và chính xác nhất với con người, thu thập dữ liệu đơn giản từ mỗi người chúng ta. Nhưng quan trọng nhất, tuy giao tiếp với con người nhưng ứng dụng IoT không phải là con người.
+
+Người ta cho rằng, IoT là chìa khóa của sự thành công, là bước ngoặt và cơ hội lớn của tương lai. Để không bị tụt lại phía sau, các chính phủ và doanh nghiệp cần có sự đổi mới và đầu tư mạnh tay hơn để phát triển các sản phẩm ứng dụng công nghệ Internet of things.
 
 Các hashtag: https://www.google.com/search?q=iot[*#IoT*] https://www.google.com/search?q=iot[*#InternetOfThings*]
 

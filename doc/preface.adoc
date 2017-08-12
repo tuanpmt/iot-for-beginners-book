@@ -6,17 +6,17 @@
 Chứng kiến sự phát triển như vũ bão của các sản phẩm ứng dụng công nghệ IoT và thị trường công nghệ Start up tiềm năng đang ngày càng sôi động hơn bao giờ hết, quyển sách này cung cấp các nội dung về IoT với triết lí Không chỉ là thực tế – không rời rạc, hướng đến những người trẻ tuổi đã, đang và muốn tập trung năng lực của mình cho không gian Internet Of Things. Mong muốn cho ra đời những sản phẩm độc đáo, sáng tạo, ngày càng hoàn thiện và đồng bộ để có thể đáp ứng nhu cầu của cuộc sống.
 Nội dung được thiết kế một cách cơ bản giúp học viên có cái nhìn tổng quan về việc xây dựng hệ thống, sản xuất thiết bị và dễ dàng tham gia vào lĩnh vực IoT mới mẻ.
 
-=== Một số thuật ngữ hay sử dụng
-* `IoT`
-* `ESP8266`
-* `Git`
-* `Github`
-* `IDE`
-* `Compiler`
-* `Library`
-* `Logic`
+=== Thuật ngữ hay sử dụng
+* `IoT` Internet Of Things hay internet vạn vật
+* `ESP8266` chip khả trình tích hợp thu phát WiFi
+* `Git` trình quản lý phiên bản
+* `Github` mạng xã hội lập trình viên
+* `IDE` Integrated Development Enviroment - môi trường phát triển tích hợp
+* `Compiler` trình biên dịch
+* `Library` thư viện
+* `Logic Level` mức điện áp để chip hiểu được (1 hay 0)
 
-=== Ví dụ giải thích code trong bài
+=== Giải thích code trong bài
 
 [source, c]
 ----

@@ -1,1 +1,59 @@
 == OLED
+
+=== Màn hình OLED
+
+OLED (Organic Light Emitting Diode) là loại màn hình hiển thị bao gồm một lớp vật liệu hữu cơ với chủ yếu là cacbon nằm giữa hai điện cực anot và catot sẽ tự động phát sáng mỗi khi có dòng điện chạy qua. OLED sử dụng đi-ốt phát quang hữu cơ, chính vì thế nó không cần tới đèn nền chiếu sáng, do đó có lợi thế về kích thước cũng như tiết kiệm điện hơn so với các loại LCD. Và độ sáng tương đối tốt ở môi trường sáng tự nhiên
+
+=== Màn hình OLED SSD1306
+
+Là màn hình loại nhỏ, kích thước tầm 0.96 inch cho tới 1.25 inch, được dùng khá rộng rãi trong các sản phẩm điện tử. Tấm nền được điều khiển bằng chip driver SSD1306. Chip này giao tiếp với các bộ điều khiển/MCU khác bằng giao tiếp LCD
+
+.OLED SSD1306
+image::01-intro/oled.jpg[OLED SSD1306, width=400, align="center", role="center"]
+
+=== Giao tiếp I2C
+
+I2C (Inter-Integrated Circuit) là một loại bus nối tiếp được phát triển bởi hãng Philips nhằm truyền nhận dữ liệu giữa các IC. I2C sử dụng 2 đường truyền tín hiệu, 1 đường xung nhịp đồng hồ (SCL) do Master phát đi và 1 đường truyền dữ liệu theo 2 hướng (SDA)
+
+.I2C Clock
+[wavedrom, i2c_clock, svg]
+----
+{ signal:
+[
+  { name: "SCL", wave: "hn.........."},
+  {},
+  { name: "SDA", wave: "h0========01", data: 'A0 A1 A2 D0 D1 D2 D3 D4', node: '..A..B....C..' },
+  {                                                                      node: '..a..b....c..' },
+],
+  edge: [
+  'A-a', 'B-b', 'a<->b Address',
+  'C-c', 'b<->c Data',
+]}
+----
+
+.Mô hình mạng I2C
+image::01-intro/i2c-network.png[Mô hình mạng I2C, width=400, align="center", role="center"]
+
+Mạch vật lý I2C là mạch cực thu hở, do đó để mạng I2C có thể hoạt động được, cần tối thiểu 2 cặp điện trở pull-up như trên hình. Thông thường 4k7, hoặc 1k2. Tùy thuộc vào tốc độ truyền và khoảng cách truyền.
+
+=== Hiển thị màn hình OLED với ESP8266
+
+**Bước 1: Đấu nối** nối chân GPIO4 của ESP8266 với chân SDA của OLED, chân GPIO5 với SCL. Cấp nguồn 3v3 vào VCC và đấu GND cho OLED. Tuy nhiên với board ESP8266 IoT Uno thì phần đấu nối đã ra sẵn header, bạn chỉ cần cắm OLED vào như hình
+
+.ESP8266 với OLED
+image::01-intro/oled-esp.png[ESP8266 với OLED, width=400, align="center", role="center"]
+
+**Bước 2: Cài đặt thư viện** `ESP8266 and ESP32 OLED driver for SSD1306 display`
+
+**Bước 3: Lập trình** Chúng ta sẽ thực hiện hiển thị giả lập đồng hô trên màn hình OLED
+
+[source, c]
+----
+include::code/oled/oled.ino[]
+----
+
+
+
+
+
+
