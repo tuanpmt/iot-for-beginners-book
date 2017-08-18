@@ -1,23 +1,16 @@
 = Internet Of Things cơ bản
 
-== Tạo sách từ mã nguồn
-
-Có 2 cách để đọc sách: đơn giản và dễ dàng nhất là tải về tại địa chỉ: https://esp8266.vn
-
-Cách thứ 2, bạn thực hiện thủ công bằng phần mềm Asciidoctor, bạn có thể tạo ra file html, epub, mobi hay pdf đều được:
+1. install ruby, bundle
+2. install component
 ----
-=> install ruby, bundle
 $ bundle install
 $ bundle exec rake book:build
 ----
 
 Dự án này sử dụng `asciidoctor`, `asciidoctor-pdf` và `asciidoctor-epub`.
 
-== Cover
 
-https://www.canva.com/design/DACdV5lAwLk/BhC23oPRb5KIXh5CgrZVMw/edit?layouts=&layoutQuery=free&utm_source=onboarding
-
-INSTALL wavedrom follow instal phatomjs and wavedrom-cli
+3. INSTALL wavedrom follow instal phatomjs and wavedrom-cli
 
 [bash]
 ....
@@ -38,3 +31,6 @@ rvm install 2.2
 rvm use 2.2 --default
 gem install bundle
 ....
+
+== Cover
+https://www.canva.com/design/DACdV5lAwLk/BhC23oPRb5KIXh5CgrZVMw/edit?layouts=&layoutQuery=free&utm_source=onboarding
