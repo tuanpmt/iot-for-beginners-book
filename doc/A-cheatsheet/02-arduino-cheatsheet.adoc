@@ -73,6 +73,7 @@ const        read-only
 PROGMEM      in flash
 
 ----
+
 |
 
 [source, c, linenums]

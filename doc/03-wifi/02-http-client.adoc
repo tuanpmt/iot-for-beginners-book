@@ -7,12 +7,15 @@ HTTP được thiết kế để trao đổi dữ liệu giữa Client và Serve
 
 Một ví dụ điển hình là khi bạn gõ địa chỉ vào thanh địa chỉ của trình duyệt và nhấn `Enter`, thì ngay lập tức Web Client sẽ thực hiện việc gởi yêu cầu tới Web Server có địa chỉ mà bạn vừa gõ. Web Server sẽ trả lời bằng nội dung Web Site mà bạn cần xem.
 
+Trong giao thức HTTP, việc thiết lập kết nối chỉ có thể xuất phát từ phía client ( lúc này có thể gọi là HTTP Client ). Khi client gữi yêu cầu, cùng với *URL* và payload ( dữ liệu muốn lấy ) tới server. Server ( HTTP Server ) lắng nghe mọi yêu cầu từ phía client và trả lời các yêu cầu ấy, và khi trả lời xong kết nối được chấm dứt.
+
+
 .Cách thức HTTP hoạt động
 image::03-wifi/http1-req-res-details.png[Cách thức HTTP hoạt động, role="center", align="center", width=400]
 
 Khi nhắc tới HTTP thì Hyperlink, hay URL (Uniform Resource Locator) là những khái niệm được thấy hàng ngày
 
-**URL** được dùng để định dạng địa chỉ Website, chưa các thông tin yêu cầu từ client và server dựa vào đó xử lý, cấu trúc của nó như hình
+*URL* được dùng để định dạng địa chỉ Website, chưa các thông tin yêu cầu từ client và server dựa vào đó xử lý, cấu trúc của nó như hình
 .Cấu trúc 1 URL
 image::03-wifi/http1-url-structure.png[URL, role="center", align="center", width=400]
 
@@ -32,7 +35,7 @@ Ví dụ bạn có thể gởi thông tin về nhiệt độ đến server thôn
 <5> `query` thông tin client muốn gởi lên
 <6> `fragment` thuộc tính này giúp browser đi đến vị trí của trang
 
-Với đường dẫn như trên, khi bạn gõ vào trình duyệt, thì quá browser sẽ thực hiện kết nối và gởi dữ liệu như sau
+Với đường dẫn như trên, khi bạn gõ vào trình duyệt, thì quá browser sẽ thực hiện kết nối và gởi dữ liệu như sau. Bạn có thể sử dụng curl để xem chi tiết dữ liệu raw truyền nhận `curl -v http://esp8266.vn/log.php?nhiet_do=30`
 
 ----
 GET /log.php?nhiet_do=30 HTTP/1.1
@@ -42,15 +45,28 @@ Accept: */*
 
 ----
 
-Giao thức HTTP định nghĩa một số phương thức truyền đến Server:
+Giao thức HTTP định nghĩa một số phương thức (method) truyền đến Server:
 
-* `GET`
-* `POST`
+* `GET` là phương thức *request* đơn giản và thường sử dụng nhất của HTTP. Request *GET* là yêu cầu server chỉ trả về dữ liệu mà không có tác động nào tới server. GET sử dụng `path` và `query` trong *URL* để thông báo cho Server thông tin cần lấy.
+* `POST` tương tự như `GET`, nhưng `POST` có thể gởi dữ liệu về Server
 * `PUT`
 * `DELETE`
 * `HEAD`
 
-Đa phần chúng ta chỉ dùng `GET` và `POST`, các phương thức còn lại thường sử dụng trong API server
+
+Đa phần chúng ta chỉ dùng `GET` và `POST`, các phương thức còn lại thường sử dụng trong API server. Một số điểm khác biệt giữ `POST` và `GET`
+
+* `GET` có thể bị cache (lưu trữ ở trình duyệt và sử dụng lại sau đó), nội dung request có thể lưu trữ ở trình duyệt, hoặc được
+GET requests remain in the browser history
+GET requests can be bookmarked
+GET requests should never be used when dealing with sensitive data
+GET requests have length restrictions
+GET requests should be used only to retrieve data
+
+POST requests are never cached
+POST requests do not remain in the browser history
+POST requests cannot be bookmarked
+POST requests have no restrictions on data length
 
 === JSON
 
