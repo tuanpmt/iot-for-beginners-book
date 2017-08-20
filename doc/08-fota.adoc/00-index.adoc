@@ -1,3 +1,10 @@
 [[_fota]]
 = Firmware update over the air (FOTA)
 
+include::01-fota.adoc[]
+
+include::02-arduino-ide.adoc[]
+
+include::03-webbrowser.adoc[]
+
+include::04-http-server.adoc[]
