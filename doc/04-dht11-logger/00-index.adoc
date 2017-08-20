@@ -1,6 +1,10 @@
 [[_dht11_logger]]
 = Dự án đọc cảm biến DHT11 và gởi về Server
 
+.Tổng quan mô hình của dự án
+image::04-dht11/projectIntro.png[Tổng quan mô hình của dự án, align="center", width=676]
+
+
 include::01-design.adoc[]
 
 include::02-server.adoc[]
