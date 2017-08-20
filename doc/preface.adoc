@@ -1,7 +1,7 @@
 [preface]
 = Lời mở đầu
 
-**Internet Of Things (IoT)** – **Internet vạn vật** dường như đang đứng trước một bước ngoặt để đi đến giai đoạn tiếp theo cho một thế giới hiện đại, văn minh. Đó là viễn cảnh mà mọi vật đều có thể kết nối với nhau thông qua Internet không dây. Các doanh nghiệp đang có xu hướng ứng dụng sản phẩm công nghệ IoT vào sản xuất ngày càng nhiều bởi thị trường sáng tạo tiềm năng và chi phí sản xuất ngày càng thấp.
+*Internet Of Things (IoT)* – *Internet vạn vật* dường như đang đứng trước một bước ngoặt để đi đến giai đoạn tiếp theo cho một thế giới hiện đại, văn minh. Đó là viễn cảnh mà mọi vật đều có thể kết nối với nhau thông qua Internet không dây. Các doanh nghiệp đang có xu hướng ứng dụng sản phẩm công nghệ IoT vào sản xuất ngày càng nhiều bởi thị trường sáng tạo tiềm năng và chi phí sản xuất ngày càng thấp.
 
 Chứng kiến sự phát triển như vũ bão của các sản phẩm ứng dụng công nghệ IoT và thị trường công nghệ Start up tiềm năng đang ngày càng sôi động hơn bao giờ hết, quyển sách này cung cấp các nội dung về IoT với triết lí Không chỉ là thực tế – không rời rạc, hướng đến những người trẻ tuổi đã, đang và muốn tập trung năng lực của mình cho không gian Internet Of Things. Mong muốn cho ra đời những sản phẩm độc đáo, sáng tạo, ngày càng hoàn thiện và đồng bộ để có thể đáp ứng nhu cầu của cuộc sống.
 Nội dung được thiết kế một cách cơ bản giúp học viên có cái nhìn tổng quan về việc xây dựng hệ thống, sản xuất thiết bị và dễ dàng tham gia vào lĩnh vực IoT mới mẻ.

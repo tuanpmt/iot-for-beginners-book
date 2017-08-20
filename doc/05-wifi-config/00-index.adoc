@@ -1,2 +1,8 @@
 [[_wifi_config]]
 = Các chế độ cấu hình WiFi
+
+include::01-smartconfig.adoc[]
+
+include::02-wps.adoc[]
+
+include::03-wifi-manager.adoc[]
