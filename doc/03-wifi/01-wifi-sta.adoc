@@ -21,6 +21,7 @@ include::code/WiFiClient/WiFiClient.ino[]
 === Sử dụng WiFiMulti
 
 Tuy nhiên, đôi lúc ứng dụng bạn cần `nồi đồng cối đá`, thì có 2-3 mạng WiFi để backup là bình thường, class WiFiMulti sẽ giúp bạn điều đó. Cùng với một hàm monitor đơn giản để báo cho các chức năng khác biết khi mạng đã được thiết lập.
+
 [source, c]
 ----
 include::code/WiFiMulti/WiFiMulti.ino[]

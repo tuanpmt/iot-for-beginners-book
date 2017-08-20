@@ -1,3 +1,10 @@
 == Smartconfig
 
 === Kiến thức
+
+=== Code
+
+[source, c]
+----
+include::code/Smartconfig/Smartconfig.ino[]
+----
