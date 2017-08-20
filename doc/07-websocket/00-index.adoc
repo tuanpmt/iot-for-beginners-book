@@ -1,2 +1,6 @@
 [[_websocket]]
 = Websocket
+
+include::01-websocket.adoc[]
+
+include::01-websocket-project.adoc[]
