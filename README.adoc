@@ -1,27 +1,25 @@
 = Internet Of Things cơ bản
 
-1. install ruby, bundle
-2. install component
+- install ruby, bundle
+- install component
+- Navigate to project root, run
+
 ----
 $ bundle install
 $ bundle exec rake book:build
 ----
 
-Dự án này sử dụng `asciidoctor`, `asciidoctor-pdf` và `asciidoctor-epub`.
-
-
-3. INSTALL wavedrom follow instal phatomjs and wavedrom-cli
+- INSTALL wavedrom follow instal phatomjs and wavedrom-cli
+- Install mermaid (require nodejs)
 
 [bash]
 ....
 npm install -g mermaid
 ....
 
-Table: http://mrhaki.blogspot.com/2014/11/awesome-asciidoctor-styling-columns-and.html
-
-
 Update ruby
-....
+
+----
 I suggest that you use RVM to install Ruby.
 
 curl -sSL https://get.rvm.io | bash -s stable --ruby
@@ -30,7 +28,11 @@ You need to restart the terminal in order to run rvm:
 rvm install 2.2
 rvm use 2.2 --default
 gem install bundle
-....
+----
 
 == Cover
 https://www.canva.com/design/DACdV5lAwLk/BhC23oPRb5KIXh5CgrZVMw/edit?layouts=&layoutQuery=free&utm_source=onboarding
+
+== Others
+
+Table: http://mrhaki.blogspot.com/2014/11/awesome-asciidoctor-styling-columns-and.html
