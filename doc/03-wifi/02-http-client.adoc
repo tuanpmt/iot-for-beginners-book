@@ -92,6 +92,7 @@ Một số HTTP status code thường thấy:
 ** *400 Bad Request*: thông báo request đã gữi là sai.
 ** *401 Unauthorized*: chỉ ra rằng request cần được xác thực. Client có thể gữi lại request với header đã được xác thực. Trường hợp đã đính kèm header xác thực nhưng vẫn nhận được thông báo này tức là header xác thực chưa hợp lệ.
 ** *403 Forbidden*: server từ chối quyền truy cập của client.
+** *404 Not Found*: Không tồn tại nội dung yêu cầu trên Server.
 ** *405 Method Not Allowed*: HTTP verb trong các dòng request không hợp lệ, hoặc server không hổ trợ HTTP verb đó.
 ** *409 Conflict*: server không thể hoàn thành yêu cầu vì client cố chỉnh sửa tài nguyên mới hơn so với *timestamp* của client. Xung đột xảy ra chủ yếu trong các request *PUT*  trong quá trình hợp tác chỉnh sửa tài nguyên.
 * *5xx*: thông báo lỗi phía server: Được sử dụng để nói rằng server thất bại trong quá trình xử lý request. Với mà lỗi thông dụng nhất là **500 Internal Server Eror**, và một số mã khác :
