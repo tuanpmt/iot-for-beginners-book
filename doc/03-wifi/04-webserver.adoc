@@ -2,8 +2,25 @@
 
 === Web Server là gì?
 
+Web Server là một máy chủ Web mà khi có bất kỳ 1 Web Client nào (chẳng hạn Web Browser) truy cập vào, thì nó sẽ căn cứ trên các thông tin yêu cầu truy cập để xử lý, và phản hồi lại nội dung. Đa phần các nội dung Web Server phục vụ là HTML, Javascript, CSS, JSON và bao gồm cả các dữ liệu Binary.
+
+Mặc định các Web Server phục vụ trên Port 80, và 443 cho dịch vụ Web có bảo mật `HTTPS`
+
 === HTML - Javascript - CSS
+
+* *HTML*
+* *Javascriot*
+* *CSS*
 
 === Ứng dụng điều khiển đèn LED thông qua Webserver
 
+ESP8266 hoàn toàn có thể thực hiện vai trò Web Server để phục vụ cho một vài kết nối đến, tận dụng giao diện Web để điều khiển, cấu hình cho nó.
 
+Ứng dụng này sẽ sử dụng giao diện Web phục vụ bởi ESP8266 và điều khiển chính đèn LED trên board.
+
+=== Code
+
+[source, c]
+----
+include::code/WebServer/WebServer.ino[]
+----

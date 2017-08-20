@@ -7,6 +7,7 @@ ESP8266 có khả năng cho phép các thiết bị khác (Station - STA) truy c
 === Tạo ra một mạng WiFi sử dụng ESP8266
 
 Với đoạn code này, bạn có thể tạo ra một mạng WiFi cục bộ có SSID là `AP-XXXXXX` và có thể dùng máy tính để kết nối trực tiếp vào với password là `password`
+
 [source, c]
 ----
 include::code/WiFiAccessPoint/WiFiAccessPoint.ino[]
