@@ -2,4 +2,12 @@
 
 === ESP8266 hoạt động ở chế độ Access Point
 
+ESP8266 có khả năng cho phép các thiết bị khác (Station - STA) truy cập vào và hoạt động như là 1 Access Point, có thể tự thiết lập 1 mạng WiFi nội bộ, với khả năng khởi động DHCP Client và cung cấp được IP cho các Client kết nối tới. Do giới hạn về RAM, nên số lượng tối đa các STA có thể kết nối đến một ESP8266 hiện tại là 5.
 
+=== Tạo ra một mạng WiFi sử dụng ESP8266
+
+Với đoạn code này, bạn có thể tạo ra một mạng WiFi cục bộ có SSID là `AP-XXXXXX` và có thể dùng máy tính để kết nối trực tiếp vào với password là `password`
+[source, c]
+----
+include::code/WiFiAccessPoint/WiFiAccessPoint.ino[]
+----

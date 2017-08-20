@@ -45,34 +45,76 @@ Accept: */*
 
 ----
 
-Giao thức HTTP định nghĩa một số phương thức (method) truyền đến Server:
+Dữ liệu trả về
+
+----
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+data
+----
+
+==== Giao thức HTTP định nghĩa một số phương thức (method) truyền đến Server:
 
 * `GET` là phương thức *request* đơn giản và thường sử dụng nhất của HTTP. Request *GET* là yêu cầu server chỉ trả về dữ liệu mà không có tác động nào tới server. GET sử dụng `path` và `query` trong *URL* để thông báo cho Server thông tin cần lấy.
 * `POST` tương tự như `GET`, nhưng `POST` có thể gởi dữ liệu về Server
-* `PUT`
-* `DELETE`
-* `HEAD`
+* `PUT` là phương thức yêu cầu tạo mới một dữ liệu, giống `POST` nhưng đánh dấu cho Server biết, nếu dữ liệu không tồn tại trong cơ sở dữ liệu thì tạo mới, hoặc sửa đổi nó.
+* `DELETE` Tương tự như `GET`, nhưng báo cho Server biết về việc xóa dữ liệu thông qua URL
 
+Các phương thức thông thường chỉ dùng `GET` và `POST`, các phương thức còn lại thường sử dụng trong API server (RESTful). Một số điểm khác biệt giữ `POST` và `GET`
 
-Đa phần chúng ta chỉ dùng `GET` và `POST`, các phương thức còn lại thường sử dụng trong API server. Một số điểm khác biệt giữ `POST` và `GET`
+* `GET` có thể bị cache (lưu trữ ở trình duyệt và sử dụng lại sau đó), nội dung request có thể lưu trữ ở lịch sử trình duyệt, có thể được đánh dấu (bookmark)
+* `GET` không nên sử dụng để gởi các dữ liệu nhạy cảm
+* `GET` bị giới hạn độ lớn dữ liệu cần gởi
+* `GET` chỉ nên dùng để lấy dữ liệu về
 
-* `GET` có thể bị cache (lưu trữ ở trình duyệt và sử dụng lại sau đó), nội dung request có thể lưu trữ ở trình duyệt, hoặc được
-GET requests remain in the browser history
-GET requests can be bookmarked
-GET requests should never be used when dealing with sensitive data
-GET requests have length restrictions
-GET requests should be used only to retrieve data
+* `POST` không bị catch, không tồn tại dữ liệu gởi trong lịch sử trình duyệt, không thể đánh dấu (bookmark)
+* `POST` không giới hạn bởi độ lớn dữ liệu cần gởi
 
-POST requests are never cached
-POST requests do not remain in the browser history
-POST requests cannot be bookmarked
-POST requests have no restrictions on data length
+==== HTTP Header & Status Code
+
+Dữ liệu trả về bao giờ cũng có phần thông tin header với dòng đầu tiên chưa Status Code `HTTP/1.1 200 OK` có nghĩa là status code = 200, request được trả về phù hợp.
+Theo sau đó là các cặp header chứa thông tin Server muốn trao đổi với Client, mà nếu là trình duyệt thì nó bị ẩn đi (người dùng bình thường không thể thấy). Các cặp header này định dạng theo kiểu `name: value` và kết thúc bằng ký tự xuống dòng không thấy bằng mắt thường (`0x0D 0x0A` hay `\r\n`)
+Trong ví dụ trên, thông tin header `Content-Type: text/html; charset=utf-8` báo cho trình duyệt biết rằng định dạng dữ liệu gởi về là dạng text, mã hóa utf-8. `Transfer-Encoding: chunked` chiều dài dữ liệu không được biết trước và gởi cho tới khi server đóng kết nối.
+
+Một số HTTP status code thường thấy:
+
+* *1xx*: Dãy mã này được quy định trong *HTTP/1.1*. Server có thể gữi một message với nội dung **Expect: 100-continue**, yêu cầu client tiếp tục gữi phần còn lại của *request* hoặc bỏ qua nếu client đã gữi.Với client *HTTP/1.0* thì có thể không quan tâm header này.
+* **2xx**: Xử lý thành công, thông báo với client rằng request đã được xử lý thành công. Với mã phổ biến là **200 OK**. Đối với một *GET* request, server sẽ gữi tài nguyên trong phần thân của message. Cón những mã khác ít dùng hơn
+** *201 Created*: cho biết request đã xử lý thành công và tài nguyên đã được khởi tạo. Được sử dụng để xác nhận sự thành công của một request *PUT* hoặc *POST*.
+** *202 Accepted*: Yêu cầu đã được chấp nhận, nhưng có thể tài nguyên không có trong response. Thông điệp này rất hữu ích cho xử lý async phía server. Server có thể chọn gữi thông tin để theo dõi.
+** *204 No Content*: thông báo không có phần thân message trong response.
+** *205 Reset Content*: thông báo cho client reset lại chế độ xem tài liệu.
+** *206 Partial Content*: Nói rằng response chỉ chứa một phần nội dung.
+* *4xx* các thông báo lỗi phía client: Được sử dụng khi server cho rằng phía client đang xảy ra lỗi, với một request một tài nguyên không hợp lệ hoặc là một request không đúng. Mã phổ biến nhất trong phần này là **404 Not Found** chỉ ra rằng tài nguyên không hợp lệ và tồn tại trên server. Ngoài ra còn có một số mã như sau :
+** *400 Bad Request*: thông báo request đã gữi là sai.
+** *401 Unauthorized*: chỉ ra rằng request cần được xác thực. Client có thể gữi lại request với header đã được xác thực. Trường hợp đã đính kèm header xác thực nhưng vẫn nhận được thông báo này tức là header xác thực chưa hợp lệ.
+** *403 Forbidden*: server từ chối quyền truy cập của client.
+** *405 Method Not Allowed*: HTTP verb trong các dòng request không hợp lệ, hoặc server không hổ trợ HTTP verb đó.
+** *409 Conflict*: server không thể hoàn thành yêu cầu vì client cố chỉnh sửa tài nguyên mới hơn so với *timestamp* của client. Xung đột xảy ra chủ yếu trong các request *PUT*  trong quá trình hợp tác chỉnh sửa tài nguyên.
+* *5xx*: thông báo lỗi phía server: Được sử dụng để nói rằng server thất bại trong quá trình xử lý request. Với mà lỗi thông dụng nhất là **500 Internal Server Eror**, và một số mã khác :
+** *501 Not Implemented*: thông báo server chưa hổ trợ chức năng mà client đã request.
+** *503 Service Unavailable*: Xảy ra khi hệ thống nội bộ của server đã thất bại hoặc quá tải.
 
 === JSON
 
-`JSON` với tên gọi đầy đủ là `JavaScript Object Notation`, là một chuẩn để định dạng, lưu trữ có tổ chức và trao đổi dữ liệu với dung lượng nhỏ giữ trình duyệt web và máy chủ một cách dễ dàng.
+JSON (JavaScript Object Noattion) là 1 định dạng hoán vị dữ liệu nhanh. Chúng dễ dàng cho chúng ta đọc và viết. Dễ dàng cho thiết bị phân tích và phát sinh. Chúng là cơ sở dựa trên tập hợp của Ngôn Ngữ Lập Trình JavaScript. JSON là 1 định dạng kiểu text mà hoàn toàn độc lập với các ngôn ngữ hoàn chỉnh, thuộc họ hàng với các ngôn ngữ họ hàng C, gồm có C, C++, C#, Java, JavaScript, Perl, Python, và nhiều ngôn ngữ khác. Những đặc tính đó đã tạo nên JSON 1 ngôn ngữ hoán vị dữ liệu lý tưởng.
+
+JSON được xây dựng trên 2 cấu trúc:
+
+Là tập hợp của các cặp tên và giá trị name-value. Trong những ngôn ngữ khác nhau, đây được nhận thấy như là 1 đối tượng (object), sự ghi (record), cấu trúc (struct), từ điển (dictionary), bảng băm (hash table), danh sách khoá (keyed list), hay mảng liên hợp.
+Là 1 tập hợp các giá trị đã được sắp xếp. Trong hầu hết các ngôn ngữ, this được nhận thấy như là 1 mảng, véc tơ, tập hợp hay là 1 dãy sequence.
+Đây là 1 cấu trúc dữ liệu phổ dụng. Hầu như tất cả các ngôn ngữ lập trình hiện đại đều hổ trợ chúng trong 1 hình thức nào đó. Chúng tạo nên ý nghĩa của 1 định dạng hoán vị dữ liệu với các ngôn ngữ lập trình cũng đã được cơ sở hoá trên cấu trúc này.
 
 **Cú pháp**
+
+* Dữ liệu nằm trong các cặp name/value
+* Các dữ liệu được ngăn cách bởi dấy phẩy `,`
+* Các đối tượng (name/value) nằm giữa hai dấu ngoặc kép `"`
+* Tất cả các đối tượng nằm bên trong hai dấu ngoặc nhọn `{}`
+* Dữ liệu của JSON được viết theo từng cặp name/value. Một cặp name/value bao gồm trường `name` ( nằm trong hai dấu ngoặc kép `"`, theo sau là dấu hai chấm `:`, và sau cùng là trường `value` (cũng được nằm trong hai dấu ngoặc kép `"`. Ví dụ: `"name":"John"`
 
 [source, json]
 ----
