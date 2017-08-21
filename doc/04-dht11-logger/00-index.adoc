@@ -1,8 +1,15 @@
-[[_dht11_logger]]
 = Dự án đọc cảm biến DHT11 và gởi về Server
+
+*Nhiệt độ* là đại lượng thể hiện tính chất vật lý `nóng, lạnh` của vật chất. Nhiệt độ được đo bằng các đơn vị khác nhau và có thể biến đổi bằng các công thức. Trong hệ đo lường quốc tế, nhiệt độ được đo bằng đơn vị Kelvin, ký hiệu là K. Trong đời sống ở Việt Nam và nhiều nước, nó được đo bằng độ C.
+
+*Độ ẩm tương đối* là tỷ số của áp suất hơi nước hiện tại của bất kỳ một hỗn hợp khí nào với hơi nước so với áp suất hơi nước bão hòa tính theo đơn vị là %. Định nghĩa khác của độ ẩm tương đối là tỷ số giữa khối lượng nước trên một thể tích hiện tại so với khối lượng nước trên cùng thể tích đó khi hơi nước bão hòa
+
+*DHT11* là một cảm biến có khả năng đo nhiệt độ và độ ẩm không khí với độ chính xác vừa phải, giá cả phải chăng. Có thể giao tiếp là đọc thông tin đo bằng giao thức OneWire.
 
 include::01-design.adoc[]
 
 include::02-server.adoc[]
 
 include::03-esp8266.adoc[]
+
+include::04-extend.adoc[]
