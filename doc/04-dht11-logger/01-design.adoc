@@ -1,10 +1,10 @@
 == Thiết kế ứng dụng
 
-Trong phần này chúng ta sẽ xây dựng ứng dụng đọc nhiệt độ, độ ẩm của môi trường dùng cảm biến DHT11. Project sẽ chia làm 3 phần nhỏ để giúp bạn hiểu được cách hoạt động theo cơ chế server-client của esp8266.
+Trong bài này chúng ta sẽ xây dựng ứng dụng đọc nhiệt độ, độ ẩm của môi trường dùng cảm biến DHT11. Project sẽ chia làm 3 phần nhỏ để giúp bạn hiểu được cách hoạt động theo cơ chế server-client của esp8266.
 
-. Mô hình với esp8266 là server có chức năng lấy dữ liệu từ DHT11 và tạo 1 web server. Web browser là client sẽ truy cập đến địa chỉ URL esp8266 đã thiết lập để lấy dữ liệu và hiển thị.
-. Esp8266 là client , máy tính là server (dùng nodejs để tạo server). Kết quả nhiệt độ, độ ẩm sẽ được lấy từ esp8266 và gửi lên máy tính để hiển thị.
-. Cả esp8266 và web browser đều đóng vai trò là client, máy tính là server (dùng nodejs). Dữ liệu thu được từ DHT11 sẽ được esp8266 gửi lên server, web browser sẽ lấy dữ liệu từ server và hiển thị lên web.
+. Mô hình với esp8266 là server có chức năng lấy dữ liệu từ DHT11 và tạo 1 web server. Web browser (các trình duyệt web như chrome, firefox,ie...) là client sẽ truy cập đến địa chỉ URL esp8266 đã thiết lập để lấy dữ liệu và hiển thị.
+. Thiết lập esp8266 là client , máy tính là server (dùng nodejs để tạo server). Kết quả nhiệt độ, độ ẩm sẽ được lấy từ esp8266 và gửi lên máy tính để hiển thị.
+. Cả esp8266 và web browser đều đóng vai trò là client, máy tính là server (dùng nodejs) . Dữ liệu thu được từ DHT11 sẽ được esp8266 gửi lên server, web browser sẽ lấy dữ liệu từ server và hiển thị lên web.
 
 === Yêu cầu
 
@@ -22,14 +22,14 @@ Sẽ dễ dàng hơn nếu chúng ta có những kiến thức cơ bản về
 
 * Chuẩn truyền dữ liệu 1 wire giữa các IC
 * Ngôn ngữ javascript để xây dựng server bằng cách dùng Nodejs
-* Ngôn ngữ html để xây dựng 1 trang web đơn giản nhằm hiển thị dữ liệu
+* Ngôn ngữ html để xây dựng 1 trang html đơn giản nhằm hiển thị dữ liệu
 
 Tuy nhiên cũng đừng quá lo lắng nếu bạn chưa từng nghe đến những thứ này, chúng ta sẽ hiểu nó khi đọc các phần tiếp theo.
 
 Cảm biến DHT 11 và chuẩn dữ liệu 1 wire
 
 * DHT11 là cảm biến có chức năng đo nhiệt độ, độ ẩm của môi trường, được dùng khá phổ biến vì giá thành thấp và độ ổn định cao.
-  Cảm biến sử dụng chuẩn truyền dữ liệu 1 wire. Thông tin chi tiết về DHT có thể xem tại http://www.micropik.com/PDF/dht11.pdf[*Datasheet*]
+  Cảm biến sử dụng chuẩn truyền dữ liệu 1 wire. Thông tin chi tiết về DHT11 có thể xem tại http://www.micropik.com/PDF/dht11.pdf[*Datasheet*]
 
 * 1 wire là chuẩn giao tiếp nối tiếp được thiết kế bởi hãng Dallas. Đó là hệ thống bus nhằm kết nối các thiết bị với nhau để truyền hoặc nhận dữ liệu.
   Trong chuẩn giao tiếp này thường chỉ sử dụng 1 chân đồng thời là vừa là nguồn cung cấp vừa là chân truyền nhận dữ liệu.
@@ -53,19 +53,20 @@ image::04-dht11/DHT11TimingDialog.png[width=981, align="center"]
 Chi tiết về chuẩn 1 wire xem tại https://www.maximintegrated.com/en/app-notes/index.mvp/id/1796[*maximintegrated.com*]
 
 === Hướng phát triển
-Xây dựng 1 dự án giám sát và điều khiển nhiệt độ, độ ẩm hiển thị trên web với giao diện điều khiển :
+Xây dựng ứng dụng theo từng bước như bên dưới :
 
-* Hiển thị giá trị nhiệt độ, độ ẩm.
-* Hiển thị chart nhiệt độ, độ ẩm theo thời gian.
-* Có 2 chế độ Auto và Manual.
-    + Với chế độ Auto, nhiệt độ > 35ºC sẽ tự động bật quạt, độ ẩm > 50% sẽ bật máy phun sương.
-    + Với chế độ manual có thể điều khiển quạt và máy phun sương bằng các nút nhấn ở ON/OFF
-* Có tùy chọn hiển thị lịch sử nhiệt độ, độ ẩm theo thời gian từ ngày aa/bb/cccc đến ngày xx/yy/zzzz
+. Đọc dữ liệu nhiệt độ, độ ẩm của DHT11 dùng esp8266 và hiển thị trên serial terminal của Arduino
 
-Hình ảnh thiết kế giao diện như bên dưới:
+. Tiếp theo chúng ta cần tìm hiểu những thứ cơ bản về html để xây dựng 1 trang html. Một trong những địa chỉ web để học html cho người mới bắt đầu là https://www.w3schools.com/html/default.asp[*w3school.com*], lưu ý rằng chúng ta sẽ không đi
+quá sâu vào việc học html, việc này có thể ảnh hướng đến tiến độ thực hiện của project, chỉ cần học đủ để xây dựng project hoàn chỉnh.
 
-.Giao diện điều khiển trên trang html
-image::04-dht11/control interface.png[width=822, align="center"]
+. Viết chương trình tạo 1 web server với giao diện html trên esp8266 để hiển thị dữ liệu thu được từ DHT11 và điều khiển trạng thái led của GPIO16 (led trên board Esp8266 Wifi Uno)
+
+. Để tạo server dùng nodejs chúng ta cần trang bị một số kiển thức cơ bản về  javascript và nodejs, để học javascript chúng ta có thể truy cập địa chỉ URL https://www.w3schools.com/js/default.asp[*w3school.com*], với nodejs thì https://www.codeschool.com/courses/real-time-web-with-node-js[*codeschool.com*] thật sự hữu ích với người mới bắt đầu.
+
+. Vượt qua hết những thứ nhọc nhằn ở các bước trên chúng ta đã có thể xây dựng 1 server bằng nodejs để giao tiếp với esp8266 (đóng vai trò là client). Kiểm chứng các kiến thức đã học được của bạn bằng cách xây dựng 1 server với nodejs. Esp8266 (client) sẽ gửi dữ liệu lên server và đồng thời web browser (client) sẽ lấy dữ liệu từ server để hiển thị
+cũng như điều khiển trạng thái của các thiết bị.
+
 === Thực hiện
 
 **Đấu nối**
@@ -73,4 +74,4 @@ image::04-dht11/control interface.png[width=822, align="center"]
 Kết nối sơ đồ mạch điện như hình bên dưới
 
 .Kết nối DHT11 và Esp8266 Wifi Uno
-image::04-dht11/DHT11Connect.png[width=822, align="center"]
+image::04-dht11/DHT11Connect.png[height=300, align="center"]
