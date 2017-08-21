@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DHT11</title>
+</head>
+<body>
+<canvas id="chart" width="600" height="400"></canvas>
+<script type="text/javascript">
+var canvas, ctx;
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(JSON.parse(xmlHttp.responseText));
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
+}
+
+function draw(data, type, color) {
+    ctx.strokeStyle = color;
+    for(var i=0; i<data.length; i++) {
+        ctx.arc(50*i, 400 - data[i][type]*4,5,0*Math.PI,1.5*Math.PI);
+    }
+    ctx.stroke();
+}
+function start() {
+    var canvas = document.getElementById("chart");
+    var ctx = canvas.getContext("2d");
+    setInterval(function() {
+        httpGetAsync('/get', function(data) {
+            draw(data, "temp", "#FF0000");
+            draw(data, "humd", "#0000FF");
+            console.log(data);
+        });
+    }, 5000);
+}
+
+start();
+</script>
+</body>
+</html>
