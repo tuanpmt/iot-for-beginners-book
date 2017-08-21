@@ -2,18 +2,18 @@
 
 WifiManager là một phương pháp khác giúp ESP8266 có thể vào được wifi mà không cần phải chỉnh sửa lại chương trình và nạp lại chương trình cho chip ESP8266. Với tính năng này, việc cấu hình wifi cho ESP8266 cũng hết sức dễ dàng, với những thiết bị quen thuộc (điện thoại thông minh, laptop) thông qua giao diện web.
 
-=== Hoạt động của WifManager
+=== Hoạt động của WifiManager
 
-- Khi ESP khởi động, ESP sẽ vào chế độ STA và sẽ tự động kết nối đến một AP với các thông tin kết nối này đã được lưu vào ESP ở lần kết nối trước đó.
+- Khi ESP8266 khởi động, ESP8266 sẽ vào chế độ STA và sẽ tự động kết nối đến một AP với các thông tin kết nối này đã được lưu vào ESP8266 ở lần kết nối trước đó.
 
-- Nếu như kết nối không thành công ( có thể là AP lần trước không còn nửa, hoặc chưa có thông tin của bất cứ AP nào trong ESP ), thì ESP lúc này sẽ vào chế độ AP với một DNS ( nếu không thiết lập thì DNS sẽ là tên mặc định của ESP, hoặc có thể đặt lại ) và khởi động Web Server ( với địa chỉ mặc định là 192.168.4.1 )
+- Nếu như kết nối không thành công ( có thể là AP lần trước không còn nửa, hoặc chưa có thông tin của bất cứ AP nào trong ESP8266 ), thì ESP8266 lúc này sẽ vào chế độ AP với một DNS ( nếu không thiết lập thì DNS sẽ là tên mặc định của ESP8266, hoặc có thể đặt lại ) và khởi động Web Server ( với địa chỉ mặc định là 192.168.4.1 )
 
-- Sử dụng các thiết bị có hổ trợ wifi, và có trình duyệt web ( điện thoại thông minh, laptop, máy tính bản... ) để kết nối đến AP của ESP vừa mới tạo ra. Có thể thấy một giao diện ( với tên AP của ESP là mặc định và không cài đặt mật khẩu cho ESP AP ) tương tự như sau :
+- Sử dụng các thiết bị có hổ trợ wifi, và có trình duyệt web ( điện thoại thông minh, laptop, máy tính bản... ) để kết nối đến AP của ESP8266 vừa mới tạo ra. Có thể thấy một giao diện ( với tên AP của ESP8266 là mặc định và không cài đặt mật khẩu cho ESP8266 AP ) tương tự như sau :
 
-- Sau khi vào được giao diện của ESP AP, chọn mục cấu hình cho wifi cho ESP (như ví dụ trên là Configure WiFi hoặc Configure WiFi (No Scan)), có thể sẽ thấy giao diện tiếp theo tương tự như sau :
+- Sau khi vào được giao diện của ESP8266 AP, chọn mục cấu hình cho wifi cho ESP8266 (như ví dụ trên là Configure WiFi hoặc Configure WiFi (No Scan)), có thể sẽ thấy giao diện tiếp theo tương tự như sau :
 
 - Chọn mạng wifi cần kết nối và nhập mật khẩu để vào wifi.
-- Nếu ESP kết nối thành công, ta sẽ không thấy tên của ESP AP nửa. Nếu chưa thành công thì chỉ cần kết nối lại ESP AP và cấu hình lại.
+- Nếu ESP8266 kết nối thành công, ta sẽ không thấy tên của ESP8266 AP nửa. Nếu chưa thành công thì chỉ cần kết nối lại ESP8266 AP và cấu hình lại.
 
 === Chuẩn bị
 
