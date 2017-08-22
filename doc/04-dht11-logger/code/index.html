@@ -27,8 +27,8 @@ function draw(data, type, color) {
     ctx.stroke();
 }
 function start() {
-    var canvas = document.getElementById("chart");
-    var ctx = canvas.getContext("2d");
+    canvas = document.getElementById("chart");
+    ctx = canvas.getContext("2d");
     setInterval(function() {
         httpGetAsync('/get', function(data) {
             draw(data, "temp", "#FF0000");
