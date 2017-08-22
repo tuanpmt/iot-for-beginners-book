@@ -1,22 +1,35 @@
 == Thiết kế ứng dụng
 
-Trong bài này chúng ta sẽ xây dựng ứng dụng đọc nhiệt độ, độ ẩm của môi trường dùng cảm biến DHT11. Project sẽ chia làm 3 phần nhỏ để giúp bạn hiểu được cách hoạt động theo cơ chế server-client của ESP8266.
+Hình ảnh bên dưới mô tả tổng quan dự án
 
-1.  Mô hình với ESP8266 là server có chức năng lấy dữ liệu từ DHT11 và tạo 1 web server. Web browser (các trình duyệt web như chrome, firefox,ie...) là client sẽ truy cập đến địa chỉ URL ESP8266 đã thiết lập để lấy dữ liệu và hiển thị.
-2.  Thiết lập ESP8266 là client , máy tính là server (dùng Node.js để tạo server). Kết quả nhiệt độ, độ ẩm sẽ được lấy từ ESP8266 và gửi lên máy tính để hiển thị.
-3.  Cả ESP8266 và web browser đều đóng vai trò là client, máy tính là server (dùng Node.js) . Dữ liệu thu được từ DHT11 sẽ được ESP8266 gửi lên server, web browser sẽ lấy dữ liệu từ server và hiển thị lên web.
+.Tổng quan mô hình của dự án
+image::04-dht11/projectIntro.png[height=596, align="center"]
+
+Trong thực tế, khi thiết kế ứng dụng, người dùng cần một giao diện giám sát và điều khiển thân thiện, đồng thời có thể phát triển thêm
+các tính năng như hiển thị kết quả dưới dạng đồ thị (chart), lưu trữ dữ liệu theo thời gian chỉ định hay điều khiển trạng thái các thiết bị chỉ với 1 click chuột trên máy tính. Các dự án với mô hình phức
+tạp sẽ cần quản lí các kết nối cũng như dữ liệu của các thiết bị...
+Chúng ta sẽ giải quyết những vấn đề trên thông qua ứng dụng đọc nhiệt độ, độ ẩm của môi trường và gửi về server. Đây là một ứng dụng khá đơn giản, hữu ích và dễ làm. Thông qua phần này chúng ta có thể xây dựng
+được một ứng dụng *IoT* thực tế, nắm bắt được các kiến thức cơ bản về thu thập dữ liệu, xây dựng thiết bị và server.
 
 === Yêu cầu
 
-**Linh kiện**
+- Dùng cảm biến DHT11 để thu thập nhiệt độ, độ ẩm của môi trường và kết nối với board mạch ESP8266
+- Board mạch ESP8266 sẽ kết nối không dây đến mạng WiFi và gởi dữ liệu về HTTP Server
+- Phần cơ bản: HTTP Server hiển thị dữ liệu nhiệt độ, độ ẩm ra màn hình Log trên máy tính
+- Phần nâng cao: HTTP Server lưu trữ dữ liệu, và cung cấp file HTML cho người dùng có thể xem qua Browser
 
-* [x] Cảm biến DHT11
-* [x] Board ESP8266 Wifi Uno
-* [x] Dây nối male-female header
-* [x] Điện trở 5K Ohm
-* [x] Cable kết nối giữa board ESP8266 và máy tính
+=== Phân tích
 
-**Kiến thức**
+- Chúng ta cần 1 Web Server viết bằng Javascript, thực thi bởi Node.js, lắng nghe ở Port được chỉ định trên máy tính cá nhân.
+- Máy tính phải có kết nối cùng mạng WiFi nội bộ với ESP8266, và cần biết địa chỉ IP của máy tính để ESP8266 có thể truy cập, ví dụ IP là `192.168.1.102`
+- ESP8266 sau khi kết nối vào mạng WiFi nội bộ, sẽ tiến hành đọc thông số nhiệt độ, độ ẩm từ cảm biến DHT11 và gởi về Server sau mỗi 5 giây.
+- Quá trình gởi được thực hiện bởi phương thức `GET`, ví dụ `http://192.168.1.102/update?temp=25&humd=80` với `192.168.1.102` là địa chỉ Web Server, `/update` là đường dẫn, `temp=20` và `humd=80` chứa thông tin nhiệt độ 20 độ C và độ ẩm 80%.
+- Web Server trả về trạng thái HTTP status = 200 (OK), cùng với việc hiển thị ra cửa sổ log giá trị nhiệt độ, độ ẩm.
+- Ở phần nâng cao:
+  -- Web Server lưu trữ dữ liệu nhiệt độ, độ ẩm trong mảng, chứa ở bộ nhớ RAM
+  -- Web Server còn cung cấp 1 file `index.html` chứa mã Javascript có thể yêu cầu lấy dữ liệu nhiệt độ, độ ẩm lưu trong RAM, và hiển thị lên biểu đồ
+
+=== Kiến thức
 
 Sẽ dễ dàng hơn nếu chúng ta có những kiến thức cơ bản về
 
@@ -26,7 +39,7 @@ Sẽ dễ dàng hơn nếu chúng ta có những kiến thức cơ bản về
 
 Tuy nhiên cũng đừng quá lo lắng nếu bạn chưa từng dùng những thứ này, chúng ta sẽ hiểu nó khi đọc các phần tiếp theo.
 
-Cảm biến DHT 11 và chuẩn dữ liệu OneWire
+**Cảm biến DHT 11 và chuẩn dữ liệu OneWire**
 
 * DHT11 là cảm biến có chức năng đo nhiệt độ, độ ẩm của môi trường, được dùng khá phổ biến vì giá thành thấp và độ ổn định cao.
   Cảm biến sử dụng chuẩn truyền dữ liệu OneWire. Thông tin chi tiết về DHT11 có thể xem tại http://www.micropik.com/PDF/dht11.pdf[*Datasheet*]
@@ -40,58 +53,41 @@ Hình ảnh mô tả quá trình truyền,nhận dữ liệu của DHT11 như h�
 .Quá trình truyền nhận dữ liệu trong chuẩn OneWire
 image::04-dht11/DHT11TimingDialog.png[width=981, align="center"]
 
-**Tóm tắt**
+Tóm tắt
 
-  1. Master (ESP8266) gửi tín hiệu START, DHT11 sẽ chuyển từ chế độ tiết kiệm năng lượng (low-power mode) sang chế độ làm việc bình thường (high-speed mode)
+  1. Master (ESP8266) gửi tín hiệu `START`, DHT11 sẽ chuyển từ chế độ tiết kiệm năng lượng (low-power mode) sang chế độ làm việc bình thường (high-speed mode)
 
   2. DHT11 nhận được tín hiệu và phản hồi đến master, master nhận tín hiệu và bắt đầu quá trình truyền dữ liệu.
 
   3. DHT11 sẽ gửi dữ liệu lên bus, mỗi lần gửi là 1 gói 40 bits data.
 
-  4. Khi muốn kết thúc, Master sẽ gửi tín hiệu STOP, kết thúc quá trình truyền nhận dữ liệu
+  4. Khi muốn kết thúc, Master sẽ gửi tín hiệu `STOP`, kết thúc quá trình truyền nhận dữ liệu
 
 Chi tiết về chuẩn OneWire xem tại https://www.maximintegrated.com/en/app-notes/index.mvp/id/1796[*maximintegrated.com*]
 
-=== Hướng phát triển
-Xây dựng ứng dụng theo từng bước như bên dưới :
+**Ngôn ngữ HTML**
 
-1. Đọc dữ liệu nhiệt độ, độ ẩm của DHT11 dùng ESP8266 và hiển thị trên serial terminal của Arduino
-
-2. Tiếp theo chúng ta cần tìm hiểu những thứ cơ bản về html để xây dựng 1 trang html. Một trong những địa chỉ web để học html cho người mới bắt đầu là https://www.w3schools.com/html/default.asp[*w3school.com*], lưu ý rằng chúng ta sẽ không đi
+Một trong những địa chỉ web để học html cho người mới bắt đầu là https://www.w3schools.com/html/default.asp[*w3school.com/HTML*], lưu ý rằng chúng ta sẽ không đi
 quá sâu vào việc học html, việc này có thể ảnh hướng đến tiến độ thực hiện của project, chỉ cần học đủ để xây dựng project hoàn chỉnh.
 
-3. Viết chương trình tạo 1 web server với giao diện html trên ESP8266 để hiển thị dữ liệu thu được từ DHT11 và điều khiển trạng thái led của GPIO16 (led trên board ESP8266 Wifi Uno)
+**Node.js và Javascript**
 
-4. Để tạo server dùng Node.js chúng ta cần trang bị một số kiển thức cơ bản về  Javascript và Node.js, để học Javascript chúng ta có thể truy cập địa chỉ URL https://www.w3schools.com/js/default.asp[*w3school.com*], với Node.js thì https://www.codeschool.com/courses/real-time-web-with-node-js[*codeschool.com*] thật sự hữu ích với người mới bắt đầu.
-
-5. Vượt qua hết những thứ nhọc nhằn ở các bước trên chúng ta đã có thể xây dựng 1 server bằng Node.js để giao tiếp với ESP8266 (đóng vai trò là client). Kiểm chứng các kiến thức đã học được của bạn bằng cách xây dựng 1 server với Node.js. ESP8266 (client) sẽ gửi dữ liệu lên server và đồng thời web browser (client) sẽ lấy dữ liệu từ server để hiển thị
-cũng như điều khiển trạng thái của các thiết bị.
+Để tạo server dùng Node.js chúng ta cần trang bị một số kiến thức cơ bản về  Javascript và Node.js, để học Javascript chúng ta có thể truy cập
+địa chỉ URL https://www.w3schools.com/js/default.asp[*w3school.com/Javascrpit*], với Node.js thì https://www.codeschool.com/courses/real-time-web-with-node-js[*codeschool.com*] thật sự hữu ích với người mới bắt đầu.
 
 === Thực hiện
+
+**Linh kiện cần có**
+
+  * [x] Cảm biến DHT11
+  * [x] Board ESP8266 Wifi Uno
+  * [x] Dây nối male-female header
+  * [x] Điện trở 5K Ohm
+  * [x] Cable kết nối giữa board ESP8266 và máy tính
 
 **Đấu nối**
 
 Kết nối sơ đồ mạch điện như hình bên dưới
 
 .Kết nối DHT11 và ESP8266 Wifi Uno
-image::04-dht11/DHT11Connect.png[height=300, align="center"]
-
-Đây là một ứng dụng khá đơn giản, hữu ích và dễ làm. Thông qua phần này chúng ta có thể xây dựng được một ứng dụng *IoT* thực tế, nắm bắt được các kiến thức cơ bản về thu thập dữ liệu, xây dựng thiết bị và server.
-
-=== Yêu cầu
-
-- Thiết bị sẽ đo nhiệt độ, độ ẩm dùng cảm biến DHT11, đấu nối với board mạch ESP8266
-- Board mạch kết nối không dây đến mạng WiFi và gởi dữ liệu về HTTP Server
-- Phần cơ bản: HTTP Server hiển thị dữ liệu nhiệt độ, độ ẩm ra màn hình Log
-- Phần nâng cao: HTTP Server lưu trữ dữ liệu, và cung cấp file HTML cho người dùng có thể xem qua Browser
-
-=== Phân tích
-
-- Chúng ta cần 1 Web Server viết bằng Javascript, thực thi bởi Node.js, lắng nghe ở Port 80 trên máy tính cá nhân.
-- Máy tính có kết nối cùng mạng WiFi nội bộ với ESP8266, và biết rõ địa chỉ IP của máy tính, ví dụ `192.168.1.102`
-- ESP8266 sau khi kết nối vào mạng WiFi nội bộ, sẽ tiến hành đọc thông số nhiệt độ, độ ẩm từ cảm biến DHT11 và gởi về Server sau mỗi 5 giây.
-- Quá trình gởi được thực hiện bởi phương thức `GET`, ví dụ `http://192.168.1.102/update?temp=25&humd=80` với `192.168.1.102` là địa chỉ Web Server, `/update` là đường dẫn, `temp=20` và `humd=80` chứa thông tin nhiệt độ 20 độ C và độ ẩm 80%.
-- Web Server trả về trạng thái HTTP status = 200 (OK), cùng với việc hiển thị ra cửa sổ log giá trị nhiệt độ, độ ẩm.
-- Ở phần nâng cao:
-  -- Web Server lưu trữ dữ liệu nhiệt độ, độ ẩm trong mảng, chứa ở bộ nhớ RAM
-  -- Web Server còn cung cấp 1 file `index.html` chứa mã Javascript có thể yêu cầu lấy dữ liệu nhiệt độ, độ ẩm lưu trong RAM, và hiển thị lên biểu đồ
+image::04-dht11/DHT11Connect.png[height=576, scaledwidth="75%", align="center"]

@@ -5,6 +5,9 @@
 <title>DHT11</title>
 </head>
 <body>
+  <h1> Temprature</h1> <input type="text" size="6" id="temp">&#176;C
+  <br>
+  <h1> Humidity</h1> <input type="text" size="6" id="humd">%
 <canvas id="chart" width="600" height="400"></canvas>
 <script type="text/javascript">
 var canvas, ctx;
@@ -27,12 +30,19 @@ function draw(data, type, color) {
     ctx.stroke();
 }
 function start() {
-    var canvas = document.getElementById("chart");
-    var ctx = canvas.getContext("2d");
+    canvas = document.getElementById("chart");
+    ctx = canvas.getContext("2d");
     setInterval(function() {
         httpGetAsync('/get', function(data) {
             draw(data, "temp", "#FF0000");
             draw(data, "humd", "#0000FF");
+
+            var str_humd = data[0].humd;
+
+            console.log(str_humd);
+
+            document.getElementById("temp").value = data[0].temp;
+            document.getElementById("humd").value = str_humd.slice(0, 4);
             console.log(data);
         });
     }, 5000);

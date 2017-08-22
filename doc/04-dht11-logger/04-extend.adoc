@@ -1,4 +1,17 @@
-== Các ứng dụng mở rộng
+== Ứng dụng mở rộng
 
 === Dùng ESP8266 như 1 Web Server
 
+Xây dựng 1 dự án giám sát và điều khiển nhiệt độ, độ ẩm hiển thị trên web với giao diện điều khiển :
+
+* Hiển thị giá trị nhiệt độ, độ ẩm.
+* Hiển thị chart nhiệt độ, độ ẩm theo thời gian.
+* Có 2 chế độ Auto và Manual.
+**  Với chế độ Auto, nhiệt độ > 35ºC sẽ tự động bật quạt, độ ẩm > 50% sẽ bật máy phun sương.
+**  Với chế độ manual có thể điều khiển quạt và máy phun sương bằng các nút nhấn ở ON/OFF
+* Có tùy chọn hiển thị lịch sử nhiệt độ, độ ẩm theo thời gian từ ngày aa/bb/cccc đến ngày xx/yy/zzzz
+
+Hình ảnh thiết kế giao diện như bên dưới:
+
+.Giao diện điều khiển trên trang html
+image::04-dht11/control interface.png[width=500, align="center"]

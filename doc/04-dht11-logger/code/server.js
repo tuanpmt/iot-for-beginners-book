@@ -1,6 +1,3 @@
-var http = require('http');
-var url = require('url');
-var querystring = require('querystring');
 var fs = require('fs');
 var url = require('url');
 var http = require('http');
@@ -12,7 +9,6 @@ function requestHandler(request, response) {
   var pathname = uriData.pathname;          // /update
   var query = uriData.query;                // temp=30.5&hum=80
   var queryData = querystring.parse(query); // queryData.temp = 30.5
-
   if(pathname == '/update') {
     var newData = {
         temp: queryData.temp,
@@ -26,9 +22,9 @@ function requestHandler(request, response) {
     response.writeHead(200, { 'Content-Type': 'application/json' });
     response.end(JSON.stringify(db));
     db = [];
-  } else {
+  } else{
     fs.readFile('./index.html', function(error, content) {
-        response.writeHead(200, { 'Content-Type': 'text/html' });
+        response.writeHead(200, {'Content-Type': 'text/html' });
         response.end(content);
     });
 
