@@ -2,14 +2,17 @@
 
 === Kiến thức
 
-**Đọc nhiệt độ, độ ẩm của DHT11 dùng esp8266**
+**Đọc nhiệt độ, độ ẩm của DHT11 và hiển thị trên trang html dùng esp8266**
 
 Dựa theo chuẩn truyền nhận 1 wire và sự phổ biến của dòng sensor DHTXX (DHT11, DHT22,...), có rất nhiều thư viện được xây dựng lên để việc lập trình với DHT11 trở nên dễ dàng hơn. Trong bài này chúng ta sẽ cài đặt và sử dụng thư viện `DHT sensor library` của Adafruit
 
+.Hình ảnh thư viện DHT sensor library 
+image::04-dht11/install-lib.png[height=900, align="center"]
 [source, c]
 ----
-include::code/dht11-logger/DHT11-Esp8266.ino[]
+include::code/dht11-logger/dht11-logger.ino[]
 ----
+**Giải thích mã nguồn**
 
 Video kết quả
 
@@ -32,4 +35,4 @@ Xây dựng 1 dự án giám sát và điều khiển nhiệt độ, độ ẩm 
 Hình ảnh thiết kế giao diện như bên dưới:
 
 .Giao diện điều khiển trên trang html
-image::04-dht11/control interface.png[width=600, align="center"]
+image::04-dht11/control interface.png[width=500, align="center"]

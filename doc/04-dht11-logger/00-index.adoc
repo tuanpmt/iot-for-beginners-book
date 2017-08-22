@@ -1,12 +1,12 @@
-[[_dht11_logger]]
+[[_DHT11_logger]]
 = Dự án đọc cảm biến DHT11 và gởi về Server
 
 .Tổng quan mô hình của dự án
-image::04-dht11/projectIntro.png[align="center", width=676]
+image::04-DHT11/projectIntro.png[align="center", width=676]
 
 Trong thực tế, khi thiết kế ứng dụng, người dùng cần một giao diện giám sát và điều khiển thân thiện hơn, đồng thời có thể phát triển thêm
 các tính năng như hiển thị kết quả dưới dạng đồ thị (chart), có thể truy cập thông tin lịch sử của các thiết bị theo thời gian chỉ định hay điều khiển trạng thái các thiết bị chỉ với 1 click chuột trên máy tính ...
-Tất cả các yêu cầu trên có thể được thực hiện dể dàng thông qua cơ chế server-client của esp8266  để hiển thị dữ liệu cũng như điều khiển thiết bị thông qua server được xây dựng trên chính esp8266 hoặc trên máy tính.
+Tất cả các yêu cầu trên có thể được thực hiện dể dàng thông qua cơ chế server-client của ESP8266 để hiển thị dữ liệu cũng như điều khiển thiết bị thông qua server được xây dựng trên chính ESP8266 hoặc trên máy tính.
 
 include::01-design.adoc[]
 

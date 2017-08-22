@@ -1,8 +1,8 @@
 var http = require('http');
+//The URL module splits up a web address into readable parts.
 var url = require('url');
-var querystring = require('querystring');
 
-//Query: http://localhost:8000/update?temp=30.5&hum=80
+var querystring = require('querystring');
 function requestHandler(request, response) {
   var uriData = url.parse(request.url);
   var pathname = uriData.pathname;          // /update

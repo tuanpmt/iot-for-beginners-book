@@ -6,3 +6,14 @@
 ----
 include::code/server.js[]
 ----
+// o esp8266 chi can gui len server 2 gia tri nhiet do va do am.
+// tạo mang null arr[] de luu temp, humi. Su dung arr.push() de lay du lieu cua mang. Khi khach hang truy cap vao localhosst:port/ thi
+// tra ve file index (neu web browser yeu cau). Truong hop truy cap vao localhosst:port/update? => tra ve gia tri theo
+// ding dang chuoi json
+//-------------------------------------------
+// git gutter de cap nhat noi dung thay doi.
+//-------------------------------------------
+// ve chart dung javascript, dung code canvas
+//-------------------------------------------
+// su dung xhtml dung get gia tri
+//-------------------------------------------
