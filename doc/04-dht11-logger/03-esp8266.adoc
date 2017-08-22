@@ -54,7 +54,7 @@ while (WiFi.status() != WL_CONNECTED) {
 Serial.println("\r\nWiFi connected");
 ----
 
-Lấy dữ liệu từ DHT11
+Lấy và kiểm tra dữ liệu từ DHT11 
 
 ----
 float temp = dht.readTemperature(); // Lấy dữ liệu nhiệt độ (độ C)
@@ -70,7 +70,7 @@ Thiết lập kết nối đến server và gửi dữ liệu
 ----
 if (client.connect(server, port)) { //Kiểm tra kết nối đến IP của máy tính và port
 // Gửi dữ liệu temp và humd lên server thông qua URL sử dụng phương thức GET
-// Phía server sẽ xử lí URL của ESP8266 gửi lên để lấy dữ liệu 
+// Phía server sẽ xử lí URL của ESP8266 gửi lên để lấy dữ liệu
   String req_uri = "/update?temp=" + String(temp, 1) + "&humd=" + String(humi, 1);
   client.print("GET " + req_uri + "HTTP/1.1\n");
   client.print("Host: "+server+"\n");
