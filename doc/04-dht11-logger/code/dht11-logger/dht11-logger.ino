@@ -9,7 +9,7 @@ const char* ssid = "YOUR-WIFI-SSID"; // your wireless network name (SSID)
 const char* password = "YOUR-WIFI-PASS"; // your Wi-Fi network password
 const char* server = "192.168.1.100";
 const int port = 8000;
-const int postingInterval = 2 * 1000; // post data every 2 seconds
+const int sendingInternval = 2 * 1000; // post data every 2 seconds
 
 void setup() {
   Serial.begin(115200);
@@ -32,7 +32,7 @@ void loop() {
     return;
   }
   if (client.connect(server, port)) {
-    String req_uri = "/update?field1=" + String(temp, 1) + "&field2=" + String(humi, 1);
+    String req_uri = "/update?temp=" + String(temp, 1) + "&humd=" + String(humi, 1);
     client.print("GET " + req_uri + "HTTP/1.1\n");
     client.print("Host: "+server+"\n");
     client.print("Connection: close\n");
@@ -42,5 +42,5 @@ void loop() {
   }
   client.stop();
 
-  delay(postingInterval);
+  delay(sendingInternval);
 }

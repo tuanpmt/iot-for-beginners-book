@@ -1,3 +1,4 @@
+
 [[_DHT11_logger]]
 = Dự án đọc cảm biến DHT11 và gởi về Server
 
@@ -7,9 +8,18 @@ image::04-DHT11/projectIntro.png[align="center", width=676]
 Trong thực tế, khi thiết kế ứng dụng, người dùng cần một giao diện giám sát và điều khiển thân thiện hơn, đồng thời có thể phát triển thêm
 các tính năng như hiển thị kết quả dưới dạng đồ thị (chart), có thể truy cập thông tin lịch sử của các thiết bị theo thời gian chỉ định hay điều khiển trạng thái các thiết bị chỉ với 1 click chuột trên máy tính ...
 Tất cả các yêu cầu trên có thể được thực hiện dể dàng thông qua cơ chế server-client của ESP8266 để hiển thị dữ liệu cũng như điều khiển thiết bị thông qua server được xây dựng trên chính ESP8266 hoặc trên máy tính.
+= Dự án đọc cảm biến DHT11 và gởi về Server
+
+*Nhiệt độ* là đại lượng thể hiện tính chất vật lý `nóng, lạnh` của vật chất. Nhiệt độ được đo bằng các đơn vị khác nhau và có thể biến đổi bằng các công thức. Trong hệ đo lường quốc tế, nhiệt độ được đo bằng đơn vị Kelvin, ký hiệu là K. Trong đời sống ở Việt Nam và nhiều nước, nó được đo bằng độ C.
+
+*Độ ẩm tương đối* là tỷ số của áp suất hơi nước hiện tại của bất kỳ một hỗn hợp khí nào với hơi nước so với áp suất hơi nước bão hòa tính theo đơn vị là %. Định nghĩa khác của độ ẩm tương đối là tỷ số giữa khối lượng nước trên một thể tích hiện tại so với khối lượng nước trên cùng thể tích đó khi hơi nước bão hòa
+
+*DHT11* là một cảm biến có khả năng đo nhiệt độ và độ ẩm không khí với độ chính xác vừa phải, giá cả phải chăng. Có thể giao tiếp là đọc thông tin đo bằng giao thức OneWire.
 
 include::01-design.adoc[]
 
 include::02-server.adoc[]
 
 include::03-esp8266.adoc[]
+
+include::04-extend.adoc[]

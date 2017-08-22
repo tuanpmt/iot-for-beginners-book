@@ -9,7 +9,7 @@ Mặc định các Web Server phục vụ trên Port 80, và 443 cho dịch vụ
 === HTML - Javascript - CSS
 
 * *HTML*
-* *Javascriot*
+* *Javascript*
 * *CSS*
 
 === Ứng dụng điều khiển đèn LED thông qua Webserver

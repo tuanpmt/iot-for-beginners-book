@@ -1,6 +1,14 @@
 == Code ESP8266
 
-=== Kiến thức
+ESP8266 sử dụng thư viện HTTPClient để kết nối tới Web Server và dữ liệu nhiệt độ, đổ ẩm thông qua phương thức GET với query là `temp` và `humd`.
+
+=== Chuẩn bị và đấu nối
+
+- Cung cấp SSID và PASSWORD WiFi cho ESP8266, để board mạch có thể kết nối vào mạng nội bộ với Web Server.
+- Cung cấp địa chỉ IP, port của Web Server
+- Đấu nối DHT11 như hình
+
+//Hình
 
 **Đọc nhiệt độ, độ ẩm của DHT11 và hiển thị trên trang html dùng esp8266**
 

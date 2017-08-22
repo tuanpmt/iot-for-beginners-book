@@ -58,8 +58,8 @@ data
 
 ==== Giao thức HTTP định nghĩa một số phương thức (method) truyền đến Server:
 
-* `GET` là phương thức *request* đơn giản và thường sử dụng nhất của HTTP. Request *GET* là yêu cầu server chỉ trả về dữ liệu mà không có tác động nào tới server. GET sử dụng `path` và `query` trong *URL* để thông báo cho Server thông tin cần lấy.
-* `POST` tương tự như `GET`, nhưng `POST` có thể gởi dữ liệu về Server
+* `GET` là phương thức yêu cầu dữ liệu đơn giản và thường sử dụng nhất của HTTP. Phương thức *GET* yêu cầu server chỉ trả về dữ liệu bằng việc cung cấp các thông tin truy vấn trên URL, thông thường Server căn cứ vào thông tin truy vấn đó trả về dữ liệu mà không thay đổi nó. `path` và `query` trong *URL* chứa thông tin truy vấn.
+* `POST` tương tự như `GET`, nhưng `POST` có thể gởi dữ liệu về Server.
 * `PUT` là phương thức yêu cầu tạo mới một dữ liệu, giống `POST` nhưng đánh dấu cho Server biết, nếu dữ liệu không tồn tại trong cơ sở dữ liệu thì tạo mới, hoặc sửa đổi nó.
 * `DELETE` Tương tự như `GET`, nhưng báo cho Server biết về việc xóa dữ liệu thông qua URL
 
