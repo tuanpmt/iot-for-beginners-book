@@ -15,7 +15,8 @@ image::03-wifi/http1-req-res-details.png[Cách thức HTTP hoạt động, role=
 
 Khi nhắc tới HTTP thì Hyperlink, hay URL (Uniform Resource Locator) là những khái niệm được thấy hàng ngày
 
-*URL* được dùng để định dạng địa chỉ Website, chưa các thông tin yêu cầu từ client và server dựa vào đó xử lý, cấu trúc của nó như hình
+*URL* được dùng để định dạng địa chỉ Website, chứa các thông tin yêu cầu từ client và server dựa vào đó xử lý, cấu trúc của nó như hình
+
 .Cấu trúc 1 URL
 image::03-wifi/http1-url-structure.png[URL, role="center", align="center", width=400]
 
@@ -81,23 +82,25 @@ Trong ví dụ trên, thông tin header `Content-Type: text/html; charset=utf-8`
 
 Một số HTTP status code thường thấy:
 
-* *1xx*: Dãy mã này được quy định trong *HTTP/1.1*. Server có thể gữi một message với nội dung **Expect: 100-continue**, yêu cầu client tiếp tục gữi phần còn lại của *request* hoặc bỏ qua nếu client đã gữi.Với client *HTTP/1.0* thì có thể không quan tâm header này.
-* **2xx**: Xử lý thành công, thông báo với client rằng request đã được xử lý thành công. Với mã phổ biến là **200 OK**. Đối với một *GET* request, server sẽ gữi tài nguyên trong phần thân của message. Cón những mã khác ít dùng hơn
-** *201 Created*: cho biết request đã xử lý thành công và tài nguyên đã được khởi tạo. Được sử dụng để xác nhận sự thành công của một request *PUT* hoặc *POST*.
-** *202 Accepted*: Yêu cầu đã được chấp nhận, nhưng có thể tài nguyên không có trong response. Thông điệp này rất hữu ích cho xử lý async phía server. Server có thể chọn gữi thông tin để theo dõi.
-** *204 No Content*: thông báo không có phần thân message trong response.
-** *205 Reset Content*: thông báo cho client reset lại chế độ xem tài liệu.
-** *206 Partial Content*: Nói rằng response chỉ chứa một phần nội dung.
-* *4xx* các thông báo lỗi phía client: Được sử dụng khi server cho rằng phía client đang xảy ra lỗi, với một request một tài nguyên không hợp lệ hoặc là một request không đúng. Mã phổ biến nhất trong phần này là **404 Not Found** chỉ ra rằng tài nguyên không hợp lệ và tồn tại trên server. Ngoài ra còn có một số mã như sau :
-** *400 Bad Request*: thông báo request đã gữi là sai.
-** *401 Unauthorized*: chỉ ra rằng request cần được xác thực. Client có thể gữi lại request với header đã được xác thực. Trường hợp đã đính kèm header xác thực nhưng vẫn nhận được thông báo này tức là header xác thực chưa hợp lệ.
-** *403 Forbidden*: server từ chối quyền truy cập của client.
-** *404 Not Found*: Không tồn tại nội dung yêu cầu trên Server.
-** *405 Method Not Allowed*: HTTP verb trong các dòng request không hợp lệ, hoặc server không hổ trợ HTTP verb đó.
-** *409 Conflict*: server không thể hoàn thành yêu cầu vì client cố chỉnh sửa tài nguyên mới hơn so với *timestamp* của client. Xung đột xảy ra chủ yếu trong các request *PUT*  trong quá trình hợp tác chỉnh sửa tài nguyên.
-* *5xx*: thông báo lỗi phía server: Được sử dụng để nói rằng server thất bại trong quá trình xử lý request. Với mà lỗi thông dụng nhất là **500 Internal Server Eror**, và một số mã khác :
-** *501 Not Implemented*: thông báo server chưa hổ trợ chức năng mà client đã request.
-** *503 Service Unavailable*: Xảy ra khi hệ thống nội bộ của server đã thất bại hoặc quá tải.
+* *1xx*: mã trạng thái thông tin. Bản chất của mã trạng thái này, chỉ để thông báo với client rằng request đã được chấp nhận. Các mã trạng thái thông tin này được quy định trong *HTTP/1.1*, còn phiên bản *HTTP/1.0* hay trước đó thì không có, có thể bỏ qua phần mã trạng thái này. Mã hay gặp nhất:
+** *100 Continue*: thông báo cho client biết là có thể gữi tiếp phần request còn lại nếu còn hoặc kết thúc nếu đã hết. Nếu trong request POST, phần thân request lớn sẽ bị server từ chối, và để giải quyết điều này thì client phải gữi *Expect: 100-continue* theo sau phần header ban đầu
+* **2xx**: nhóm mã trạng thái này thông bào với client rằng request đã được nhận, hiểu và xử lý thành công. Với một số mã thường thấy:
+** *200 OK*: thông báo cho client biết là request đã gữi thành công. Có thể thấy mã trạng thái này trong các phương thức *GET*, *HEAD*, *POST*, *TRACE*
+** *201 Created*: cho biết request đã xử lý thành công và tài nguyên đã được khởi tạo. Được sử dụng để xác nhận sự thành công của một request *PUT* hoặc *POST*
+** *204 No Content*: thông báo không có phần thân message trong response
+
+* **3xx**: nhóm mã trạng thái thông báo client còn phải thực hiện thêm hành động nửa, để hoàn thành request. Và mã trạng thái thướng gặp trong nhóm:
+** *301 Moved Permanently*: thông báo tài nguyên được yêu cầu đã được chuyển hướng sang một URL mới, và server sẽ gữi URL mới này trong response cho client biết
+* *4xx* nhóm mã thông báo các lỗi từ phía client: Được sử dụng khi server cho rằng phía client đang xảy ra lỗi, với một request, hoặc tài nguyên không hợp lệ, hoặc một request không đúng. Các mã thông dụng:
+** *400 Bad Request*: thông báo request đã gữi là sai
+** *401 Unauthorized*: chỉ ra rằng request cần được xác thực. Client có thể gữi lại request với header đã được xác thực. Trường hợp đã đính kèm header xác thực nhưng vẫn nhận được thông báo này tức là header xác thực chưa hợp lệ
+** *403 Forbidden*: server từ chối quyền truy cập của client
+** *404 Not Found*: thông báo tài nguyên không hợp lệ và tồn tại trên server
+** *409 Conflict*: server không thể hoàn thành yêu cầu vì client cố chỉnh sửa tài nguyên mới hơn so với *timestamp* của client. Xung đột xảy ra chủ yếu trong các request *PUT*  trong quá trình hợp tác chỉnh sửa tài nguyên
+* *5xx*: nhóm lệnh thông báo server đang ở trong tình trạng lỗi hoặc không có khả năng thực hiện yêu cầu. Một số mã thường gặp:
+** *500 Internal Server Eror*: cho biết là không thể thực hiện request của client
+** *501 Not Implemented*: thông báo server không ra phương thức được yêu cầu hoặc không có khả năng hổ trợ chức năng mà client đã request
+** *503 Service Unavailable*: Xảy ra khi hệ thống của server đang bảo dưỡng hoặc quá tải
 
 === JSON
 
