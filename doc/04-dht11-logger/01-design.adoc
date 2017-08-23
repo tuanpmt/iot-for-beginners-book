@@ -5,11 +5,9 @@ Hình ảnh bên dưới mô tả tổng quan dự án
 .Tổng quan mô hình của dự án
 image::04-dht11/projectIntro.png[height=596, align="center"]
 
-Trong thực tế, khi thiết kế ứng dụng, người dùng cần một giao diện giám sát và điều khiển thân thiện, đồng thời có thể phát triển thêm
-các tính năng như hiển thị kết quả dưới dạng đồ thị (chart), lưu trữ dữ liệu theo thời gian chỉ định hay điều khiển trạng thái các thiết bị chỉ với 1 click chuột trên máy tính. Các dự án với mô hình phức
-tạp sẽ cần quản lí các kết nối cũng như dữ liệu của các thiết bị...
-Chúng ta sẽ giải quyết những vấn đề trên thông qua ứng dụng đọc nhiệt độ, độ ẩm của môi trường và gửi về server. Đây là một ứng dụng khá đơn giản, hữu ích và dễ làm. Thông qua phần này chúng ta có thể xây dựng
-được một ứng dụng *IoT* thực tế, nắm bắt được các kiến thức cơ bản về thu thập dữ liệu, xây dựng thiết bị và server.
+Trong thực tế, khi thiết kế ứng dụng, người dùng cần một giao diện giám sát và điều khiển thân thiện, đồng thời có thể phát triển thêm các tính năng như hiển thị kết quả dưới dạng đồ thị (chart), lưu trữ dữ liệu theo thời gian chỉ định hay điều khiển trạng thái các thiết bị chỉ với 1 click chuột trên máy tính. Các dự án với mô hình phức tạp sẽ cần quản lí các kết nối cũng như dữ liệu của các thiết bị...
+
+Chúng ta sẽ giải quyết những vấn đề trên thông qua ứng dụng đọc nhiệt độ, độ ẩm của môi trường và gửi về server. Đây là một ứng dụng khá đơn giản, hữu ích và dễ làm. Thông qua phần này chúng ta có thể xây dựng được một ứng dụng *IoT* thực tế, nắm bắt được các kiến thức cơ bản về thu thập dữ liệu, xây dựng thiết bị và server.
 
 === Yêu cầu
 
@@ -20,8 +18,8 @@ Chúng ta sẽ giải quyết những vấn đề trên thông qua ứng dụng 
 
 === Phân tích
 
-- Chúng ta cần 1 Web Server viết bằng Javascript, thực thi bởi Node.js, lắng nghe ở Port được chỉ định trên máy tính cá nhân.
-- Máy tính phải có kết nối cùng mạng WiFi nội bộ với ESP8266, và cần biết địa chỉ IP của máy tính để ESP8266 có thể truy cập, ví dụ IP là `192.168.1.102`
+- Chúng ta cần 1 Web Server viết bằng Javascript, thực thi bởi Node.js, lắng nghe ở Port được chỉ định trên máy tính cá nhân.Ở đây là port 8000
+- Máy tính phải có kết nối cùng mạng WiFi nội bộ với ESP8266 và cần biết địa chỉ IP của máy tính để ESP8266 có thể truy cập, ví dụ IP là `192.168.1.102`
 - ESP8266 sau khi kết nối vào mạng WiFi nội bộ, sẽ tiến hành đọc thông số nhiệt độ, độ ẩm từ cảm biến DHT11 và gởi về Server sau mỗi 5 giây.
 - Quá trình gởi được thực hiện bởi phương thức `GET`, ví dụ `http://192.168.1.102/update?temp=25&humd=80` với `192.168.1.102` là địa chỉ Web Server, `/update` là đường dẫn, `temp=20` và `humd=80` chứa thông tin nhiệt độ 20 độ C và độ ẩm 80%.
 - Web Server trả về trạng thái HTTP status = 200 (OK), cùng với việc hiển thị ra cửa sổ log giá trị nhiệt độ, độ ẩm.
@@ -35,18 +33,15 @@ Sẽ dễ dàng hơn nếu chúng ta có những kiến thức cơ bản về
 
 * Chuẩn truyền dữ liệu OneWire giữa các IC
 * Ngôn ngữ Javascript để xây dựng server bằng cách dùng Node.js
-* Ngôn ngữ html để xây dựng 1 trang html đơn giản nhằm hiển thị dữ liệu
+* Ngôn ngữ HTML để xây dựng 1 trang html đơn giản nhằm hiển thị dữ liệu
 
 Tuy nhiên cũng đừng quá lo lắng nếu bạn chưa từng dùng những thứ này, chúng ta sẽ hiểu nó khi đọc các phần tiếp theo.
 
 **Cảm biến DHT 11 và chuẩn dữ liệu OneWire**
 
-* DHT11 là cảm biến có chức năng đo nhiệt độ, độ ẩm của môi trường, được dùng khá phổ biến vì giá thành thấp và độ ổn định cao.
-  Cảm biến sử dụng chuẩn truyền dữ liệu OneWire. Thông tin chi tiết về DHT11 có thể xem tại http://www.micropik.com/PDF/dht11.pdf[*Datasheet*]
+* DHT11 là cảm biến có chức năng đo nhiệt độ, độ ẩm của môi trường, được dùng khá phổ biến vì giá thành thấp và độ ổn định cao. Cảm biến sử dụng chuẩn truyền dữ liệu OneWire. Thông tin chi tiết về DHT11 có thể xem tại http://www.micropik.com/PDF/dht11.pdf[*Datasheet*]
 
-* OneWire là chuẩn giao tiếp nối tiếp được thiết kế bởi hãng Dallas. Đó là hệ thống bus nhằm kết nối các thiết bị với nhau để truyền hoặc nhận dữ liệu.
-  Trong chuẩn giao tiếp này thường chỉ sử dụng 1 chân đồng thời là vừa là nguồn cung cấp vừa là chân truyền nhận dữ liệu.
-  Cũng giống như các chuẩn giao tiếp khác, OneWire cũng gồm 3 giai đoạn reqquest (hỏi) -> respond (đáp) -> data reading (truyền nhận dữ liệu).
+* OneWire là chuẩn giao tiếp nối tiếp được thiết kế bởi hãng Dallas. Đó là hệ thống bus nhằm kết nối các thiết bị với nhau để truyền hoặc nhận dữ liệu.Trong chuẩn giao tiếp này thường chỉ sử dụng 1 chân đồng thời là vừa là nguồn cung cấp vừa là chân truyền nhận dữ liệu. Cũng giống như các chuẩn giao tiếp khác, OneWire cũng gồm 3 giai đoạn reqquest (hỏi) -> respond (đáp) -> data reading (truyền nhận dữ liệu).
 
 Hình ảnh mô tả quá trình truyền,nhận dữ liệu của DHT11 như hình bên dưới
 
@@ -67,20 +62,18 @@ Chi tiết về chuẩn OneWire xem tại https://www.maximintegrated.com/en/app
 
 **Ngôn ngữ HTML**
 
-Một trong những địa chỉ web để học html cho người mới bắt đầu là https://www.w3schools.com/html/default.asp[*w3school.com/HTML*], lưu ý rằng chúng ta sẽ không đi
-quá sâu vào việc học html, việc này có thể ảnh hướng đến tiến độ thực hiện của project, chỉ cần học đủ để xây dựng project hoàn chỉnh.
+Một trong những địa chỉ web để học HTML cho người mới bắt đầu là https://www.w3schools.com/html/default.asp[*w3school.com/HTML*], lưu ý rằng chúng ta sẽ không đi quá sâu vào việc học HTML, bởi việc này có thể ảnh hướng đến tiến độ thực hiện của project, tại thời điểm này chúng ta chỉ cần học đủ để xây dựng project hoàn chỉnh.
 
 **Node.js và Javascript**
 
-Để tạo server dùng Node.js chúng ta cần trang bị một số kiến thức cơ bản về  Javascript và Node.js, để học Javascript chúng ta có thể truy cập
-địa chỉ URL https://www.w3schools.com/js/default.asp[*w3school.com/Javascrpit*], với Node.js thì https://www.codeschool.com/courses/real-time-web-with-node-js[*codeschool.com*] thật sự hữu ích với người mới bắt đầu.
+Để tạo server dùng Node.js cần trang bị một số kiến thức cơ bản về  Javascript và Node.js, để học Javascript chúng ta có thể truy cập địa chỉ URL https://www.w3schools.com/js/default.asp[*w3school.com/Javascrpit*], với Node.js thì https://www.codeschool.com/courses/real-time-web-with-node-js[*codeschool.com*] thật sự hữu ích với người mới bắt đầu.
 
 === Thực hiện
 
 **Linh kiện cần có**
 
   * [x] Cảm biến DHT11
-  * [x] Board ESP8266 Wifi Uno
+  * [x] Board ESP8266 WiFi Uno
   * [x] Dây nối male-female header
   * [x] Điện trở 5K Ohm
   * [x] Cable kết nối giữa board ESP8266 và máy tính
@@ -89,5 +82,5 @@ quá sâu vào việc học html, việc này có thể ảnh hướng đến ti
 
 Kết nối sơ đồ mạch điện như hình bên dưới
 
-.Kết nối DHT11 và ESP8266 Wifi Uno
-image::04-dht11/DHT11Connect.png[height=576, scaledwidth="75%", align="center"]
+.Kết nối DHT11 và ESP8266 WiFi Uno
+image::04-dht11/DHT11Connect.png[height=511, scaledwidth="50%", align="center"]

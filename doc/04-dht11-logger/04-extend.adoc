@@ -13,5 +13,5 @@ Xây dựng 1 dự án giám sát và điều khiển nhiệt độ, độ ẩm 
 
 Hình ảnh thiết kế giao diện như bên dưới:
 
-.Giao diện điều khiển trên trang html
+.Giao diện điều khiển trên trang HTML
 image::04-dht11/control interface.png[width=500, align="center"]

@@ -18,68 +18,21 @@ include::code/server.js[]
 
 **Giải thích mã nguồn**
 
-require dùng để load các thư viện hoặc module cần thiết cho dự án
+<1> require dùng để load các thư viện hoặc module cần thiết cho dự án
 
-----
-var fs = require('fs');     // module giúp đọc file từ server hoặc upload file lên server
-var url = require('url');   // chia nhỏ URL thành những thành phần để dễ dàng truy xuất
-var http = require('http');
-var querystring = require('querystring');// module giúp chuyển string sang object
-var db = []; // khai báo 1 biến kiểu mảng
-----
+* `fs`          module giúp đọc file từ server hoặc upload file lên server
+* `url`         chia nhỏ URL thành những thành phần để dễ dàng truy xuất
+* `http`        phương thức truyền nhận dữ liệu dùng http 
+* `querystring` module giúp chuyển string sang object 
+* `db = []`     biến kiểu mảng nhằm chứa dữ liệu nhiệt độ, độ ẩm
 
-Hàm requestHandler() giúp gửi (response) hoặc nhận yêu cầu (request) đến client
+<2> So sánh giá trị pathname để xử lí dữ liệu. Nếu `pathname =/update` thì sẽ tạo biến newData nhằm lấy dữ liệu client gửi lên thông qua URL, sau đó đẩy dữ liệu vào mảng db thông qua lệnh `db.push(newData)` , giá trị được hiển thị qua Log khi dùng lệnh `console.log(newData)`. Hàm `Date()` giúp lấy thời gian hiện tại. 
 
-----
-// Giả sử địa chỉ nhận được http://192.168.1.7:8000/update?temp=30&humd=40
-var uriData = url.parse(request.url);
-var pathname = uriData.pathname;          // /update
-var query = uriData.query;                // temp=30.5&hum=40
-var queryData = querystring.parse(query); // queryData.temp = 30
-                                          // queryData.humd = 40
-----
+<3> Trả về định dạng JSON ('Content-Type': 'application/json') của mảng db nếu pathname = /get, sau đó xóa giá trị của mảng. Hàm `response.end()` sẽ trả về HTTP code (mã 200 là kết quả OK)
 
-So sánh giá trị pathname để xử lí dữ liệu
+<4> Trả về nội dung của file index.html khi không xảy ra 2 trường hợp <2> và <3>. Dùng `fs` để đọc file index.html và gán nội dung vào content thông qua lệnh `fs.readFile('./index.html', function(error, content). Hàm `response.writeHead(200, {'Content-Type': 'text/html' })` nhằm khai báo mã HTTP code, định dạng trả về là HTML để đọc file
 
-----
-// Biến newData sẽ lấy dữ liệu client gửi lên thông qua URL,sau đó đẩy dữ liệu vào mảng db
-if(pathname == '/update') {
-  var newData = {
-      temp: queryData.temp,
-      humd: queryData.humd,
-      time: new Date()        //Lấy thời gian hiện tại
-  }
-  db.push(newData);
-  console.log(newData);     // Hiển thị ra Log giá trị nhận được từ client (ESP8266)
-----
-
-Trả về định dạng JSON của mảng db nếu pathname = /get, sau đó xóa giá trị của mảng
-
-----
-else if(pathname == '/get') {
-  response.writeHead(200, { 'Content-Type': 'application/json' }); //khai báo định dạng trả về là JSON, HTTP status code =200
-  response.end(JSON.stringify(db));     // chuyển nội dung từ mảng db sang định dạng JSON
-  db = [];
-}
-----
-
-Trả về nội dung của file index.html khi không xảy ra 2 trường hợp trên
-
-----
-else{
-// Dùng fs để đọc file index.html và gán nội dung vào content
-  fs.readFile('./index.html', function(error, content) {
-      response.writeHead(200, {'Content-Type': 'text/html' });// khai báo định dạng trả về là html để đọc file
-      response.end(content);
-  });
-----
-
-Khởi tạo một server HTTP và mở port 8000 để client truy cập
-
-----
-var server = http.createServer(requestHandler);
-server.listen(8000);
-----
+<5> Khởi tạo một server HTTP và mở port 8000 để client truy cập
 
 Bạn có thể truy cập đến đường dẫn của file server.js và thực thi đoạn code trên với dòng lệnh `node server.js`, sau đó thử truy vập vào http://localhost:8000 để xem trang `index.html`. Hoặc truy cập vào http://localhost:8000/update?temp=20&humd=60 để xem màn hình Log in ra kết quả nhiệt độ và độ ẩm.
 
@@ -101,25 +54,13 @@ include::code/index.html[]
 
 **Giải thích mã nguồn**
 
-Khởi tạọ trang HTML và các thuộc tính liên quan
+<1> Những tag cơ bản khi khởi tạo 1 trang HTML
+* `<!DOCTYPE html>`          cho trình duyệt biết phiên bản HTML được sử dụng
+* `<html>`                   cho trình duyệt biết đây là văn bản HTML
+* `<head>`                   khai báo thông tin cho trang HTML
+* `<meta charset="UTF-8">`   cung cấp dữ liệu về văn bản HTML, dạng mã hóa charset="UTF-8"
+* `<title>DHT11</title>`     tiêu đề của trang
 
-----
-<!DOCTYPE html>           <!-- !DOCTYPE: cho trình duyệt biết phiên bản HTML được sử dụng -->
-<html>                    <!-- tag <html> cho trình duyệt biết đây là văn bản HTML.-->
-<head>                    <!-- Tag <head> khai báo thông tin cho trang HTML -->
-<meta charset="UTF-8">    <!-- Tag <meta /> cung cấp dữ liệu về văn bản HTML, dạng mã hóa charset="UTF-8" -->
-<title>DHT11</title>      <!-- Tiêu đề của trang -->
-</head>
-----
+<2> Tạo 2 textbox tại tag tiêu đề phụ <h1> để hiển thị nhiệt độ, độ ẩm. Mỗi textbox sẽ có 1 id để ta có thể cập nhật giá nhiệt độ, độ ẩm từ server. Mã định dạng `&#176;C` là của kí tự độ C
 
-Tạo các textbox để chứa nội dung hiển thị trong phần body của trang HTML
-
-----
-<body>      <!-- Tag <body> định nghĩa phần thân của văn bản HTML. -->
-            <!-- Tạo 2 textbox trong tag tiêu đề phụ <h1> -->
-  <h1> Temprature</h1> <input type="text" size="6" id="temp">&#176;C
-  <br>
-  <h1> Humidity</h1> <input type="text" size="6" id="humd">%
-----
-
-Phần còn lại sử dụng các thuộc tính của thư viện HTML5 Canvas JavaScript để có thể vẽ đồ thị nhiệt độ, độ ẩm
+<3> Phần còn lại sử dụng các thuộc tính của thư viện HTML5 Canvas JavaScript để có thể vẽ đồ thị nhiệt độ, độ ẩm

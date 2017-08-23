@@ -1,6 +1,6 @@
 == Code ESP8266
 
-ESP8266 sử dụng thư viện HTTPClient để kết nối tới Web Server và dữ liệu nhiệt độ, đổ ẩm thông qua phương thức GET với query là `temp` và `humd`.
+ESP8266 sử dụng thư viện HTTPClient để kết nối tới Web Server và lấy dữ liệu nhiệt độ, đổ ẩm thông qua phương thức GET với query là `temp` và `humd`.
 
 === Chuẩn bị
 - Cung cấp SSID và PASSWORD WiFi cho board mạch ESP8266 để kết nối vào mạng nội bộ với Web Server.
@@ -17,73 +17,42 @@ image::04-dht11/install-lib.png[height=900, scaledwidth="75%", align="center"]
 include::code/dht11-logger/dht11-logger.ino[]
 ----
 
-**Giải thích mã nguồn**
+<1> ESP8266 sẽ gửi dữ liệu lên server sau khi kết nối thành công đến server thông qua lệnh `client.print()`. Nội dụng gửi :
 
-Import các thư viện cần sử dụng và các khai báo liên quan
+* GET /update?temp=30.6&humd=60 HTTP/1.1 với : 
+** `GET` là phương thức gửi dữ liệu.
+** `/update?temp=30.6&humd=60` là nội dung cần gửi bao gồm cả pathname và dữ liệu.
+** `HTTP/1.1` khai báo sử dụng giao thức HTTP version 1.1 để có thể tạo 1 HTTP request
+* `Host: 192.168.1.7:8000` thông tin về địa chỉ IP và port của server
+* `Connection, Content-Length`  
 
+Có thể xem thông các thông tin của quá trình truyền nhận dữ liệu với lệnh `curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0`. Thông tin hiển thị như bên dưới 
+
+[source, c]
 ----
-#include <DHT.h>            // khai báo sử dụng thư viện DHT
-#include <ESP8266WiFi.h>    // include thư viện WiFi cho sketch
-#define DHTPIN 4            // Khai báo chân tín hiệu của DHT11
-#define DHTTYPE DHT11       // Loại DHT được sử dụng
-
-DHT dht(DHTPIN, DHTTYPE);
-WiFiClient client;          // Tạo 1 biến client thuộc kiểu WiFiClient
-----
-
-Khởi tạo các thông số liên quan đến kết nối WiFi và kết nối server
-
-----
-const char* ssid = "YOUR-WIFI-SSID";     // Tên WiFi (SSID) sẽ kết nối
-const char* password = "YOUR-WIFI-PASS"; // Password của WiFi sẽ kết nối
-const char* server = "192.168.1.100";    // Địa chỉ IP của máy khi truy cập cùng mạng WiFi
-const int port = 8000;                   // Port của server đã mở
-const int sendingInternval = 2 * 1000;   // Gửi dữ liệu lên server sau mỗi 2s
-----
-
-Khởi tạo serial, DHT11, và kết nối đến mạng WiFi đã thiết lập
-----
-Serial.begin(115200);
-dht.begin();
-Serial.println("Connecting");
-WiFi.begin(ssid, password);
-while (WiFi.status() != WL_CONNECTED) {
-  Serial.print(".");
-  delay(100);
-}
-Serial.println("\r\nWiFi connected");
+name@yourname:~$ curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0
+[1] 9277
+name@yourname:~$ *   Trying 192.168.1.7...
+* Connected to 192.168.1.7 (192.168.1.7) port 8000 (#0)
+> GET /update?temp=28.0 HTTP/1.1    // > Thông tin gửi từ ESP8266 
+> Host: 192.168.1.7:8000
+> User-Agent: curl/7.47.0
+> Accept: */*
+>                                  // < Thông tin gửi từ server 
+< HTTP/1.1 200 OK
+< Date: Wed, 23 Aug 2017 17:22:49 GMT
+< Connection: keep-alive
+< Content-Length: 0
+< 
+* Connection #0 to host 192.168.1.7 left intact
 ----
 
-Lấy và kiểm tra dữ liệu từ DHT11 
+Kết quả hiển thị trên Arduino IDE và màn hình Log của máy tính
 
-----
-float temp = dht.readTemperature(); // Lấy dữ liệu nhiệt độ (độ C)
-float humi = dht.readHumidity();    // Lấy dữ liệu độ ẩm
-if (isnan(temp) || isnan(humi)) {   // Kiểm tra nếu dữ liệu không phải là số sẽ đọc lại giá trị
-  Serial.println("Failed to read from DHT sensor!");
-  return;
-}
-----
-
-Thiết lập kết nối đến server và gửi dữ liệu
-
-----
-if (client.connect(server, port)) { //Kiểm tra kết nối đến IP của máy tính và port
-// Gửi dữ liệu temp và humd lên server thông qua URL sử dụng phương thức GET
-// Phía server sẽ xử lí URL của ESP8266 gửi lên để lấy dữ liệu
-  String req_uri = "/update?temp=" + String(temp, 1) + "&humd=" + String(humi, 1);
-  client.print("GET " + req_uri + "HTTP/1.1\n");
-  client.print("Host: "+server+"\n");
-  client.print("Connection: close\n");
-  client.print("Content-Length: 0\n");
-  client.print("\n\n");
-  Serial.printf("Nhiet do %s - Do am %s\r\n", String(temp, 1).c_str(), String(humi, 1).c_str());
-}
-client.stop(); //Ngắt kết nối đến server
-----
-
-
-**Video kết quả**
+.Hình ảnh trên Arduino và terminal sau khi kết nối 
+image::04-dht11/esp8266-server.png[height=366, align="center"]
 
 
 === Tổng kết
+
+Sau khi hoàn thành dự án, chúng ta đã có cái nhìn tổng quan về trình tự các bước để xây dựng một dự án hoàn chỉnh trong việc thu thập dữ liệu của cảm biến cũng như xây dựng server để quản lí các máy khách (client). Từ đó là bước đệm để giúp bạn phát triển thêm nhiều các dự án thu thập và xử lí dữ liệu trong tương lai.

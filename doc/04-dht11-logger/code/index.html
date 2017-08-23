@@ -1,14 +1,17 @@
-<!DOCTYPE html>
+<!---------------------------------------------------------------------- -->
+<!DOCTYPE html>     
 <html>
 <head>
-<meta charset="UTF-8">
-<title>DHT11</title>
+<meta charset="UTF-8">                                                  <1>       
+<title>DHT11</title>                                           
 </head>
-<body>
+<!---------------------------------------------------------------------- -->
+<body>                                                                  <2>
   <h1> Temprature</h1> <input type="text" size="6" id="temp">&#176;C
   <br>
-  <h1> Humidity</h1> <input type="text" size="6" id="humd">%
-<canvas id="chart" width="600" height="400"></canvas>
+  <h1> Humidity</h1> <input type="text" size="6" id="humd">%    <!--<2>-->
+<!---------------------------------------------------------------------- -->
+<canvas id="chart" width="600" height="400"></canvas>                   <3>
 <script type="text/javascript">
 var canvas, ctx;
 function httpGetAsync(theUrl, callback)
@@ -37,12 +40,8 @@ function start() {
             draw(data, "temp", "#FF0000");
             draw(data, "humd", "#0000FF");
 
-            var str_humd = data[0].humd;
-
-            console.log(str_humd);
-
             document.getElementById("temp").value = data[0].temp;
-            document.getElementById("humd").value = str_humd.slice(0, );
+            document.getElementById("humd").value = data[0].humd;
             console.log(data);
         });
     }, 5000);
