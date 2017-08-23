@@ -14,11 +14,11 @@ function requestHandler(request, response) {
         temp: queryData.temp,
         humd: queryData.humd,
         time: new Date()        //current time
-    }
+    };
     db.push(newData);
     console.log(newData);
     response.end();             // return status 200 OK
-  } else if(pathname == '/get') {
+  } else if(pathname == '/get'){
     response.writeHead(200, { 'Content-Type': 'application/json' });
     response.end(JSON.stringify(db));
     db = [];
@@ -27,9 +27,7 @@ function requestHandler(request, response) {
         response.writeHead(200, {'Content-Type': 'text/html' });
         response.end(content);
     });
-
   }
-
 }
 
 var server = http.createServer(requestHandler);
