@@ -1,6 +1,10 @@
 [[_wifi_config]]
 = Các chế độ cấu hình WiFi
 
+Thông thường, khi bắt đầu kết nối wifi cho ESP8266, ta phải cấu hình cho thiết bị các thông số của Access Point cũng như SSID và password nếu mạng wifi được thiết lập các bảo mật như WEP/WPA/WPA2. Tuy nhiên, các ứng dụng nhúng sử dụng Wi-fi thường không chú trọng đến giao diện người dùng (user interface), ví dụ như bàn phím hay touchscreen,..  Vì thế, mỗi khi muốn kết nối thiết bị ESP với một AP nào đó, bạn cần phải có một máy tính đã cài đặt sẵn chương trình biên dịch để có thể cấu hình thông số cho thiết bị rồi nạp lại code xuống ESP thông qua cap USB (mà không phải lúc nào cũng có sẵn).
+
+Điều này làm cho việc kết nối wifi trở nên khá bất tiện và phức tạp. Do vậy ESP8266 cung cấp các phương pháp thay thế khác giúp đơn giản hóa việc kết nối trạm ESP (chế độ Station) với một điểm truy cập. Đó là kết nối bằng SmartConfig, WPS hay Wifi Manager.
+
 include::01-smartconfig.adoc[]
 
 include::02-wps.adoc[]
