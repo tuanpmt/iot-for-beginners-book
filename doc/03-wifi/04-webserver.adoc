@@ -4,7 +4,7 @@
 
 Web Server là một máy chủ Web mà khi có bất kỳ một Web Client nào (chẳng hạn Web Browser) truy cập vào, thì nó sẽ căn cứ trên các thông tin yêu cầu truy cập để xử lý, và phản hồi lại nội dung. Đa phần các nội dung Web Server phục vụ là HTML, Javascript, CSS, JSON và bao gồm cả các dữ liệu Binary.
 
-Mặc định các Web Server phục vụ trên Port 80, và 443 cho dịch vụ Web có bảo mật HTTPS
+Mặc định các Web Server phục vụ trên Port 80, và 443 cho dịch vụ Web có bảo mật `HTTPS`
 
 === HTML - Javascript - CSS
 
@@ -54,13 +54,13 @@ Với một số tag cơ bản như sau:
 * `<h1>` nơi chứa phần tiêu đề chính
 * `<p>` phần ghi các đoạn văn bản
 
-==== JavaScript 
+==== Javascript 
  
-JavaScript là một ngôn ngữ được thiết kế chủ yếu để thêm tương tác vào các trang Web, và tạo ra các ứng dụng Web.
+Javascript là một ngôn ngữ được thiết kế chủ yếu để thêm tương tác vào các trang Web, và tạo ra các ứng dụng Web.
 
-Các chương trình JavaScript có thể được nhúng trực tiếp vào HTML của Web. Và tùy vào mục đích cụ thể, script có thể chạy khi mở trang Web, nhấp chuột, gõ phím, gữi biểu mẫu, cập nhật dữ liệu, giao tiếp với cơ sở dữ liệu,...
+Các chương trình Javascript có thể được nhúng trực tiếp vào HTML của Web. Và tùy vào mục đích cụ thể, script có thể chạy khi mở trang Web, nhấp chuột, gõ phím, gữi biểu mẫu, cập nhật dữ liệu, giao tiếp với cơ sở dữ liệu,...
 
-Để nhúng chương trình viết bằng JavaScript vào trang HTML, chỉ cần thêm tag `<script>` và thuộc tính `type`. Có thể thêm phần này ở phần `<head>` hoặc phần `<body>` của HTML. Ví dụ sau đây minh họa việc thêm một chương trình JavaScript vào phần thân (<body>) của HTML:
+Để nhúng chương trình viết bằng Javascript vào trang HTML, chỉ cần thêm tag `<script>` và thuộc tính `type`. Có thể thêm phần này ở phần `<head>` hoặc phần `<body>` của HTML. Ví dụ sau đây minh họa việc thêm một chương trình Javascript vào phần thân (<body>) của HTML:
 
 [source,html]
 ----	
@@ -69,18 +69,20 @@ Các chương trình JavaScript có thể được nhúng trực tiếp vào HTM
 <head>
 	<title>My first JavaScript page</title>
 </head>
-<body>     
+<body>
+
 	<script type="text/javascript">
-    // chương trình JavaScript được viết ở đây
-    </script>	
+    // chương trình Javascript được viết ở đây
+    </script>
+    	
 </body>
 </html>
 ----
 
 
-==== *CSS*
+==== CSS
 
-**CSS** là từ viết tắt của Cascading Style Sheets, là một ngôn ngữ được thiết kế để xử lý giao diện Web, giúp các trang Web được đẹp hơn. CSS có thể kiểm soát được màu sắc của văn bản, phong chữ, kích cỡ chữ, khoảng cách giữa các đoạn văn, hình nền hoặc màu nền, và nhiều hiệu ứng khác nửa.
+CSS là từ viết tắt của *Cascading Style Sheets*, là một ngôn ngữ được thiết kế để xử lý giao diện Web, giúp các trang Web được đẹp hơn. CSS có thể kiểm soát được màu sắc của văn bản, phong chữ, kích cỡ chữ, khoảng cách giữa các đoạn văn, hình nền hoặc màu nền, và nhiều hiệu ứng khác nửa.
 
 Ví dụ : sử dụng phương thức Encoding UTF-8 ở phần `<head>` trong trang HTML
 
