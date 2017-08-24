@@ -29,7 +29,8 @@ function requestHandler(request, response) {
     db = [];
 //-----------------------------------------------------------------------------------------
   } else{                                         //<4>
-    fs.readFile('./index.html', function(error, content) {
+    //fs.readFile('./index.html', function(error, content) {
+    fs.readFile('./testChart.html', function(error, content) {
         response.writeHead(200, {'Content-Type': 'text/html' });
         response.end(content);
     });
