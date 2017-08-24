@@ -10,9 +10,9 @@ Mặc định các Web Server phục vụ trên Port 80, và 443 cho dịch vụ
 
 HTML, Javascript và CSS là ba ngôn ngữ để xây dựng và phát triển Web. Những hiểu biết cơ bản về chúng sẽ tạo điều kiện thuận lợi cho các quá trình tiếp theo sau được dễ dàng hơn.
 
-==== *HTML* 
+==== HTML
 
-Với tên đầy đủ là **H**yper**T**ext **M**arkup **L**anguage (ngôn ngữ đánh dấu siêu văn bản) dùng để cấu trúc nội dung của một trang Web, ví dụ như: chỉ định các đoạn văn bản, tiêu đề, bảng dữ liệu, hoặc nhúng hình ảnh hoặc video vào Web . Mỗi trang web chứa một loạt các liên kết đến các trang khác được gọi là `hyperlinks` (siêu liên kết). Mỗi trang được tạo ra từ nhiều `tag` (thẻ) khác nhau, với cấu trúc một `tag` như sau
+Viết đầu đủ là *Hyper Text Markup Language* - ngôn ngữ đánh dấu siêu văn bản dùng để cấu trúc nội dung của một trang Web, ví dụ như: chỉ định các đoạn văn bản, tiêu đề, bảng dữ liệu, hoặc nhúng hình ảnh hoặc video vào Web . Mỗi trang web chứa một loạt các liên kết đến các trang khác được gọi là `hyperlinks` (siêu liên kết). Mỗi trang được tạo ra từ nhiều `tag` (thẻ) khác nhau, với cấu trúc một `tag` như sau
 
 .Cấu trúc 1 tag
 [source]
@@ -54,7 +54,7 @@ Với một số tag cơ bản như sau:
 * `<h1>` nơi chứa phần tiêu đề chính
 * `<p>` phần ghi các đoạn văn bản
 
-==== *JavaScript* 
+==== JavaScript 
  
 JavaScript là một ngôn ngữ được thiết kế chủ yếu để thêm tương tác vào các trang Web, và tạo ra các ứng dụng Web.
 
@@ -64,25 +64,23 @@ Các chương trình JavaScript có thể được nhúng trực tiếp vào HTM
 
 [source,html]
 ----	
-	  <!DOCTYPE html>
-	  <html>
-	  <head>
-	  	<title>My first JavaScript page</title>
-	  </head>
-	  <body>
-        
-      	<script type="text/javascript">
-     	 // chương trình JavaScript được viết ở đây
-     	</script>
-		
-	  </body>
-	  </html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My first JavaScript page</title>
+</head>
+<body>     
+	<script type="text/javascript">
+    // chương trình JavaScript được viết ở đây
+    </script>	
+</body>
+</html>
 ----
 
 
 ==== *CSS*
 
-**CSS** là từ viết tắt của **C**ascading **S**tyle **S**heets, là một ngôn ngữ được thiết kế để xử lý giao diện Web, giúp các trang Web được đẹp hơn. CSS có thể kiểm soát được màu sắc của văn bản, phong chữ, kích cỡ chữ, khoảng cách giữa các đoạn văn, hình nền hoặc màu nền, và nhiều hiệu ứng khác nửa.
+**CSS** là từ viết tắt của Cascading Style Sheets, là một ngôn ngữ được thiết kế để xử lý giao diện Web, giúp các trang Web được đẹp hơn. CSS có thể kiểm soát được màu sắc của văn bản, phong chữ, kích cỡ chữ, khoảng cách giữa các đoạn văn, hình nền hoặc màu nền, và nhiều hiệu ứng khác nửa.
 
 Ví dụ : sử dụng phương thức Encoding UTF-8 ở phần `<head>` trong trang HTML
 
