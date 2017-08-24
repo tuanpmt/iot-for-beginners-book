@@ -1,11 +1,9 @@
 [[_wifi_config]]
 = Các chế độ cấu hình WiFi
 
-Thông thường, khi ESP8266 kết nối với Wifi ở chế độ Station (STA), nó sẽ tự động được cấu hình bằng giao thức DHCP (giao thức cấu hình động máy chủ). Giao thức này cho phép cấp phát địa chỉ IP một cách tự động cùng với các cấu hình liên quan khác như Subnet mask, Gateway hay DNS.
+Thông thường, khi bắt đầu kết nối wifi cho ESP8266, ta phải cấu hình cho thiết bị các thông số của Access Point cũng như SSID và password nếu mạng wifi được thiết lập các bảo mật như WEP/WPA/WPA2. Tuy nhiên, các ứng dụng nhúng sử dụng Wi-fi thường không chú trọng đến giao diện người dùng (user interface), ví dụ như bàn phím hay touchscreen,..  Vì thế, mỗi khi muốn kết nối thiết bị ESP với một AP nào đó, bạn cần phải có một máy tính đã cài đặt sẵn chương trình biên dịch để có thể cấu hình thông số cho thiết bị rồi nạp lại code xuống ESP thông qua cap USB (mà không phải lúc nào cũng có sẵn).
 
-Bạn có thể tự cấu hình lại các thông số này mà không dùng DHCP bằng lệnh WIFI.config(ip, gateway, subnet, dns). Tuy nhiên, bạn cũng cần phải lưu ý để tránh trường hợp 2 thiết bị khác nhau có cùng địa chỉ IP.
-
-Ngoài ra, ESP8266 cung cấp các phương pháp thay thế khác giúp đơn giản hóa việc kết nối trạm ESP (chế độ Station) với một điểm truy cập. Đó là kết nối bằng SmartConfig, WPS hay Wifi Manager.
+Điều này làm cho việc kết nối wifi trở nên khá bất tiện và phức tạp. Do vậy ESP8266 cung cấp các phương pháp thay thế khác giúp đơn giản hóa việc kết nối trạm ESP (chế độ Station) với một điểm truy cập. Đó là kết nối bằng SmartConfig, WPS hay Wifi Manager.
 
 include::01-smartconfig.adoc[]
 
