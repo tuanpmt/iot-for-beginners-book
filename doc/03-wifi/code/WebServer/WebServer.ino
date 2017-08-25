@@ -18,7 +18,7 @@ const char *html = \
 ESP8266WebServer server(80);
 
 void handleOn() {
-  digitalWrite(led, 1);
+  digitalWrite(led, 0);
   server.sendHeader("Location","/");
   server.send(301);
 }
