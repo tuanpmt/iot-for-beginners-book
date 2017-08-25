@@ -17,16 +17,17 @@ image::04-dht11/install-lib.png[height=900, scaledwidth="75%", align="center"]
 include::code/dht11-logger/dht11-logger.ino[]
 ----
 
-<1> ESP8266 sẽ gửi dữ liệu lên server sau khi kết nối thành công đến server thông qua lệnh `client.print()`. Nội dụng gửi :
+<1> ESP8266 sẽ gửi dữ liệu lên server sau khi kết nối thành công đến server thông qua lệnh `client.print()`. Nội dung gửi :
 
 * GET /update?temp=30.6&humd=60 HTTP/1.1 với : 
 ** `GET` là phương thức gửi dữ liệu.
 ** `/update?temp=30.6&humd=60` là nội dung cần gửi bao gồm cả pathname và dữ liệu.
 ** `HTTP/1.1` khai báo sử dụng giao thức HTTP version 1.1 để có thể tạo 1 HTTP request
 * `Host: 192.168.1.7:8000` thông tin về địa chỉ IP và port của server
-* `Connection, Content-Length`  
+* `Connection, Content-Length`
 
-Có thể xem thông các thông tin của quá trình truyền nhận dữ liệu với lệnh `curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0`. Thông tin hiển thị như bên dưới 
+Có thể xem thông các thông tin của quá trình truyền nhận dữ liệu với lệnh
+`curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0`. Thông tin hiển thị như bên dưới 
 
 [source, c]
 ----

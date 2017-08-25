@@ -61,6 +61,24 @@ include::code/index.html[]
 * `<meta charset="UTF-8">`   cung cấp dữ liệu về văn bản HTML, dạng mã hóa charset="UTF-8"
 * `<title>DHT11</title>`     tiêu đề của trang
 
-<2> Tạo 2 textbox tại tag tiêu đề phụ <h1> để hiển thị nhiệt độ, độ ẩm. Mỗi textbox sẽ có 1 id để ta có thể cập nhật giá nhiệt độ, độ ẩm từ server. Mã định dạng `&#176;C` là của kí tự độ C
+<2> Tạo 2 textbox tại tag tiêu đề phụ <h1> để hiển thị nhiệt độ, độ ẩm. Mỗi textbox sẽ có 1 `id` để cập nhật giá nhiệt độ, độ ẩm từ server. Mã định dạng `&#176;C` là của kí tự độ C
 
-<3> Phần còn lại sử dụng các thuộc tính của thư viện HTML5 Canvas JavaScript để có thể vẽ đồ thị nhiệt độ, độ ẩm
+<3><4> Sử dụng CanvasJS Chart để vẽ biểu đồ nhiệt độ, độ ẩm.
+
+**Phân tích**
+
+* Chúng ta sẽ lấy dữ liệu từ server gửi xuống và vẽ biểu đồ dùng mã Javascrpit, sử dụng tag 
+`<scrpit>code JS </scrpit>` để chèn nội dung code Javascrpit vào file HTML. 
+* Việc lấy dữ liệu được thực thi bằng hàm `httpGetAsync()`. Hàm này sử dụng đối tượng `XMLHttpRequest` để lấy dữ liệu từ server mà không cần phải load lại trang, dữ liệu `xmlHttp.responseText` lấy từ server tại địa chỉ `localhost:8000/get` ở định dạng JSON nên cần phải chuyển sang dạng Object bằng hàm JSON.parse().
+
+**Lưu ý** Cần phải có dữ liệu từ ESP8266 gửi lên server thì tại địa chỉ localhost:8000/get mới có dữ liệu.   
+
+.Hình ảnh dữ liệu từ địa chỉ `localhost:8000/get` ở địng dạng JSON
+image::04-dht11/imageJSON.png[width=487, scaledwidth="60%", align="center"]
+
+* Sử dụng `window.onload = function()` để load lại nội dung của graph, các lệnh trong hàm đã được giải thích trong code.
+
+**Hình ảnh trang HTML sau khi xây dựng**
+
+.Hình ảnh giao diện HTML
+image::04-dht11/graphHtml.png[width=506, align="center"]
