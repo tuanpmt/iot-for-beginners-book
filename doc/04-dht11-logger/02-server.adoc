@@ -32,7 +32,7 @@ include::code/server.js[]
 
 <4> Trả về nội dung của file index.html khi không xảy ra 2 trường hợp <2> và <3>. Dùng `fs` để đọc file index.html và gán nội dung vào content thông qua lệnh `fs.readFile('./index.html', function(error, content). Hàm `response.writeHead(200, {'Content-Type': 'text/html' })` nhằm khai báo mã HTTP code, định dạng trả về là HTML để đọc file
 
-<5> Khởi tạo một server HTTP và mở port 8000 để client truy cập
+<5> Khởi tạo một server HTTP và mở port 8000 để các client truy cập
 
 Bạn có thể truy cập đến đường dẫn của file server.js và thực thi đoạn code trên với dòng lệnh `node server.js`, sau đó thử truy vập vào http://localhost:8000 để xem trang `index.html`. Hoặc truy cập vào http://localhost:8000/update?temp=20&humd=60 để xem màn hình Log in ra kết quả nhiệt độ và độ ẩm.
 
