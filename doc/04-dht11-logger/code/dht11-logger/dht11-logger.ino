@@ -27,7 +27,7 @@ void setup() {
 
 void loop() {
 
-// Đọc gía trị nhiệt độ (độ C), độ ẩm. Xuất ra thông báo lỗi nếu dữ liệu không phải là số 
+// Đọc gía trị nhiệt độ (độ C), độ ẩm. Xuất ra thông báo lỗi và thoát ra nếu dữ liệu không phải là số 
   float temp = dht.readTemperature();   
   float humi = dht.readHumidity();
   if (isnan(temp) || isnan(humi)) {

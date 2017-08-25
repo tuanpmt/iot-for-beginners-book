@@ -3,25 +3,25 @@ var fs = require('fs');
 var url = require('url');
 var http = require('http');                       //<1>
 var querystring = require('querystring');
-var db = []; //database 
+var db = []; //database
 //-----------------------------------------------------------------------------------------
 // function gửi (response) từ server hoặc nhận yêu cầu (request) của client
 function requestHandler(request, response) {
-// Giả sử địa chỉ nhận được http://192.168.1.7:8000/update?temp=30&humd=40 
-  var uriData = url.parse(request.url);     
+// Giả sử địa chỉ nhận được http://192.168.1.7:8000/update?temp=30&humd=40
+  var uriData = url.parse(request.url);
   var pathname = uriData.pathname;           // /update?
   var query = uriData.query;                 // temp=30.5&hum=80
   var queryData = querystring.parse(query);  // queryData.temp = 30.5, queryData.humd = 40
   //---------------------------------------------------------------------------------------
   if(pathname == '/update') {
-    var newData = {                             
+    var newData = {
         temp: queryData.temp,
         humd: queryData.humd,
         time: new Date()                          // <2>
     };
     db.push(newData);
     console.log(newData);
-    response.end();             
+    response.end();
 //-----------------------------------------------------------------------------------------
   } else if(pathname == '/get'){                  //<3>
     response.writeHead(200, { 'Content-Type': 'application/json' });
