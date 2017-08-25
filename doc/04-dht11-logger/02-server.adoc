@@ -20,17 +20,17 @@ include::code/server.js[]
 
 <1> require dùng để load các thư viện hoặc module cần thiết cho dự án
 
-* `fs`          module giúp đọc file từ server hoặc upload file lên server
-* `url`         chia nhỏ URL thành những thành phần để dễ dàng truy xuất
-* `http`        phương thức truyền nhận dữ liệu dùng http 
-* `querystring` module giúp chuyển string sang object 
-* `db = []`     biến kiểu mảng nhằm chứa dữ liệu nhiệt độ, độ ẩm
+* `fs`: Module giúp đọc file từ server hoặc upload file lên server
+* `url`: Chia nhỏ URL thành những thành phần để dễ dàng truy xuất
+* `http`: Phương thức truyền nhận dữ liệu dùng http 
+* `querystring`: Module giúp chuyển string sang object 
+* `db = []`: Biến kiểu mảng nhằm chứa dữ liệu nhiệt độ, độ ẩm
 
 <2> So sánh giá trị pathname để xử lí dữ liệu. Nếu `pathname =/update` thì sẽ tạo biến newData nhằm lấy dữ liệu client gửi lên thông qua URL, sau đó đẩy dữ liệu vào mảng db thông qua lệnh `db.push(newData)` , giá trị được hiển thị qua Log khi dùng lệnh `console.log(newData)`. Hàm `Date()` giúp lấy thời gian hiện tại. 
 
 <3> Trả về định dạng JSON `('Content-Type': 'application/json')` của mảng db nếu pathname = /get, sau đó xóa giá trị của mảng. Hàm `response.end()` sẽ trả về HTTP code (mã 200 là kết quả OK)
 
-<4> Trả về nội dung của file index.html khi không xảy ra 2 trường hợp <2> và <3>. Dùng `fs` để đọc file index.html và gán nội dung vào content thông qua lệnh `fs.readFile('./index.html', function(error, content). Hàm `response.writeHead(200, {'Content-Type': 'text/html' })` nhằm khai báo mã HTTP code, định dạng trả về là HTML để đọc file
+<4> Trả về nội dung của file index.html khi không xảy ra 2 trường hợp <2> và <3>. Dùng `fs` để đọc file index.html và gán nội dung vào content thông qua lệnh `fs.readFile('./index.html', function(error, content)`. Hàm `response.writeHead(200, {'Content-Type': 'text/html' })` nhằm khai báo mã HTTP code, định dạng trả về là HTML để đọc file
 
 <5> Khởi tạo một server HTTP và mở port 8000 để các client truy cập
 
@@ -71,14 +71,16 @@ include::code/index.html[]
 `<scrpit>code JS </scrpit>` để chèn nội dung code Javascrpit vào file HTML. 
 * Việc lấy dữ liệu được thực thi bằng hàm `httpGetAsync()`. Hàm này sử dụng đối tượng `XMLHttpRequest` để lấy dữ liệu từ server mà không cần phải load lại trang, dữ liệu `xmlHttp.responseText` lấy từ server tại địa chỉ `localhost:8000/get` ở định dạng JSON nên cần phải chuyển sang dạng Object bằng hàm JSON.parse().
 
-**Lưu ý** Cần phải có dữ liệu từ ESP8266 gửi lên server thì tại địa chỉ localhost:8000/get mới có dữ liệu.   
+IMPORTANT: Cần phải có dữ liệu từ ESP8266 gửi lên server thì tại địa chỉ localhost:8000/get mới có dữ liệu.   
 
 .Hình ảnh dữ liệu từ địa chỉ `localhost:8000/get` ở địng dạng JSON
 image::04-dht11/imageJSON.png[width=487, scaledwidth="60%", align="center"]
 
 * Sử dụng `window.onload = function()` để load lại nội dung của graph, các lệnh trong hàm đã được giải thích trong code.
 
+NOTE: Truy cập vào trang https://canvasjs.com/javascript-charts/ để lựa chọn và xây dựng những đồ thị phù hợp với mục đích của bạn. 
+
 **Hình ảnh trang HTML sau khi xây dựng**
 
 .Hình ảnh giao diện HTML
-image::04-dht11/graphHtml.png[width=506, align="center"]
+image::04-dht11/graphHtml.png[width=330, align="center"]

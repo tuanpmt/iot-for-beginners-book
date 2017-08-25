@@ -61,13 +61,14 @@
             var yTempVal = 0;            // Biến lưu giá trị nhiệt độ (theo trục Y)
             var updateInterval = 2000;   // Thời gian cập nhật dữ liệu 2000ms = 2s
             var dataLength = 100;        // Số lượng điểm dữ liệu của nhiệt độ, độ ẩm có thể nhìn thấy được
-            var time = new Date;         // Tạo biến time, set giá trị ban đầu và cập nhật thời gian cho trục X   
+            var time = new Date;         // Tạo biến time, set giá trị ban đầu và cập nhật thời gian cho trục X
+               
+            // starting at 11.55 am
             time.setHours(11);
             time.setMinutes(55);
             time.setSeconds(00);
             time.setMilliseconds(00);
 
-            // starting at 11.55 am
             var updateChart = function(count) {
                 console.log(count);
                 httpGetAsync('/get', function(data) {

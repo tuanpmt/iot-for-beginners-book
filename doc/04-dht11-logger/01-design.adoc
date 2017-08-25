@@ -18,9 +18,9 @@ Chúng ta sẽ giải quyết những vấn đề trên thông qua ứng dụng 
 
 === Phân tích
 
-- Chúng ta cần 1 Web Server viết bằng Javascript, thực thi bởi Node.js, lắng nghe ở Port được chỉ định trên máy tính cá nhân.Ở đây là port 8000
+- Chúng ta cần 1 Web Server viết bằng Javascript, thực thi bởi Node.js, lắng nghe ở Port được chỉ định trên máy tính cá nhân. Ở đây là port 8000
 - Máy tính phải có kết nối cùng mạng WiFi nội bộ với ESP8266 và cần biết địa chỉ IP của máy tính để ESP8266 có thể truy cập, ví dụ IP là `192.168.1.102`
-- ESP8266 sau khi kết nối vào mạng WiFi nội bộ, sẽ tiến hành đọc thông số nhiệt độ, độ ẩm từ cảm biến DHT11 và gởi về Server sau mỗi 5 giây.
+- ESP8266 sau khi kết nối vào mạng WiFi nội bộ, sẽ tiến hành đọc thông số nhiệt độ, độ ẩm từ cảm biến DHT11 và gởi về Server sau mỗi 2 giây.
 - Quá trình gởi được thực hiện bởi phương thức `GET`, ví dụ `http://192.168.1.102/update?temp=25&humd=80` với `192.168.1.102` là địa chỉ Web Server, `/update` là đường dẫn, `temp=20` và `humd=80` chứa thông tin nhiệt độ 20 độ C và độ ẩm 80%.
 - Web Server trả về trạng thái HTTP status = 200 (OK), cùng với việc hiển thị ra cửa sổ log giá trị nhiệt độ, độ ẩm.
 - Ở phần nâng cao:
