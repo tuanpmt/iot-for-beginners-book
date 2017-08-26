@@ -78,10 +78,10 @@ myInts[0] = 42;
 myInts[6] = 12; // LỖI ! chỉ số của mảng chỉ từ 0 đến 5
 
 /*Qualifiers*/
-static    //Không thay đổi giá trị ở các lần gọi 
-volatile  //In RAM (Thường dùng trong ngắt)
-const     //Không đổi (chỉ đọc)
-PROGMEM   //Cho phép lưu trữ dữ liệu trong bộ nhớ FLASH thay vì SRAM 
+static    //không thay đổi giá trị ở các lần gọi 
+volatile  //in RAM (Thường dùng trong ngắt)
+const     //không đổi (chỉ đọc)
+PROGMEM   //cho phép lưu trữ dữ liệu trong bộ nhớ FLASH thay vì SRAM 
 
 /* General Operators */
 =   assignment
@@ -125,14 +125,14 @@ ex: x = 0b1010; x&= 0110; //x =0b1110
 * dereference: // lấy giá trị của biến mà con trỏ trỏ tới
 
 /*Hằng số và kiểu dữ liêu*/
-123         //Số thập phân
-0b01111011  //Số nhị phân
+123         //số thập phân
+0b01111011  //số nhị phân
 0173        //octal - base 8
-0x7B        //Số thập lục phân base 16
-123U        //Số nguyên không dấu
-123L        //Số nguyên có dấu 4 bytes
-123UL       //Số nguyên không dấu 4bytes 
-123.0       //Số thực 
+0x7B        //số thập lục phân base 16
+123U        //số nguyên không dấu
+123L        //số nguyên có dấu 4 bytes
+123UL       //số nguyên không dấu 4bytes 
+123.0       //số thực 
 1.23e6      //1.23*10^6 = 1230000
 
 /* Kiểu dữ liệu và phạm vi của dữ liệu*/
