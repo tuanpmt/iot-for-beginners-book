@@ -5,7 +5,6 @@ var http = require('http');                                                     
 var querystring = require('querystring');
 var db = []; //database
 //---------------------------------------------------------------------------------------------
-
 // function gửi yêu cầu(response) từ phía server hoặc nhận yêu cầu (request) của client gửi lên
 function requestHandler(request, response) {
 

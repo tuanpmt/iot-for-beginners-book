@@ -6,12 +6,11 @@
     <title>DHT11</title>
 </head>
 <!--------------------------------------------------------------------------------------------------- -->
-<link href="https://fonts.googleapis.com/css?family=Athiti|Saira+Semi+Condensed" rel="stylesheet">
-<body Style="font-family:'Saira Semi Condensed',sans-serif">
-    <h1> 1. Cập nhật giá trị nhiệt độ, độ ẩm ở textbox</h><br>
+<body>
+    <h1> 1. THONG SO NHIET DO, DO AM</h><br>
     <h2> Temprature</h2> <input type="text" size="6" id="temp">&#176;C<br>                      //<2>
     <h2> Humidity</h2> <input type="text" size="6" id="humd">%<br>
-    <h1> 2. Đồ thị nhiệt độ, độ ẩm</h1><br>
+    <h1> 2. DO THI</h1><br>
 <!--------------------------------------------------------------------------------------------------- -->
     <script type="text/javascript">
         function httpGetAsync(theUrl, callback) {
@@ -29,11 +28,11 @@
             var dataHumd = [];                                                                  //<4>
 
             var Chart = new CanvasJS.Chart("ChartContainer", {
-                zoomEnabled: true,                       // Dùng thuộc tính có thể zoom vào graph
+                zoomEnabled: true,                // Dùng thuộc tính có thể zoom vào graph
                 title: {
-                    text: "Temprature & Humidity"        // Viết tiêu đề cho graph
+                    text: "Temprature & Humidity" // Viết tiêu đề cho graph
                 },
-                toolTip: {                       // Hiển thị cùng lúc 2 trường giá trị nhiệt độ, độ ẩm trên graph
+                toolTip: {                        // Hiển thị cùng lúc 2 trường giá trị nhiệt độ, độ ẩm trên graph
                     shared: true
                 },
                 axisX: {
