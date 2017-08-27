@@ -14,10 +14,10 @@
         <!-- thiết lập kích thước cho graph thông qua id ChartContainer đã thiết lập ở trên  -->
         <div id="ChartContainer" style="height: 300px; width:80%;"></div>
         <script type="text/javascript">
-            function httpGetAsync(theUrl, callback) {
+            function httpGetAsync(theUrl, callback) { //<4>
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.onreadystatechange = function() {
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) //<4>
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) 
                 callback(JSON.parse(xmlHttp.responseText));
         }
         xmlHttp.open("GET", theUrl, true); // true for asynchronous
