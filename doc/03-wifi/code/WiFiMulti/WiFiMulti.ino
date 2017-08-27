@@ -8,7 +8,6 @@ void setup()
 {
   Serial.begin(115200);
   Serial.println();
-
   wifiMulti.addAP("primary-network-name", "pass-to-primary-network");
   wifiMulti.addAP("secondary-network-name", "pass-to-secondary-network");
   wifiMulti.addAP("tertiary-network-name", "pass-to-tertiary-network");
