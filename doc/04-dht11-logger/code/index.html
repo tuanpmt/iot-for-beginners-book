@@ -7,17 +7,16 @@
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>//<2>
 </head>
 <body>
-    <h1> 1. THONG SO NHIET DO, DO AM</h><br> <!-- <2> -->                                            //<3>  
+    <h1> 1. THONG SO NHIET DO, DO AM</h><br> //<3>  
         <h2> Temprature</h2> <input type="text" size="6" id="temp">&#176;C<br>                                       
         <h2> Humidity</h2> <input type="text" size="6" id="humd">%<br>
-        <h1> 2. DO THI</h1>
-    <br>
-    <!-- thiết lập kích thước cho graph thông qua id ChartContainer đã thiết lập ở trên  -->
-    <div id="ChartContainer" style="height: 300px; width:80%;"></div>
-    <script type="text/javascript">
-    function httpGetAsync(theUrl, callback) {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() {
+        <h1> 2. DO THI</h1><br>
+        <!-- thiết lập kích thước cho graph thông qua id ChartContainer đã thiết lập ở trên  -->
+        <div id="ChartContainer" style="height: 300px; width:80%;"></div>
+        <script type="text/javascript">
+            function httpGetAsync(theUrl, callback) {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function() {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) //<4>
                 callback(JSON.parse(xmlHttp.responseText));
         }
@@ -55,8 +54,8 @@
                     name: "humd",
                     dataPoints: dataHumd
                 }
-            ],
-        });
+                ],
+            });
         var yHumdVal = 0; // Biến lưu giá trị độ ẩm (theo trục Y)
         var yTempVal = 0; // Biến lưu giá trị nhiệt độ (theo trục Y)
         var updateInterval = 2000; // Thời gian cập nhật dữ liệu 2000ms = 2s
@@ -92,6 +91,6 @@
         }, updateInterval);
     }
 
-    </script>
+</script>
 </body>
 </html>
