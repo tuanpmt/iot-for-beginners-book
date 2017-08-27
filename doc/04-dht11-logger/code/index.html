@@ -1,44 +1,108 @@
-<!DOCTYPE html>
+<!DOCTYPE html>//<1>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>DHT11</title>
+    <meta charset="UTF-8">
+    <title>DHT11</title>
+    <!-- Nhúng file Javasript tại đường dẫn src để có thể xây dựng 1 graph -->
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>//<2>
 </head>
 <body>
-<canvas id="chart" width="600" height="400"></canvas>
-<script type="text/javascript">
-var canvas, ctx;
-function httpGetAsync(theUrl, callback)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(JSON.parse(xmlHttp.responseText));
+    <h1> 1. THONG SO NHIET DO, DO AM</h><br> <!-- <2> -->
+        <h2> Temprature</h2> <input type="text" size="6" id="temp">&#176;C<br>                      //<3>
+        <h2> Humidity</h2> <input type="text" size="6" id="humd">%<br>
+        <h1> 2. DO THI</h1>
+    <br>
+    <!-- thiết lập kích thước cho graph thông qua id ChartContainer đã thiết lập ở trên  -->
+    <div id="ChartContainer" style="height: 300px; width:80%;"></div>
+    <script type="text/javascript">
+    function httpGetAsync(theUrl, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) //<4>
+                callback(JSON.parse(xmlHttp.responseText));
+        }
+        xmlHttp.open("GET", theUrl, true); // true for asynchronous
+        xmlHttp.send(null);
     }
-    xmlHttp.open("GET", theUrl, true); // true for asynchronous
-    xmlHttp.send(null);
-}
 
-function draw(data, type, color) {
-    ctx.strokeStyle = color;
-    for(var i=0; i<data.length; i++) {
-        ctx.arc(50*i, 400 - data[i][type]*4,5,0*Math.PI,1.5*Math.PI);
-    }
-    ctx.stroke();
-}
-function start() {
-    canvas = document.getElementById("chart");
-    ctx = canvas.getContext("2d");
-    setInterval(function() {
-        httpGetAsync('/get', function(data) {
-            draw(data, "temp", "#FF0000");
-            draw(data, "humd", "#0000FF");
-            console.log(data);
+    window.onload = function() {
+        var dataTemp = [];
+        var dataHumd = [];
+
+        var Chart = new CanvasJS.Chart("ChartContainer", {
+            zoomEnabled: true, // Dùng thuộc tính có thể zoom vào graph
+            title: {
+                text: "Temprature & Humidity" // Viết tiêu đề cho graph
+            },
+            toolTip: { // Hiển thị cùng lúc 2 trường giá trị nhiệt độ, độ ẩm trên graph
+                shared: true
+            },
+            axisX: {
+                title: "chart updates every 2 secs" // Chú thích cho trục X
+            },
+            data: [{
+                    // Khai báo các thuộc tính của dataTemp và dataHumd
+                    type: "line", // Chọn kiểu dữ liệu đường
+                    xValueType: "dateTime", // Cài đặt kiểu giá trị tại trục X là thuộc tính thời gian
+                    showInLegend: true, // Hiển thị "temp" ở mục chú thích (legend items)
+                    name: "temp",
+                    dataPoints: dataTemp // Dữ liệu hiển thị sẽ lấy từ dataTemp
+                },
+                {
+                    type: "line",
+                    xValueType: "dateTime",
+                    showInLegend: true,
+                    name: "humd",
+                    dataPoints: dataHumd
+                }
+            ],
         });
-    }, 5000);
-}
+        var yHumdVal = 0; // Biến lưu giá trị độ ẩm (theo trục Y)
+        var yTempVal = 0; // Biến lưu giá trị nhiệt độ (theo trục Y)
+        var updateInterval = 2000; // Thời gian cập nhật dữ liệu 2000ms = 2s
+        var dataLength = 100; // Số lượng điểm dữ liệu của nhiệt độ, độ ẩm có thể nhìn thấy được
+        var time = new Date; // Tạo biến time, set giá trị ban đầu và cập nhật thời gian cho trục X
 
-start();
-</script>
+        // starting at 11.55 am
+        time.setHours(11);
+        time.setMinutes(55);
+        time.setSeconds(00);
+        time.setMilliseconds(00);
+
+        var updateChart = function(count) {
+            console.log(count);
+            httpGetAsync('/get', function(data) {
+
+                // Gán giá trị từ localhost:8000/get vào textbox để hiển thị
+                document.getElementById("temp").value = data[0].temp;
+                document.getElementById("humd").value = data[0].humd;
+
+                // Xuất ra màn hình console trên browser giá trị nhận được từ localhost:8000/get
+                console.log(data);
+                for (var j = 0; j < count; j++) {
+
+                    // Cập nhật thời gian và lấy giá trị nhiệt độ, độ ẩm từ server
+                    time.setTime(time.getTime() + updateInterval);
+                    yTempVal = parseInt(data[0].temp);
+                    yHumdVal = parseInt(data[0].humd);
+                    dataTemp.push({ // cập nhât dữ liệu mới từ server
+                        x: time.getTime(),
+                        y: yTempVal
+                    });
+                    dataHumd.push({
+                        x: time.getTime(),
+                        y: yHumdVal
+                    });
+                };
+                Chart.render(); // chuyển đổi dữ liệu của của graph thành mô hình đồ họa
+            });
+        };
+        updateChart(100); // Khởi tạo giá trị đầu tiên cho dữ liệu,
+        setInterval(function() { // Cập nhật lại giá trị graph sau thời gian updateInterval
+            updateChart(dataLength)
+        }, updateInterval);
+    }
+
+    </script>
 </body>
 </html>

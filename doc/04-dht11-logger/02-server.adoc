@@ -1,29 +1,87 @@
 == Server Nodejs
 
 Về phía Web Server, chúng ta cần đảm bảo nó có thể phục vụ cho nhiều Client, với `path` là:
-- `/update` thì sẽ thêm mới dữ liệu để lưu trữ, và in ra màn hình
-- `/get` trả về dữ liệu đã lưu trữ định dạng JSON
-- `/\*` Còn lại thì trả về file `index.html`
-- Mảng dữ liệu lưu trữ có định dạng: `[{"temp": 25, "humd":80, time: "time"}, ...]`
 
+* `/update` thì sẽ thêm mới dữ liệu để lưu trữ, và in ra màn hình
+
+* `/get` trả về dữ liệu đã lưu trữ định dạng JSON
+
+* `/\*` Còn lại thì trả về file `index.html`
+
+* Mảng dữ liệu lưu trữ có định dạng: `[{"temp": 25, "humd":80, time: "time"}, ...]`
+
+**Mã nguồn file `server.js`**
 [source, javascript]
 ----
 include::code/server.js[]
 ----
 
-Bạn có thể thực thi đoạn code trên với dòng lệnh `node server.js`, thử truy vập vào http://localhost:8000 để xem trang `index.html`. Hoặc truy cập vào http://localhost:8000/update?temp=20&humd=60 để xem màn hình Log in ra kết quả nhiệt độ và độ ẩm.
+**Giải thích mã nguồn**
+
+<1> require dùng để load các thư viện hoặc module cần thiết cho dự án
+
+* `fs`: Module giúp đọc file từ server hoặc upload file lên server
+* `url`: Chia nhỏ URL thành những thành phần để dễ dàng truy xuất
+* `http`: Phương thức truyền nhận dữ liệu dùng http
+* `querystring`: Module giúp chuyển string sang object
+* `db = []`: Biến kiểu mảng nhằm chứa dữ liệu nhiệt độ, độ ẩm
+
+<2> So sánh giá trị pathname để xử lí dữ liệu. Nếu `pathname =/update` thì sẽ tạo biến newData nhằm lấy dữ liệu client gửi lên thông qua URL, sau đó đẩy dữ liệu vào mảng db thông qua lệnh `db.push(newData)` , giá trị được hiển thị qua Log khi dùng lệnh `console.log(newData)`. Hàm `Date()` giúp lấy thời gian hiện tại.
+
+<3> Trả về định dạng JSON `('Content-Type': 'application/json')` của mảng db nếu pathname = /get, sau đó xóa giá trị của mảng. Hàm `response.end()` sẽ trả về HTTP code (mã 200 là kết quả OK)
+
+<4> Trả về nội dung của file index.html khi không xảy ra 2 trường hợp <2> và <3>. Dùng `fs` để đọc file index.html và gán nội dung vào content thông qua lệnh `fs.readFile('./index.html', function(error, content)`. Hàm `response.writeHead(200, {'Content-Type': 'text/html' })` nhằm khai báo mã HTTP code, định dạng trả về là HTML để đọc file
+
+<5> Khởi tạo một server HTTP và mở port 8000 để các client truy cập
+
+Bạn có thể truy cập đến đường dẫn của file server.js và thực thi đoạn code trên với dòng lệnh `node server.js`, sau đó thử truy vập vào http://localhost:8000 để xem trang `index.html`. Hoặc truy cập vào http://localhost:8000/update?temp=20&humd=60 để xem màn hình Log in ra kết quả nhiệt độ và độ ẩm.
 
 ----
-{ temp: '30', humd: '80', time: 2017-08-21T16:56:23.358Z }
-{ temp: '31', humd: '80', time: 2017-08-21T16:57:06.277Z }
-{ temp: '36', humd: '80', time: 2017-08-21T16:57:17.708Z }
+{ temp: '20', humd: '60', time: 2017-08-21T16:56:23.358Z }
+{ temp: '20', humd: '60', time: 2017-08-21T16:57:06.277Z }
+{ temp: '20', humd: '60', time: 2017-08-21T16:57:17.708Z }
 ----
 
-Tạm thời ở phần cơ bản chúng ta chưa cần phải quan tâm đến file `index.html` và đoạn code Javascript trong đó. Cũng nhưng chưa quan tâm tới việc xử lý khi đường dẫn là `/get` hoặc `/\*`, mà chỉ quan tâm duy nhất khi nhận được với đường dẫn `/update`.
+Ở phần cơ bản chúng ta chưa cần phải quan tâm đến file `index.html` và đoạn code Javascript trong đó. Cũng nhưng chưa quan tâm tới việc xử lý khi đường dẫn là `/get` hoặc `/\*`, mà chỉ quan tâm duy nhất khi nhận được với đường dẫn `/update`.
 
-Một ứng dụng khá phổ biến là bạn muốn hiển thị các dữ liệu thu thập được ở trình duyệt Web. Vậy chúng ta sẽ làm 1 file `index.html` chứa mã nguồn Javascript có thể yêu cầu Server trả về dữ liệu mỗi giây để hiển thị lên 1 biểu đồ canvas.
+Khi đã hoàn thành phần cơ bản chúng ta sẽ đi đến một ứng dụng khá phổ biến, người dùng cần hiển thị các dữ liệu thu thập một cách trực quan thông qua trình duyệt Web. Vì vậy chúng ta sẽ làm 1 file `index.html` chứa mã nguồn Javascript có thể yêu cầu Server trả về dữ liệu mỗi giây để hiển thị lên 1 biểu đồ canvas.
 
+**Mã nguồn file `index.html`**
 [source, html]
 ----
 include::code/index.html[]
 ----
+
+**Giải thích mã nguồn**
+
+<1> Những tag cơ bản khi khởi tạo 1 trang HTML
+* `<!DOCTYPE html>`          cho trình duyệt biết phiên bản HTML được sử dụng
+* `<html>`                   cho trình duyệt biết đây là văn bản HTML
+* `<head>`                   khai báo thông tin cho trang HTML
+* `<meta charset="UTF-8">`   cung cấp dữ liệu về văn bản HTML, dạng mã hóa charset="UTF-8"
+* `<title>DHT11</title>`     tiêu đề của trang
+
+<2> Sử dụng CanvasJS Chart để vẽ biểu đồ nhiệt độ, độ ẩm.
+<3> Tạo 2 textbox tại tag tiêu đề phụ <h1> để hiển thị nhiệt độ, độ ẩm. Mỗi textbox sẽ có 1 `id` để cập nhật giá nhiệt độ, độ ẩm từ server. Mã định dạng `&#176;C` là của kí tự độ C
+<4> Hàm giúp lấy dữ liệu từ server
+
+
+**Phân tích phần vẽ biểu đồ**
+
+* Chúng ta sẽ lấy dữ liệu từ server gửi xuống và vẽ biểu đồ dùng mã Javascrpit, sử dụng tag
+`<scrpit>code JS </scrpit>` để chèn nội dung code Javascrpit vào file HTML.
+* Việc lấy dữ liệu được thực thi bằng hàm `httpGetAsync()`. Hàm này sử dụng đối tượng `XMLHttpRequest` để lấy dữ liệu từ server mà không cần phải load lại trang, dữ liệu `xmlHttp.responseText` lấy từ server tại địa chỉ `localhost:8000/get` ở định dạng JSON nên cần phải chuyển sang dạng Object bằng hàm JSON.parse().
+
+IMPORTANT: Cần phải có dữ liệu từ ESP8266 gửi lên server thì tại địa chỉ localhost:8000/get mới có dữ liệu.
+
+.Hình ảnh dữ liệu tại địa chỉ `localhost:8000/get`
+image::04-dht11/imageJSON.png[width=487, scaledwidth="60%", align="center"]
+
+* Sử dụng `window.onload = function()` để load lại nội dung của graph, các lệnh trong hàm đã được giải thích trong code.
+
+NOTE: Truy cập vào trang https://canvasjs.com/javascript-charts/ để lựa chọn và xây dựng những đồ thị phù hợp với mục đích của bạn.
+
+**Hình ảnh trang HTML sau khi xây dựng**
+
+.Hình ảnh giao diện HTML
+image::04-dht11/graphHtml.png[width=437, align="center"]

@@ -1,16 +1,59 @@
 == Code ESP8266
 
-ESP8266 sử dụng thư viện HTTPClient để kết nối tới Web Server và dữ liệu nhiệt độ, đổ ẩm thông qua phương thức GET với query là `temp` và `humd`.
+ESP8266 sử dụng thư viện HTTPClient để kết nối tới Web Server và lấy dữ liệu nhiệt độ, đổ ẩm thông qua phương thức GET với query là `temp` và `humd`.
 
-=== Chuẩn bị và đấu nối
+=== Chuẩn bị
+- Cung cấp SSID và PASSWORD WiFi cho board mạch ESP8266 để kết nối vào mạng nội bộ với Web Server.
+- Cung cấp địa chỉ IP, port của Web Server.
+- Thư viện hỗ trợ lấy dữ liệu của DHT11. Dựa theo chuẩn truyền nhận 1 wire và sự phổ biến của dòng sensor DHTXX (DHT11, DHT22,...), có rất nhiều thư viện được xây dựng lên để việc lập trình với DHT11 trở nên dễ dàng hơn. Trong bài này chúng ta sẽ cài đặt và sử dụng thư viện `DHT sensor library` của Adafruit
 
-- Cung cấp SSID và PASSWORD WiFi cho ESP8266, để board mạch có thể kết nối vào mạng nội bộ với Web Server.
-- Cung cấp địa chỉ IP, port của Web Server
-- Đấu nối DHT11 như hình
+.Hình ảnh thư viện DHT sensor library
+image::04-dht11/install-lib.png[height=900, scaledwidth="75%", align="center"]
 
-//Hình
+**Mã nguồn ESP8266**
 
 [source, c]
 ----
 include::code/dht11-logger/dht11-logger.ino[]
 ----
+
+<1> ESP8266 sẽ gửi dữ liệu lên server sau khi kết nối thành công đến server thông qua lệnh `client.print()`. Nội dung gửi :
+
+* GET /update?temp=30.6&humd=60 HTTP/1.1 với : 
+** `GET` là phương thức gửi dữ liệu.
+** `/update?temp=30.6&humd=60` là nội dung cần gửi bao gồm cả pathname và dữ liệu.
+** `HTTP/1.1` khai báo sử dụng giao thức HTTP version 1.1 để có thể tạo 1 HTTP request
+* `Host: 192.168.1.7:8000` thông tin về địa chỉ IP và port của server
+* `Connection, Content-Length`
+
+Có thể xem thông các thông tin của quá trình truyền nhận dữ liệu với lệnh
+`curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0`. Thông tin hiển thị như bên dưới 
+
+[source, c]
+----
+name@yourname:~$ curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0
+[1] 9277
+name@yourname:~$ *   Trying 192.168.1.7...
+* Connected to 192.168.1.7 (192.168.1.7) port 8000 (#0)
+> GET /update?temp=28.0 HTTP/1.1    // > Thông tin gửi từ ESP8266 
+> Host: 192.168.1.7:8000
+> User-Agent: curl/7.47.0
+> Accept: */*
+>                                  // < Thông tin gửi từ server 
+< HTTP/1.1 200 OK
+< Date: Wed, 23 Aug 2017 17:22:49 GMT
+< Connection: keep-alive
+< Content-Length: 0
+< 
+* Connection #0 to host 192.168.1.7 left intact
+----
+
+Kết quả hiển thị trên Arduino IDE và màn hình Log của máy tính
+
+.Hình ảnh trên Arduino và terminal sau khi kết nối 
+image::04-dht11/esp8266-server.png[height=366, align="center"]
+
+
+=== Tổng kết
+
+Sau khi hoàn thành dự án, chúng ta đã có cái nhìn tổng quan về trình tự các bước để xây dựng một dự án hoàn chỉnh trong việc thu thập dữ liệu của cảm biến cũng như xây dựng server để quản lí các máy khách. Từ đó là bước đệm để giúp bạn phát triển thêm nhiều các dự án thu thập và xử lí dữ liệu trong tương lai.
