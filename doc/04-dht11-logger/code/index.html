@@ -60,17 +60,9 @@
         var yHumdVal = 0; // Biến lưu giá trị độ ẩm (theo trục Y)
         var yTempVal = 0; // Biến lưu giá trị nhiệt độ (theo trục Y)
         var updateInterval = 2000; // Thời gian cập nhật dữ liệu 2000ms = 2s
-        var dataLength = 100; // Số lượng điểm dữ liệu của nhiệt độ, độ ẩm có thể nhìn thấy được
-        var time = new Date; // Tạo biến time, set giá trị ban đầu và cập nhật thời gian cho trục X
+        var time = new Date(); // Lấy thời gian hiện tại
 
-        // starting at 11.55 am
-        time.setHours(11);
-        time.setMinutes(55);
-        time.setSeconds(00);
-        time.setMilliseconds(00);
-
-        var updateChart = function(count) {
-            console.log(count);
+        var updateChart = function() {
             httpGetAsync('/get', function(data) {
 
                 // Gán giá trị từ localhost:8000/get vào textbox để hiển thị
@@ -79,27 +71,27 @@
 
                 // Xuất ra màn hình console trên browser giá trị nhận được từ localhost:8000/get
                 console.log(data);
-                for (var j = 0; j < count; j++) {
 
-                    // Cập nhật thời gian và lấy giá trị nhiệt độ, độ ẩm từ server
-                    time.setTime(time.getTime() + updateInterval);
-                    yTempVal = parseInt(data[0].temp);
-                    yHumdVal = parseInt(data[0].humd);
-                    dataTemp.push({ // cập nhât dữ liệu mới từ server
-                        x: time.getTime(),
-                        y: yTempVal
-                    });
-                    dataHumd.push({
-                        x: time.getTime(),
-                        y: yHumdVal
-                    });
-                };
+                // Cập nhật thời gian và lấy giá trị nhiệt độ, độ ẩm từ server
+                yTempVal = parseInt(data[0].temp);
+                yHumdVal = parseInt(data[0].humd);
+                dataTemp.push({ // cập nhât dữ liệu mới từ server
+                    x: time.getTime(),
+                    y: yTempVal
+                });
+                dataHumd.push({
+                    x: time.getTime(),
+                    y: yHumdVal
+                });
+
                 Chart.render(); // chuyển đổi dữ liệu của của graph thành mô hình đồ họa
             });
         };
-        updateChart(100); // Khởi tạo giá trị đầu tiên cho dữ liệu,
+
+        updateChart(); // Chạy lần đầu tiên
+
         setInterval(function() { // Cập nhật lại giá trị graph sau thời gian updateInterval
-            updateChart(dataLength)
+            updateChart()
         }, updateInterval);
     }
 
