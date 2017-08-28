@@ -1,1 +1,19 @@
 == MQTT Client
+
+Để có thể triển khai ứng dụng MQTT Client, chúng ta cần MQTT Broker, sẽ được trình bày trong phần sau. Ở phần này chúng ta sẽ làm quen với giao thức MQTT bằng các ví dụ sử dụng MQTT Client thông dụng, và sử dụng các dịch vụ MQTT Broker miễn phí phổ biến.
+
+Hai dịch vụ MQTT Broker phổ biến là http://test.mostquitto.org và http://cloudmqtt.com
+
+=== MQTT Lens
+
+=== MQTT.fx
+
+=== MQTT.js
+
+Thư viện Javascript, hỗ trợ MQTT Over Websocket
+
+=== ESP8266 MQTT Client
+
+==== PubSub
+
+==== ESP8266MQTTClient

@@ -1,6 +1,6 @@
 == Cập nhật firmware từ xa
 
-Cập nhật firmware OTA (Over the Air) là tiến trình tải firmware mới vào ESP module thay vì sử dụng cổng Serial. Tính năng này thực sự rất hữu dụng trong nhiều trường hợp giới hạn về kết nối vật lý đến ESP Module.
+Cập nhật firmware OTA (Over the Air) là tiến trình tải firmware mới vào ESP8266 module thay vì sử dụng cổng Serial. Tính năng này thực sự rất hữu dụng trong nhiều trường hợp giới hạn về kết nối vật lý đến ESP Module.
 
 OTA có thể thực hiện với:
 

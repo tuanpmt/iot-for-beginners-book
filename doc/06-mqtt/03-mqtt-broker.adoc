@@ -1,1 +1,13 @@
 == MQTT Broker
+
+Ở phần trước chúng ta sử dụng các dịch vụ MQTT Broker miễn phí để thử nghiệm, ở phần này, chúng ta sẽ sử dụng Mosca, một thư viện MQTT Broker mã nguồn mở để tự mình xây dựng 1 Broker.
+
+=== MOSCA
+
+=== Một số MQTT Broker sử dụng cho sản phẩm thực tế
+
+==== Mosquitto
+
+Phù hợp cho các ứng dụng chạy trên board nhúng
+
+==== EMQ
