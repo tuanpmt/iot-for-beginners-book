@@ -22,6 +22,17 @@ Lưu ý:
  * Người dùng có thể cấu hình cho nhiều thiết bị kết nối chung vào một router cùng lúc.
  * ESP Touch hiện nay hỗ trợ đối với Access Point chuẩn 802.11n 2.4Ghz
 
+=== Thực hiện SmartConfig với ESP8266
+
+Trong ví dụ dưới đây, chúng ta sẽ tiến hành kết nối wifi cho board ESP8266 bằng SmartConfig. Sử dụng ứng dụng ESP8266 SmartConfig (Android). Bạn có thể dễ dàng tìm thấy ứng dụng này cũng như các ứng dụng tương tự trên Play Store (Android) hay iTunes (iOS) để thực hiện việc kết nối bằng SmartConfig này.
+
+Trước tiên, ta sẽ nạp chương trình cho ESP8266. Điểm mấu chốt trong chương trình này chính là hàm `WiFi.beginSmartConfig()` được cung cấp trong thư viện ESP8266WiFi. Hàm này cho phép thiết bị khởi động chế độ SmartConfig, thu thập các thông tin từ các gói tin và giải mã chúng để có thể kết nối vào mạng Wifi.
+
+Sau khi nạp xong chương trình, ta nhấn giữ button (GPIO0) trong 3s để thiết bị đi vào chế độ smartconfig. (Lúc này bạn sẽ thấy led trên board nhấp nháy nhanh hơn). Dùng smart phone của bạn truy cập vào wifi muốn kết nối, sau đó mở ứng dụng smartconfig và nhập các thông tin SSID và PASSWORD (nếu có) của wifi. Nhấn **CONFIRM** để xác nhận.
+
+.Video Demo
+video::-RqMKvMLPi0[youtube]
+
 === Code
 
 [source, c]
