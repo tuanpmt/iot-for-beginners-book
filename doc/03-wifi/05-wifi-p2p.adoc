@@ -1,9 +1,21 @@
 == Trao đổi dữ liệu giữa 2 ESP8266
 
+Thông thường, muốn hai hay nhiều ESP8266 có thể liên lạc, trao đổi dữ liệu với nhau sẽ cần đến một router, access-point đã kết nối internet làm trung gian, để chúng có thể kết nối vào mạng này, rồi mới có thể liên lạc với nhau được.
+
+Nhưng ESP8266 còn có thể giao tiếp, trao đổi dữ liệu *trực tiếp* với nhau mà không cần đến router, access-point đã kết nối internet, thông qua giao thức **Wifi Direct (P2P)**.
+ 
 === Yêu cầu
 
-Ứng dụng kiến thức đã học thực hiện việc
+Ứng dụng những kiến thức đã học ở phần *ESP8266 WiFi* thực hiện trao đổi dữ liệu giữa 2 ESP8266.
 
 === Hướng dẫn thực hiện
 
+Để trao đổi dữ liệu giữa 2 ESP8266 cần đáp ứng các điều kiện sau:
+
+* 1 ESP8266 sẽ khởi động SoftAP để tạo mạng WiFi, đồng thời khởi động 1 TCP Server để làm Server
+* 1 ESP8266 phải là client với chế độ *WiFi Station* và kết nối đến ESP8266 server trên
+* Sau khi nạp code cho từng board ESP8266, xem kết quả ở màn hình serial terminal
+
 === Những vướng mắc thường gặp
+
+- Client sẽ đôi lúc không kết nối được với server
