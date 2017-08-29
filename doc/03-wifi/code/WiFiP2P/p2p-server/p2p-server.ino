@@ -62,7 +62,7 @@ void loop() {
         String resp = String(line.reserve(line.length() - 1));
         Serial.print(" Then, response back to client:");
         Serial.println(resp);
-        clients[i].write(resp.c_str(), "aaaaaw");
+        clients[i].write(resp.c_str());
         Serial.println();
       }
     }
