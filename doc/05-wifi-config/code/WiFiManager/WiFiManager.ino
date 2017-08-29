@@ -23,7 +23,7 @@ void setup()
   //wifiManager.resetSettings();
 
   //Cài đặt callback, khi kết nối với wifi cũ thất bại, thiết bị sẽ gọi hàm callback
-  //và khởi động chế độ AP với SSID tự động là "ESP"
+  //và khởi động chế độ AP với SSID được cài tự động là "ESP+chipID"
   wifiManager.setAPCallback(configModeCallback);
   if (!wifiManager.autoConnect())
   {

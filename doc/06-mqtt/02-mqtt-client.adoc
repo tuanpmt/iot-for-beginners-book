@@ -1,5 +1,12 @@
 == MQTT Client
 
+MQTT Client có thể là một thiết bị hay một chương trình sử dụng giao thức MQTT. Một client sẽ luôn là bên khởi tạo kết nối (Network Connection) tới server. Nó có thể:
+
+* Publish các Application Message (tạm dịch là các gói tin ứng dụng) lên server.
+* Subscribe topic nào đó để yêu cầu nhận các Application Message mà Client đó quan tâm.
+* Unsubscribe để gỡ bỏ yêu cầu nhận các Application Message từ server.
+* Disconnect với server.
+
 Để có thể triển khai ứng dụng MQTT Client, chúng ta cần MQTT Broker, sẽ được trình bày trong phần sau. Ở phần này chúng ta sẽ làm quen với giao thức MQTT bằng các ví dụ sử dụng MQTT Client thông dụng, và sử dụng các dịch vụ MQTT Broker miễn phí phổ biến.
 
 Hai dịch vụ MQTT Broker phổ biến là http://test.mostquitto.org và http://cloudmqtt.com
