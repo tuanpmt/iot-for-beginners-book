@@ -44,7 +44,7 @@ Gói tin LWT (last will and testament) không thực sự biết được Client
 
 Tôi có 1 cảm biến, nó gởi những dữ liệu quan trọng và rất không thường xuyên. Nó có đăng ký trước với Broker một tin nhắn lwt ở topic */node/gone-offline* với tin nhắn *id* của nó. Và tôi cũng đăng ký theo dõi topic */node/gone-offline*, sẽ gởi SMS tới điện thoại thôi mỗi khi nhận được tin nhắn nào ở kênh mà tôi theo dõi.
 Trong quá trình hoạt động, cảm biến luôn giữ kết nối với Broker bởi việc luôn gởi gói tin keepAlive. Nhưng nếu vì lý do gì đó, cảm biến này chuyển sang ngoại tuyến, kết nối tới Broker timeout do Broker không còn nhận được gói keepAlive.
-Lúc này, do cảm biến của tôi đã đăng ký LWT, do vậy broker sẽ đóng kết nối của Cảm biến, đồng thời sẽ publish một gói tin là Id của cảm biến vào kênh */node/gone-offline*, dĩ nhiên là tôi cũng sẽ nhận được tin nhắn báo cái Cảm biến yêu quý của mình  đã ngoại tuyến.
+Lúc này, do cảm biến của tôi đã đăng ký LWT, do vậy broker sẽ đóng kết nối của Cảm biến, đồng thời sẽ publish một gói tin là Id của cảm biến vào kênh */node/gone-offline*, dĩ nhiên là tôi cũng sẽ nhận được tin nhắn báo cái cảm biến yêu quý của mình  đã ngoại tuyến.
 
 *Ngắn gọn*
 
