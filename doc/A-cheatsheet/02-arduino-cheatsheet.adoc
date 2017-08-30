@@ -4,14 +4,12 @@
 |
 [source, c]
 ----
-include::code/arduino-cheatsheet.c[lines=1..67]
+include::code/arduino-cheatsheet.c[lines=1..52]
 ----
-
 |
-
 [source, c]
 ----
-include::code/arduino-cheatsheet.c[lines=69..135]
+include::code/arduino-cheatsheet.c[lines=55..99]
 ----
 |
 [source, c]

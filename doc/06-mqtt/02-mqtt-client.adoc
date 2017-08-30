@@ -8,7 +8,7 @@ Hai dịch vụ MQTT Broker phổ biến là http://test.mostquitto.org và http
 
 **Thông tin**
 
-MQTT Lens là một tiện ích mở rộng của Chrome (Chrome Extension), nó sử dụng trình duyệt Chrome để kết nối đến broker MQTT cũng như test các tính năng publish/subcribe của giao thức MQTT. Đây là một công cụ rất hữu ích để kiểm tra kết nối đến broker MQTT và kiểm tra việc gửi và nhận gói tin. Chúng ta sẽ sử dụng công cụ này với dịch vụ broker MQTT tại iot.eclipse.org ở ví dụ bên dưới.
+MQTT Lens là một tiện ích mở rộng của Chrome (Chrome Extension), nó sử dụng trình duyệt Chrome để kết nối đến broker MQTT cũng như test các tính năng publish/subcribe của giao thức MQTT. Đây là một công cụ rất hữu ích để kiểm tra kết nối đến broker MQTT và kiểm tra việc gửi, nhận gói tin. Chúng ta sẽ sử dụng công cụ này với dịch vụ broker MQTT iot.eclipse.org ở ví dụ bên dưới.
 
 Một số thông tin của MQTT Lens được trình bày ở bảng dưới.
 
@@ -36,9 +36,21 @@ image::06-mqtt/addMQTTlens.png[width=600, align="center"]
 * Bước 3 : Tạo 1 MQTT client kết nối đến broker MQTT eclipse như các bước bên dưới.
 
 .Hình ảnh tạo 1 MQTT client
-image::06-mqtt/createATopic.png[width=954, align="center"]
+image::06-mqtt/createATopic.png[width=1021, align="center"]
 
 **Giải thích**
+
+Chúng ta sẽ tạo 2 connections với tên gọi client1 và client2.
+
+.Hình ảnh cấu hình cho 2 clients
+image::06-mqtt/config2Clients.png[width=500, align="center"]
+
+Ở connection của client1, tại mục `Publish`, tạo topic `Home/sensor/temp`(topic này sẽ được clien2 đăng kí nhận gói tin), mục `Subscribe` sẽ đăng kí nhận gói tin ở topic `Home/sensor/humd` (đây là topic mà client2 sẽ thực hiện publish). Nhấn vào button `SUBCRIBE` để đăng kí topic. Tiếp theo, gửi message `"Temp:35"` bằng cách nhấn vào button `PUBLISH` tại topic `Home/sensor/temp`. Kết quả ở mục `Subscriptions` của client2 sẽ nhận 1 message là dữ liệu mà client1 đã gửi. Tương tự, khi gửi message `"Humd: 65"` ở client2 thì client1 sẽ nhận được gói tin này do nó đã subcribe topic mà client2 đã puslish.
+
+.Hình ảnh thiết lập 2 connections 
+image::06-mqtt/connect2Clients.png[width=1005, align="center"]
+
+Một số thiết lập về QoS và LWT khi sử dụng MQTT lens có thể tham khảo tại http://www.hivemq.com/blog/mqtt-toolbox-mqtt-lens
 
 === MQTT.fx
 
