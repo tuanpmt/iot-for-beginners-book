@@ -13,9 +13,8 @@ WPS có ba chế độ hoạt động : chế độ kết nối với mã PIN, c
 - Nhấn nút WPS trên router, để giúp router vào chế độ bảo mật đặc biệt, ở chế độ này router sẽ cho phép các yêu cầu kết nối đến router từ các thiết bị WPS ( các thiết bị có hổ trợ WPS ).
 - Tiếp theo là nhấn nút nhấn ở thiết bị WPS. Nút nhấn này giúp thiết bị WPS kết nối đến router, việc kết nối này có thể thất bại nếu quá thời gian. Thời gian này được nhà sản xuất các thiết bị hổ trợ chế độ này quy đinh, khoảng từ 1 phút đến 5 phút.
 
-
 .Nút nhấn WPS trên router
-image::05-smartconfig/wps_button.png[WPS button, role="center", align="center", width=400]
+image::05-wificonfig/wps_button.jpg[WPS button, role="center", align="center", width=400]
 
 === Thực hiện WPS với ESP8266
 

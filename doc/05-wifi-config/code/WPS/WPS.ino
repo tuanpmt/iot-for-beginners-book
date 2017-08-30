@@ -10,6 +10,7 @@ void setup()
   delay(4000);
 
   // Kiểm tra xem wifi đã được kết nối chưa, nếu chưa, bắt đầu kết nối bằng WPS
+  // Lưu ý, cần phải đảm bảo rằng Router của bạn đang ở trong trạng thái WPS. 
   while (WiFi.status() != WL_CONNECTED)
   {
     Serial.println("\nAttempting connection ...");
