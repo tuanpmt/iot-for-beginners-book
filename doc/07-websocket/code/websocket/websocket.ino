@@ -54,7 +54,7 @@ AsyncWebSocket ws("/ws");
 void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len) {
   if (type == WS_EVT_DATA && len > 0) {
     data[len] = 0;
-    String data_str = String(data);
+    String data_str = String((char*)data);
     if (data_str == "LED_ON") {
       digitalWrite(LED, 0);
     } else if (data_str == "LED_OFF") {
