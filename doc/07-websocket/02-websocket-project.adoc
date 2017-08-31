@@ -13,5 +13,22 @@ Khi nhấn nút trên board ESP8266 sẽ gởi nội dung trạng thái (đối 
 
 === Đoạn code Javascript để tạo kết nối Web Socket
 
+[source, javascript]
+----
+include::code/client.js[]
+----
+
 === Nhúng file HTML chứa đoạn code JS vào ESP8266
+
+[source, html]
+----
+include::code/index.html[]
+----
+
+=== Chương trình hoàn chỉnh cho ESP8266
+
+[source, ino]
+----
+include::code/websocket.ino[]
+----
 
