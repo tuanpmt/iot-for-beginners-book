@@ -1,23 +1,14 @@
- function WebSocketTest()
-         {
-               var ws = new WebSocket("ws://localhost:8000/echo"); // mở 1 websocket
-				
-               ws.onopen = function() // 
-               {
-                  
-                  ws.send("Message to send"); // truyền dữ liệu khi websocket đã được mở
-                
-               };
-				
-               ws.onmessage = function (evt) // sự kiện xảy ra khi client nhận dữ liệu từ server
-               { 
-                  var received_msg = evt.data;
-                  
-               };
-				
-               ws.onclose = function()
-               { 
 
-               }; // đóng websocket
-            }
-         }
+var ws = new WebSocket('ws://domain.com:8000/'); // mở 1 websocket
+ws.onopen = function() //
+{
+   // sự kiện khi websocket được mở thành công
+};
+
+ws.onmessage = function(evt)
+{
+    // sự kiện xảy ra khi client nhận dữ liệu từ server
+};
+ws.onclose = function() {
+    // sự kiện khi websocket bị đóng
+};

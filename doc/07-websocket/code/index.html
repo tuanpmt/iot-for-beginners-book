@@ -1,39 +1,45 @@
 <!DOCTYPE HTML>
 <html>
-   <head>
-	
-      <script type="text/javascript">
-         function WebSocketTest()
-         {
-               var ws = new WebSocket("ws://localhost:8000/echo"); // mở 1 websocket
-				
-               ws.onopen = function() // 
-               {
-                  
-                  ws.send("Message to send"); // truyền dữ liệu khi websocket đã được mở
-                
-               };
-				
-               ws.onmessage = function (evt) // sự kiện xảy ra khi client nhận dữ liệu từ server
-               { 
-                  var received_msg = evt.data;
-                  
-               };
-				
-               ws.onclose = function()
-               { 
+<head>
+    <title>ESP8266 WebSocket</title>
+</head>
+<body>
+    <div> Webscoket status <span id="status" style="font-weight: bold;"> disconnected </span> </div>
+    <div> ESP8266 Button Status <input type="checkbox" id="btn" name="btn" /> </div>
+    <div> Control LED <input type="checkbox" id="led" name="led" /> </div>
 
-               }; // đóng websocket
+    <script type="text/javascript">
+        var button = document.getElementById('btn');
+        var led = document.getElementById('led');
+        var status = document.getElementById('status');
+        var url = window.location.host;
+        var ws = new WebSocket('ws://' + url + ':8000/'); // mở 1 websocket
+        ws.onopen = function() //
+        {
+            status.text = 'Connected';
+            led.disabled = false; //khi websocket được mở, mới cho phép
+        };
+
+        ws.onmessage = function(evt) // sự kiện xảy ra khi client nhận dữ liệu từ server
+        {
+            if(evt.data == 'BTN_PRESSED') {
+                button.checked = true;
+            } else if(evt.data == 'BTN_RELEASE') {
+                button.checked = false;
             }
-         }
-      </script>
-		
-   </head>
-   <body>
-   
-      <div id="sse">
-         <a href="javascript:WebSocketTest()">Run WebSocket</a>
-      </div>
-      
-   </body>
+        };
+        ws.onclose = function() {
+
+        };
+
+        led.onchange = function() {
+            var status = 'LED_OFF';
+            if (led.checked) {
+                status = 'LED_ON';
+            }
+            ws.send(status)
+        }
+
+    </script>
+</body>
 </html>
