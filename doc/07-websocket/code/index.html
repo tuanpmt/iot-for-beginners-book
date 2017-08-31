@@ -6,14 +6,14 @@
 <body>
     <div> Webscoket status <span id="status" style="font-weight: bold;"> disconnected </span> </div>
     <div> ESP8266 Button Status <input type="checkbox" id="btn" name="btn" /> </div>
-    <div> Control LED <input type="checkbox" id="led" name="led" /> </div>
+    <div> Control LED <input type="checkbox" id="led" name="led" disabled="true" /> </div>
 
     <script type="text/javascript">
         var button = document.getElementById('btn');
         var led = document.getElementById('led');
         var status = document.getElementById('status');
         var url = window.location.host;
-        var ws = new WebSocket('ws://' + url + ':8000/'); // mở 1 websocket
+        var ws = new WebSocket('ws://' + url + ':8000/ws'); // mở 1 websocket
         ws.onopen = function() //
         {
             status.text = 'Connected';
@@ -29,7 +29,8 @@
             }
         };
         ws.onclose = function() {
-
+            led.disabled = true;
+            status.text = 'Disconnected';
         };
 
         led.onchange = function() {
