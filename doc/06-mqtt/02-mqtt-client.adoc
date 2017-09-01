@@ -1,10 +1,44 @@
 == MQTT Client
 
-Để có thể triển khai ứng dụng MQTT Client, chúng ta cần MQTT Broker, sẽ được trình bày trong phần sau. Ở phần này chúng ta sẽ làm quen với giao thức MQTT bằng các ví dụ sử dụng MQTT Client thông dụng, và sử dụng các dịch vụ MQTT Broker miễn phí phổ biến.
+Như chúng ta đã tìm hiểu ở phần trước, 2 thành phần publisher và subscriber là đặc trưng tạo nên giao thức MQTT. Các MQTT client không kết nối trực tiếp với nhau, mọi gói dữ liệu được gửi đi đều thông qua broker MQTT. Để có thể triển khai ứng dụng MQTT Client, chúng ta cần MQTT Broker, sẽ được trình bày trong phần sau. Ở phần này chúng ta sẽ làm quen với giao thức MQTT bằng các ví dụ sử dụng MQTT Client thông dụng, và sử dụng các dịch vụ MQTT Broker miễn phí, phổ biến.
 
 Hai dịch vụ MQTT Broker phổ biến là http://test.mostquitto.org và http://cloudmqtt.com
 
 === MQTT Lens
+
+**Thông tin**
+
+MQTT Lens là một tiện ích mở rộng của Chrome (Chrome Extension), nó sử dụng trình duyệt Chrome để kết nối đến broker MQTT cũng như test các tính năng publish/subcribe của giao thức MQTT. Đây là một công cụ rất hữu ích để kiểm tra kết nối đến broker MQTT và kiểm tra việc gửi và nhận gói tin. Chúng ta sẽ sử dụng công cụ này với dịch vụ broker MQTT tại iot.eclipse.org ở ví dụ bên dưới.
+
+Một số thông tin của MQTT Lens được trình bày ở bảng dưới.
+
+.Short Profile
+[width="70%",format="dsv"]
+|============================================================
+Type:Chrome App
+License:MIT
+Operating Systems:Windows, Linux & MacOSX
+Website:"https://chrome.google.com/webstore/detail/mqttlens/"
+|============================================================
+
+**Kết nối**
+
+* Bước 1: Cài đặt trình duyệt Chrome, thực hiện đăng nhập tài khoản của bạn vào chrome, truy cập vào địa chỉ https://chrome.google.com/webstore/category/extensions và gõ mqttlens vào mục tìm kiểm tiện ích như hình bên dưới.
+
+.Hình ảnh tìm kiếm tiện ích mqttlens trên chrome store
+image::06-mqtt/searchMQTTlens.png[width=700, align="center"]
+
+* Bước 2: Thêm và khởi chạy MQTT lens
+
+.Hình ảnh các bước thêm và khởi chạy tiện ích MQTT lens
+image::06-mqtt/addMQTTlens.png[width=600, align="center"]
+
+* Bước 3 : Tạo 1 MQTT client kết nối đến broker MQTT eclipse như các bước bên dưới.
+
+.Hình ảnh tạo 1 MQTT client
+image::06-mqtt/createATopic.png[width=954, align="center"]
+
+**Giải thích**
 
 === MQTT.fx
 

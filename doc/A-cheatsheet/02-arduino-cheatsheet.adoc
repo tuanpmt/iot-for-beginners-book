@@ -4,23 +4,31 @@
 |
 [source, c]
 ----
-include::code/arduino-cheatsheet.c[lines=1..67]
-----
-
-|
-
-[source, c]
-----
-include::code/arduino-cheatsheet.c[lines=69..135]
+include::code/arduino-cheatsheet.c[lines=1..53]
 ----
 |
 [source, c]
 ----
-include::code/arduino-cheatsheet.c[lines=137..204]
+include::code/arduino-cheatsheet.c[lines=54..106]
 ----
 |
 [source, c]
 ----
-include::code/arduino-cheatsheet.c[lines=206..250]
+include::code/arduino-cheatsheet.c[lines=107..174]
+----
+|
+[source, c]
+----
+include::code/arduino-cheatsheet.c[lines=175..238]
+----
+|
+[source, c]
+----
+include::code/arduino-cheatsheet.c[lines=239..281]
+----
+|
+[source, c]
+----
+include::code/arduino-cheatsheet.c[lines=282..326]
 ----
 |===
