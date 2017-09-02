@@ -54,8 +54,8 @@ Với một số tag cơ bản như sau:
 * `<h1>` nơi chứa phần tiêu đề chính
 * `<p>` phần ghi các đoạn văn bản
 
-==== Javascript 
- 
+==== Javascript
+
 Javascript là một ngôn ngữ được thiết kế chủ yếu để thêm tương tác vào các trang Web, và tạo ra các ứng dụng Web.
 
 Các chương trình Javascript có thể được nhúng trực tiếp vào HTML của Web. Và tùy vào mục đích cụ thể, script có thể chạy khi mở trang Web, nhấp chuột, gõ phím, gữi biểu mẫu, cập nhật dữ liệu, giao tiếp với cơ sở dữ liệu,...
@@ -63,7 +63,7 @@ Các chương trình Javascript có thể được nhúng trực tiếp vào HTM
 Để nhúng chương trình viết bằng Javascript vào trang HTML, chỉ cần thêm tag `<script>` và thuộc tính `type`. Có thể thêm phần này ở phần `<head>` hoặc phần `<body>` của HTML. Ví dụ sau đây minh họa việc thêm một chương trình Javascript vào phần thân (<body>) của HTML:
 
 [source,html]
-----	
+----
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,10 +71,11 @@ Các chương trình Javascript có thể được nhúng trực tiếp vào HTM
 </head>
 <body>
 
-	<script type="text/javascript">
-    // chương trình Javascript được viết ở đây
-    </script>
-    	
+
+  <script type="text/javascript">
+    // chương trình Javascript nên được viết ở đây
+    // ngay trước </body>
+  </script>
 </body>
 </html>
 ----
@@ -82,33 +83,62 @@ Các chương trình Javascript có thể được nhúng trực tiếp vào HTM
 
 ==== CSS
 
-CSS là từ viết tắt của *Cascading Style Sheets*, là một ngôn ngữ được thiết kế để xử lý giao diện Web, giúp các trang Web được đẹp hơn. CSS có thể kiểm soát được màu sắc của văn bản, phong chữ, kích cỡ chữ, khoảng cách giữa các đoạn văn, hình nền hoặc màu nền, và nhiều hiệu ứng khác nửa.
+CSS là từ viết tắt của *Cascading Style Sheets*, là một ngôn ngữ được thiết kế để xử lý giao diện Web, giúp các trang Web được đẹp hơn. CSS có thể kiểm soát được màu sắc của văn bản, phong chữ, kích cỡ chữ, khoảng cách giữa các đoạn văn, hình nền hoặc màu nền, và nhiều hiệu ứng khác.
 
-Ví dụ : sử dụng phương thức Encoding UTF-8 ở phần `<head>` trong trang HTML
+Một đoạn CSS bao gồm 4 phần như thế này:
 
-[source,html]
-----	
+[source, css]
+----
+vùng-chọn {
+   thuộc-tính-a: giá-trị-x;
+   thuộc-tính-b: giá-trị-y;
+   .....
+}
+----
+
+Ví dụ về sử dụng CSS trong HTML
+
+[source, html]
+----
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title> Sử dụng phương thức Encoding UTF-8</title>
+  <title>My first JavaScript page</title>
+  <style>
+    .class-select {
+      background-color: red;
+    }
+
+    #id-select {
+      background-color: green;
+    }
+
+    div {
+      color: blue;
+    }
+  </style>
 </head>
 <body>
-
+  <div id="id-select"> css select by id </div>
+  <div class="class-select"> css select by class </div>
 </body>
 </html>
 ----
+
+Với đoạn HTML bên trên, thì màu nền của tag div có id = `id-select` sẽ có màu xanh lá cây, tag div có class = `class-select` sẽ có màu đỏ, và chữ của tất cả những thẻ div có màu xanh nước biển.
 
 === Ứng dụng điều khiển đèn LED thông qua Webserver
 
 ESP8266 hoàn toàn có thể thực hiện vai trò Web Server để phục vụ cho một vài kết nối đến, tận dụng giao diện Web để điều khiển, cấu hình cho nó.
 
-Ứng dụng này sẽ sử dụng giao diện Web phục vụ bởi ESP8266 và điều khiển chính đèn LED trên board.
 
-=== Code
+=== ESP8266 Web Server
+
+Với ứng dụng này, ESP8266 sẽ khởi tạo 1 Web Server, khi có bất kỳ client nào kết nối tới (Web Browser) thì ESP8266 sẽ gởi về 1 trang HTML với các thông tin để Client có thể điều khiển chớp tắt đèn LED của board.
 
 [source, c]
 ----
 include::code/WebServer/WebServer.ino[]
 ----
+
+=== Kết hợp WiFi AP và Web Server

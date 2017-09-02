@@ -33,6 +33,6 @@ include::code/button/button.ino[]
 video::wE-yc_CGpfE[youtube, align="left", role="left"]
 
 === Các khái niệm
-* **Ngắt**
-* **pull-up**
+* **Ngắt** Ngắt là một khái niệm liên quan nhiều đến phần cứng, một sự kiện nào đó xảy ra, bắt buộc CPU phải dừng các tác vụ bình thường khác đang thực thi để thực hiện tác vụ Ngắt. Ví dụ, cấu hình ngắt khi có thay đổi mức logic từ 1 về 0 (cạnh xuống) của GPIO, thì khi mức logic thay đổi trên GPIO đó, CPU sẽ ngay lập tức dừng và lưu các trạng thái tại chương trình chính và nhảy vào hàm ngắt để thực thi các lệnh trong đó.
+* **pull-up/pull-down** Đa số các chân GPIO của Chip đều có thể có 3 trạng thái, trạng thái là ngõ ra mức cao (logic 1), trạng thái là ngõ ra mức thấp (logic 0) và trạng thái ngõ vào (input). Ở trạng thái Input, thì các GPIO được cấu hình trở kháng cao (Hi-Z), hay còn gọi là trạng thái cách ly, không cho dòng điện đi qua, nhưng vẫn cảm nhận được điện áp. Ở trạng thái Hi-Z, nếu không xác định mức logic trước cho GPIO thì GPIO này bị thả trôi, nghĩa là rất dễ ảnh hưởng bởi môi trường, khi đọc về sẽ không đoán định được mức Logic. Pull-up là nối 1 điện trở với GPIO này lên mức logic 1, xác định trước 1 điện áp cho nó để đảm bảo không không có tác động điện nào thì nó là mức logic 1. Tương tự, pull-down xác định trước mức logic 0 cho GPIO.
 

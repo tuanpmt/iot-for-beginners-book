@@ -1,61 +1,65 @@
 #include <ESP8266WiFi.h>
-#include <WiFiClientSecure.h>
+#include <ESP8266HTTPClient.h>
+#include <ArduinoJson.h> //https://github.com/bblanchon/ArduinoJson
+#include "SSD1306.h" //https://github.com/squix78/esp8266-oled-ssd1306
 
-const char* ssid = "........";
-const char* password = "........";
+const char* ssid = ".....";
+const char* password = "....";
+SSD1306  display(0x3c, 4, 5);
+/* xem thêm https://www.cryptocompare.com/api/ */
+const char* host = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD";
+/*SHA1 fingerprint*/
+const char* fingerprint = "61 DE E9 FF BB 6B AD AA E4 9A 38 95 DC EC 74 2C 61 4B 7D 07";
 
-const char* host = "api.coinmarketcap.com";
-const int httpsPort = 443;
+void getBitcoin()
+{
+  HTTPClient http;
+  Serial.print("connecting to ");
+  Serial.println(host);
+
+  http.begin(host, fingerprint);
+  int httpCode = http.GET();
+  if (httpCode == HTTP_CODE_OK) {
+    String payload = http.getString();
+    Serial.println(payload);
+    StaticJsonBuffer<512> jsonBuffer;
+    JsonObject& root = jsonBuffer.parseObject(payload);
+    if (!root.success()) {
+      Serial.println("parseObject() failed");
+      return;
+    }
+
+    double priceUSD = root["USD"];
+    display.clear();
+    display.drawString(0, 0, "Bitcoin price");
+    display.drawString(0, 18, String(priceUSD));
+    display.display();
+    Serial.println(priceUSD);
+  }
+  http.end();
+}
 
 void setup() {
   Serial.begin(115200);
-  Serial.print("connecting to ");
-  Serial.println(ssid);
+  display.init();
+  display.clear();
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(0, 0, "Connecting to");
+  display.drawString(0, 18, ssid);
+  display.display();
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-
-  WiFiClientSecure client;
-  Serial.print("connecting to ");
-  Serial.println(host);
-  if (!client.connect(host, httpsPort)) {
-    Serial.println("connection failed");
-    return;
-  }
-
-  if (client.verify(fingerprint, host)) {
-    Serial.println("certificate matches");
-  } else {
-    Serial.println("certificate doesn't match");
-  }
-
-  String url = "/v1/ticker/bitcoin/";
-  Serial.print("requesting URL: ");
-  Serial.println(url);
-
-  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
-               "Host: " + host + "\r\n" +
-               "User-Agent: ESP8266 Client\r\n" +
-               "Connection: close\r\n\r\n");
-
-  Serial.println("request sent");
-  while (client.connected()) {
-    String line = client.readStringUntil('\n');
-    if (line == "\r") {
-      Serial.println("headers received");
-      break;
-    }
-  }
-  String line = client.readStringUntil('\n');
-  if (line.startsWith("{\"state\":\"success\"")) {
-    Serial.println("esp8266/Arduino CI successfull!");
-  } else {
-    Serial.println("esp8266/Arduino CI has failed");
-  }
-
+  display.clear();
+  display.drawString(0, 0, "Connected");
+  display.display();
 }
 
 void loop() {
+  if (WiFi.status() == WL_CONNECTED) {
+    getBitcoin();
+  }
+  delay(5000);
 }

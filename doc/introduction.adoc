@@ -1,25 +1,25 @@
 [abstract]
 == Giới thiệu nội dung
 
-Nội dung quyển sách này sẽ hướng dẫn chi tiết cho người đọc lập trình ứng dụng cho Chip WiFi ESP8266 kết nối với Server, gởi dữ liệu, và thực thi các lệnh từ Server. Từ đó người đọc có thể có những kiến thức cơ bản, dùng nó để xây dựng các ứng dụng Internet Of Things thực tế.
+Nội dung quyển sách này bao gồm các hướng dẫn chi tiết cho người đọc lập trình ứng dụng IoT sử dụng Chip WiFi ESP8266 phổ biến kết nối với Server để gởi nhận gởi dữ liệu, và thực thi các lệnh từ Server. Internet Of Things dựa và các kết nối Internet khá nhiều, do vậy, các nội dung cũng tập trung nhiều vào các giao thức (prototcol), các phương pháp quản lý, cấu hình kết nối.
 
-Toàn bộ nội dung biên tập sử dụng phần cứng là System On Chip (SoC) **ESP8266** - có khả năng kết nối WiFi và lập trình được giá rẻ, phổ biến trên thế giới. Board mạch sử dụng là board phần cứng mở https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno] có sơ đồ chân tương thích với các board Arduino Uno.
+Phần cứng sử dụng chính là System On Chip (SoC) **ESP8266** - có khả năng kết nối WiFi và lập trình được giá rẻ, phổ biến trên thế giới. Board mạch sử dụng là board phần cứng mở https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno] có sơ đồ chân tương thích với các board Arduino Uno.
 
-Phần mềm sử dụng lập trên máy tính là https://arduino.cc[*Arduino*], ngôn ngữ lập trình `C/C++`
+Phần mềm sử dụng lập trên máy tính cho Chip ESP8266 là https://arduino.cc[*Arduino*], ngôn ngữ lập trình `C/C++`
 
-Một chút về Server sử dụng https://nodejs.org[NodeJS] với ngôn ngữ lập trình `Javascript`
+Các phần liên quan đến Server chạy trên máy tính sử dụng https://nodejs.org[NodeJS] với ngôn ngữ lập trình `Javascript`
 
-Bạn sẽ cần tìm hiểu một số công cụ và khái niệm được sử dụng trong quyển sách này như sau:
+Ngoài ra, bạn sẽ cần tìm hiểu một số công cụ và khái niệm thường xuyên được sử dụng trong quyển sách này như sau:
 
-* **Git** Trình quản lý phiên bản sử dụng rất rộng rãi trên thế giới, **Github** là một mạng xã hội cho lập trình viên dựa trên Git. Git giúp bạn quản lý được mã nguồn, làm việc nhóm, xử lý các thao tác hợp nhất, lịch sử mã nguồn ... Có thể trong quá trình làm việc với quyển sách này, bạn sẽ cần sử dụng các thư viện mã nguồn mỡ cho Arduino từ Github, nên việc cài đặt và sử dụng công cụ khá cần thiết cho việc đó. Chưa kể, nó sẽ giúp bạn quản lý mã nguồn và dự án ngày càng chuyên nghiệp hơn.
+* **Git** Trình quản lý phiên bản sử dụng rất rộng rãi trên thế giới, **Github** là một mạng xã hội cho lập trình viên dựa trên Git. Git giúp bạn quản lý được mã nguồn, làm việc nhóm, xử lý các thao tác hợp nhất, lịch sử mã nguồn ... Có thể trong quá trình làm việc với quyển sách này, bạn sẽ cần sử dụng các thư viện mã nguồn mở cho Arduino từ Github, nên việc cài đặt và sử dụng công cụ khá cần thiết cho việc đó. Chưa kể, nó sẽ giúp bạn quản lý mã nguồn và dự án ngày càng chuyên nghiệp hơn.
 * **Sublime Text** là một trình soạn thảo phổ biến, nhanh, nhẹ và nhiều tính năng hay. Sử dụng để lập trình Javascript (NodeJS)
-* Code formater
-* Editorconfig
+* Code formater, dùng để định dạng mã nguồn phù hợp, dễ đọc, dễ sửa chữa
+* Editorconfig, là một công cụ cộng thêm cho các Editor, giúp việc đồng bộ hóa các tiêu chuẩn như Indent, Align, Space ... để đảm bảo code khi được mở ở các Editor không bị thay đổi.
 
 
-NOTE: Bạn có thể sử dụng bất kỳ board ESP8266 nào khác trên thị trường cho cuốn sách này, ví dụ như: `NODEMCU`, `Wemos`, ...
+NOTE: Tuy phần cứng chính thức sử dụng là board mạch phần cứng mở https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno], nhưng bạn hoàn toàn có thể sử dụng bất kỳ board ESP8266 nào khác trên thị trường cho cuốn sách này, ví dụ như: `NODEMCU`, `Wemos`, ...
 
-TIP: Ngoài nội dung trong cuốn sách này, thì còn nhiều dự án mẫu cũng như các hướng dẫn trực tuyến tại **https://arduino.esp8266.vn**
+TIP: Các nội dung trong quyển sách này tập trung vào hướng dẫn các giao thức, cách thức làm việc với có hệ thống với board ESP8266, Server ..., còn các dự án mẫu, hướng dẫn chi tiết có thể tìm thêm tại **https://arduino.esp8266.vn**
 
 TIP: Tất cả các phần Code đều không giải thích rõ chi tiết API cho mỗi tính năng. Mà thay vào đó được cung cấp tại phụ lục Cheat Sheet (Arduino và C)
 
@@ -39,7 +39,7 @@ TIP: Tất cả các phần Code đều không giải thích rõ chi tiết API 
 
 === Chuẩn bị
 
-- 1 bộ IoT Starter Kit bao gồm các cảm biến, cơ cấu + ESP8266 WiFi Uno
+- Ít nhất bạn cần 1 board mạch ESP8266 lập trình được, tốt nhấn nên sử dụng các board mạch tương tích với Arduino IDE (đã có các module nạp cho chip)
+- Nên có thêm các module khác như cảm biến, động cơ để thực hành, một bộ StarterKit là phù hợp
 - 1 máy tính cá nhân (Windows, MacOS hoặc Linux)
-- Tài liệu hướng dẫn nội bộ, được phát qua mỗi bài học
-- Arduino ESP8266 Cheatsheet (Mục lục cuối quyển sách này)
+- C & Arduino ESP8266 Cheatsheet (Mục lục cuối quyển sách này)
