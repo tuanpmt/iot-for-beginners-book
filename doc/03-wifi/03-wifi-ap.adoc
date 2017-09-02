@@ -6,7 +6,7 @@ ESP8266 có khả năng cho phép các thiết bị khác (Station - STA) truy c
 
 ==== Khởi tạo mạng
 
-Đầu tiên bạn cần `\#include <ESP8266WiFi.h>`, thư viện này chứa hàm `softAP` dùng để cấu hình Access Point mềm (soft AP) để khởi tạo một mạng WiFi.
+Đầu tiên bạn cần include `<ESP8266WiFi.h>`, thư viện này chứa hàm `softAP` dùng để cấu hình Access Point mềm (soft AP) để khởi tạo một mạng WiFi.
 
 Một mạng WiFi đơn giản nhất chỉ cần cung cấp tên SSID và không mật khẩu `WiFi.softAP(ssid)`. Phức tạp hơn, bạn cung cấp mật khẩu cho mạng WiFi `WiFi.softAP(ssid, password)`, hoặc chi tiết `WiFi.softAP(ssid, password, channel, hidden)` khi cung cấp chính xác kênh truyền (1..13), mặc định 1 và ẩn nó đi, không hiển thị ra khi `hidden = true`
 

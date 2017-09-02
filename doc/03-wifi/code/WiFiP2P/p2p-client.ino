@@ -1,9 +1,7 @@
 #include "ESP8266WiFi.h"
-
 // Ten va mat khau cua ESP8266 AP lam server se vao
 const char *ssid = "yourSSID";
 const char *password = "yourPassword";
-
 
 IPAddress server_ip(192, 168, 4, 1);
 #define PORT  23
@@ -17,7 +15,7 @@ void setup() {
 
   Serial.print("\nConnecting to ");
   Serial.println(ssid);
-  
+
   // Kiem tra tình trang ket noi, neu chua ket noi duoc
   // se in chuoi "connecting..." tren man hinh serial terminal.
   while (WiFi.status() != WL_CONNECTED) {

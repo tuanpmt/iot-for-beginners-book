@@ -36,4 +36,6 @@ include::05-wifi-p2p.adoc[]
 
 == Tổng kết
 
-Tổng kết chương
+Trong phần này, chúng ta đã nắm rõ các chế độ hoạt động của ESP8266, các giao thức truyền TCP/IP, HTTP và các định dạng HTML, CSS, Javascript. Ngoài các ví dụ thực tiễn sử dụng ESP8266 như HTTP Client như hướng dẫn ra, bạn có thể sử dụng HTTPClient để kết nối đến các Server tự tạo, gởi dữ liệu cảm biến về, cũng như lấy dữ liệu từ Server để thực thi các tác vụ.
+
+Chế độ WiFi Access Point và Web Server chạy trên ESP8266 thường sử dụng để cấu hình các thông số cho sản phẩm, sử dụng giao diện Web có ở bất kỳ máy tính nào để cung cấp các thông số phức tạp cho ứng dụng một cách dễ dàng.
