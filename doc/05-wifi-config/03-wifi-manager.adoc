@@ -1,14 +1,14 @@
 == Wifi Manager
 
-WifiManager là một phương pháp khác giúp ESP8266 có thể vào được wifi mà không cần phải chỉnh sửa lại chương trình và nạp lại chương trình cho chip ESP8266. Với tính năng này, việc cấu hình wifi cho ESP8266 cũng hết sức dễ dàng, với những thiết bị quen thuộc (điện thoại thông minh, laptop) thông qua giao diện web.
+WifiManager là một thư viện cấu hình ESP8266 kết nối vào mạng WiFi cục bộ sử dụng giao diện Web. Bằng cách khởi động 1  mạng WiFi riêng với Captive Portal, ESP8266 sẽ cho phép các thiết bị khác như máy tính, điện thoại thông minh kết nối vào, đồng thời chuyển hướng mọi kết nối đến giao diện Web do ESP8266 tạo nên. Trên giao diện này, sẽ cung cấp các trường để người dùng có thể dễ dàng quét mạng xung quanh, chọn mạng WiFi, nhập mật khẩu, lưu cấu hình.
 
-=== Hoạt động của WifiManager
+=== Hoạt động cơ bản WifiManager
 
-- Khi ESP8266 khởi động, ESP8266 sẽ vào chế độ STA và sẽ tự động kết nối đến một AP với các thông tin kết nối này đã được lưu vào ESP8266 ở lần kết nối trước đó.
+- Khi ESP8266 khởi động, ESP8266 sẽ vào chế độ STATION và sẽ tự động kết nối đến một Access Point với các thông tin kết nối đã được lưu vào ESP8266 ở lần kết nối thành công trước đó.
 
-- Nếu như kết nối không thành công ( có thể là AP lần trước không còn nữa, hoặc chưa có thông tin của bất cứ AP nào trong ESP8266 ), thì ESP8266 lúc này sẽ vào chế độ AP với một DNS ( nếu không thiết lập thì DNS sẽ là tên mặc định của ESP8266, hoặc có thể đặt lại ) và khởi động Web Server ( với địa chỉ mặc định là 192.168.4.1 )
+- Nếu như kết nối không thành công (có thể là Access Point lần trước không còn nữa, hay sai mật khẩu, hoặc chưa có thông tin của bất cứ Access Point nào trong ESP8266 ), lúc này ESP8266 sẽ vào chế độ AP với một DNS trỏ về chính nó (có thể thiết lập DNS trỏ về địa chỉ khác) và khởi động Web Server (với địa chỉ mặc định là 192.168.4.1)
 
-- Sử dụng các thiết bị có hổ trợ wifi, và có trình duyệt web ( điện thoại thông minh, laptop, máy tính bảng... ) để kết nối đến AP của ESP8266 vừa mới tạo ra. Có thể thấy một giao diện ( với tên AP của ESP8266 là mặc định và không cài đặt mật khẩu cho ESP8266 AP ) tương tự như sau :
+- Sử dụng các thiết bị có hổ trợ wifi, và có trình duyệt web (điện thoại thông minh, laptop, máy tính bảng...) để kết nối đến AP của ESP8266 vừa mới tạo ra. Có thể thấy một giao diện (với tên AP của ESP8266 là mặc định và không cài đặt mật khẩu cho ESP8266 AP) tương tự như sau :
 
 image::05-wificonfig/wifi_manager.png[kết nối bằng wifi manager, role="center", align="center", width=400]
 
@@ -32,3 +32,9 @@ image::05-wificonfig/wifi_manager2.png[Kết nối bằng wifi manager , role="c
 ----
 include::code/WiFiManager/WiFiManager.ino[]
 ----
+
+=== Mở rộng
+
+Ngoài các chế độ cơ bản, thì thư viện WiFiManager còn nhiều tính năng hữu ích khác như `startConfigPortal` để khởi động cấu hình khi cần (ví dụ nhấn nút để cấu hình), bổ sung các trường tùy chọn trên giao diện Web, tùy chọn lại giao diện ...
+
+Các thông tin API và ví dụ bạn có thể dễ dàng tìm thấy tại https://github.com/tzapu/WiFiManager
