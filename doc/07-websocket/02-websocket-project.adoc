@@ -11,6 +11,14 @@ Khi nhấn nút trên board ESP8266 sẽ gởi nội dung trạng thái (đối 
 
 * Cài đặt thư viện https://github.com/me-no-dev/ESPAsyncWebServer
 
+==== Giới thiệu về thư viện ESPAsyncWebServer
+
+Thư viện ESPAsyncWebServer dùng cho việc thiết lập HTTP server và websocket server cho module ESP8266, và xử lí các sự kiện trên server-client.
+
+Để các chương trình dùng thư viện ESPAsyncWebserver hoat động, ta cần dùng thêm thư viện ESPAsyncTCP.
+
+Cài đặt thư viện ESPAsyncTCP: https://github.com/me-no-dev/ESPAsyncTCP
+
 === Đoạn code Javascript để tạo kết nối Web Socket
 
 [source, javascript]
@@ -27,8 +35,23 @@ include::code/index.html[]
 
 === Chương trình hoàn chỉnh cho ESP8266
 
-[source, ino]
+[source, c]
 ----
-include::code/websocket.ino[]
+include::code/websocket/websocket.ino[]
 ----
+
+=== Kết quả
+
+Sau khi biên dịch xong code trên Arduino, ta vào browser, truy cập vào địa chỉ IP của ESP8266 đã trả về trên Serial Monitor cùng với port đã thiết lập trên server, ở trường hợp này là 192.168.1.65:8000
+
+image::07-websocket/websocketBrowser.png[width=500, role="center", align="center"]
+
+==== Video kết quả
+
+video::pN3YSLiWbHk[youtube]
+
+=== Kết luận
+
+Ta thấy việc sử dụng giao thức websocket sẽ tiện lợi hơn giao thức HTTP ở kết nối 2 chiều client-server luôn được duy trì và độ trễ rất thấp (gần như bằng 0). Từ ví dụ cơ bản ở trên, ta thấy rằng có thể dùng giao thức websocket để điều khiển module ESP8266 bằng browser hoặc bằng các ứng dụng di động. Ta cũng có thể xây dựng các ứng dụng real-time với module ESP8266 và browser hoặc di động đều là client và một máy chủ được lập trình bằng Nodejs sẽ đóng vai trò là server.
+
 
