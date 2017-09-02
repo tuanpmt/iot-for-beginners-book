@@ -8,7 +8,7 @@ Websocket hỗ trợ cho các trình duyệt phổ biến hiện nay như: Googl
 
 === Ưu điểm
 
-WebSockets cung cấp khả năng giao tiếp hai chiều với kết nối được duy trì, có độ trễ thấp, giúp Server dễ dàng giao tiếp với Client.
+WebSockets cung cấp khả năng giao tiếp hai chiều với kết nối được duy trì, có độ trễ thấp, giúp Server dễ dàng giao tiếp với Client. Do đó, websocket sẽ phù hợp cho các ứng dụng real-time, người dùng sẽ không mất thời gian phải reload lại trình duyệt để cập nhật thông tin mới nhất như khi sử dụng giao thức HTTP.
 
 === Nhược điểm
 

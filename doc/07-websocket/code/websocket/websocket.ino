@@ -1,10 +1,14 @@
 #include <ESP8266WiFi.h>
 #include <ESPAsyncWebServer.h>
-const char* ssid = "*****";
-const char* password = "*******";
+
+const char* ssid = "******";
+const char* password = "*********";
 const int LED = 16;
 const int BTN = 0;
-const char index_html[] PROGMEM = ""
+
+// để đưa đoạn code HTML vào chương trình Arduino, cần chuyển đổi code HTML sang dạng char
+
+const char index_html[] PROGMEM = "" 
 "<!DOCTYPE HTML>"
 "<html>"
 "<head>"
@@ -19,7 +23,7 @@ const char index_html[] PROGMEM = ""
 "        var led = document.getElementById('led');"
 "        var status = document.getElementById('status');"
 "        var url = window.location.host;"
-"        var ws = new WebSocket('ws://' + url + ':8000/ws');"
+"        var ws = new WebSocket('ws://' + url + '/ws');"
 "        ws.onopen = function()"
 "        {"
 "            status.text = 'Connected';"
@@ -51,14 +55,16 @@ const char index_html[] PROGMEM = ""
 AsyncWebServer server(8000);
 AsyncWebSocket ws("/ws");
 
+
+// Hàm xử lí sự kiện trên Server khi client là browser phát sự kiện
 void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len) {
-  if (type == WS_EVT_DATA && len > 0) {
+  if (type == WS_EVT_DATA && len > 0) { // type: loại sự kiện mà server nhận được. Nếu sự kiện nhận được là từ websocket thì bắt đầu xử lí
     data[len] = 0;
-    String data_str = String((char*)data);
+    String data_str = String((char*)data); // ép kiểu, đổi từ kiểu char sang String
     if (data_str == "LED_ON") {
-      digitalWrite(LED, 0);
+      digitalWrite(LED, 0); // Khi client phát sự kiện "LED_ON" thì server sẽ bật LED
     } else if (data_str == "LED_OFF") {
-      digitalWrite(LED, 1);
+      digitalWrite(LED, 1); // Khi client phát sự kiện "LED_OFF" thì server sẽ tắt LED
     }
   }
 
@@ -77,22 +83,28 @@ void setup()
     delay(1000);
     WiFi.begin(ssid, password);
   }
-  ws.onEvent(onWsEvent);
+ 
+  
+  ws.onEvent(onWsEvent); // gọi hàm onWsEvent
   server.addHandler(&ws);
   server.on("/", HTTP_GET, [](AsyncWebServerRequest * request) {
-    request->send_P(200, "text/html", index_html);
+   
+    request->send_P(200, "text/html", index_html); // trả về file index.html trên giao diện browser khi browser truy cập vào IP của server
   });
+    server.begin(); // khởi động server
+
 }
 
 
 void loop()
 {
   static bool isPressed = false;
-  if (!isPressed && digitalRead(BTN) == 0) { //PRESSED
+  if (!isPressed && digitalRead(BTN) == 0) { //Nhấn nút nhấn GPIO0
     isPressed = true;
     ws.textAll("BTN_PRESSED");
-  } else if (isPressed && digitalRead(BTN)) { //RELEASE
+  } else if (isPressed && digitalRead(BTN)) { //Nhả nút nhấn GPIO0
     isPressed = false;
     ws.textAll("BTN_RELEASE");
   }
 }
+

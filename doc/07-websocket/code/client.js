@@ -1,3 +1,4 @@
+//Trình tự mở một websocket cơ bản:
 
 var ws = new WebSocket('ws://domain.com:8000/'); // mở 1 websocket
 ws.onopen = function() //
