@@ -12,9 +12,9 @@
         var button = document.getElementById('btn');
         var led = document.getElementById('led');
         var status = document.getElementById('status');
-        var url = window.location.host;
-        var ws = new WebSocket('ws://' + url + ':8000/ws'); // mở 1 websocket
-        ws.onopen = function() //
+        var url = window.location.host; // hàm trả về url của trang hiện tại kèm theo port
+        var ws = new WebSocket('ws://' + url + '/ws'); // mở 1 websocket với port 8000
+        ws.onopen = function() //khi websocket được mở thì hàm này sẽ được thưc hiện 
         {
             status.text = 'Connected';
             led.disabled = false; //khi websocket được mở, mới cho phép
@@ -28,12 +28,12 @@
                 button.checked = false;
             }
         };
-        ws.onclose = function() {
+        ws.onclose = function() { // hàm này sẽ được thực hiện khi đóng websocket
             led.disabled = true;
             status.text = 'Disconnected';
         };
 
-        led.onchange = function() {
+        led.onchange = function() { // thực hiện thay đổi bật/tắt led
             var status = 'LED_OFF';
             if (led.checked) {
                 status = 'LED_ON';
