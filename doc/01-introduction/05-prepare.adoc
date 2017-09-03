@@ -98,6 +98,13 @@ Trên giao diện Arduino có 2 nút, ngoài cùng bên trái là nút `Verify`,
 .Nạp chương trình
 image::01-intro/program.png[Nạp chương trình xuống board dùng Arduino IDE, align="center", width=400]
 
+[[export-binary]]
+=== Xuất firmware binary trong Arduino IDE
+Với bất kỳ tình huống nào cần file Binary, bạn có thể được xuất ra bằng cách `Sketch > Export compiled Binary`, và file .bin sẽ nằm trong thư mục của Sketch
+
+.Xuất file Binary
+image::08-fota/export-fw.png[width=400, role="center", align="center"]
+
 
 === Serial Terminal
 
