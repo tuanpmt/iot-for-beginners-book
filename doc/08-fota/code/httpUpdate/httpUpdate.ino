@@ -3,8 +3,8 @@
 #include <ESP8266HTTPClient.h>
 #include <ESP8266httpUpdate.h>
 
-const char* ssid = "TuanPM";
-const char* password = "mobileday";
+const char* ssid = "...";
+const char* password = "...";
 const char *currentVersion = "1.0"; //<1>
 const char *serverUrl = "http://192.168.0.106:8000/firmware.bin"; //<2>
 void setup() {

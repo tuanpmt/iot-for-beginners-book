@@ -11,12 +11,11 @@
     <script type="text/javascript">
         var button = document.getElementById('btn');
         var led = document.getElementById('led');
-        var status = document.getElementById('status');
         var url = window.location.host; // hàm trả về url của trang hiện tại kèm theo port
         var ws = new WebSocket('ws://' + url + '/ws'); // mở 1 websocket với port 8000
-        ws.onopen = function() //khi websocket được mở thì hàm này sẽ được thưc hiện 
+        ws.onopen = function() //khi websocket được mở thì hàm này sẽ được thưc hiện
         {
-            status.text = 'Connected';
+            document.getElementById('status').innerHTML = 'Connected';
             led.disabled = false; //khi websocket được mở, mới cho phép
         };
 
@@ -30,7 +29,7 @@
         };
         ws.onclose = function() { // hàm này sẽ được thực hiện khi đóng websocket
             led.disabled = true;
-            status.text = 'Disconnected';
+            document.getElementById('status').innerHTML = 'Disconnected';
         };
 
         led.onchange = function() { // thực hiện thay đổi bật/tắt led
