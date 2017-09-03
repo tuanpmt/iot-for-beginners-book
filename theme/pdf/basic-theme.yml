@@ -9,11 +9,6 @@ font:
     Amatic:
       normal: AmaticSC-Regular.ttf
       bold: AmaticSC-Bold.ttf
-    FiraCode:
-      normal: FiraCode-Regular.ttf
-      bold: FiraCode-Bold.ttf
-      italic: FiraCode-Light.ttf
-      bold_italic: FiraCode-Medium.ttf
     M+ 1mn:
       normal: mplus1mn-regular-ascii-conums.ttf
       bold: mplus1mn-bold-ascii.ttf
@@ -24,16 +19,6 @@ font:
       bold: mplus1p-regular-fallback.ttf
       italic: mplus1p-regular-fallback.ttf
       bold_italic: mplus1p-regular-fallback.ttf
-    Kanit:
-      normal: Kanit/Kanit-Regular.ttf
-      bold: Kanit/Kanit-Bold.ttf
-      italic: Kanit/Kanit-Italic.ttf
-      bold_italic: Kanit/Kanit-BoldItalic.ttf
-    Asap:
-      normal: Asap/Asap-Regular.ttf
-      bold: Asap/Asap-Bold.ttf
-      italic: Asap/Asap-Italic.ttf
-      bold_italic: Asap/Asap-BoldItalic.ttf
   fallbacks:
     - M+ 1p Fallback
 page:
@@ -82,7 +67,7 @@ admonition:
 heading:
   font_color: #262626
   font_size: 17
-  font_family: Amatic
+  font_family: Jura
   font_style: bold
   # line_height: 1.2
   margin_bottom: $vertical_spacing
