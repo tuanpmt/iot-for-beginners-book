@@ -1,11 +1,8 @@
 [[_cheat_sheet]]
 = Cheatsheet
 
-include::01-c-cheatsheet.adoc[]
+Phần này cung cấp thông tin cho việc tra cứu nhanh các hàm có thể sử dụng với Arduino, ESP8266 và ngôn ngữ lập trình C. Có rất nhiều thư viện cho Arduino cung cấp các tính năng hữu ích thông qua các API cho phép người sử dụng gọi, nội dung tóm lược ở đây chỉ đề cập tới các thư viện thường xuyên được sử dụng nhất. Nếu bạn sử dụng các thư viện khác, hoàn toàn có thể tra cứu dễ dàng trong tài liệu sử dụng của thư viện đó. Thông thường các thư viện được phát hành nguồn mở trên https://github.com[Github] sẽ có file *README.md* cung cấp đầy đủ các thông tin.
 
-include::02-arduino-cheatsheet.adoc[]
+include::01-esp8266-arduino-cheatsheet.adoc[]
 
-include::03-ESP8266-cheatsheet.adoc[]
-
-
-== Tổng kết
+include::02-c-cheatsheet.adoc[]

@@ -13,7 +13,6 @@ include::code/c-cheatsheet.c[lines=1..22]
 include::code/c-cheatsheet.c[lines=1..22]
 ----
 |
-{set:cellbgcolor!}
 [source, c]
 ----
 include::code/c-cheatsheet.c[lines=1..22]
