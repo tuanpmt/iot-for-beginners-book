@@ -7,90 +7,89 @@
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>//<2>
 </head>
 <body>
-    <h1> 1. THONG SO NHIET DO, DO AM</h><br> //<3>  
-        <h2> Temprature</h2> <input type="text" size="6" id="temp">&#176;C<br>                                       
+    <h1> 1. THONG SO NHIET DO, DO AM</h><br> //<3>
+        <h2> Temprature</h2> <input type="text" size="6" id="temp">&#176;C<br>
         <h2> Humidity</h2> <input type="text" size="6" id="humd">%<br>
         <h1> 2. DO THI</h1><br>
         <!-- thiết lập kích thước cho graph thông qua id ChartContainer đã thiết lập ở trên  -->
         <div id="ChartContainer" style="height: 300px; width:80%;"></div>
         <script type="text/javascript">
             function httpGetAsync(theUrl, callback) { //<4>
-                var xmlHttp = new XMLHttpRequest();
-                xmlHttp.onreadystatechange = function() {
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) 
-                callback(JSON.parse(xmlHttp.responseText));
-        }
-        xmlHttp.open("GET", theUrl, true); // true for asynchronous
-        xmlHttp.send(null);
-    }
-
-    window.onload = function() {
-        var dataTemp = [];
-        var dataHumd = [];
-
-        var Chart = new CanvasJS.Chart("ChartContainer", {
-            zoomEnabled: true, // Dùng thuộc tính có thể zoom vào graph
-            title: {
-                text: "Temprature & Humidity" // Viết tiêu đề cho graph
-            },
-            toolTip: { // Hiển thị cùng lúc 2 trường giá trị nhiệt độ, độ ẩm trên graph
-                shared: true
-            },
-            axisX: {
-                title: "chart updates every 2 secs" // Chú thích cho trục X
-            },
-            data: [{
-                    // Khai báo các thuộc tính của dataTemp và dataHumd
-                    type: "line", // Chọn kiểu dữ liệu đường
-                    xValueType: "dateTime", // Cài đặt kiểu giá trị tại trục X là thuộc tính thời gian
-                    showInLegend: true, // Hiển thị "temp" ở mục chú thích (legend items)
-                    name: "temp",
-                    dataPoints: dataTemp // Dữ liệu hiển thị sẽ lấy từ dataTemp
-                },
-                {
-                    type: "line",
-                    xValueType: "dateTime",
-                    showInLegend: true,
-                    name: "humd",
-                    dataPoints: dataHumd
+                        var xmlHttp = new XMLHttpRequest();
+                        xmlHttp.onreadystatechange = function() {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                        callback(JSON.parse(xmlHttp.responseText));
                 }
-                ],
-            });
-        var yHumdVal = 0; // Biến lưu giá trị độ ẩm (theo trục Y)
-        var yTempVal = 0; // Biến lưu giá trị nhiệt độ (theo trục Y)
-        var updateInterval = 2000; // Thời gian cập nhật dữ liệu 2000ms = 2s
-        var time = new Date(); // Lấy thời gian hiện tại
+                xmlHttp.open("GET", theUrl, true); // true for asynchronous
+                xmlHttp.send(null);
+            }
 
-        var updateChart = function() {
-            httpGetAsync('/get', function(data) {
+            window.onload = function() {
+                var dataTemp = [];
+                var dataHumd = [];
 
-                // Gán giá trị từ localhost:8000/get vào textbox để hiển thị
-                document.getElementById("temp").value = data[0].temp;
-                document.getElementById("humd").value = data[0].humd;
+                var Chart = new CanvasJS.Chart("ChartContainer", {
+                    zoomEnabled: true, // Dùng thuộc tính có thể zoom vào graph
+                    title: {
+                        text: "Temprature & Humidity" // Viết tiêu đề cho graph
+                    },
+                    toolTip: { // Hiển thị cùng lúc 2 trường giá trị nhiệt độ, độ ẩm trên graph
+                        shared: true
+                    },
+                    axisX: {
+                        title: "chart updates every 2 secs" // Chú thích cho trục X
+                    },
+                    data: [{
+                            // Khai báo các thuộc tính của dataTemp và dataHumd
+                            type: "line", // Chọn kiểu dữ liệu đường
+                            xValueType: "dateTime", // Cài đặt kiểu giá trị tại trục X là thuộc tính thời gian
+                            showInLegend: true, // Hiển thị "temp" ở mục chú thích (legend items)
+                            name: "temp",
+                            dataPoints: dataTemp // Dữ liệu hiển thị sẽ lấy từ dataTemp
+                        },
+                        {
+                            type: "line",
+                            xValueType: "dateTime",
+                            showInLegend: true,
+                            name: "humd",
+                            dataPoints: dataHumd
+                        }
+                        ],
+                    });
+                var yHumdVal = 0; // Biến lưu giá trị độ ẩm (theo trục Y)
+                var yTempVal = 0; // Biến lưu giá trị nhiệt độ (theo trục Y)
+                var updateInterval = 2000; // Thời gian cập nhật dữ liệu 2000ms = 2s
+                var time = new Date(); // Lấy thời gian hiện tại
 
-                // Xuất ra màn hình console trên browser giá trị nhận được từ localhost:8000/get
-                console.log(data);
-                // Cập nhật thời gian và lấy giá trị nhiệt độ, độ ẩm từ server
-                time.setTime(time.getTime() + updateInterval);
-                yTempVal = parseInt(data[0].temp);
-                yHumdVal = parseInt(data[0].humd);
-                dataTemp.push({ // cập nhât dữ liệu mới từ server
-                    x: time.getTime(),
-                    y: yTempVal
-                });
-                dataHumd.push({
-                    x: time.getTime(),
-                    y: yHumdVal
-                });
-                Chart.render(); // chuyển đổi dữ liệu của của graph thành mô hình đồ họa
-            });
-        };
-        updateChart(); // Chạy lần đầu tiên
-        setInterval(function() { // Cập nhật lại giá trị graph sau thời gian updateInterval
-            updateChart()
-        }, updateInterval);
-    }
+                var updateChart = function() {
+                    httpGetAsync('/get', function(data) {
 
-</script>
+                        // Gán giá trị từ localhost:8000/get vào textbox để hiển thị
+                        document.getElementById("temp").value = data[0].temp;
+                        document.getElementById("humd").value = data[0].humd;
+
+                        // Xuất ra màn hình console trên browser giá trị nhận được từ localhost:8000/get
+                        console.log(data);
+                        // Cập nhật thời gian và lấy giá trị nhiệt độ, độ ẩm từ server
+                        time.setTime(time.getTime() + updateInterval);
+                        yTempVal = parseInt(data[0].temp);
+                        yHumdVal = parseInt(data[0].humd);
+                        dataTemp.push({ // cập nhât dữ liệu mới từ server
+                            x: time.getTime(),
+                            y: yTempVal
+                        });
+                        dataHumd.push({
+                            x: time.getTime(),
+                            y: yHumdVal
+                        });
+                        Chart.render(); // chuyển đổi dữ liệu của của graph thành mô hình đồ họa
+                    });
+                };
+                updateChart(); // Chạy lần đầu tiên
+                setInterval(function() { // Cập nhật lại giá trị graph sau thời gian updateInterval
+                    updateChart()
+                }, updateInterval);
+            }
+        </script>
 </body>
 </html>
