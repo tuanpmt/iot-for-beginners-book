@@ -1,4 +1,3 @@
-//---------------------------------------------------------------------------------------------
 var fs = require('fs');
 var url = require('url');
 var http = require('http');
@@ -11,7 +10,6 @@ function requestHandler(request, response) {
     var uriData = url.parse(request.url);
     var pathname = uriData.pathname;          // /firmware.bin
 
-    //-----------------------------------------------------------------------------------------
     if (pathname == '/firmware.bin') {
         var ver = request.headers['x-esp8266-version'];
         console.log('Client request update, version ', ver);
