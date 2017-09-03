@@ -24,6 +24,8 @@ image::02-helloworld/arduino-ide.png[width=400, role="center", align="center"]
 .Mạch ESP8266 WiFi Uno có đấu nối sẵn LED vào Pin 16, và nút nhất vào Pin 0
 image::02-helloworld/btn-led.png[width=300, role="center", align="center"]
 
+Với mã nguồn bên dưới, sau khi kiểm tra chương trình, bạn cần chắc chắn đã <<select-arduino-board>> và <<arduino-flash>>
+
 === Mã nguồn chớp tắt dùng Delay
 
 [source, c]
@@ -37,9 +39,6 @@ include::code/blink-delay/blink-delay.ino[]
 ----
 include::code/blink-poll/blink-poll.ino[]
 ----
-
-.Video kết quả
-video::8jM-JTFeAlg[youtube]
 
 === Digital IO
 

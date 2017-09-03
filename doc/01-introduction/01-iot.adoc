@@ -71,20 +71,6 @@ image::01-intro/01.iot-concept.png[Hình minh họa IoT, role="center", align="c
 .Sự phát triển của iot dự đoán đến năm 2020
 image::01-intro/01.iot_growth_technology.png[Sự phát triển của iot dự đoán đến năm 2020, align="center", width=500]
 
-.Video khái niệm về IoT
-video::M8FKl0kRuVM[youtube]
-
 === Những ứng dụng thực tế trong cuộc sống
 
 
-.Smarthome
-video::NjYTzvAVozo[youtube]
-
-.Smart wifi video car
-video::ZteX4BI46nc[youtube]
-
-.Smart light
-video::c6MsG3oIehY[youtube]
-
-.Smart city
-video::Br5aJa6MkBc[youtube]

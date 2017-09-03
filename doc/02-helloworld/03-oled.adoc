@@ -43,7 +43,7 @@ Mạch vật lý I2C là mạch cực thu hở, do đó để mạng I2C có th�
 .ESP8266 với OLED
 image::01-intro/oled-esp.png[ESP8266 với OLED, width=400, align="center", role="center"]
 
-**Bước 2: Cài đặt thư viện** `ESP8266 and ESP32 OLED driver for SSD1306 display`
+**Bước 2: Cài đặt thư viện** `ESP8266 and ESP32 OLED driver for SSD1306 display`, xem thêm <<install-library>>
 
 **Bước 3: Lập trình** Chúng ta sẽ thực hiện hiển thị giả lập đồng hô trên màn hình OLED
 
@@ -52,8 +52,8 @@ image::01-intro/oled-esp.png[ESP8266 với OLED, width=400, align="center", role
 include::code/oled/oled.ino[]
 ----
 
+Thực hiện sau khi kiểm tra mã nguồn:
 
-
-
-
+- <<select-arduino-board>>
+- <<arduino-flash>>
 

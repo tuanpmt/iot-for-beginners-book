@@ -19,15 +19,21 @@ include::code/dht11-logger/dht11-logger.ino[]
 
 <1> ESP8266 sẽ gửi dữ liệu lên server sau khi kết nối thành công đến server thông qua lệnh `client.print()`. Nội dung gửi :
 
-* GET /update?temp=30.6&humd=60 HTTP/1.1 với : 
+* GET /update?temp=30.6&humd=60 HTTP/1.1 với :
 ** `GET` là phương thức gửi dữ liệu.
 ** `/update?temp=30.6&humd=60` là nội dung cần gửi bao gồm cả pathname và dữ liệu.
 ** `HTTP/1.1` khai báo sử dụng giao thức HTTP version 1.1 để có thể tạo 1 HTTP request
 * `Host: 192.168.1.7:8000` thông tin về địa chỉ IP và port của server
 * `Connection, Content-Length`
 
+Thực hiện sau khi kiểm tra mã nguồn:
+
+- <<select-arduino-board>>
+- <<arduino-flash>>
+
+
 Có thể xem thông các thông tin của quá trình truyền nhận dữ liệu với lệnh
-`curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0`. Thông tin hiển thị như bên dưới 
+`curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0`. Thông tin hiển thị như bên dưới
 
 [source, c]
 ----
@@ -35,22 +41,22 @@ name@yourname:~$ curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0
 [1] 9277
 name@yourname:~$ *   Trying 192.168.1.7...
 * Connected to 192.168.1.7 (192.168.1.7) port 8000 (#0)
-> GET /update?temp=28.0 HTTP/1.1    // > Thông tin gửi từ ESP8266 
+> GET /update?temp=28.0 HTTP/1.1    // > Thông tin gửi từ ESP8266
 > Host: 192.168.1.7:8000
 > User-Agent: curl/7.47.0
 > Accept: */*
->                                  // < Thông tin gửi từ server 
+>                                  // < Thông tin gửi từ server
 < HTTP/1.1 200 OK
 < Date: Wed, 23 Aug 2017 17:22:49 GMT
 < Connection: keep-alive
 < Content-Length: 0
-< 
+<
 * Connection #0 to host 192.168.1.7 left intact
 ----
 
 Kết quả hiển thị trên Arduino IDE và màn hình Log của máy tính
 
-.Hình ảnh trên Arduino và terminal sau khi kết nối 
+.Hình ảnh trên Arduino và terminal sau khi kết nối
 image::04-dht11/esp8266-server.png[height=366, align="center"]
 
 
