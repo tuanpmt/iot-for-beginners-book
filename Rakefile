@@ -13,7 +13,7 @@ namespace :book do
   desc 'build basic book formats'
   task :sample => :prebuild do
     puts "Converting sample"
-    `bundle exec asciidoctor-pdf -a pdf-stylesdir=pdf -a pdf-style=basic -a pdf-fontsdir=theme/fonts -r asciidoctor-diagram sample.adoc 2>/dev/null`
+    `bundle exec asciidoctor-pdf -a pdf-stylesdir=theme/pdf -a pdf-style=basic -a pdf-fontsdir=theme/fonts -r asciidoctor-diagram sample.adoc 2>/dev/null`
     puts " -- PDF  output at sample.pdf"
   end
 

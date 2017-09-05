@@ -1,6 +1,6 @@
 == MQTT Client
 
-Như chúng ta đã tìm hiểu ở phần trước, 2 thành phần publisher và subscriber là đặc trưng tạo nên giao thức MQTT. Các MQTT client không kết nối trực tiếp với nhau, mọi gói dữ liệu được gửi đi đều thông qua broker MQTT. Để có thể triển khai ứng dụng MQTT Client, chúng ta cần MQTT Broker, sẽ được trình bày trong phần sau. Ở phần này chúng ta sẽ làm quen với giao thức MQTT bằng các ví dụ sử dụng MQTT Client thông dụng, và sử dụng các dịch vụ MQTT Broker miễn phí, phổ biến.
+Như chúng ta đã tìm hiểu ở phần trước, 2 thành phần publisher và subscriber là đặc trưng tạo nên giao thức MQTT. Các MQTT client không kết nối trực tiếp với nhau, mọi gói dữ liệu được gửi đi đều thông qua broker MQTT. Để có thể triển khai ứng dụng MQTT client, chúng ta cần MQTT Broker, sẽ được trình bày trong phần sau. Ở phần này chúng ta sẽ làm quen với giao thức MQTT bằng các ví dụ sử dụng MQTT client thông dụng, và sử dụng các dịch vụ MQTT Broker miễn phí, phổ biến.
 
 Hai dịch vụ MQTT Broker phổ biến là http://test.mostquitto.org và http://cloudmqtt.com
 
@@ -43,7 +43,7 @@ image::06-mqtt/createATopic.png[width=954, align="center"]
 Chúng ta sẽ tạo 1 connection có tên eclipse MQTT với host name của broker MQTT là iot.eclipse.org, broker này sẽ giúp trao đổi dữ liệu của các clients với nhau và lắng nghe các clients ở port 1883 (port sử dụng giao thức MQTT và không mã hóa dữ liệu, các port 8883, 8884, 8080, 8081 tham khảo tại https://test.mosquitto.org)
 Ở connection này sẽ đăng kí nhận gói tin tại topic Home/garden/sensor/# (kí tự # cho phép subcribe các topic Home/garden/sensor/1, Home/garden/sensor/2 vv...). Tiếp theo chúng ta sẽ pulish 1 gói dữ liệu với nội dung "Temp in garden: 27degree Celcius " tại topic Home/garden/sensor/1.
 
-Kết quả: tại mục subrcriptions, chúng ta sẽ nhận được gói dữ liệu đã publish do đã subcribe topic 
+**Kết quả**: tại mục subrcriptions, chúng ta sẽ nhận được gói dữ liệu đã publish do đã subcribe topic 
 Home/garden/sensor/#
 
 **Mở rộng**
@@ -52,14 +52,14 @@ Tạo nhiều connections để subcribe và publish các gói tin với broker 
 
 === MQTT.js
 
-MQTT.js có thể xem như một thư viện dành cho MQTT Client, được viết bằng ngôn ngữ JavaScript trên nền tảng Node.js và hỗ trợ MQTT Over Websocket (MOW).
+MQTT.js có thể xem như một thư viện dành cho MQTT client, được viết bằng ngôn ngữ JavaScript trên nền tảng Node.js và hỗ trợ MQTT Over Websocket (MOW).
 
 MQTT.js là dự án mã nguồn mở (open source), bạn có thể tải MQTT.js bản cập nhật mới nhất tại 
 https://github.com/mqttjs/MQTT.js.git
 
 **Cài đặt**
 
-Do được xây dựng dựa trên nền tảng Node.js nên trước khi cài đặt MQTT.js, bạn phải đảm bảo rằng thiết bị của mình đã có sẵn Node.js. Nếu chưa, bạn có thể tham khảo cách cài đặt ở đây: https://nodejs.org/en/
+Do được xây dựng dựa trên nền tảng Node.js nên trước khi cài đặt MQTT.js, bạn phải đảm bảo rằng thiết bị của mình đã có sẵn Node.js. Nếu chưa, bạn có thể tham khảo cách cài đặt tại https://nodejs.org/en/
 
 Đầu tiên, ta khởi tạo một Nodejs Server. Để dễ quản lý, có thể tạo một thư mục riêng và một file javascrip trong đó, ví dụ như server.js. Đi đến thư mục này và mở terminal (linux OS) hoặc Command Prompt (trên Windowns OS) và dùng lệnh:
 
@@ -71,9 +71,9 @@ Tiếp theo chúng ta sẽ cài MQTT.js, sử dụng lệnh:
 
 `npm install mqtt --save`
 
-Sau khi cài đặt xong, bạn có thể sử dụng module "mqtt" để thực hiện việc kết nối MQTT Client với Broker, publish message hay subscribe topic.
+Sau khi cài đặt xong, bạn có thể sử dụng module "mqtt" để thực hiện việc kết nối MQTT client với Broker, publish message hay subscribe topic.
 
-Để hiểu rõ hơn cách hoạt động của MQTT.js, chúng ta sẽ tạo ra 2 file mã nguồn Javascript (file.js) thực hiện subcribe và puslish các gói tin. 
+Để hiểu rõ hơn cách hoạt động của MQTT.js, chúng ta sẽ tạo ra 2 file mã nguồn Javascript (file .js) thực hiện subcribe và puslish các gói tin. 
 
 **Mã nguồn của client A**
 
@@ -90,13 +90,18 @@ include::code/client-b.js[]
 ----
 
 **Giải thích**
+Chúng ta sẽ tạo 2  MQTT client là client-a.js và client-b.js (lưu ý: phải cài đặt module MQTT.js sau khi tạo file .js). Ở client-a.js sẽ thực hiện subcribe kênh `/client-a/sub` (kênh client b sẽ publish các gói tin) đồng thời publish một gói tin vào `/client-b/sub`
+(kênh mà client b sẽ subcribe), tương tự với file clien-b.js. Khởi chạy file `client-a.js` sau đó chạy file `client-b.js`. Kết quả hiển thị như hình bên dưới.
+
+.Hình ảnh kết quả khi khởi chạy các MQTT client
+image::06-mqtt/MQTTjsConsole.png[width=511, align="center"]
 
 
-Ngoài ra, MQTT.js còn cung cấp thêm các lệnh để có thể tương tác với Broker thông qua terminal. Để làm được điều này, bạn phải cài đặt MQTT.js như một module toàn cục, sử dụng lệnh:
+Ngoài ra, MQTT.js còn cung cấp thêm các lệnh để có thể tương tác với Broker thông qua terminal. Để làm được điều này, chúng ta cài đặt MQTT.js như một module toàn cục bằng cách sử dụng lệnh:
 
 `npm install mqtt -g`.
 
-Bạn có thể test thử bằng cách mở 2 màn hình terminal, ở màn hình 1, cài đặt là "subscriber", subscribe vào topic tên là "topicA":
+Bạn có thể kiểm tra bằng cách mở 2 màn hình terminal, ở màn hình 1, cài đặt là "subscriber", subscribe vào topic tên là "topicA" bằng lệnh:
 
 `mqtt sub -t 'topicA' -h 'test.mosquitto.org' -v`
 
@@ -104,14 +109,37 @@ Bạn có thể test thử bằng cách mở 2 màn hình terminal, ở màn hì
 
 `mqtt pub -t 'topicA' -h 'test.mosquitto.org' -m 'hello subscriber'`.
 
-Để xem thêm các API khác trong MQTT.js, bạn có thể sử dụng lệnh:
+Các options:
 
-`mqtt help [command]`.
+	* `-t` : MQTT topic, nơi sẽ thực hiện pushlish 1 message 
+	* `-h` : Xác định máy chủ sẽ kết nối đến 
+	* `-m` : Gửi 1 message dùng command line 
+
+Kết quả hiển thị như hình bên dưới:
+ 
+.Hình ảnh message được publish dùng command line  
+image::06-mqtt/MQTTjsCommand.png[width=681, align="center"]
+
+
+NOTE: Để xem thêm các API khác trong MQTT.js, bạn có thể sử dụng lệnh: `mqtt help [command]`.
 
 MQTT Over Websocket
 
 === ESP8266 MQTT Client
 
 ==== PubSub
+
+Trong phần này chúng ta sẽ thực hiện kết nối board ESP8266 WiFi Uno đến 1 broker sử dụng thư viện PubSubClient.
+
+* **Bước 1 :** Download thư viện PubSubClient tại đường dẫn https://github.com/knolleary/pubsubclient và add vào chương trình Arduino. Ngoài ra có thể import thư viện này trong Arduino bằng cách tìm kiếm thư viện với từ khóa `PubSubClient`, chọn thư viện PubSubClient của tác giả Nick O'Leary và nhấn install.
+
+* **Bước 2 :** Viết chương trình cho ESP8266. Mã nguồn được trình bày ở phía dưới
+
+[source, c]
+----
+include::code/ESP8266PubSub.ino[]
+----
+
+* **Bước 3 :** Mở MQTT lens và tạo 1 connection 
 
 ==== ESP8266MQTTClient
