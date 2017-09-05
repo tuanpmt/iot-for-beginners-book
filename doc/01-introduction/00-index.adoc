@@ -1,7 +1,7 @@
 [[_getting_started]]
 = Kiến thức cơ bản
 
-Chúng ta sẽ bắt đầu bằng việc tìm hiểu tổng quan về hệ thống **IoT**, tổng quan về dòng chip **ESP8266**, rồi đến việc cài đặt công cụ phát triển **Arduino** trên máy tính của bạn. Tiếp đến là việc biên dịch các dự án mẫu, lựa chọn trình thư viện, trình soạn thảo sẽ làm việc. Kết thúc chương này chúng ta nên có được cái nhìn tổng quát về hệ thống IoT, làm thế nào và sử dụng công cụ gì để lập trình ứng dụng với ESP8266.
+Trong phần này, chúng ta sẽ bắt đầu bằng việc tìm hiểu tổng quan về hệ thống **IoT**, tổng quan về dòng chip **ESP8266**, rồi đến việc cài đặt công cụ phát triển **Arduino** trên máy tính của bạn. Tiếp đến là việc biên dịch các dự án mẫu, lựa chọn trình thư viện, trình soạn thảo sẽ làm việc. Kết thúc chương này chúng ta nên có được cái nhìn tổng quát về hệ thống IoT, làm thế nào và sử dụng công cụ gì để lập trình ứng dụng với ESP8266.
 
 Điểm qua phần này như sau:
 
@@ -20,13 +20,10 @@ include::02-esp8266.adoc[]
 
 include::03-arduino.adoc[]
 
-include::04-starterkit.adoc[]
+include::04-nodejs.adoc[]
 
-include::05-nodejs.adoc[]
-
-include::06-prepare.adoc[]
+include::05-prepare.adoc[]
 
 == Tổng kết
 
-Tới lúc này, bạn có thể đã có cái nhìn tổng quan về hệ sinh thái, công cụ và phương thức làm việc với ESP8266 cũng như tổng quan về hệ thống **IoT**. Đồng thời đã có thể bắt đầu việc phát triển ứng dụng cho ESP8266 ngay lập tức.
-Tiếp theo chúng ta sẽ tìm hiểu những kiến thức cơ bản và cần thiết nhất để khởi động ứng dụng cho ESP8266.
+Tới lúc này, bạn có thể đã có cái nhìn tổng quan về hệ sinh thái, công cụ và phương thức làm việc với ESP8266 cũng như tổng quan về hệ thống **IoT**. Đồng thời đã có thể bắt đầu việc phát triển ứng dụng cho ESP8266 ngay lập tức. Các công cụ được lựa chọn đều là đa nền tảng, dễ dàng được sử dụng cho các hệ điều hành Mac OS, Windows, hay Linux

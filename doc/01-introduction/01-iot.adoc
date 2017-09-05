@@ -21,6 +21,47 @@ Người ta cho rằng, IoT là chìa khóa của sự thành công, là bước
 
 Các hashtag: https://www.google.com/search?q=iot[*#IoT*] https://www.google.com/search?q=iot[*#InternetOfThings*]
 
+=== Hệ thống Internet of Things (IoT)
+
+Hệ thống IoT cho phép người dùng tiến sâu hơn vào việc tự động hóa, phân tích, tích hợp. Giúp cho việc cải tầm nhìn, tính chính xác, nâng tầm các công nghệ về cảm biến, kết nối, robot để đạt hiệu quả cao nhất.
+
+Các hệ thống IoT phát triển khai thác các tiến bộ của phần mềm, giảm giá phần cứng và tận dụng các công nghệ hiện đại. Những cải tiến tiên tiến làm thay đổi cách vận hành của sản xuất sản phẩm, dịch vụ, xã hội, kinh tế và ảnh hưởng đến cả chính trị
+
+==== Những điểm mấu chốt của IoT
+
+Những vấn đề quan trọng nhất của hệ thống IoT bao gồm trí thông minh nhân tạo, kết nối, cảm biến, thiết bị nhỏ cơ động, và được mô tả sơ lược:
+
+- *AI (Artifical Intelligence)* - Hệ thống IoT về cơ bản được hiểu là làm cho mọi thiết bị trở nên *thông minh*, nghĩa là nó giúp nâng cao mọi khias cạnh của cuộc sống với lượng dữ liệu thu thập được, thông qua các thuật toán tính toán nhân tạo và kết nối mạng. Một ví dụ đơn giản như hộp đựng Gạo của bạn biết rằng nó gần hết, và tự động đặt một đơn hàng mới cho nhà cung cấp.
+- *Connectivity - Kết nối* Các mạng thiết bị sẽ trở nên phổ biến, nhiều mạng thiết bị nhỏ hơn, rẻ hơn được phát triển phù hợp với thực tế.
+- Sensors − IoT loses its distinction without sensors. They act as defining instruments which transform IoT from a standard passive network of devices into an active system capable of real-world integration.
+- Active Engagement − Much of today's interaction with connected technology happens through passive engagement. IoT introduces a new paradigm for active content, product, or service engagement.
+- Small Devices − Devices, as predicted, have become smaller, cheaper, and more powerful over time. IoT exploits purpose-built small devices to deliver its precision, scalability, and versatility.
+
+==== IoT − Advantages
+
+The advantages of IoT span across every area of lifestyle and business. Here is a list of some of the advantages that IoT has to offer −
+
+- Improved Customer Engagement − Current analytics suffer from blind-spots and significant flaws in accuracy; and as noted, engagement remains passive. IoT completely transforms this to achieve richer and more effective engagement with audiences.
+
+- Technology Optimization − The same technologies and data which improve the customer experience also improve device use, and aid in more potent improvements to technology. IoT unlocks a world of critical functional and field data.
+
+- Reduced Waste − IoT makes areas of improvement clear. Current analytics give us superficial insight, but IoT provides real-world information leading to more effective management of resources.
+
+- Enhanced Data Collection − Modern data collection suffers from its limitations and its design for passive use. IoT breaks it out of those spaces, and places it exactly where humans really want to go to analyze our world. It allows an accurate picture of everything.
+
+==== IoT − Disadvantages
+
+Though IoT delivers an impressive set of benefits, it also presents a significant set of challenges. Here is a list of some its major issues −
+
+- Security − IoT creates an ecosystem of constantly connected devices communicating over networks. The system offers little control despite any security measures. This leaves users exposed to various kinds of attackers.
+
+- Privacy − The sophistication of IoT provides substantial personal data in extreme detail without the user's active participation.
+
+- Complexity − Some find IoT systems complicated in terms of design, deployment, and maintenance given their use of multiple technologies and a large set of new enabling technologies.
+
+- Flexibility − Many are concerned about the flexibility of an IoT system to integrate easily with another. They worry about finding themselves with several conflicting or locked systems.
+
+- Compliance − IoT, like any other technology in the realm of business, must comply with regulations. Its complexity makes the issue of compliance seem incredibly challenging when many consider standard software compliance a battle.
 
 [.right.text-center]
 .Hình minh họa
@@ -30,20 +71,6 @@ image::01-intro/01.iot-concept.png[Hình minh họa IoT, role="center", align="c
 .Sự phát triển của iot dự đoán đến năm 2020
 image::01-intro/01.iot_growth_technology.png[Sự phát triển của iot dự đoán đến năm 2020, align="center", width=500]
 
-.Video khái niệm về IoT
-video::M8FKl0kRuVM[youtube]
-
 === Những ứng dụng thực tế trong cuộc sống
 
 
-.Smarthome
-video::NjYTzvAVozo[youtube]
-
-.Smart wifi video car
-video::ZteX4BI46nc[youtube]
-
-.Smart light
-video::c6MsG3oIehY[youtube]
-
-.Smart city
-video::Br5aJa6MkBc[youtube]

@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------------------
 var fs = require('fs');
 var url = require('url');
-var http = require('http');                                                            //<1>
+var http = require('http');//<1>
 var querystring = require('querystring');
 var db = []; //database
 //---------------------------------------------------------------------------------------------
@@ -18,20 +18,20 @@ function requestHandler(request, response) {
         var newData = {
             temp: queryData.temp,
             humd: queryData.humd,
-            time: new Date()                                                           // <2>
+            time: new Date()// <2>
         };
         db.push(newData);
         console.log(newData);
         response.end();
     //-----------------------------------------------------------------------------------------
-    } else if (pathname == '/get') {                                                   //<3>
+    } else if (pathname == '/get') {//<3>
         response.writeHead(200, {
             'Content-Type': 'application/json'
         });
         response.end(JSON.stringify(db));
         db = [];
     //-----------------------------------------------------------------------------------------
-    } else {                                                                           //<4>
+    } else { //<4>
         fs.readFile('./index.html', function(error, content) {
             response.writeHead(200, {
                 'Content-Type': 'text/html'
@@ -42,5 +42,5 @@ function requestHandler(request, response) {
     //-----------------------------------------------------------------------------------------
 }
 var server = http.createServer(requestHandler);
-server.listen(8000);                                                                   //<5>
+server.listen(8000); //<5>
 console.log('Server listening on port 8000');

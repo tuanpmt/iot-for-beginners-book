@@ -65,8 +65,6 @@ ESP8285 là một phiên bản khác sau này của ESP8266EX, giống hoàn to�
 
 ESP8266 cần ít nhất thêm 7 linh kiện nữa mới có thể hoạt động, trong đó phần khó nhất là Antena. Đòi hỏi phải được sản xuất, kiểm tra với các thiết bị hiện đại. Do đó, trên thị trường xuất hiện nhiều Module và Board mạch phát triển đảm đương hết để người dùng đơn giản nhất trong việc phát triển ứng dụng. Một số Module và Board phát triển phổ biến:
 
-//Bổ sung table so sánh, hình ảnh vector
-
 .Một số module ESP8266 trên thị trường
 |===
 |Tên        |Số chân|Pitch |LEDs |Antenna     |Shielded|Dimensions
@@ -88,5 +86,14 @@ ESP8266 cần ít nhất thêm 7 linh kiện nữa mới có thể hoạt độn
 |ESP-14     |22     |2mm   |No   |PCB         |Yes     |24.3 x 16.2
 |===
 
+=== Board mạch phát triển ESP8266
 
-https://esp8266.vn/introduction/esp-module/[*Xem thêm*] https://esp8266.vn/introduction/esp-module/
+Module ESP8266 chỉ bao gồm Chip ESP8266 và các linh kiện giúp chip có thể hoạt động được, tuy nhiên, trong quá trình phát triển sản phẩm, chúng ta cần phải *nạp* chương trình cho chip trước khi đưa vào hoạt động thực tế. Quá trình này là quá trình gởi dữ liệu Binary (đã biên dịch trên máy tính) xuống bộ nhớ Flash của ESP8266.
+Để đưa ESP8266 vào chế độ *Nạp* (Program) thì cần phải đặt mức logic 0 (0V - GND) vào chân *GPIO0*, đồng thời RESET chip. Rồi sau đó có thể dùng các công cụ nạp để gởi Firmware từ máy tính xuống.
+
+.Một mạch nạp tự động sử dụng chip USB CDC
+image::01-intro/auto-program.jpg[Mạch nạp tự động, width=500, align="center"]
+
+Hiện nay các Board mạch phát triển đều tích hợp các mạch nạp tự động, nghĩa là phần mềm sẽ tự động điều chỉnh các chân DTR và RTS của chip USB CDC, đưa ESP8266 vào chế độ nạp, sau đó sẽ gởi firmware xuống. Arduino IDE cũng vậy, nó sẽ điều chỉnh dựa trên việc khai báo Board mạch sử dụng.
+
+TIP: Nếu bạn là người mới bắt đầu và chưa rõ về phần cứng, thì tốt nhất nên sử dụng một Board mạch phát triển sẵn có các chế độ nạp tự động. Khi bạn chuyển sang sản xuất phần cứng cho các ứng dụng cụ thể, thì có thể tách rời phần nạp tự động này ra để tiết giảm chi phí. Các mạch điện này đều được công bố rộng rãi.

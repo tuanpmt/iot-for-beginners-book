@@ -1,16 +1,16 @@
 :doctype: 						book
-:toc: 							macro
+:toc: 							  macro
 :toclevels: 					2
 :producer: 						Asciidoctor
 :keywords: 						IoT, ESP8266, IoTs, WoT
 :copyright: 					@2017 IoT Academy
-:author: 						IoT Academy
+:author: 						  IoT Academy
 :version: 						v1.0
 :front-cover-image: 	        image:cover.png[width=800,height=1400]
 :icons: 						font
 :username: 						tuanpm
 :imagesdir: 					images
-:pdf-stylesdir: 			    themes/pdf
+:pdf-stylesdir: 			themes/pdf
 :pdf-style: 					basic
 :source-highlighter:            highlightjs
 :imagesdir:                     images

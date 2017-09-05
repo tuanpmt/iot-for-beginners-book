@@ -1,7 +1,7 @@
 [[_wifi_config]]
 = Các chế độ cấu hình WiFi
 
-Thông thường, khi bắt đầu kết nối wifi cho ESP8266, ta phải cấu hình cho thiết bị các thông số của Access Point cũng như SSID và password nếu mạng wifi được thiết lập các bảo mật như WEP/WPA/WPA2. Tuy nhiên, các ứng dụng nhúng sử dụng Wi-fi thường không chú trọng đến giao diện người dùng (user interface), ví dụ như bàn phím hay touchscreen,..  Vì thế, mỗi khi muốn kết nối thiết bị ESP với một AP nào đó, bạn cần phải có một máy tính đã cài đặt sẵn chương trình biên dịch để có thể cấu hình thông số cho thiết bị rồi nạp lại code xuống ESP thông qua cap USB (mà không phải lúc nào cũng có sẵn).
+Thông thường, khi bắt đầu kết nối wifi cho ESP8266, ta phải cấu hình cho thiết bị các thông số của Access Point cũng như SSID và password nếu mạng wifi được thiết lập các bảo mật như WEP/WPA/WPA2. Tuy nhiên, các ứng dụng nhúng sử dụng Wi-fi thường ít chú trọng đến giao diện người dùng (user interface), không có bàn phím hay touchscreen,.. để giao tiếp. Vì thế, mỗi khi muốn kết nối thiết bị ESP với một Access Point nào đó, bạn cần phải có một máy tính đã cài đặt sẵn phần mềm biên dịch, tiếp theo là viết code cấu hình lại thông số wifi cho thiết bị, sau đó nạp code cho thiết bị thông qua một cap USB.
 
 Điều này làm cho việc kết nối wifi trở nên khá bất tiện và phức tạp. Do vậy ESP8266 cung cấp các phương pháp thay thế khác giúp đơn giản hóa việc kết nối trạm ESP (chế độ Station) với một điểm truy cập. Đó là kết nối bằng SmartConfig, WPS hay Wifi Manager.
 
@@ -10,3 +10,7 @@ include::01-smartconfig.adoc[]
 include::02-wps.adoc[]
 
 include::03-wifi-manager.adoc[]
+
+== Tổng kết
+
+Để triển khai một ứng dụng IoT thực tế thì đòi hỏi rất nhiều vấn đề, một trong số quan trọng đó là dễ dùng, dễ cấu hình cho người sử dụng và phải bảo mật trong quá trình cung cấp thông tin cho thiết bị. Tùy thuộc vào nhu cầu phát triển sản phẩm và tính năng của sản phẩm mà bạn có thể lựa chọn cho mình phương pháp cấu hình phù hợp. Ví dụ, nếu thiết bị có nút nhấn và có phần mềm trên điện thoại, thì SmartConfig và WPS là một sự lựa chọn. Nếu là 1 bóng đèn trống trơn không có gì cả, thì WiFiManager lại hữu hiệu.

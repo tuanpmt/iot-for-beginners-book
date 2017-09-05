@@ -1,3 +1,4 @@
+[[server-nodejs]]
 == Server Nodejs
 
 Về phía Web Server, chúng ta cần đảm bảo nó có thể phục vụ cho nhiều Client, với `path` là:
@@ -6,7 +7,7 @@ Về phía Web Server, chúng ta cần đảm bảo nó có thể phục vụ ch
 
 * `/get` trả về dữ liệu đã lưu trữ định dạng JSON
 
-* `/\*` Còn lại thì trả về file `index.html`
+* `/` và còn lại thì trả về file `index.html`
 
 * Mảng dữ liệu lưu trữ có định dạng: `[{"temp": 25, "humd":80, time: "time"}, ...]`
 

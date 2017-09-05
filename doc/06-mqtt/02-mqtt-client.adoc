@@ -8,7 +8,7 @@ Hai dịch vụ MQTT Broker phổ biến là http://test.mostquitto.org và http
 
 **Thông tin**
 
-MQTT Lens là một tiện ích mở rộng của Chrome (Chrome Extension), nó sử dụng trình duyệt Chrome để kết nối đến broker MQTT cũng như test các tính năng publish/subcribe của giao thức MQTT. Đây là một công cụ rất hữu ích để kiểm tra kết nối đến broker MQTT và kiểm tra việc gửi, nhận gói tin. Chúng ta sẽ sử dụng công cụ này với dịch vụ broker MQTT iot.eclipse.org ở ví dụ bên dưới.
+MQTT Lens là một tiện ích mở rộng của Chrome (Chrome Extension), nó sử dụng trình duyệt Chrome để kết nối đến broker MQTT cũng như test các tính năng publish/subcribe của giao thức MQTT. Đây là một công cụ rất hữu ích để kiểm tra kết nối đến broker MQTT và kiểm tra việc gửi và nhận gói tin. Chúng ta sẽ sử dụng công cụ này với dịch vụ broker MQTT tại iot.eclipse.org ở ví dụ bên dưới.
 
 Một số thông tin của MQTT Lens được trình bày ở bảng dưới.
 
@@ -36,27 +36,79 @@ image::06-mqtt/addMQTTlens.png[width=600, align="center"]
 * Bước 3 : Tạo 1 MQTT client kết nối đến broker MQTT eclipse như các bước bên dưới.
 
 .Hình ảnh tạo 1 MQTT client
-image::06-mqtt/createATopic.png[width=1021, align="center"]
+image::06-mqtt/createATopic.png[width=954, align="center"]
 
 **Giải thích**
 
-Chúng ta sẽ tạo 2 connections với tên gọi client1 và client2.
+Chúng ta sẽ tạo 1 connection có tên eclipse MQTT với host name của broker MQTT là iot.eclipse.org, broker này sẽ giúp trao đổi dữ liệu của các clients với nhau và lắng nghe các clients ở port 1883 (port sử dụng giao thức MQTT và không mã hóa dữ liệu, các port 8883, 8884, 8080, 8081 tham khảo tại https://test.mosquitto.org)
+Ở connection này sẽ đăng kí nhận gói tin tại topic Home/garden/sensor/# (kí tự # cho phép subcribe các topic Home/garden/sensor/1, Home/garden/sensor/2 vv...). Tiếp theo chúng ta sẽ pulish 1 gói dữ liệu với nội dung "Temp in garden: 27degree Celcius " tại topic Home/garden/sensor/1.
 
-.Hình ảnh cấu hình cho 2 clients
-image::06-mqtt/config2Clients.png[width=500, align="center"]
+Kết quả: tại mục subrcriptions, chúng ta sẽ nhận được gói dữ liệu đã publish do đã subcribe topic 
+Home/garden/sensor/#
 
-Ở connection của client1, tại mục `Publish`, tạo topic `Home/sensor/temp`(topic này sẽ được clien2 đăng kí nhận gói tin), mục `Subscribe` sẽ đăng kí nhận gói tin ở topic `Home/sensor/humd` (đây là topic mà client2 sẽ thực hiện publish). Nhấn vào button `SUBCRIBE` để đăng kí topic. Tiếp theo, gửi message `"Temp:35"` bằng cách nhấn vào button `PUBLISH` tại topic `Home/sensor/temp`. Kết quả ở mục `Subscriptions` của client2 sẽ nhận 1 message là dữ liệu mà client1 đã gửi. Tương tự, khi gửi message `"Humd: 65"` ở client2 thì client1 sẽ nhận được gói tin này do nó đã subcribe topic mà client2 đã puslish.
+**Mở rộng**
 
-.Hình ảnh thiết lập 2 connections 
-image::06-mqtt/connect2Clients.png[width=1005, align="center"]
-
-Một số thiết lập về QoS và LWT khi sử dụng MQTT lens có thể tham khảo tại http://www.hivemq.com/blog/mqtt-toolbox-mqtt-lens
-
-=== MQTT.fx
+Tạo nhiều connections để subcribe và publish các gói tin với broker MQTT iot.eclipse.org đồng thời test các gói tin với QoS và LWT 
 
 === MQTT.js
 
-Thư viện Javascript, hỗ trợ MQTT Over Websocket
+MQTT.js có thể xem như một thư viện dành cho MQTT Client, được viết bằng ngôn ngữ JavaScript trên nền tảng Node.js và hỗ trợ MQTT Over Websocket (MOW).
+
+MQTT.js là dự án mã nguồn mở (open source), bạn có thể tải MQTT.js bản cập nhật mới nhất tại 
+https://github.com/mqttjs/MQTT.js.git
+
+**Cài đặt**
+
+Do được xây dựng dựa trên nền tảng Node.js nên trước khi cài đặt MQTT.js, bạn phải đảm bảo rằng thiết bị của mình đã có sẵn Node.js. Nếu chưa, bạn có thể tham khảo cách cài đặt ở đây: https://nodejs.org/en/
+
+Đầu tiên, ta khởi tạo một Nodejs Server. Để dễ quản lý, có thể tạo một thư mục riêng và một file javascrip trong đó, ví dụ như server.js. Đi đến thư mục này và mở terminal (linux OS) hoặc Command Prompt (trên Windowns OS) và dùng lệnh:
+
+`npm init`
+
+Khi chạy lệnh này, bạn cũng cần phải khai báo thêm một số thông tin cho server như tên, phiên bản, keywords, tác giả,... Sau khi tạo xong, trong thư mục vừa tạo sẽ xuất hiện một file là package.json với nội dung là các phần đã khai báo. File này cũng chứa thuộc tính dùng để lưu trữ các package chúng ta đã cài đặt.
+
+Tiếp theo chúng ta sẽ cài MQTT.js, sử dụng lệnh:
+
+`npm install mqtt --save`
+
+Sau khi cài đặt xong, bạn có thể sử dụng module "mqtt" để thực hiện việc kết nối MQTT Client với Broker, publish message hay subscribe topic.
+
+Để hiểu rõ hơn cách hoạt động của MQTT.js, chúng ta sẽ tạo ra 2 file mã nguồn Javascript (file.js) thực hiện subcribe và puslish các gói tin. 
+
+**Mã nguồn của client A**
+
+[source, java]
+----
+include::code/client-a.js[]
+----
+
+**Mã nguồn của client B**
+
+[source, java]
+----
+include::code/client-b.js[]
+----
+
+**Giải thích**
+
+
+Ngoài ra, MQTT.js còn cung cấp thêm các lệnh để có thể tương tác với Broker thông qua terminal. Để làm được điều này, bạn phải cài đặt MQTT.js như một module toàn cục, sử dụng lệnh:
+
+`npm install mqtt -g`.
+
+Bạn có thể test thử bằng cách mở 2 màn hình terminal, ở màn hình 1, cài đặt là "subscriber", subscribe vào topic tên là "topicA":
+
+`mqtt sub -t 'topicA' -h 'test.mosquitto.org' -v`
+
+Ở terminal thứ 2, cài đặt là "publisher"  publish một tin nhắn với nội dung "hello subscriber" tới "topicA":
+
+`mqtt pub -t 'topicA' -h 'test.mosquitto.org' -m 'hello subscriber'`.
+
+Để xem thêm các API khác trong MQTT.js, bạn có thể sử dụng lệnh:
+
+`mqtt help [command]`.
+
+MQTT Over Websocket
 
 === ESP8266 MQTT Client
 

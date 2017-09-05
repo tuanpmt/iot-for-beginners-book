@@ -134,30 +134,34 @@ Là 1 tập hợp các giá trị đã được sắp xếp. Trong hầu hết c
 
 Một ứng dụng đơn giản sử dụng giao thức HTTP để lấy tỉ giá Bitcoin (BTC)/USD từ các trang Web giao dịch, hiển thị lên màn hình OLED.
 
-Chúng ta có rất nhiều nguồn lấy tỉ giá, một trong số đó là https://coinmarketcap.com/api/. Với tài liệu được cung cấp, và nhu cầu là chỉ lấy tỉ giá Bitcoin/USD, chúng ta chỉ cần ESP8266 gởi 1 HTTP Request đến https://api.coinmarketcap.com/v1/ticker/bitcoin/ thì sẽ nhận được một chuỗi JSON dạng như:
+Chúng ta có rất nhiều nguồn lấy tỉ giá, một trong số đó là https://www.cryptocompare.com/. Với tài liệu được cung cấp, và nhu cầu là chỉ lấy tỉ giá Bitcoin/USD, chúng ta chỉ cần ESP8266 gởi 1 HTTP Request đến https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD thì sẽ nhận được một chuỗi JSON dạng như:
 
 [source, json]
 ----
-[
-    {
-        "id": "bitcoin",
-        "name": "Bitcoin",
-        "symbol": "BTC",
-        "rank": "1",
-        "price_usd": "4121.82",
-        "price_btc": "1.0",
-        "24h_volume_usd": "2070600000.0",
-        "market_cap_usd": "68082264895.0",
-        "available_supply": "16517525.0",
-        "total_supply": "16517525.0",
-        "percent_change_1h": "0.38",
-        "percent_change_24h": "0.97",
-        "percent_change_7d": "2.28",
-        "last_updated": "1503240569"
-    }
-]
+{"USD":4731.44}
 ----
 
-và giá trị của trường `price_usd` chính là giá trị chúng ta muốn hiển thị.
+và giá trị của trường `USD` chính là giá trị chúng ta muốn hiển thị.
 
 NOTE: Đa số các dịch vụ Web hiện nay đều sử dụng giao thức bảo mật `HTTPS`, cũng là HTTP, nhưng quá trình truyền nhận được mã hóa dữ liệu, thực hiện xác thực trước khi gửi giữa Client và Server.
+
+Khi dùng HTTPS, chúng ta cần cung cấp SHA1 Fingerpint để Client có thể xác thực server. Bạn có thể dùng trình duyệt để truy cập trước để lấy. Nếu là `Chrome`, sau khi truy cập vào địa chỉ https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD, Nhấn Ctrl+Shift+I (Shift + ⌘ + I với MacOS) và đi đến `Security > View Certificate > Details > Thumbprint`. Bạn sẽ thấy hình như bên dưới, và copy nó.
+
+.HTTPS Fingerprint
+image::03-wifi/fingerprint.png[HTTPS Finger print, role="center", align="center", width=500]
+
+Đây là đoạn Code lấy giá Bitcoin, cứ mỗi 5 giây, ESP8266 sẽ kết nối đến Cryptocompare server để lấy thông tin và hiển thị lên OLED.
+
+[source, c]
+----
+include::code/BitcoinTicket/BitcoinTicket.ino[]
+----
+
+Thực hiện sau khi kiểm tra mã nguồn:
+
+- <<select-arduino-board>>
+- <<arduino-flash>>
+
+.Kết quả lấy giá Bitcoin và hiện thị mỗi 5 giây
+image::03-wifi/btc.png[BTC Price, role="center", align="center", width=500]
+

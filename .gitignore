@@ -14,3 +14,6 @@ diag*
 .asciidoctor
 *.zip
 *.pdf
+node_modules
+*.log
+*.bin

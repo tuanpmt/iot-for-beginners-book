@@ -1,0 +1,191 @@
+font:
+  catalog:
+    # Noto Serif supports Latin, Latin-1 Supplement, Latin Extended-A, Greek, Cyrillic, Vietnamese & an assortment of symbols
+    Jura:
+      normal: Jura-Regular.ttf
+      bold: Jura-Bold.ttf
+      italic: Jura-Light.ttf
+      bold_italic: Jura-SemiBold.ttf
+    Amatic:
+      normal: AmaticSC-Regular.ttf
+      bold: AmaticSC-Bold.ttf
+    M+ 1mn:
+      normal: mplus1mn-regular-ascii-conums.ttf
+      bold: mplus1mn-bold-ascii.ttf
+      italic: mplus1mn-italic-ascii.ttf
+      bold_italic: mplus1mn-bold_italic-ascii.ttf
+    M+ 1p Fallback:
+      normal: mplus1p-regular-fallback.ttf
+      bold: mplus1p-regular-fallback.ttf
+      italic: mplus1p-regular-fallback.ttf
+      bold_italic: mplus1p-regular-fallback.ttf
+  fallbacks:
+    - M+ 1p Fallback
+page:
+  background_color: ffffff
+  layout: portrait
+  margin: [0.9in, 0.67in, 0.67in, 0.67in]
+  # margin_inner and margin_outer keys are used for recto/verso print margins when media=press
+  margin_inner: 0.75in
+  margin_outer: 0.59in
+  size: A4
+
+base:
+  font_color: 111111
+  font_family: Jura
+  line_height_length: 17
+  line_height: $base_line_height_length / $base_font_size
+  font_size: 10.5
+  font_size_large: round($base_font_size * 1.25)
+  font_size_small: round($base_font_size * 0.85)
+  font_size_min: $base_font_size * 0.75
+
+vertical_spacing: $base_line_height_length
+
+vertical_rhythm: $base_line_height_length
+horizontal_rhythm: $base_line_height_length
+
+caption:
+  align: center
+  font_size: $base_font_size * 0.95
+  font_style: italic
+  font_color: 000000
+
+admonition:
+  column_rule_color: $base_border_color
+  column_rule_width: $base_border_width
+  padding: [0, $horizontal_rhythm, 0, $horizontal_rhythm]
+  #icon:
+  #  tip:
+  #    name: fa-lightbulb-o
+  #    stroke_color: 111111
+  #    size: 24
+  label:
+    text_transform: uppercase
+    font_style: bold
+
+heading:
+  font_color: #262626
+  font_size: 17
+  font_family: Jura
+  font_style: bold
+  # line_height: 1.2
+  margin_bottom: $vertical_spacing
+  # h1 is used for part titles (book doctype only)
+  h1_font_size: floor($base_font_size * 3.6)
+  # h2 is used for chapter titles (book doctype only)
+  h2_font_size: floor($base_font_size * 2.15)
+  h3_font_size: round($base_font_size * 1.7)
+  h4_font_size: $base_font_size_large
+  h5_font_size: $base_font_size
+  h6_font_size: $base_font_size_small
+  line_height: 1.4
+  # correct line height for Noto Serif metrics (comes with built-in line height)
+  # line_height: 1
+  # margin_top: $vertical_rhythm * 0.4
+  # margin_bottom: $vertical_rhythm * 0.9
+
+outline_list:
+  indent: $horizontal_rhythm * 1.5
+  # NOTE item_spacing applies to list items that do not have complex content
+  item_spacing: $vertical_rhythm / 2
+  #marker_font_color: 404040
+
+link:
+  font_color: 428bca
+
+# menu_caret_content: " <font size=\"1.15em\"><color rgb=\"b12146\">\u203a</color></font> "
+table:
+  background_color: $page_background_color
+  #head_background_color: <hex value>
+  #head_font_color: $base_font_color
+  # head_font_style: bold
+  #body_background_color: <hex value>
+  body_stripe_background_color: $page_background_color
+  # foot_background_color: f0f0f0
+  border_color: dddddd
+  border_width: $base_border_width
+  cell_padding: 3
+
+title_page:
+  align: right
+  logo:
+    top: 10%
+  title:
+    top: 55%
+    font_size: $heading_h1_font_size
+    font_color: 222222
+    line_height: 0.9
+    font_family: $heading_font_family
+  subtitle:
+    font_size: $heading_h3_font_size
+    font_style: bold_italic
+    line_height: 1
+  authors:
+    margin_top: $base_font_size * 1.25
+    font_size: $base_font_size_large
+    font_color: 181818
+  revision:
+    margin_top: $base_font_size * 1.25
+
+literal:
+  font_color: fe396e
+  font_family: $base_font_family
+  # font_style: bold
+
+# code is used for source blocks (perhaps change to source or listing?)
+code:
+  font_color: $base_font_color
+  font_family: M+ 1mn
+  font_size: 8
+  padding: [$code_font_size, $code_font_size, $code_font_size, $code_font_size]
+  line_height: 1.25
+  # background_color: FBFBFB
+  border_color: cccccc
+  border_radius: 2
+  border_width: 0.1
+  # line_gap: 3.8
+
+blockquote:
+  font_color: $base_font_color
+  font_size: $base_font_size_large
+  border_color: $base_border_color
+  border_width: 5
+  # FIXME disable negative padding bottom once margin collapsing is implemented
+  padding: [0, $horizontal_rhythm, $block_margin_bottom * -0.75, $horizontal_rhythm + $blockquote_border_width / 2]
+  cite_font_size: $base_font_size_small
+  cite_font_color: 666666 #999999
+
+conum:
+  font_family: M+ 1mn
+  font_color: 000000
+  font_size: $base_font_size
+  line_height: 4 / 3
+
+header:
+  font_size: $base_font_size_small
+  font_color: $base_font_color
+  # NOTE if background_color is set, background and border will span width of page
+  border_color: dddddd
+  border_width: 0.25
+  height: 18mm
+  padding: [0,0,2mm,0]
+  vertical_align: bottom
+  image_vertical_align: bottom
+  image_valign: 50
+  # additional attributes for content:
+  # * {page-count}
+  # * {page-number}
+  # * {document-title}
+  # * {document-subtitle}
+  # * {chapter-title}
+  # * {section-title}
+  # * {section-or-chapter-title}
+  recto_content:
+    left: '{document-title} {document-subtitle}'
+    right: '{page-number}/{page-count}'
+    # right: image:header-img-10mm.png[width="75"]
+  verso_content:
+    # left: '{chapter-title}'
+    right: '{page-number}/{page-count}'
+    # right: image:header-img-10mm.png[width="75"]

@@ -1,0 +1,67 @@
+== HTTP Server
+
+Với 2 phương pháp trước, bạn dễ dàng cập nhật Firmware thông qua mạng WiFi nội bộ. Tuy nhiên, khi triển khai ứng dụng thực tế, chúng ta sẽ cần cập nhật Firmware từ xa thông qua Internet, và cần 1 Server để lưu trữ firmware, quản lý các phiên bản.
+
+Một kịch bản phổ thông thường được làm nhất đó là:
+
+* Khi ESP8266 khởi động (khoảng sau 1 khoảng thời gian - ví dụ như 1 ngày), nó sẽ kết nối đến Server, cung cấp thông tin phiên bản hiện có của nó
+* Server khi nhận thấy phiên bản hiện tại cần phải được nâng cấp, nó sẽ trả về firmware mới
+* Nếu phiên bản hiện tại của ESP8266 không cần phải cập nhật, nó sẽ trả về mã 304.
+
+Để thực hiện được điều này, chúng ta cần thực hiện trên cả ESP8266 và trên Server side. Thử nghiệm trong mục này, chúng ta sẽ dùng Node.js làm server. Bạn hoàn toàn có thể thực thi đoạn code Server này và gán cho nó domain để có thể truy cập từ bất kỳ đâu.
+
+[[esp8266-ESPhttpUpdate]]
+=== ESP8266 ESPhttpUpdate
+
+Bằng cách thực thi `ESPhttpUpdate.update("your-domain.com", 8000, "/fimrware.bin");`, ESP8266 sẽ tự động kết nối tới server ở địa chỉ http://your-domain.com:8000/fimrware.bin để tải phiên bản firmware mới về. Mã HTTP Status Code:
+
+- (Mã) 200: Nếu tồn tại firmware mới, và nội dung file sẽ được gởi kèm sau đó
+- (Mã) 304: Thông báo là không có bản update mới.
+
+Đoạn mã có thể dễ dàng tìm thấy ở `File > Examples > ESPhttpUpdate > httpUpdate`
+
+Bạn cần cung cấp SSID, mật khẩu WiFi chính xác, thực hiên <<select-arduino-board>> và <<arduino-flash>>
+
+[source, c]
+----
+include::code/httpUpdate/httpUpdate.ino[]
+----
+
+<1> Phiên bản firmware của bạn, giả sử bạn thay đổi là `2.0` và đặt lên server, sau đó bạn đổi lại `1.0` và nạp vào board
+<2> Đường dẫn đến firmware của bạn, là địa chỉ web, ip, hay domain
+
+== Node.js OTA Server
+
+Khi ESP8266 kết nối tới Web Server, thì nó sẽ cung cấp các thông tin Header để Server căn cứ vào đó đánh giá firmware có cần phải cập nhật hay không. Ví dụ về các header
+
+[source, html]
+----
+[HTTP_USER_AGENT] => ESP8266-http-Update
+[HTTP_X_ESP8266_STA_MAC] => 18:FE:AA:AA:AA:AA
+[HTTP_X_ESP8266_AP_MAC] => 1A:FE:AA:AA:AA:AA
+[HTTP_X_ESP8266_FREE_SPACE] => 671744
+[HTTP_X_ESP8266_SKETCH_SIZE] => 373940
+[HTTP_X_ESP8266_SKETCH_MD5] => a56f8ef78a0bebd812f62067daf1408a
+[HTTP_X_ESP8266_CHIP_SIZE] => 4194304
+[HTTP_X_ESP8266_SDK_VERSION] => 1.3.0
+[HTTP_X_ESP8266_VERSION] => 1.0
+----
+
+Dựa trên kiến thức phần <<server-nodejs>>, chúng ta xây dựng 1 OTA Server dùng Node.js như sau
+
+.server.js
+[source, javascript]
+----
+include::code/ota-server/server.js[]
+----
+
+Thực thi `node server.js` để khởi động Server
+
+NOTE: Khi bạn làm việc với các ngôn ngữ lập trình khác, luôn phải đảm bảo khi gởi về client cần có đầy đủ thông tin header `Content-Length` và `x-MD5`
+
+NOTE: Bạn cần file `esp8266-firware-2.0.bin` ở mục <<esp8266-ESPhttpUpdate>> biên dịch với `currentVersion = "2.0"` đặt cùng thư mục với file `server.js`
+
+Nếu bạn thực hiện đầy đủ các bước như trên, kết quả thực thi sẽ như hình
+
+.Kết quả thực hiện OTA sử dụng HTTP Server
+image::08-fota/http-ota.png[width=600, role="center", align="center"]

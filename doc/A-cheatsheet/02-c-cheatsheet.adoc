@@ -1,0 +1,27 @@
+== C - Cheatsheet
+
+[cols="a,a", frame=none, grid=none]
+|===
+|
+[source, c]
+----
+include::code/c-cheatsheet.c[lines=1..22]
+----
+|
+[source, c]
+----
+include::code/c-cheatsheet.c[lines=1..22]
+----
+|
+[source, c]
+----
+include::code/c-cheatsheet.c[lines=1..22]
+----
+|
+[source, c]
+----
+include::code/c-cheatsheet.c[lines=1..22]
+----
+|===
+
+https://www.cheatography.com/ashlyn-black/cheat-sheets/c-reference/
