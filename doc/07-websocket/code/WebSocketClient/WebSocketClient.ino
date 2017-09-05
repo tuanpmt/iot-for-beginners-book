@@ -1,11 +1,11 @@
 #include <Arduino.h>
 
 #include <ESP8266WiFi.h>
-#include <WebSocketsClient.h>
+#include <WebSocketsClient.h> //https://github.com/Links2004/arduinoWebSockets
 WebSocketsClient webSocket;
 
-const char* ssid = "TuanPM";
-const char* password = "mobileday";
+const char* ssid = "...";
+const char* password = "...";
 const int LED = 16;
 const int BTN = 0;
 
