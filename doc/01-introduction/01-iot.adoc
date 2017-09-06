@@ -29,37 +29,28 @@ Các hệ thống IoT phát triển khai thác các tiến bộ của phần m�
 
 ==== Những điểm mấu chốt của IoT
 
-Những vấn đề quan trọng nhất của hệ thống IoT bao gồm trí thông minh nhân tạo, kết nối, cảm biến, thiết bị nhỏ cơ động, và được mô tả sơ lược:
+Những vấn đề quan trọng nhất của hệ thống IoT bao gồm trí thông minh nhân tạo, kết nối, cảm biến, thiết bị nhỏ nhưng mang tính cơ động cao, chúng được mô tả sơ lược như bên dưới:
 
-- *AI (Artifical Intelligence)* - Hệ thống IoT về cơ bản được hiểu là làm cho mọi thiết bị trở nên *thông minh*, nghĩa là nó giúp nâng cao mọi khias cạnh của cuộc sống với lượng dữ liệu thu thập được, thông qua các thuật toán tính toán nhân tạo và kết nối mạng. Một ví dụ đơn giản như hộp đựng Gạo của bạn biết rằng nó gần hết, và tự động đặt một đơn hàng mới cho nhà cung cấp.
-- *Connectivity - Kết nối* Các mạng thiết bị sẽ trở nên phổ biến, nhiều mạng thiết bị nhỏ hơn, rẻ hơn được phát triển phù hợp với thực tế.
-- Sensors − IoT loses its distinction without sensors. They act as defining instruments which transform IoT from a standard passive network of devices into an active system capable of real-world integration.
-- Active Engagement − Much of today's interaction with connected technology happens through passive engagement. IoT introduces a new paradigm for active content, product, or service engagement.
-- Small Devices − Devices, as predicted, have become smaller, cheaper, and more powerful over time. IoT exploits purpose-built small devices to deliver its precision, scalability, and versatility.
+- *AI (Artifical Intelligence)* - Hệ thống IoT về cơ bản được hiểu là làm cho mọi thiết bị trở nên *thông minh*, nghĩa là nó giúp nâng cao mọi khía cạnh của cuộc sống bằng những dữ liệu thu thập được, thông qua các thuật toán tính toán nhân tạo và kết nối mạng. Một ví dụ đơn giản như hộp đựng gạo của bạn, khi biết rằng gạo sắp hết, hệ thống tự động đặt một đơn hàng mới cho nhà cung cấp.
+- *Connectivity - Kết nối* Các mạng thiết bị đang trở nên phổ biến, nhiều mạng thiết bị ngày càng nhỏ hơn, rẻ hơn và được phát triển phù hợp với thực tế cũng như nhu cầu của người dùng .
+- *Sensors − Cảm biến* IoT sẽ mất đi sự quan trọng của mình nếu không có sensors. Các cảm biến hoạt động giống như một công cụ giúp IoT chuyển từ mạng lưới các thiết bị thụ động sang mạng lưới các thiết bị tích cực, đồng thời có thể tương tác với thế giới thực.
+- *Active Engagement − Tương tác tích cực* Much of today's interaction with connected technology happens through passive engagement. IoT introduces a new paradigm for active content, product, or service engagement.
+- *Small Devices − Các thiết bị nhỏ gọn* Như đã được dự đoán từ trước, các thiết bị ngày càng được tối ưu, với mục đích nâng cao độ chính xác, khả năng mở rộng cũng như tính linh hoạt. Nó được thiết kế ngày càng nhỏ hơn, rẻ hơn và mạnh mẽ hơn theo thời gian.
 
-==== IoT − Advantages
+==== IoT − Những lợi ích mang lại
 
-The advantages of IoT span across every area of lifestyle and business. Here is a list of some of the advantages that IoT has to offer −
+Những lợi ích mà IoT đem lại được dàn trải hầu hết đến các tất cả các lĩnh vực trong đời sống, kinh doanh...Dưới đây liệt kê ngắn gọn một số tính năng hữu ích của IoT: 
 
-- Improved Customer Engagement − Current analytics suffer from blind-spots and significant flaws in accuracy; and as noted, engagement remains passive. IoT completely transforms this to achieve richer and more effective engagement with audiences.
+- *Improved Customer Engagement − Cải thiện việc gắn kết khách hàng* Phấn tích các điểm mù hiện tại, tìm ra những sai sót về độ chính xác. Như đã đề cập, những việc này vẫn còn rất thụ động. IoT thay đối điều này để mang lại nhiều sự gắn kết hơn và hiệu quả hơn với người dùng. Một ví dụ ứng dụng IoT tại các cửa hàng, dịch vụ iBeacon giúp tăng số lượng sản phẩm tới người tiêu dùng bằng cách chỉ dẫn người dùng tới khu vực cụ thể trong cửa hàng và đưa ra các gợi ý về sản phẩm. Chúng cũng có thể cung cấp các thông tin chi tiết của sản phẩm, các đánh gía ...Bên cạnh đó chúng cũng có khả năng cho phép người tiêu dùng chia sẻ các sản phẩm qua mạng xã hội, lưu trữ cho sau này...
+- *Technology Optimization − Tối ưu hóa công nghệ* The same technologies and data giúp nâng cao trải nghiệm của khách hàng cũng như cải thiện việc sử dụng thiết bị và hỗ trợ cải tiến công nghệ. IoT giúp mở ra thế giới của những dữ liệu quan trọng và trường dữ liệu (u which improve the customer experience also improve device use, and aid in more potent improvements to technology. IoT unlocks a world of critical functional and field data.)
 
-- Technology Optimization − The same technologies and data which improve the customer experience also improve device use, and aid in more potent improvements to technology. IoT unlocks a world of critical functional and field data.
+- *Reduced Waste − Giảm sự hao phí* IoT giúp việc quản lí tài nguyên ở các lĩnh vực được cải thiện 1 cách rõ ràng. Các phân tích hiện tại thường cung cấp cho chúng ta cái nhìn ở khía cạnh bên ngoài, trong khi IoT cung cấp các dữ liêu, thông tin thực tế để quản lí tài nguyên một cách hiệu quả hơn.
 
-- Reduced Waste − IoT makes areas of improvement clear. Current analytics give us superficial insight, but IoT provides real-world information leading to more effective management of resources.
+- *Enhanced Data Collection − Tăng cường việc thu thập dữ liệu* Thông thưòng, việc thu thập dữ liệu bị hạn chế do thiết kế hệ thống mang tính thụ động. IoT phá vỡ sự ràng buộc, giới hạn của thiết kế và tạo ra 1 hình ảnh chính xác của tất cả mọi thứ.
 
-- Enhanced Data Collection − Modern data collection suffers from its limitations and its design for passive use. IoT breaks it out of those spaces, and places it exactly where humans really want to go to analyze our world. It allows an accurate picture of everything.
+==== IoT − Những thách thức gặp phải 
 
-==== IoT − Disadvantages
-
-Though IoT delivers an impressive set of benefits, it also presents a significant set of challenges. Here is a list of some its major issues −
-
-- Security − IoT creates an ecosystem of constantly connected devices communicating over networks. The system offers little control despite any security measures. This leaves users exposed to various kinds of attackers.
-
-- Privacy − The sophistication of IoT provides substantial personal data in extreme detail without the user's active participation.
-
-- Complexity − Some find IoT systems complicated in terms of design, deployment, and maintenance given their use of multiple technologies and a large set of new enabling technologies.
-
-- Flexibility − Many are concerned about the flexibility of an IoT system to integrate easily with another. They worry about finding themselves with several conflicting or locked systems.
+Mặc dù IoT đã cung cấp những lợi ích ấn tượng, nó cũng gặp phải những thách thức đáng kể. Dưới đây là 1 số vấn đề chính của IoT : 
 
 - Compliance − IoT, like any other technology in the realm of business, must comply with regulations. Its complexity makes the issue of compliance seem incredibly challenging when many consider standard software compliance a battle.
 
