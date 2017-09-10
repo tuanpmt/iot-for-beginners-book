@@ -1,0 +1,43 @@
+== Cập nhật Firmware dùng Web Browser
+
+Khi thực hiện cập nhật firmware dùng Web Browser, ESP8266 sẽ khởi động 1 HTTP Server, với 1 form upload. Khi truy cập đúng địa chỉ của nó, bạn sẽ được cung cấp 1 giao diện để chọn file binary, và upload lên Chip. Việc này hữu dụng khi không dùng Arudino IDE cho việc cập nhật, sử dụng luôn trình duyệt sẵn có. Hoặc tích hợp vào 1 ứng dụng mà bạn có thể muốn cập nhật nó trong tương.
+
+Cập nhật với web browser được thực hiện bằng thư viện `ESP8266HTTPUpdateServer` cùng với 2 thư viện khác `ESP8266WebServer` và `ESP8266mDNS` cho việc nhận diện ESP8266 trong mạng nội bộ.
+
+=== Thực hiện
+
+Mở ví dụ: `File > Examples > ESP8266HTTPUpdateServer > WebUpdater`
+
+[source, c]
+----
+include::code/WebUpdater/WebUpdater.ino[]
+----
+
+Cung cấp đúng SSID và mật khẩu mạng WiFi máy tính bạn đang dùng, nạp Firmware `WebUpdater` vào ESP8266 <<select-arduino-board>> và <<arduino-flash>>
+
+NOTE: Lưu ý là máy tính phải sử dụng mạng WiFi cùng với ESP8266
+
+Khi bạn không thể truy cập vào module ESP8266 theo công Serial, thì để nhận diện được địa chỉ IP của module trong mạng LAN, bạn cần chạy dịch vụ mDNS trên máy tính. Dịch vụ này sẵn có trong MacOS, tuy nhiên, với Linux thì bạn cần cài đặt Avahi: https://avahi.org/, còn Windows thì Bonjour: https://support.apple.com/downloads/bonjour_for_windows
+
+Với dịch vụ mDNS chạy trên máy tính, bạn dễ dàng truy cập vào ESP8266 theo đường dẫn http://esp8266-webupdate.local/update
+
+.Giao diện Web cập nhật firmware
+image::08-fota/web-updater.png[width=600, role="center", align="center"]
+
+Bằng cách chọn file và nhấn cập nhật, ESP8266 sẽ tiến hành cập nhật firmware mới do bạn gởi lên. File này có thể được xuất ra bằng cách `Sketch > Export compiled Binary`, và file .bin sẽ nằm trong thư mục của Sketch
+
+.Xuất file Binary
+image::08-fota/export-fw.png[width=400, role="center", align="center"]
+
+NOTE: Khi đã nhập http://esp8266-webupdate.local/update mà không thưc hiện được, hãy thay  esp8266-webupdate với địa chỉ IP của module (bạn có thể xem trong modem/router, hay Serial Terminal). Ví dụ, nếu IP của module là `192.168.1.100` thì URL phải là http://192.168.1.100/update. Phương pháp này hữu hiệu trong trường hợp host software cài đặt ở bước 1 không hoạt động.
+
+Nếu các bước diễn ra thành công tốt đẹp, thì trên trình duyệt và cửa sổ Serial Terminal (nếu mở) như hình
+
+.Thực hiện thành công cập nhật Firmware sử dụng WebUpdater
+image::08-fota/finish.png[width=600, role="center", align="center"]
+
+=== Bảo mật
+
+Nếu bổ sung WebUpdater vào sản phẩm của mình, dĩ nhiên bạn sẽ không muốn người khác tự do đưa vào thiết bị 1 firmware khác. Hãy sử dụng hàm `httpUpdater.setup(&httpServer, update_path, update_username, update_password);` với các thông số username, password mà bắt buộc bạn phải nhập đúng mới được phép upload firmware mới.
+
+Mở ví dụ : `File > Examples > ESP8266HTTPUpdateServer > SecureWebUpdater` để xem chi tiết

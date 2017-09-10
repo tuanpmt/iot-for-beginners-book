@@ -16,3 +16,4 @@ diag*
 *.pdf
 node_modules
 *.log
+*.bin

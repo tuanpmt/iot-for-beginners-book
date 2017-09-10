@@ -28,7 +28,7 @@ Mở `Boards Manager` ở mục `Tools` trên thanh menu-bar -> tìm board cần
 .Cài đặt board ESP8266
 image::01-intro/install_board_generic8266.png[Board manager, align="center", width=400]
 
-
+[[install-library]]
 === Cài đặt thư viện Arduino
 
 Một số thư viện do các nhà phát triển khác công bố và được tự do sử dụng có thể cài đặt trực tiếp bằng công cụ Library Manager của Arduino.
@@ -76,6 +76,7 @@ Tải bản cài đặt: https://arduino.esp8266.vn/_static/download/CH34x_Insta
 .Lựa chọn Allow Apps Downloaded From Anywhere
 image::01-intro/mac.png[Lựa chọn Allow Apps Downloaded From Anywhere, align="center", width=400]
 
+[[select-arduino-board]]
 === Chọn Board ESP8266 WiFi Uno trong Arduino IDE
 
 Sau khi kết nối và cài đặt xong, sẽ xuất hiện cổng COM ảo trên máy tính (Tùy từng loại hệ điều hành mà có những tên cổng như: `COM1`, `COM2` ... đối với Windows, `/dev/tty.wchusbserial1420` trên Mac OS, `/dev/ttyUSB0` trên Linux)
@@ -89,9 +90,37 @@ image::01-intro/port-setup.png[Cấu hình Board ESP8266 WiFi Uno, align="center
 * Port: chọn cổng khi gắn thiết bị vào sẽ thấy xuất hiện
 * Upload speed: Chọn cao nhất, nếu nạp không được chọn thấp dần
 
+[[arduino-flash]]
+=== Nạp chương trình xuống board dùng Arduino IDE
+
+Trên giao diện Arduino có 2 nút, ngoài cùng bên trái là nút `Verify`, để biên dịch chương trình, tương đương với `Sketch > Verify/Compile`, nút tiếp theo là `Upload`, tương đương `Sketch > Upload`. Khi đã lựa chọn board phù hợp, chương trình không có lỗi, thì nhấn `Upload` sẽ nạp chương trình vào board và thực thi sau đó
+
+.Nạp chương trình
+image::01-intro/program.png[Nạp chương trình xuống board dùng Arduino IDE, align="center", width=400]
+
+[[export-binary]]
+=== Xuất firmware binary trong Arduino IDE
+Với bất kỳ tình huống nào cần file Binary, bạn có thể được xuất ra bằng cách `Sketch > Export compiled Binary`, và file .bin sẽ nằm trong thư mục của Sketch
+
+.Xuất file Binary
+image::08-fota/export-fw.png[width=400, role="center", align="center"]
+
+
 === Serial Terminal
+
+Có nhiều ứng dụng miễn phí để tương tác với cổng Serial trên máy tính:
+
+* Windows: PuTTY, realterm
+* Linux: minicom, screen
+* MacOS: minicom, screen
+
+[[arudino-term]]
 ==== Sử dụng Arduino IDE Serial Monitor
-==== Một số phần mềm miễn phí khác
+
+Arduino có tích hợp sẵn Serial Monitor, khi chọn đúng cổng Serial, thì có thể nhấn biểu tượng Serial trên IDE để mở:
+
+.Arduino IDE Serial Monitor
+image::01-intro/term.png[Nạp chương trình xuống board dùng Arduino IDE, align="center", width=400]
 
 === Node.js
 

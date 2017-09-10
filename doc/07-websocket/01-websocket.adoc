@@ -1,10 +1,8 @@
-== Websocket là gì?
-
 WebSoket là công nghệ hỗ trợ giao tiếp hai chiều giữa client và server bằng cách sử dụng một TCP socket để tạo một kết nối liên tục, hiệu quả và ít tốn kém. Mặc dù được thiết kế để chuyên sử dụng cho các ứng dụng web, lập trình viên vẫn có thể đưa chúng vào bất kì loại ứng dụng nào.
 
 WebSockets mới xuất hiện trong HTML5, cho phép các kênh giao tiếp song song hai chiều và hiện đã được hỗ trợ trong nhiều trình duyệt. Kết nối được mở thông qua một HTTP request (yêu cầu HTTP), với những header đặc biệt thông báo cho Server (có hỗ trợ) chuyển sang kết nối Websocket. Kết nối này được duy trì để bạn có thể gởi và nhận dữ liệu bằng một cách liên tục, không đứt quãng, và không cần bất kỳ HTTP header (overhead) nào nữa.
 
-Websocket hỗ trợ cho các trình duyệt phổ biến hiện nay như: Google Chrome, Microsoft Edge, Internet Explorer, Firefox, Safari và Opera. 
+Websocket hỗ trợ cho các trình duyệt phổ biến hiện nay như: Google Chrome, Microsoft Edge, Internet Explorer, Firefox, Safari và Opera.
 
 === Ưu điểm
 

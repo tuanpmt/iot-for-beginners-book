@@ -1,4 +1,3 @@
-== MQTT là gì?
 
 image::06-mqtt/mqttorg-glow.png[width=200, role="center", align="center"]
 
