@@ -78,9 +78,9 @@ Sau khi cài đặt xong, bạn có thể sử dụng module "mqtt" để thực
 
 Để hiểu rõ hơn cách hoạt động của MQTT.js, chúng ta sẽ tạo ra thêm 1 số file mã nguồn Javascript (file .js) nữa, là `client-a.js` và `client-b.js` thực hiện subcribe và puslish các gói tin.
 
-NOTE: 2 Client này sẽ kết nối vào cùng 1 MQTT Broker:
-- Client A sẽ subscribe kênh `/client-a/sub`, nếu nhận bất kỳ dữ liệu nào được public vào kênh này, Client A sẽ public dữ liệu `Hello from client A` vào kênh `/client-b/sub` và đóng kết nối, kết thúc
-- Client B sẽ subscribe kênh `/client-b/sub`, nếu nhận bất kỳ dữ liệu nào được public vào kênh này, Client B sẽ đóng kết nối và kết thúc. Ngay khi kết nối vào Broker, Client B sẽ public 1 gói tin `Hello from client B` vào kênh `/client-a/sub`
+**Nội dung thực hiện**
+
+ 2 client này sẽ kết nối vào cùng 1 MQTT Broker. Client A sẽ subscribe kênh `/client-a/sub`, nếu nhận bất kỳ dữ liệu nào được public vào kênh này, Client A sẽ public dữ liệu `Hello from client A` vào kênh `/client-b/sub` và đóng kết nối, kết thúc. Client B sẽ subscribe kênh `/client-b/sub`, nếu nhận bất kỳ dữ liệu nào được public vào kênh này, Client B sẽ đóng kết nối và kết thúc. Ngay khi kết nối vào Broker, Client B sẽ public 1 gói tin `Hello from client B` vào kênh `/client-a/sub`
 
 **Mã nguồn của client A**
 
@@ -107,11 +107,11 @@ Ngoài ra, MQTT.js còn cung cấp thêm các lệnh để có thể tương tá
 
 `npm install mqtt -g`.
 
-Bạn có thể kiểm tra bằng cách mở 2 màn hình terminal, ở màn hình 1, cài đặt là "subscriber", subscribe vào topic tên là "topicA" bằng lệnh:
+Bạn có thể kiểm tra bằng cách mở 2 màn hình terminal, ở màn hình 1 (tạm gọi là subscriber) sẽ subscribe vào topic tên là "topicA" bằng lệnh:
 
 `mqtt sub -t 'topicA' -h 'test.mosquitto.org' -v`
 
-Ở terminal thứ 2, cài đặt là "publisher"  publish một tin nhắn với nội dung "hello subscriber" tới "topicA":
+Ở terminal thứ 2 (tạm gọi là publisher) thực hiện publish một tin nhắn với nội dung "hello subscriber" tới "topicA":
 
 `mqtt pub -t 'topicA' -h 'test.mosquitto.org' -m 'hello subscriber'`
 
@@ -136,13 +136,50 @@ Trong phần này chúng ta sẽ thực hiện kết nối board ESP8266 WiFi Un
 
 * **Bước 1 :** Download thư viện PubSubClient tại đường dẫn https://github.com/knolleary/pubsubclient và add vào chương trình Arduino. Ngoài ra có thể import thư viện này trong Arduino bằng cách tìm kiếm thư viện với từ khóa `PubSubClient`, chọn thư viện PubSubClient của tác giả Nick O'Leary và nhấn install.
 
-* **Bước 2 :** Viết chương trình cho ESP8266. Mã nguồn được trình bày ở phía dưới
+* **Bước 2 :** Viết và nạp chương trình cho ESP8266. Mã nguồn được trình bày ở phía dưới
 
 [source, c]
 ----
 include::code/ESP8266PubSub/ESP8266PubSub.ino[]
 ----
+Giải thích mã nguồn:
 
-* **Bước 3 :** Mở MQTT lens và tạo 1 connection
+* **Bước 3 :** Mở MQTT lens trên trình duyệt Chrome, tạo 1 connection với host name `broker.mqtt-dashboard.com`, sử dụng port 1883. Thực hiện subscribe topic `ESP8266/connection/board`. Sau khi nhấn nút subscribe trên MQTT lens sẽ xuất hiện 1 message gửi từ esp8288 với nội dung `connnected`. Đăng kí pushlish các message vào topic `ESP8266/LED_GPIO16/status`. Nếu pushlish message với nội dung `on`, led GPIO16 trên board sẽ sáng, pushlish message `off` led GPIO16 trên board sẽ tắt. Các message với nội dung khác sẽ không có tác dụng điều khiển led GPIO16. Kết quả hiển thị như hình bên dưới:
+
+.Kết quả hiển thị trên serial terminal và MQTT lens khi sử dụng thư viện pubsubClient
+image::06-mqtt/MQTTLEnsPubSUb.png[width=897, align="center"]
+
 
 ==== ESP8266MQTTClient
+
+Tiếp theo, chúng ta sẽ tìm hiểu cách sử dụng thư viện ESP8266MQTTClient, thư viện được cộng đồng đánh giá là ổn định dễ sử dụng hơn so với PubSubClient.
+
+Ở phần này chúng ta sẽ kết nối board mạch ESP8266 Wifi Uno với 1 ứng dụng trên smartphone. Ừng dụng này  là 1 MQTT client và sử dụng giao thức MQTT để giao tiếp với board ESP8266, ngoài ra nó còn được tích hợp cả chức năng `smart config` cho ESP8266.
+
+* **Bước 1 :** Download thư viện `ESP8266MQTTClient` tại đường dẫn https://github.com/tuanpmt/ESP8266MQTTClient và add vào chương trình Arduino. Ngoài ra có thể import thư viện này trong Arduino bằng cách tìm kiếm thư viện với từ khóa `ESP8266MQTT`, chọn thư viện của tác giả TuanPM và nhấn install.
+
+* **Bước 2 :** Viết và nạp chương trình cho ESP8266. Mã nguồn được trình bày ở phía dưới.
+
+[source, c]
+----
+include::code/   CHIRINH SUA LAI
+----
+
+Giải thích mã nguồn
+
+* **Bước 3 :** Điều khiển  `IoT Smartconfig`. Search ứng dụng với từ khóa `iot smartconfig`, cài đặt ứng dụng như hỉnh dưới.
+
+.Ứng dụng IoT smartconfig cho ESP8266
+image::06-mqtt/iotSmartConfig.png[width=830, align="center"]
+
+Sau khi cài đặt ứng dụng, di chuyển đến màn hình tiếp theo để sử dụng MQTT, tại đây chúng ta sẽ thực hiện các cài đặt như hình: 
+
+.Hình ảnh giao diện ứng dụng MQTT và cấu hình
+image::06-mqtt/interfaceConfig.png[width=830, align="center"]
+
+Giải thích: 
+Tại mục host name dùng `ws://iot.eclipse.org:80/ws` với
+
+* `ws`(websocket) là phương thức,gửi nhận dữ liệu chúng ta, trong đó chúng sẽ được tìm hiểu chi tiết ở bài hoc kế tiếp  
+* `iot.eclipse.org` 
+* `80`
