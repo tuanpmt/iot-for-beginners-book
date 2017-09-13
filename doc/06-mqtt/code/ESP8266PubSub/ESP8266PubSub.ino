@@ -17,7 +17,7 @@ void setup() {
   client.setServer(mqtt_server, 1883);
   // gọi hàm callback để thực hiện các chức năng publish/subcribe
   client.setCallback(callback);
-  // gọi hàm reconnect() để thực hiện kết nối lại với server khi bị mất kết nối 
+  // gọi hàm reconnect() để thực hiện kết nối lại với server khi bị mất kết nối
   reconnect();
 }
 
@@ -48,7 +48,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
   for (int i = 0; i < length; i++) {
     Serial.print((char)payload[i]);
   }
-  // kiem tra neu dữ liệu nhận được từ topic ESP8266/LED_GPIO16/status là chuỗi "on"
+  // kiểm tra nếu dữ liệu nhận được từ topic ESP8266/LED_GPIO16/status là chuỗi "on"
   // sẽ bậtled GPIO16, nếu là chuỗi "off" sẽ tắt led GPIO16
   if ((char)payload[0] == 'o' && (char)payload[1] == 'n') //on
     digitalWrite(16, LOW);
