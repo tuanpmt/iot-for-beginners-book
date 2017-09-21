@@ -52,10 +52,10 @@ void setup() {
     Serial.printf("Data received, topic: %s, data: %s\r\n", topic.c_str(), data.c_str());
 
     // Nếu chuỗi nhận được là 'on' sẽ ON led trên board ESP8266 WiFi Uno, chuỗi 'off' sẽ OFF led
-    if (data[0] == 'o' && data[1] == 'n' && data[2] == '\0') {
+    if (topic == "hello/esp8266" && data[0] == 'o' && data[1] == 'n' && data[2] == '\0') {
       digitalWrite(ledPin, LOW);
       Serial.println("Turn on the led on board");
-    } else if ( data[0] == 'o' && data[1] == 'f' && data[2] == 'f' && data[3] == '\0' ) {
+    } else if (topic == "hello/esp8266" && data[0] == 'o' && data[1] == 'f' && data[2] == 'f' && data[3] == '\0' ) {
       digitalWrite(ledPin, HIGH);
       Serial.println("Turn off the led on board");
     }

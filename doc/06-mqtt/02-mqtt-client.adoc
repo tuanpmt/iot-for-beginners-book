@@ -120,7 +120,7 @@ Các options:
 	* `-t` : MQTT topic, nơi sẽ thực hiện pushlish 1 message
 	* `-h` : Xác định máy chủ sẽ kết nối đến
 	* `-m` : Gửi 1 message dùng command line
-	* `-v` : verbose, option cho phép ghi lại nhất kí hoạt động của các tập tin trong file cấu hình.
+	* `-v` : verbose, option cho phép ghi lại nhật kí hoạt động của các tập tin trong file cấu hình.
 
 .Hình ảnh message được publish dùng command line
 image::06-mqtt/MQTTjsCommand.png[width=600, align="center"]
@@ -179,4 +179,4 @@ NOTE: Để tìm hiểu chi tiết file cấu hình của thư viện, có thể
 .Kết quả hiển thị trên serial terminal và MQTT lens khi sử dụng thư viện ESP8266MQTTClient
 image::06-mqtt/ESP8266MQTTClient.png[width=897, align="center"]
 
-Ngoài ra có thể tạo thêm 1 connection và pulish các message vào topic `MQTTlens/test/#` với # có thể là 1 nội dung bất kì. Ở Serial terminal của Arduino, chúng ta sẽ nhìn thấy nội dung của message gửi bởi MQTT lens bởi vì ESP8266 đã đăng kí nhận gói tin tại topic `MQTTlens/test/#`
+Ngoài ra có thể tạo thêm 1 connection và pulish các message vào topic `MQTTlens/test/#` với # là 1 nội dung bất kì. Ở Serial terminal của Arduino, chúng ta sẽ nhìn thấy nội dung của message gửi bởi MQTT lens bởi vì ESP8266 đã đăng kí nhận gói tin tại topic `MQTTlens/test/#`

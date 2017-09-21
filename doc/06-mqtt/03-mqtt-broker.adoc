@@ -1,13 +1,43 @@
 == MQTT Broker
 
-Ở phần trước chúng ta sử dụng các dịch vụ MQTT Broker miễn phí để thử nghiệm, ở phần này, chúng ta sẽ sử dụng Mosca, một thư viện MQTT Broker mã nguồn mở để tự mình xây dựng 1 Broker.
+Ở phần trước chúng ta sử dụng các dịch vụ MQTT Broker miễn phí để thử nghiệm, ở phần này, chúng ta sẽ tự mình xây dựng 1 MQTT Broker. Việc tự thiết lập 1 MQTT broker giúp chúng ta có thể sử dụng giao thức MQTT trên máy local mà không cần kết nối đến các dịch vụ MQTT Broker ở mạng internet nhằm truyền, nhận và xử lí dữ liệu 1 cách nhanh chóng cũng như bảo mật thông tin. Chúng ta cũng có thể sẽ phải trả phí dịch vụ với những ứng dụng lớn cần băng thông rộng và tốc độ đáp ứng nhanh, việc tự tạo 1 MQTT Broker sẽ cải thiện điều này. Tuy nhiên, để làm được điều này đòi hỏi chúng ta phải có kiến thưc tốt về  MQTT, Javascript và Node.js để tạo được 1 MQTT Broker với đầy đủ tính năng của giao thức MQTT.
 
 === MOSCA
+
+Mosca là 1 trong số rất nhiều server MQTT broker của giao thức MQTT. Có thể kế đến các server khác như HiveMQ, Apache Apollo, MQTT.js, Mongoose... Mosca là 1 Node.js Broker, được viết bằng ngôn ngữ JavaScript vì vậy để có thể xây dựng MQTT Broker, chúng ta cần Node.js để chạy nó. Mosca có thể  nhúng vào ứng dụng của bạn nếu ứng dụng này được viết bằng Node.js
+
+Mosca là 1 multi-transport MQTT broker, có nghĩa là nó hỗ trợ tất cả các chức năng publish, subscribe của các broker khác. Danh sách các publish/subscribe broker được hỗ trợ bao gồm RabbitMQ, Redis, Mosquitto, ZeroMQ.
+
+==== Mục tiêu
+
+* Tạo 1 client MQTT trên ESP8266 nhằm kết nối đến MQTT Broker, subscribe topic và publish các message
+* Tạo 1 MQTT Broker trên máy local nhằm broadcast messages (truyền bá các gói tin) đến các MQTT Client là ESP8266.
+
+==== Các bước thực hiện
+
+* **Bước 1 :** Trước tiên, chúng ta nên tạo 1 folder để  thiết lập 1 MQTT Broker trên máy local. Đi đến folder này, tạo file package.js bằng lệnh `npm init` và thiết lập các thông tin của dự án. Tiếp theo, khởi tạo module mosca bằng lệnh `npm install mosca --save`
+
+* **Bước 2 :** Tạo file .js để viết mã nguồn. Ví dụ về mã nguồn của file serverMosca.js được viết bên dưới:
+
+[source, javascript]
+----
+include::code/serverMosca.js[]
+----
+
+* **Bước 3 :** Viết mã nguồn cho ESP8266. Để thuận tiện, chúng ta sẽ dùng mã nguồn của thư viện ESP8266MQTTClient đã viết ở mục trước. Sửa đổi địa chỉ URI của MQTT Broker `mqtt.begin("mqtt://iot.eclipse.org:1883");` thành `mqtt.begin("mqtt://your-local-ip:1883");` với your-local-ip là địa chỉ IP của máy tính, chú ý rằng ESP8266 và MQTT Broker phải kết nối chung 1 network WiFi.
+
+==== Kết quả
 
 === Một số MQTT Broker sử dụng cho sản phẩm thực tế
 
 ==== Mosquitto
 
-Phù hợp cho các ứng dụng chạy trên board nhúng
+Mosquitto là 1 MQTT Broker viết bằng ngôn ngữ lập trình C. Môt số đặc điểm nổi bật của mosquitto là tốc độ truyền nhận và xử lí dữ liệu nhanh, ổn định cao, được sử dụng rộng rãi và phù hợp với những ứng dụng embedded. Thích hợp cho các hệ thống nhỏ chạy trên máy local như Raspberry Pi, bên cạnh đó  Mosquitto cũng được hỗ trợ các giao thức TLS/SSL (các giao thức nhằm xác thực server và client, mã hóa các message để  bảo mật dữ liệu).
+
+Một số nhược điểm của mosquitto là khó thiết kế khi làm những ứng dụng lớn và ít phương thức xác thực thiết bị nên khả năng bảo mật vẫn chưa tối ưu
 
 ==== EMQ
+
+EMQ (Erlang MQTT Broker) là một MQTT Broker được viêt bằng ngôn ngữ lập trinh Erlang. Ưu điểm của EMQ là tính ổn định cao, thích hợp để thiết kế các hệ thống lớn do khả năng mở rộng ứng dụng dễ dàng cúng như khá dễ để cài đặt. Ngoài ra EMQ còn hỗ trợ nhiều phương thức xác thực người dùng, phát triển và cập nhật tính năng liên tục bởi cộng đồng developer. Tuy nhiên điểm yếu của MQTT broker này là khá khó đối với những người mới bắt đầu
+
+Thông tin về EMQ có thể xem tại trang http://emqttd-docs.readthedocs.io/en/latest/#
