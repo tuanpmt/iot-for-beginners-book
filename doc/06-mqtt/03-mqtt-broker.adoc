@@ -21,7 +21,7 @@ Mosca là 1 multi-transport MQTT broker, có nghĩa là nó hỗ trợ tất c�
 
 [source, javascript]
 ----
-include::code/serverMosca.js[]
+include::code/mosca/moscaClient.js[]
 ----
 
 * **Bước 3 :** Viết mã nguồn cho ESP8266. Để thuận tiện, chúng ta sẽ dùng mã nguồn của thư viện ESP8266MQTTClient đã viết ở mục trước. Sửa đổi địa chỉ URI của MQTT Broker `mqtt.begin("mqtt://iot.eclipse.org:1883");` thành `mqtt.begin("mqtt://your-local-ip:1883");` với your-local-ip là địa chỉ IP của máy tính, chú ý rằng ESP8266 và MQTT Broker phải kết nối chung 1 network WiFi.
