@@ -23,7 +23,7 @@ Website:"https://chrome.google.com/webstore/detail/mqttlens/"
 
 **Kết nối**
 
-* Bước 1: Cài đặt trình duyệt Chrome, thực hiện đăng nhập tài khoản của bạn vào chrome, truy cập vào địa chỉ https://chrome.google.com/webstore/category/extensions và gõ mqttlens vào mục tìm kiểm tiện ích như hình bên dưới.
+* Bước 1: Cài đặt trình duyệt Chrome, thực hiện đăng nhập tài khoản của bạn vào chrome, truy cập vào địa chỉ https://chrome.google.com/webstore/category/extensions và gõ mqttlens vào mục tìm kiếm tiện ích như hình bên dưới.
 
 .Hình ảnh tìm kiếm tiện ích mqttlens trên chrome store
 image::06-mqtt/searchMQTTlens.png[width=600, align="center"]
@@ -120,7 +120,7 @@ Các options:
 	* `-t` : MQTT topic, nơi sẽ thực hiện pushlish 1 message
 	* `-h` : Xác định máy chủ sẽ kết nối đến
 	* `-m` : Gửi 1 message dùng command line
-	* `-v` : verbose, option cho phép ghi lại nhất kí hoạt động của các tập tin trong file cấu hình 
+	* `-v` : verbose, option cho phép ghi lại nhật kí hoạt động của các tập tin trong file cấu hình.
 
 .Hình ảnh message được publish dùng command line
 image::06-mqtt/MQTTjsCommand.png[width=600, align="center"]
@@ -144,12 +144,12 @@ Trong phần này chúng ta sẽ thực hiện kết nối board ESP8266 WiFi Un
 include::code/ESP8266PubSub/ESP8266PubSub.ino[]
 ----
 
-Giải thích mã nguồn:
+**Giải thích mã nguồn:**
 
-Chúng ta sẽ tạo một biến `espClient` thuộc lớp `WiFiClient`, biến này được khai báo là client và sử dụng các thuộc tính của thư viện `PubSubClient`. Tại hàm setup() sẽ thiết lập ESP8266 ở chế độ station, kết nối đến mạng wifi. Bên cạnh đó, function setup() sẽ tự động kết nối lại với broker MQTT khi xảy ra mất kết nối đồng thời thực hiện các chức năng publish, subscribe của 1 MQTT client thông qua hàm `reconnect()` . Function `callback()` sẽ lấy dữ liệu của các puslisher khi publish 1 message và gửi đến các client đã subscribe topic đó, đông thời sẽ kiểm tra nội dung của message để điều khiển led ở GPIO16. Hàm `loop()` có chức năng kết nối client là ESP8266 với broker, thực  hiện chức năng publish 1 message và subscribe topic. Đối tượng `client.loop()` kiểm tra thời gian kết nối của client với gói `KEEP_ALIVE` để đưa ra các thông tin về trạng thái kết nối của ESP8266 đồng thời lấy dữ liệu của message từ buffer để gửi đến các client đã subcribe topic. 
+Chúng ta sẽ tạo một biến `espClient` thuộc lớp `WiFiClient`, biến này được khai báo là MQTT client và sử dụng các thuộc tính của thư viện `PubSubClient`. Tại hàm setup() sẽ thiết lập ESP8266 ở chế độ station, kết nối đến mạng wifi. Bên cạnh đó, setup() cũng sẽ tự động kết nối lại với broker MQTT khi xảy ra mất kết nối đồng thời thực hiện các chức năng publish, subscribe của 1 MQTT client thông qua hàm `reconnect()` . Hàm `callback()` sẽ lấy dữ liệu của các puslisher khi publish 1 message và gửi đến các client đã subscribe topic đó, đồng thời sẽ kiểm tra nội dung của message để điều khiển led ở GPIO16. Hàm `loop()` có chức năng kết nối client là ESP8266 với broker, thực  hiện chức năng publish 1 message và subscribe topic. `client.loop()` sẽ kiểm tra thời gian kết nối của client với gói `KEEP_ALIVE` để đưa ra các thông tin về trạng thái kết nối của ESP8266 đồng thời lấy dữ liệu của message từ buffer để gửi đến các client đã subcribe topic.
 
 
-* **Bước 3 :** Mở MQTT lens trên trình duyệt Chrome, tạo 1 connection với host name `broker.mqtt-dashboard.com`, sử dụng port 1883. Thực hiện subscribe topic `ESP8266/connection/board`. Sau khi nhấn nút subscribe trên MQTT lens sẽ xuất hiện 1 message gửi từ esp8288 với nội dung `connnected`. Thực hiện pushlish các message vào topic `ESP8266/LED_GPIO16/status`. Nếu pushlish message với nội dung `on`, led GPIO16 trên board sẽ sáng, pushlish message `off` led GPIO16 trên board sẽ tắt. Các message với nội dung khác sẽ không có tác dụng điều khiển led GPIO16. Kết quả hiển thị như hình bên dưới:
+* **Bước 3 :** Mở MQTT lens trên trình duyệt Chrome, tạo 1 connection với host name `broker.mqtt-dashboard.com`, sử dụng port 1883. Thực hiện subscribe topic `ESP8266/connection/board`. Sau khi nhấn nút subscribe trên MQTT lens sẽ xuất hiện 1 message gửi từ esp8288 với nội dung `connnected`. Thực hiện pushlish các message vào topic `ESP8266/LED_GPIO16/status`. Nếu pushlish message với nội dung `on`, led GPIO16 trên board sẽ sáng, pushlish message `off` led GPIO16 trên board sẽ tắt. Các message với nội dung khác thì vẫn sẽ hiển thị dữ liệu nhận được trên serial terminal của Arduino nhưng sẽ không có tác dụng điều khiển led GPIO16. Kết quả hiển thị như hình bên dưới:
 
 .Kết quả hiển thị trên serial terminal và MQTT lens khi sử dụng thư viện pubsubClient
 image::06-mqtt/MQTTLEnsPubSUb.png[width=897, align="center"]
@@ -159,32 +159,24 @@ image::06-mqtt/MQTTLEnsPubSUb.png[width=897, align="center"]
 
 Tiếp theo, chúng ta sẽ tìm hiểu cách sử dụng thư viện ESP8266MQTTClient, thư viện được cộng đồng developer đánh giá là ổn định dễ sử dụng hơn so với thư viện PubSubClient.
 
-Ở phần này chúng ta sẽ kết nối board mạch ESP8266 Wifi Uno với 1 ứng dụng trên smartphone. Ừng dụng này  là 1 MQTT client và sử dụng giao thức MQTT để giao tiếp với board ESP8266, ngoài ra nó còn được tích hợp cả chức năng smart config cho ESP8266.
-
 * **Bước 1 :** Download thư viện `ESP8266MQTTClient` tại đường dẫn https://github.com/tuanpmt/ESP8266MQTTClient và add vào chương trình Arduino. Ngoài ra có thể import thư viện này trong Arduino bằng cách tìm kiếm thư viện với từ khóa `ESP8266MQTT`, chọn thư viện của tác giả TuanPM và nhấn install.
 
 * **Bước 2 :** Viết và nạp chương trình cho ESP8266. Mã nguồn được trình bày ở phía dưới.
 
 [source, c]
 ----
-include::code/   CHIRINH SUA LAI
+include::code/ESP8266MQTT/ESP8266MQTTClient.ino[]
 ----
 
-Giải thích mã nguồn
+*Giải thích mã nguồn*
 
-* **Bước 3 :** Download ứng dụng `IoT Smartconfig`. Search ứng dụng với từ khóa `iot smartconfig` (hỗ trợ hệ điều hành Android và iOS), cài đặt ứng dụng như hình dưới.
+Tương tự như mã nguồn của chương trình sử dụng thư viện pubsubCLient, chúng ta cũng sẽ khởi tạo ESP8266 là mqtt client trong class MQTT của thư viện ESP8266MQTTClient. Cài đặt ESP8266 ở chế độ station và kết nối đến network wifi. Chức năng của các hàm trong thư viện đã được giải thích ở file mã nguồn, ở hàm `mqtt.onConnect()` chúng ta sẽ subscribe 2 topic là `hello/ESP8266` và `MQTTlens/test/#`, dấu # sẽ giúp nhận dữ liệu của tất cả các topic có nội dung phần đầu là `MQTTlens/test/`. Hàm `mqtt.onSubscribe()` sẽ puslish các message ở topic đã chỉ định. `mqtt.onData()` sẽ nhận, kiểm tra và xử lí dữ liệu nhận được từ topic đã subscribe. Ở `loop()` chúng ta chỉ cần gọi hàm `handle()` để khởi tạo và kiểm tra các thuộc tính của giao thức cũng như xử lí, truyền và nhận dữ liệu từ các topic đã subscribe và public.
 
-.Ứng dụng IoT smartconfig cho ESP8266
-image::06-mqtt/iotSmartConfig.png[width=600, align="center"]
+NOTE: Để tìm hiểu chi tiết file cấu hình của thư viện, có thể xem tại https://github.com/tuanpmt/ESP8266MQTTClient/tree/master/src
 
-Sau khi cài đặt ứng dụng, di chuyển đến màn hình tiếp theo để sử dụng MQTT, tại đây chúng ta sẽ thực hiện các cài đặt như hình: 
+* **Bước 3 :** Mở MQTT lens trên trình duyệt Chrome, tạo 1 connection với host name `iot.eclipse.org`, sử dụng port 1883. Thực hiện subscribe topic `MQTTlens/test/3`, pushlish các message vào topic `hello/ESP8266`. Nếu pushlish message với nội dung `on`, led GPIO16 trên board sẽ sáng, pushlish message `off` led GPIO16 trên board sẽ tắt. Các message với nội dung khác thì vẫn sẽ hiển thị dữ liệu nhận được trên serial terminal của Arduino nhưng sẽ không có tác dụng điều khiển led GPIO16. Kết quả hiển thị như hình bên dưới:
 
-.Hình ảnh giao diện ứng dụng MQTT và cấu hình
-image::06-mqtt/interfaceConfig.png[width=300, align="center"]
+.Kết quả hiển thị trên serial terminal và MQTT lens khi sử dụng thư viện ESP8266MQTTClient
+image::06-mqtt/ESP8266MQTTClient.png[width=897, align="center"]
 
-Giải thích: 
-Tại mục host name dùng `ws://iot.eclipse.org:80/ws` với
-
-* `ws`(websocket) là phương thức gửi, nhận dữ liệu trong đó chúng  sẽ được tìm hiểu chi tiết ở bài học kế tiếp  
-* `iot.eclipse.org` broker MQTT để gửi, nhận các gói tin từ client
-* `80` port được mở để sử dụng websocket
+Ngoài ra có thể tạo thêm 1 connection và pulish các message vào topic `MQTTlens/test/#` với # là 1 nội dung bất kì. Ở Serial terminal của Arduino, chúng ta sẽ nhìn thấy nội dung của message gửi bởi MQTT lens bởi vì ESP8266 đã đăng kí nhận gói tin tại topic `MQTTlens/test/#`
