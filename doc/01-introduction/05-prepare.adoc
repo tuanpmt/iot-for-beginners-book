@@ -11,7 +11,7 @@ Tùy hệ điều hành mà chọn gói cài đặt thích hợp.
 
 *Bước 2*: Cài đặt bộ công cụ, trình biên dịch, SDK hỗ trợ chip ESP8266 trong Arudino IDE.
 
-Với bộ công cụ này, chúng ta có thể dễ dàng lập trình, biên dịch và sử dụng các thư viện dành cho ESP8266 trực tiếp trên Arduino IDE.Mở Arduino IDE, trên thanh Menu chọn `File` -> `Preferecens`, trong tab `settings` chọn các tùy chọn như hình dưới:
+Với bộ công cụ này, chúng ta có thể dễ dàng lập trình, biên dịch và sử dụng các thư viện dành cho ESP8266 trực tiếp trên Arduino IDE. Mở Arduino IDE, trên thanh Menu chọn `File` -> `Preferecens`, trong tab `settings` chọn các tùy chọn như hình dưới:
 
 .Thêm file thông tin board ESP8266
 image::01-intro/preferences.png[Thêm file hỗ trợ cài đặt board ESP8266, align="center", width=400]

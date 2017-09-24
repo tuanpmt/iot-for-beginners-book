@@ -19,7 +19,7 @@ https://arduino.cc[*Arduino*] là một IDE tích hợp sẵn editor, compiler, 
 * Thiết kế IDE tốt, có thể dễ dàng tích hợp nhiều loại compiler, nhiều loại hardware mà không hề giảm hiệu năng. Ví dụ: Arduino gốc cho AVR, nhưng có nhiều phiên bản cho STM32, PIC32, ESP8266, ESP32... tận dụng tối đa các thư viện sẵn có.
 * Các thư viện được viết dựa trên lớp API trên cùng, nên đa số các thư viện cho Arduino có thể dùng được cho tất cả các chip. Điển hình là Arduino cho ESP8266 có thể tận dụng trên 90% các thư viện cho Arduino khác
 * Trình biên dịch cho Arudino là C/C++, bạn có biết là khi biên dịch ESP8266 non-os SDK và ESP8266 Arduino cùng dùng chung trình biên dịch? Vậy thì hiệu năng không hề thua kém
-* Các tổ chức các thư viện C/C++ theo dạng OOP giúp phân lớp, kế thừa và quản lý cực kỳ tốt cho các ứng dụng lớn .Các MCU ngày càng mạnh mẽ, và ứng dụng cho nó sẽ ngày càng lớn. Các mô hình quản lý code đơn giản trước đây (thuần C) sẽ khó.
+* Cách tổ chức các thư viện C/C++ theo dạng OOP giúp phân lớp, kế thừa và quản lý cực kỳ tốt cho các ứng dụng lớn .Các MCU ngày càng mạnh mẽ, và ứng dụng cho nó sẽ ngày càng lớn. Các mô hình quản lý code đơn giản trước đây (thuần C) sẽ khó.
 * Các project cho Arduino đều opensource, bạn dễ dàng lấy nó và đưa vào sản phẩm production với chất lượng tốt và học hỏi được nhiều từ cách thức thiết kế chương trình của các bậc thầy.
 * Arduino chú trọng tính đa nền tảng, module hóa cao, phù hợp với các ứng dụng từ phức tạp tới cực kỳ phức tạp. Các ứng dụng kiểu này rất phổ biến trong thực tế. Nếu bạn không dùng C++, hoặc arduino mà gặp vấn đề về overcontrol thì nên thử qua Arduino.
 * Bạn sẽ tiết kiệm được rất rất nhiều thời gian cho việc tập trung vào tính năng sản phẩm đấy. Thời buổi này, thời gian là tiền và có quá nhiều thứ để học, làm thì nên ưu tiên đúng chỗ.
@@ -35,7 +35,7 @@ https://arduino.cc[*Arduino*] là một IDE tích hợp sẵn editor, compiler, 
 
 === Arduino cho ESP8266 & board mạch ESP8266 WiFi Uno
 
-https://github.com/iotmakervn/iot-wifi-uno-hw[Board mạch ESP8266 WiFi Uno] là một dự án mã nguồn mở giúp hỗ trợ môi trường phát triển Arduino cho ESP8266. Giúp bạn có thể viết 1 Sketches sử dụng các thư viện và hàm tương tự của Arduino, có thể chạy trực tiếp trên ESP8266 mà không cần bất kỳ Vi điều khiển nào khác.
+https://github.com/iotmakervn/iot-wifi-uno-hw[Board mạch ESP8266 WiFi Uno] là một dự án mã nguồn mở giúp hỗ trợ môi trường phát triển Arduino cho ESP8266. Giúp bạn có thể viết 1 Sketch sử dụng các thư viện và hàm tương tự của Arduino, có thể chạy trực tiếp trên ESP8266 mà không cần bất kỳ vi điều khiển nào khác.
 
 ESP8266 Arduino core đi kèm với thư viện kết nối WiFi hỗ trợ TCP, UDP và các ứng dụng HTTP, mDNS, SSDP, DNS Servers. Ngoài ra còn có thể thực hiện cập nhật OTA, sử dụng Filesystem dùng bộ nhớ Flash hay thẻ SD, điều khiển servos, ngoại vi SPI, I2C.
 

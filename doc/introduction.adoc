@@ -1,9 +1,9 @@
 [abstract]
 == Giới thiệu nội dung
 
-Nội dung quyển sách này bao gồm các hướng dẫn chi tiết cho người đọc lập trình ứng dụng IoT sử dụng Chip WiFi ESP8266 phổ biến kết nối với Server để gởi nhận gởi dữ liệu, và thực thi các lệnh từ Server. Internet Of Things dựa và các kết nối Internet khá nhiều, do vậy, các nội dung cũng tập trung nhiều vào các giao thức (prototcol), các phương pháp quản lý, cấu hình kết nối.
+Nội dung quyển sách này bao gồm các hướng dẫn chi tiết cho người đọc lập trình ứng dụng IoT sử dụng Chip WiFi phổ biến hiện này là ESP8266 để kết nối với Server, gởi, nhận gởi dữ liệu và thực thi các lệnh từ Server. Internet Of Things dựa và các kết nối Internet khá nhiều, do vậy các nội dung cũng tập trung nhiều vào các giao thức (prototcol), các phương pháp quản lý cũng như cấu hình kết nối.
 
-Phần cứng sử dụng chính là System On Chip (SoC) **ESP8266** - có khả năng kết nối WiFi và lập trình được giá rẻ, phổ biến trên thế giới. Board mạch sử dụng là board phần cứng mở https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno] có sơ đồ chân tương thích với các board Arduino Uno.
+Phần cứng sử dụng chính là System On Chip (SoC) **ESP8266** - có khả năng kết nối WiFi và lập trình được với giá thành rẻ và phổ biến trên thế giới. Board mạch sử dụng là board phần cứng mở https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno] có sơ đồ chân tương thích với các board Arduino Uno.
 
 Phần mềm sử dụng lập trên máy tính cho Chip ESP8266 là https://arduino.cc[*Arduino*], ngôn ngữ lập trình `C/C++`
 
@@ -27,7 +27,7 @@ TIP: Tất cả các phần Code đều không giải thích rõ chi tiết API 
 
 - Các lập trình viên phần mềm/Mobile App, Web App… muốn tham gia làm sản phẩm `IoT`
 - Sinh viên muốn nâng cao kỹ năng, bổ sung kiến thức
-- Cá nhân muốn tự mình làm các sản phẩm phục vụ cuộc sống - phục vụ công việc
+- Cá nhân muốn tự mình làm các sản phẩm phục vụ cuộc sống, phục vụ công việc
 - Startup Tech không chuyên về phần cứng hoặc phần mềm
 
 === Mục tiêu mang lại cho người đọc
@@ -39,7 +39,7 @@ TIP: Tất cả các phần Code đều không giải thích rõ chi tiết API 
 
 === Chuẩn bị
 
-- Ít nhất bạn cần 1 board mạch ESP8266 lập trình được, tốt nhấn nên sử dụng các board mạch tương tích với Arduino IDE (đã có các module nạp cho chip)
+- Ít nhất bạn cần 1 board mạch ESP8266 lập trình được, tốt nhất nên sử dụng các board mạch tương tích với Arduino IDE (đã có các module nạp cho chip)
 - Nên có thêm các module khác như cảm biến, động cơ để thực hành, một bộ StarterKit là phù hợp
 - 1 máy tính cá nhân (Windows, MacOS hoặc Linux)
 - C & Arduino ESP8266 Cheatsheet (Mục lục cuối quyển sách này)

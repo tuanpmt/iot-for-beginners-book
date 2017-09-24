@@ -9,9 +9,9 @@ Nội dung được thiết kế một cách cơ bản giúp học viên có cá
 
 === Thuật ngữ hay sử dụng
 * `IoT` Internet Of Things hay internet vạn vật
-* `ESP8266` chip khả trình tích hợp thu phát WiFi
+* `ESP8266` chip xử lí tích hợp thu phát WiFi
 * `Git` trình quản lý phiên bản
-* `Github` mạng xã hội lập trình viên
+* `Github` mạng xã hội dành cho lập trình viên
 * `IDE` Integrated Development Enviroment - môi trường phát triển tích hợp
 * `Compiler` trình biên dịch
 * `Logic Level` mức điện áp để chip hiểu được (1 hay 0)

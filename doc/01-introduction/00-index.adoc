@@ -6,7 +6,7 @@ Trong phần này, chúng ta sẽ bắt đầu bằng việc tìm hiểu tổng 
 Điểm qua phần này như sau:
 
 * `IoT` và ứng dụng thực tế
-* Tìm hiểu về chip WiFi khả trình `ESP8266`
+* Tìm hiểu về chip WiFi `ESP8266`
 * `Arduino IDE` và sử dụng Arduino với ESP8266
 * `Starter Kit` bộ công cụ khởi động việc học lập trình `IoT`
 * `Node.js - Javascript` ngôn ngữ lập trình Server Side

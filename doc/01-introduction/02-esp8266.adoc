@@ -4,7 +4,7 @@ ESP8266 là dòng chip tích hợp Wi-Fi 2.4Ghz có thể lập trình được,
 
 Được phát hành đầu tiên vào tháng 8 năm 2014, đóng gói đưa ra thị trường dạng Mô dun ESP-01, được sản xuất bởi bên thứ 3: AI-Thinker. Có khả năng kết nối Internet qua mạng Wi-Fi một cách nhanh chóng và sử dụng rất ít linh kiện đi kèm. Với giá cả có thể nói là rất rẻ so với tính năng và khả năng ESP8266 có thể làm được.
 
-ESP8266 có một cộng đồng các nhà phát triển trên thế giới rất lớn, cung cấp nhiều Module lập trình mã mở giúp nhiều người có thể tiếp cận và xây dựng ứng dụng rất nhanh.
+ESP8266 có một cộng đồng các nhà phát triển trên thế giới rất lớn, cung cấp nhiều Module lập trình mã nguồn mở giúp nhiều người có thể tiếp cận và xây dựng ứng dụng rất nhanh.
 
 Hiện nay tất cả các dòng chip ESP8266 trên thị trường đều mang nhãn ESP8266EX, là phiên bản nâng cấp của ESP8266
 
@@ -14,7 +14,7 @@ Hiện nay tất cả các dòng chip ESP8266 trên thị trường đều mang 
 image::01-intro/01.esp8266-soc.svg[Sơ đồ chân ESP8266EX, width=500, align="center"]
 
 === Thông số phần cứng
-* 32-bit RISC CPU : Tensilica Xtensa LX106 running at 80 MHz
+* 32-bit RISC CPU : Tensilica Xtensa LX106 chạy ở xung nhịp 80 MHz
 * Hổ trợ Flash ngoài từ 512KiB đến 4MiB
 * 64KBytes RAM thực thi lệnh
 * 96KBytes RAM dữ liệu
@@ -27,7 +27,7 @@ image::01-intro/01.esp8266-soc.svg[Sơ đồ chân ESP8266EX, width=500, align="
 * 16 chân GPIO
 * Hổ trợ SDIO 2.0, UART, SPI, I²C, PWM,I²S với DMA
 * 1 ADC 10-bit
-* Dải nhiệt độ hoạt động rộng : -40C ~~ 125C
+* Dải nhiệt độ hoạt động rộng : -40C ~ 125C
 
 .Một module tích hợp phổ biến (Module ESP12E)
 image::01-intro/01.ESP-12E.jpg[Module ESP12E, width=300, align="center"]
@@ -45,7 +45,7 @@ Hiện nay, **NONOS SDK** phiên bản từ **2.0.0** trở lên đã ổn đị
 * `Sniffer` API: Bắt các gói tin trong mạng không dây 2.4Ghz.
 * `SNTP` API: Đồng bộ thời gian với Máy chủ thời gian.
 * `WPA2 Enterprise` API: Cung cấp việc quản lý kết nối Wi-Fi bằng tài khoản sử dụng các máy chủ RADIUS.
-* `TCP/UDP` API: Cho kết nối internet, và hỗ trợ các Module dựa trên, như: HTTP, MQTT, CoAP.
+* `TCP/UDP` API: Cho kết nối internet và hỗ trợ các Module dựa trên các giao thức như: HTTP, MQTT, CoAP.
 * `mDNS` API: Giúp tìm ra **IP** của thiết bị trong mạng nội bộ bằng tên (hostname).
 * `MESH` API: Liên kết các module ESP8266 với cấu trúc mạng MESH
 * `FOTA` API: Firmware Over The Air - cập nhật firmware từ xa cho thiết bị .

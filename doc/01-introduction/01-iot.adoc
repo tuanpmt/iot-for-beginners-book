@@ -42,7 +42,7 @@ Những vấn đề quan trọng nhất của hệ thống IoT bao gồm trí th
 Những lợi ích mà IoT đem lại được dàn trải hầu hết đến các tất cả các lĩnh vực trong đời sống, kinh doanh... Dưới đây liệt kê ngắn gọn một số tính năng hữu ích của IoT:
 
 - *Cải thiện việc gắn kết khách hàng* - Hệ thống IoT giúp phân tích các điểm mù hiện tại, tìm ra những sai sót về độ chính xác. IoT thay đổi điều này để mang lại nhiều sự gắn kết hơn và hiệu quả hơn với người dùng. Một ứng dụng tại các cửa hàng, dịch vụ iBeacon giúp tăng số lượng sản phẩm tới người tiêu dùng bằng cách chỉ dẫn người dùng tới khu vực cụ thể trong cửa hàng và đưa ra các gợi ý về sản phẩm. Chúng cung cấp các thông tin chi tiết, các đánh giá về sản phẩm,  ...Bên cạnh đó chúng cũng có khả năng cho phép người dùng chia sẻ các sản phẩm qua mạng xã hội ...
-- *Tối ưu hóa công nghệ* - giúp nâng cao trải nghiệm của khách hàng cũng như cải thiện việc sử dụng thiết bị và hỗ trợ cải tiến công nghệ. IoT giúp mở ra thế giới của những dữ liệu quan trọng và trường dữ liệu (Technology Optimization − The same technologies and data which improve the customer experience also improve device use, and aid in more potent improvements to technology. IoT unlocks a world of critical functional and field data.)
+- *Tối ưu hóa công nghệ* - giúp nâng cao trải nghiệm của khách hàng cũng như cải thiện việc sử dụng thiết bị và hỗ trợ cải tiến công nghệ.
 
 - *Giảm sự hao phí* - IoT giúp việc quản lí tài nguyên ở các lĩnh vực được cải thiện 1 cách rõ ràng. Các phân tích hiện tại thường cung cấp cho chúng ta cái nhìn ở khía cạnh bên ngoài, trong khi IoT cung cấp các dữ liêu, thông tin thực tế để quản lí tài nguyên một cách hiệu quả hơn.
 
