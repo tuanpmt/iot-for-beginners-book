@@ -2,10 +2,10 @@
 Viết chú thích trên 1 dòng dùng //
       ex: x++ ; // tăng x 1 đơn vị
 /* */ Viết chú thích trên nhiều dòng.
-      ex : /*************************
-            * Chú thích được viết   *
-            *    trên nhiều dòng    *
-            ************************/
+ex : /*************************
+      * Chú thích được viết   *
+      *    trên nhiều dòng    *
+      ************************/
 /* CẤU TRÚC 1 CHƯƠNG TRÌNH */
 #include <stdio.h>//include thư viện chuẩn của C
 #include "iLib.h" //include thư viện tạo bởi người dùng
@@ -277,10 +277,10 @@ SINHVIEN sinhVienA;
 
 /* CÁC LỆNH XỬ LÝ TẬP TIN (#include <stdio.h>) */
 /* Khai báo 1 biến con trỏ là đường dẫn của 1 file */
-const char *filePath = "Đường/dẫn/file/documen.txt";
+const char *filePath = "Đường/dẫn/file/document.txt";
 /* Tạo 1 biến con trỏ thuộc kiểu FILE */
 FILE *file;
-/* Mở 1 file ở đường dẫn filePath và chỉ đọc dữ liệu */
+/* Mở 1 file ở đường dẫn filePath và đọc dữ liệu */
 file = fopen(filePath, "r");// Trả về NULL nếu thất bại
 /* Đóng 1 file đã mở, trả về 0 nếu thành công , ngược
 lại trả về EOF */

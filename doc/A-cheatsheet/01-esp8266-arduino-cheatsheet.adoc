@@ -9,7 +9,7 @@ include::code/arduino-cheatsheet.c[lines=1..57]
 |
 [source, c]
 ----
-include::code/arduino-cheatsheet.c[lines=58..113]
+include::code/arduino-cheatsheet.c[lines=58..114]
 ----
 |
 [source, c]

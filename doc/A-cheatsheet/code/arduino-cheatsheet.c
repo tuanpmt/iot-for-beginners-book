@@ -1,4 +1,4 @@
-/* Cấu trúc cơ bản của 1 Sketch */
+/* CẤU TRÚC CƠ BẢN CỦA 1 SKETCH */
 void setup() {
   /*
   Hàm được gọi khi bắt đầu sketch. Dùng để khởi tạo
@@ -11,7 +11,7 @@ void loop() {
   // Nội dung trong loop() lặp lại liên tục
 }
 
-/* Lệnh rẻ nhánh */
+/* LỆNH RẺ NHÁNH */
 if (x < 5)      // thực thi code nếu x<5
  { code }
 else if (x > 10)// thực thi code nếu x>10
@@ -29,7 +29,7 @@ default:
 ...
 }
 
-/* Các kiểu vòng lặp */
+/* CÁC KIỂU VÒNG LẶP */
 /* Thực hiện code nếu x<5 */
 while (x < 5) { code };
 /* Thực hiện code, so sánh, nếu x<0 tiếp tục thực hiện
@@ -43,19 +43,19 @@ break;
 /* Đi đến chu kì lặp tiếp theo của vòng lặp hiện tại */
 continue;
 
-/* Các định nghĩa về hàm */
+/* CÁC ĐỊNH NGHĨA VỀ HÀM*/
 <ret. type> <name>(<params>) { ... }
 int func_name(int x) { return x*2; }
 return x; // x phải trùng khớp với kiểủ trả về của hàm
 return;   // loại return dành cho hàm void
 
-/* Include */
+/* INCLUDE */
 /* include thư viện chuẩn */
 #include <stdio.h>
 /* include thư viện tạo bởi người dùng */
 #include "your-library.h"
 
-/* Strings */
+/* DỮ LIỆU KIỂU CHUỖI */
 /* Chuỗi bao gồm kí tự kết thúc chuỗi \0 (null) */
 char str1[8] = {'A','r','d','u','i','n','o','\0'};
 /* Trình biên dịch tự động thêm kí tự \0 vào cuối
@@ -67,7 +67,7 @@ char str3[] = "Arduino";
 /* Khai báo và gán giá trị cho chuỗi */
 char str4[8] = "Arduino";
 
-/* Arrays */
+/* DỮ LIỆU KIỂU MẢNG */
 /* Khai báo mảng kiểu int có 6 phần tử và gán giá trị
 cho mỗi phần tử */
 int myPins[] = {2, 4, 8, 3, 6};
@@ -83,6 +83,7 @@ const     // Không đổi (chỉ đọc)
 PROGMEM   /* Cho phép lưu trữ dữ liệu trong bộ nhớ
 FLASH thay vì SRAM */
 
+/* CÁC TOẢN TỬ, PHÉP TOÁN THƯỜNG DÙNG */
 /* Các toán tử thường dùng */
 =   toán tử bằng
 +   toán tử cộng
@@ -125,7 +126,7 @@ FLASH thay vì SRAM */
 &reference:  // lấy địa chỉ của biến mà con trỏ trỏ tới
 *dereference:// lấy giá trị của biến mà con trỏ trỏ tới
 
-/*Hằng số và kiểu dữ liêu*/
+/* HẰNG SỐ VÀ KIỂU DỮ LIỆU */
 123     Số thập phân
 0b0111  Số nhị phân
 0173    Số Octal - base 8
@@ -136,7 +137,7 @@ FLASH thay vì SRAM */
 123.0   Số thực
 1.23e6  Số thực dùng cơ số mũ ex: 1.23*10^3 = 1230
 
-/*Kiểu dữ liệu và phạm vi của dữ liệu*/
+/*PHẠM VI CỦA KIỂU DỮ LIỆU */
 boolean       true \| false
 char          -128        - 127, 'a' '$' etc.
 unsigned char 0           - 255
@@ -150,7 +151,7 @@ float         -3.4028e+38 - 3.4028e+38
 double        -3.4028e+38 - 3.4028e+38
 void          i.e., no return value
 
-/*Khai báo biến*/
+/* KHAI BÁO BIẾN */
 int       a;
 int       a = 0b01111011, b = 0123, c = 1, d;
 float     fa = 1.0f;
@@ -182,7 +183,7 @@ analogWriteRange(new_range)
 /* ESP8266: Tần số PWM output */
 analogWriteFreq(new_frequency)
 
-/* Advanced I/O */
+/* ADVANCED I/O */
 /* Tạo sóng vuông tần số freq_Hz với duty cycle=50% */
 tone(pin, freq_Hz)
 /* Tạo sóng vuông tần số freq_Hz, duration mili giây */
@@ -194,7 +195,7 @@ shiftOut(dataPin, clockPin,[MSBFIRST, LSBFIRST], value)
 /* Trả về (ms) của xung HIGH/LOW trên chân pin */
 unsigned long pulseIn(pin,[HIGH, LOW])
 
-/* External Interrupts */
+/* CHỨC NĂNG NGẮT */
 /* Thiết lập chức năng ngắt ở các chân digital */
 attachInterrupt(interrupt, func, mode)
 /*
