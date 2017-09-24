@@ -1,3 +1,13 @@
 == Ứng dụng thực tế
 
-Ứng dụng điều khiển động cơ Servo qua MQTT
+Từ những kiến thức cũng như các ví dụ khi tìm hiểu về  các MQTT Client, MQTT Broker. Ở phần này chúng ta sẽ xây dựng ứng dụng điều khiển động cơ servo sử dụng board ESP8266 WiFi Uno thông qua giao thức MQTT. 
+
+=== Mục tiêu
+
+=== Chuẩn bị
+
+=== Đấu nối
+
+=== Thực hiện
+
+=== Giải thích chương trình
