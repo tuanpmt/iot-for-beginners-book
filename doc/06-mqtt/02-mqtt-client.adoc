@@ -82,6 +82,7 @@ Sau khi cài đặt xong, bạn có thể sử dụng module "mqtt" để thực
 
 2 client này sẽ kết nối vào cùng 1 MQTT Broker. Client A sẽ subscribe kênh `/client-a/sub`, nếu nhận bất kỳ dữ liệu nào được public vào kênh này, Client A sẽ public dữ liệu `Hello from client A` vào kênh `/client-b/sub` và đóng kết nối, kết thúc. Client B sẽ subscribe kênh `/client-b/sub`, nếu nhận bất kỳ dữ liệu nào được public vào kênh này, Client B sẽ đóng kết nối và kết thúc. Ngay khi kết nối vào Broker, Client B sẽ public 1 gói tin `Hello from client B` vào kênh `/client-a/sub`
 
+
 **Mã nguồn của client A**
 
 .client-a.js
@@ -154,6 +155,19 @@ Chúng ta sẽ tạo một biến `espClient` thuộc lớp `WiFiClient`, biến
 .Kết quả hiển thị trên serial terminal và MQTT lens khi sử dụng thư viện pubsubClient
 image::06-mqtt/MQTTLEnsPubSUb.png[width=897, align="center"]
 
+
+Trong phần này chúng ta sẽ thực hiện kết nối board ESP8266 WiFi Uno đến 1 broker sử dụng thư viện PubSubClient.
+
+* **Bước 1 :** Download thư viện PubSubClient tại đường dẫn https://github.com/knolleary/pubsubclient và add vào chương trình Arduino. Ngoài ra có thể import thư viện này trong Arduino bằng cách tìm kiếm thư viện với từ khóa `PubSubClient`, chọn thư viện PubSubClient của tác giả Nick O'Leary và nhấn install.
+
+* **Bước 2 :** Viết chương trình cho ESP8266. Mã nguồn được trình bày ở phía dưới
+
+[source, c]
+----
+include::code/ESP8266PubSub/ESP8266PubSub.ino[]
+----
+
+* **Bước 3 :** Mở MQTT lens và tạo 1 connection
 
 ==== ESP8266MQTTClient
 
