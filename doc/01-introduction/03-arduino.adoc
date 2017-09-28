@@ -3,7 +3,7 @@
 .Board mạch Arduino
 image::01-intro/01.arduino.png[width=300, align="center"]
 
-https://arduino.cc[*Arduino*] là một IDE tích hợp sẵn editor, compiler, programmer và đi kèm với nó là các firmware có bootloader, các bộ thư viện được xây dựng sẵn và dễ dàng tích hợp. Ngôn ngữ sử dụng là C/C++. Tất cả đều opensource và được đóng góp, phát triển hàng ngày bởi cộng đồng. Triết lý thiết kế và sử dụng của Arduino giúp cho người mới, không chuyên rất dễ tiếp cận, các công ty, hardware dễ dàng tích hợp. Tuy nhiên, với trình biên dịch C/C++ và các thư viện chất lượng được xây dựng bên dưới thì mức độ phổ biến ngày càng tăng và hiệu năng thì không hề thua kém các trình biên dịch chuyên nghiệp cho chip khác.
+https://arduino.cc[*Arduino*] là một IDE tích hợp sẵn editor, compiler, programmer và đi kèm với nó là các firmware có bootloader, các bộ thư viện được xây dựng sẵn và dễ dàng tích hợp. Ngôn ngữ sử dụng là `C/C++`. Tất cả đều opensource và được đóng góp, phát triển hàng ngày bởi cộng đồng. Triết lý thiết kế và sử dụng của Arduino giúp cho người mới, không chuyên rất dễ tiếp cận, các công ty, hardware dễ dàng tích hợp. Tuy nhiên, với trình biên dịch `C/C++` và các thư viện chất lượng được xây dựng bên dưới thì mức độ phổ biến ngày càng tăng và hiệu năng thì không hề thua kém các trình biên dịch chuyên nghiệp cho chip khác.
 
 Đại diện cho **Arduino** ban đầu là chip AVR, nhưng sau này có rất nhiều nhà sản xuất sử dụng các chip khác nhau như **ARM, PIC, STM32** gần đây nhất là https://arduino.esp8266.vn[*ESP8266*], https://esp32.vn[*ESP32*], và http://riscv.vn[*RISCV*] với năng lực phần cứng và phần mềm đi kèm mạnh mẽ hơn nhiều.
 
@@ -12,14 +12,14 @@ https://arduino.cc[*Arduino*] là một IDE tích hợp sẵn editor, compiler, 
 * Arduino che dấu đi sự phức tạp của điện tử bằng các khái niệm đơn giản, che đi sự phức tạp của phần mềm bằng các thủ tục ngắn gọn. Việc setup output cho 1 MCU bằng cách setup thanh ghi rõ ràng phức tạp đến độ người chuyên cũng phải lật datasheet ra xem, nhưng với Arduino thì chỉ cần gọi 1 hàm.
 * Bởi vì tính phổ biến và dễ dùng, với các thư viện được tích hợp sẵn. Bạn chỉ cần quan tâm đến tính năng sản phẩm mà bỏ qua các tiểu tiết (protocol, datasheet ...) Nên giúp các newbie không chuyên dễ dàng tiếp cận và làm ra các sản phẩm tuyệt vời mà không cần phải biết nhiều về điện tử.
 * Chính vì không quan tâm nhiều đến cách thức hoạt động của các Module đi kèm, nên đa phần người dùng sẽ khó xử lý được khi có các vấn đề phát sinh ngoài tầm của thư viện.
-* Các module prototype làm sẵn cho Arduino có độ bên không cao, mục tiêu đơn giản hóa quá trình làm sản phẩm.
+* Các module prototype làm sẵn cho Arduino có độ bền không cao, mục tiêu đơn giản hóa quá trình làm sản phẩm.
 
 === Các lợi ích khi sử dụng Arduino
 
 * Thiết kế IDE tốt, có thể dễ dàng tích hợp nhiều loại compiler, nhiều loại hardware mà không hề giảm hiệu năng. Ví dụ: Arduino gốc cho AVR, nhưng có nhiều phiên bản cho STM32, PIC32, ESP8266, ESP32... tận dụng tối đa các thư viện sẵn có.
 * Các thư viện được viết dựa trên lớp API trên cùng, nên đa số các thư viện cho Arduino có thể dùng được cho tất cả các chip. Điển hình là Arduino cho ESP8266 có thể tận dụng trên 90% các thư viện cho Arduino khác
 * Trình biên dịch cho Arudino là C/C++, bạn có biết là khi biên dịch ESP8266 non-os SDK và ESP8266 Arduino cùng dùng chung trình biên dịch? Vậy thì hiệu năng không hề thua kém
-* Cách tổ chức các thư viện C/C++ theo dạng OOP giúp phân lớp, kế thừa và quản lý cực kỳ tốt cho các ứng dụng lớn .Các MCU ngày càng mạnh mẽ, và ứng dụng cho nó sẽ ngày càng lớn. Các mô hình quản lý code đơn giản trước đây (thuần C) sẽ khó.
+* Cách tổ chức các thư viện C/C++ theo dạng OOP giúp phân lớp, kế thừa và quản lý cực kỳ tốt cho các ứng dụng lớn .Các MCU ngày càng mạnh mẽ và ứng dụng cho nó sẽ ngày càng lớn. Các mô hình quản lý code đơn giản trước đây (thuần C) sẽ khó.
 * Các project cho Arduino đều opensource, bạn dễ dàng lấy nó và đưa vào sản phẩm production với chất lượng tốt và học hỏi được nhiều từ cách thức thiết kế chương trình của các bậc thầy.
 * Arduino chú trọng tính đa nền tảng, module hóa cao, phù hợp với các ứng dụng từ phức tạp tới cực kỳ phức tạp. Các ứng dụng kiểu này rất phổ biến trong thực tế. Nếu bạn không dùng C++, hoặc arduino mà gặp vấn đề về overcontrol thì nên thử qua Arduino.
 * Bạn sẽ tiết kiệm được rất rất nhiều thời gian cho việc tập trung vào tính năng sản phẩm đấy. Thời buổi này, thời gian là tiền và có quá nhiều thứ để học, làm thì nên ưu tiên đúng chỗ.
