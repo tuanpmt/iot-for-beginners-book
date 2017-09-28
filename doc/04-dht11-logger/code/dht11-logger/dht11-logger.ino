@@ -5,30 +5,30 @@
 
 DHT dht(DHTPIN, DHTTYPE);
 WiFiClient client;          // Tạo 1 biến client thuộc kiểu WiFiClient
-const char* ssid = "YOUR-WIFI-SSID";      // Tên mạng Wifi được chỉ định sẽ kết nối (SSID)  
+const char* ssid = "YOUR-WIFI-SSID";      // Tên mạng Wifi được chỉ định sẽ kết nối (SSID)
 const char* password = "YOUR-WIFI-PASS";  // Password của mạng Wifi được chỉ định sẽ kết nối
-const char* server = "192.168.1.100";     // Địa chỉ IP của máy khi truy cập cùng mạng WiFi
+const char* server = "Your-local-IP";     // Địa chỉ IP của máy khi truy cập cùng mạng WiFi
 const int port = 8000;                    // Port của server đã mở
 const int sendingInternval = 2 * 1000;    // Biến cập nhật dữ liệu sau mỗi 2s
 
 void setup() {
   Serial.begin(115200);
-  dht.begin();                            // Khởi tạo DHT1 11 để truyền nhận dữ liệu  
+  dht.begin();                            // Khởi tạo DHT1 11 để truyền nhận dữ liệu
   Serial.println("Connecting");
 
   // Thiết lập ESP8266 là Station và kết nối đến Wifi. in ra dấu `.` trên terminal nếu chưa được kết nối
-  WiFi.begin(ssid, password);             
-  while (WiFi.status() != WL_CONNECTED) {           
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     delay(100);
   }
-  Serial.println("\r\nWiFi connected");   
+  Serial.println("\r\nWiFi connected");
 }
 
 void loop() {
 
-// Đọc gía trị nhiệt độ (độ C), độ ẩm. Xuất ra thông báo lỗi và thoát ra nếu dữ liệu không phải là số 
-  float temp = dht.readTemperature();   
+// Đọc gía trị nhiệt độ (độ C), độ ẩm. Xuất ra thông báo lỗi và thoát ra nếu dữ liệu không phải là số
+  float temp = dht.readTemperature();
   float humi = dht.readHumidity();
   if (isnan(temp) || isnan(humi)) {
     Serial.println("Failed to read from DHT sensor!");
@@ -36,7 +36,7 @@ void loop() {
   }
 
   if (client.connect(server, port)) {       // Khởi tạo kết nối đến server thông qua IP và PORT đã mở
-  //--------------------------------------------------------------------------------------- 
+  //---------------------------------------------------------------------------------------
     String req_uri = "/update?temp=" + String(temp, 1) + "&humd=" + String(humi, 1);
     client.print("GET " + req_uri + " HTTP/1.1\n" + "Host: "+ server +"\n" + "Connection: close\n" + "Content-Length: 0\n" +"\n\n");   // <1>
   //---------------------------------------------------------------------------------------
