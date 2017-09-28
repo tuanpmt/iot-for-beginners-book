@@ -7,5 +7,6 @@ include::02-mqtt-client.adoc[]
 
 include::03-mqtt-broker.adoc[]
 
-include::04-mqtt-project.adoc[]
+= Tổng kết
 
+Từ những nội dung đã trình bày ở trên, chúng ta phần nào hiểu rõ về cách thức hoạt động của giao thức MQTT cũng như vai trò của nó trong các ứng dụng IoT. Những nội dung được trình bày ở phần này chỉ là phần cơ bản của giao thức, vì đây là giao thức quan trọng và thường sử dụng trong IoT nên chúng ta hãy dành nhiều thời gian hơn để nghiên cứu thêm về hoạt động của các gói QoS, Keep alive, cũng như các vấn đề chứng thực tài khoản, vấn đề bảo mật dữ liệu khi sử dụng MQTT.

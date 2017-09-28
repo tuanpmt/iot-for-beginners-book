@@ -1,0 +1,16 @@
+{
+  "name": "servermosca",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "quanln",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ascoltatori": "^4.1.0",
+    "mosca": "^2.5.2",
+    "mqtt": "^2.13.0"
+  }
+}
