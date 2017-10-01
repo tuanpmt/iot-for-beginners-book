@@ -7,7 +7,7 @@ HTTP được thiết kế để trao đổi dữ liệu giữa Client và Serve
 
 Một ví dụ điển hình là khi bạn gõ địa chỉ vào thanh địa chỉ của trình duyệt và nhấn `Enter`, thì ngay lập tức Web Client sẽ thực hiện việc gởi yêu cầu tới Web Server có địa chỉ mà bạn vừa gõ. Web Server sẽ trả lời bằng nội dung Web Site mà bạn cần xem.
 
-Trong giao thức HTTP, việc thiết lập kết nối chỉ có thể xuất phát từ phía client ( lúc này có thể gọi là HTTP Client ). Khi client gữi yêu cầu, cùng với *URL* và payload ( dữ liệu muốn lấy ) tới server. Server ( HTTP Server ) lắng nghe mọi yêu cầu từ phía client và trả lời các yêu cầu ấy, và khi trả lời xong kết nối được chấm dứt.
+Trong giao thức HTTP, việc thiết lập kết nối chỉ có thể xuất phát từ phía client ( lúc này có thể gọi là HTTP Client ). Khi client gửi yêu cầu, cùng với *URL* và payload ( dữ liệu muốn lấy ) tới server. Server ( HTTP Server ) lắng nghe mọi yêu cầu từ phía client và trả lời các yêu cầu ấy. Khi trả lời xong kết nối được chấm dứt.
 
 
 .Cách thức HTTP hoạt động
@@ -15,7 +15,7 @@ image::03-wifi/http1-req-res-details.png[Cách thức HTTP hoạt động, role=
 
 Khi nhắc tới HTTP thì Hyperlink, hay URL (Uniform Resource Locator) là những khái niệm được thấy hàng ngày
 
-*URL* được dùng để định dạng địa chỉ Website, chứa các thông tin yêu cầu từ client và server dựa vào đó xử lý, cấu trúc của nó như hình
+*URL* được dùng để định dạng địa chỉ Website, chứa các thông tin yêu cầu từ client và server dựa vào đó xử lý, cấu trúc của nó như hình:
 
 .Cấu trúc 1 URL
 image::03-wifi/http1-url-structure.png[URL, role="center", align="center", width=400]
@@ -29,14 +29,14 @@ Ví dụ bạn có thể gởi thông tin về nhiệt độ đến server thôn
 |scheme  | host      |port |path            |query                |fragment|
  http:// server.com: 8080  /path/to/log.php ?nhiet_do=30&do_am=80 #test
 ....
-<1> `scheme` xác định giao thức truyền tới server, nếu là `https` thì sẽ được mã hóa
-<2> `host` địa chỉ server
-<3> `port` port server dùng để phục vụ, nếu ko có thì mặc định là `80` cho web
-<4> `path` thông tin client muốn truy suất
-<5> `query` thông tin client muốn gởi lên
-<6> `fragment` thuộc tính này giúp browser đi đến vị trí của trang
+<1> `scheme` xác định giao thức truyền tới server, nếu là `https` thì sẽ được mã hóa.
+<2> `host` địa chỉ server.
+<3> `port` port server dùng để phục vụ, nếu ko có thì mặc định là `80` cho web.
+<4> `path` thông tin client muốn truy suất.
+<5> `query` thông tin client muốn gởi lên.
+<6> `fragment` thuộc tính này giúp browser đi đến vị trí của trang.
 
-Với đường dẫn như trên, khi bạn gõ vào trình duyệt, thì quá browser sẽ thực hiện kết nối và gởi dữ liệu như sau. Bạn có thể sử dụng curl để xem chi tiết dữ liệu raw truyền nhận `curl -v http://esp8266.vn/log.php?nhiet_do=30`
+Với đường dẫn như trên, khi bạn gõ vào trình duyệt, thì trình duyệt sẽ thực hiện kết nối và gởi dữ liệu như sau.
 
 ----
 GET /log.php?nhiet_do=30 HTTP/1.1
@@ -46,7 +46,7 @@ Accept: */*
 
 ----
 
-Dữ liệu trả về
+Dữ liệu trả về:
 
 ----
 HTTP/1.1 200 OK
@@ -57,60 +57,62 @@ Connection: keep-alive
 data
 ----
 
+NOTE: Trên linux, bạn có thể sử dụng curl để xem chi tiết dữ liệu raw truyền nhận, gõ lệnh  `curl -v http://esp8266.vn/log.php?nhiet_do=30` trên terminal
+
 ==== Giao thức HTTP định nghĩa một số phương thức (method) truyền đến Server:
 
 * `GET` là phương thức yêu cầu dữ liệu đơn giản và thường sử dụng nhất của HTTP. Phương thức *GET* yêu cầu server chỉ trả về dữ liệu bằng việc cung cấp các thông tin truy vấn trên URL, thông thường Server căn cứ vào thông tin truy vấn đó trả về dữ liệu mà không thay đổi nó. `path` và `query` trong *URL* chứa thông tin truy vấn.
 * `POST` tương tự như `GET`, nhưng `POST` có thể gởi dữ liệu về Server.
 * `PUT` là phương thức yêu cầu tạo mới một dữ liệu, giống `POST` nhưng đánh dấu cho Server biết, nếu dữ liệu không tồn tại trong cơ sở dữ liệu thì tạo mới, hoặc sửa đổi nó.
-* `DELETE` Tương tự như `GET`, nhưng báo cho Server biết về việc xóa dữ liệu thông qua URL
+* `DELETE` Tương tự như `GET`, nhưng báo cho Server biết về việc xóa dữ liệu thông qua URL.
 
-Các phương thức thông thường chỉ dùng `GET` và `POST`, các phương thức còn lại thường sử dụng trong API server (RESTful). Một số điểm khác biệt giữ `POST` và `GET`
+Các phương thức thông thường chỉ dùng `GET` và `POST`, các phương thức còn lại thường sử dụng trong API server (RESTful). Một số điểm khác biệt giữ `POST` và `GET`.
 
-* `GET` có thể bị cache (lưu trữ ở trình duyệt và sử dụng lại sau đó), nội dung request có thể lưu trữ ở lịch sử trình duyệt, có thể được đánh dấu (bookmark)
-* `GET` không nên sử dụng để gởi các dữ liệu nhạy cảm
-* `GET` bị giới hạn độ lớn dữ liệu cần gởi
-* `GET` chỉ nên dùng để lấy dữ liệu về
+* `GET` có thể bị cache (lưu trữ ở trình duyệt và sử dụng lại sau đó), nội dung request có thể lưu trữ ở lịch sử trình duyệt, có thể được đánh dấu (bookmark).
+* `GET` không nên sử dụng để gởi các dữ liệu nhạy cảm.
+* `GET` bị giới hạn độ lớn dữ liệu cần gởi.
+* `GET` chỉ nên dùng để lấy dữ liệu về.
 
-* `POST` không bị catch, không tồn tại dữ liệu gởi trong lịch sử trình duyệt, không thể đánh dấu (bookmark)
-* `POST` không giới hạn bởi độ lớn dữ liệu cần gởi
+* `POST` không bị catch, không tồn tại dữ liệu gởi trong lịch sử trình duyệt, không thể đánh dấu (bookmark).
+* `POST` không giới hạn bởi độ lớn dữ liệu cần gởi.
 
 ==== HTTP Header & Status Code
 
 Dữ liệu trả về bao giờ cũng có phần thông tin header với dòng đầu tiên chưa Status Code `HTTP/1.1 200 OK` có nghĩa là status code = 200, request được trả về phù hợp.
-Theo sau đó là các cặp header chứa thông tin Server muốn trao đổi với Client, mà nếu là trình duyệt thì nó bị ẩn đi (người dùng bình thường không thể thấy). Các cặp header này định dạng theo kiểu `name: value` và kết thúc bằng ký tự xuống dòng không thấy bằng mắt thường (`0x0D 0x0A` hay `\r\n`)
+Theo sau đó là các cặp header chứa thông tin Server muốn trao đổi với Client, mà nếu là trình duyệt thì nó bị ẩn đi (người dùng bình thường không thể thấy). Các cặp header này định dạng theo kiểu `name: value` và kết thúc bằng ký tự xuống dòng không thấy bằng mắt thường (`0x0D 0x0A` hay `\r\n`).
 Trong ví dụ trên, thông tin header `Content-Type: text/html; charset=utf-8` báo cho trình duyệt biết rằng định dạng dữ liệu gởi về là dạng text, mã hóa utf-8. `Transfer-Encoding: chunked` chiều dài dữ liệu không được biết trước và gởi cho tới khi server đóng kết nối.
 
 Một số HTTP status code thường thấy:
 
-* *1xx*: mã trạng thái thông tin. Bản chất của mã trạng thái này, chỉ để thông báo với client rằng request đã được chấp nhận. Các mã trạng thái thông tin này được quy định trong *HTTP/1.1*, còn phiên bản *HTTP/1.0* hay trước đó thì không có, có thể bỏ qua phần mã trạng thái này. Mã hay gặp nhất:
-** *100 Continue*: thông báo cho client biết là có thể gữi tiếp phần request còn lại nếu còn hoặc kết thúc nếu đã hết. Nếu trong request POST, phần thân request lớn sẽ bị server từ chối, và để giải quyết điều này thì client phải gữi *Expect: 100-continue* theo sau phần header ban đầu
-* **2xx**: nhóm mã trạng thái này thông bào với client rằng request đã được nhận, hiểu và xử lý thành công. Với một số mã thường thấy:
-** *200 OK*: thông báo cho client biết là request đã gữi thành công. Có thể thấy mã trạng thái này trong các phương thức *GET*, *HEAD*, *POST*, *TRACE*
-** *201 Created*: cho biết request đã xử lý thành công và tài nguyên đã được khởi tạo. Được sử dụng để xác nhận sự thành công của một request *PUT* hoặc *POST*
-** *204 No Content*: thông báo không có phần thân message trong response
+* *1xx*: Mã trạng thái thông tin. Bản chất của mã trạng thái này, chỉ để thông báo với client rằng request đã được chấp nhận. Các mã trạng thái thông tin này được quy định trong *HTTP/1.1*, còn phiên bản *HTTP/1.0* hay trước đó thì không có, có thể bỏ qua phần mã trạng thái này. Các mã hay gặp:
+** *100 Continue*: Thông báo cho Client biết là có thể gửi tiếp phần request còn lại nếu còn, kết thúc nếu đã hết. Nếu trong request POST, phần thân request lớn sẽ bị server từ chối và để giải quyết điều này thì client phải gửi *Expect: 100-continue* theo sau phần header ban đầu.
+* **2xx**: Nhóm mã trạng thái này thông báo với Client rằng request đã được nhận, hiểu và xử lý thành công. Với một số mã thường thấy:
+** *200 OK*: Thông báo cho Client biết là request đã gửi thành công. Có thể thấy mã trạng thái này trong các phương thức *GET*, *HEAD*, *POST*, *TRACE*.
+** *201 Created*: Cho biết request đã xử lý thành công và tài nguyên đã được khởi tạo. Được sử dụng để xác nhận sự thành công của một request *PUT* hoặc *POST*.
+** *204 No Content*: Thông báo không có phần thân message trong response.
 
-* **3xx**: nhóm mã trạng thái thông báo client còn phải thực hiện thêm hành động nửa, để hoàn thành request. Và mã trạng thái thướng gặp trong nhóm:
-** *301 Moved Permanently*: thông báo tài nguyên được yêu cầu đã được chuyển hướng sang một URL mới, và server sẽ gữi URL mới này trong response cho client biết
-* *4xx* nhóm mã thông báo các lỗi từ phía client: Được sử dụng khi server cho rằng phía client đang xảy ra lỗi, với một request, hoặc tài nguyên không hợp lệ, hoặc một request không đúng. Các mã thông dụng:
-** *400 Bad Request*: thông báo request đã gữi là sai
-** *401 Unauthorized*: chỉ ra rằng request cần được xác thực. Client có thể gữi lại request với header đã được xác thực. Trường hợp đã đính kèm header xác thực nhưng vẫn nhận được thông báo này tức là header xác thực chưa hợp lệ
-** *403 Forbidden*: server từ chối quyền truy cập của client
-** *404 Not Found*: thông báo tài nguyên không hợp lệ và tồn tại trên server
-** *409 Conflict*: server không thể hoàn thành yêu cầu vì client cố chỉnh sửa tài nguyên mới hơn so với *timestamp* của client. Xung đột xảy ra chủ yếu trong các request *PUT*  trong quá trình hợp tác chỉnh sửa tài nguyên
-* *5xx*: nhóm lệnh thông báo server đang ở trong tình trạng lỗi hoặc không có khả năng thực hiện yêu cầu. Một số mã thường gặp:
-** *500 Internal Server Eror*: cho biết là không thể thực hiện request của client
-** *501 Not Implemented*: thông báo server không ra phương thức được yêu cầu hoặc không có khả năng hổ trợ chức năng mà client đã request
-** *503 Service Unavailable*: Xảy ra khi hệ thống của server đang bảo dưỡng hoặc quá tải
+* **3xx**: Nhóm mã trạng thái thông báo Client còn phải thực hiện thêm hành động để hoàn thành request. Mã trạng thái thường gặp trong nhóm:
+** *301 Moved Permanently*: Thông báo tài nguyên được yêu cầu đã được chuyển hướng sang một URL mới và server sẽ gửi URL mới này trong response cho Client biết.
+* *4xx* Nhóm mã thông báo các lỗi từ phía Client: Được sử dụng khi server cho rằng phía Client đang xảy ra lỗi, với một request, hoặc tài nguyên không hợp lệ, hoặc một request không đúng. Các mã thông dụng:
+** *400 Bad Request*: Thông báo request đã gửi là sai.
+** *401 Unauthorized*: Chỉ ra rằng request cần được xác thực. Client có thể gửi lại request với header đã được xác thực. Trường hợp đã đính kèm header xác thực nhưng vẫn nhận được thông báo này tức là header xác thực chưa hợp lệ.
+** *403 Forbidden*: Server từ chối quyền truy cập của Client.
+** *404 Not Found*: Thông báo tài nguyên không hợp lệ và không tồn tại trên server.
+** *409 Conflict*: Server không thể hoàn thành yêu cầu vì Client cố chỉnh sửa tài nguyên mới hơn so với *timestamp* của Client. Xung đột xảy ra chủ yếu trong các request *PUT* trong quá trình hợp tác chỉnh sửa tài nguyên.
+* *5xx*: Nhóm lệnh thông báo server đang ở trong tình trạng lỗi hoặc không có khả năng thực hiện yêu cầu. Một số mã thường gặp:
+** *500 Internal Server Eror*: Cho biết là không thể thực hiện request của Client.
+** *501 Not Implemented*: Thông báo server không có phương thức được yêu cầu hoặc không có khả năng hổ trợ chức năng mà Client đã request.
+** *503 Service Unavailable*: Xảy ra khi hệ thống của server đang bảo dưỡng hoặc quá tải.
 
 === JSON
 
-JSON (JavaScript Object Noattion) là 1 định dạng hoán vị dữ liệu nhanh. Chúng dễ dàng cho chúng ta đọc và viết. Dễ dàng cho thiết bị phân tích và phát sinh. Chúng là cơ sở dựa trên tập hợp của Ngôn Ngữ Lập Trình JavaScript. JSON là 1 định dạng kiểu text mà hoàn toàn độc lập với các ngôn ngữ hoàn chỉnh, thuộc họ hàng với các ngôn ngữ họ hàng C, gồm có C, C++, C#, Java, JavaScript, Perl, Python, và nhiều ngôn ngữ khác. Những đặc tính đó đã tạo nên JSON 1 ngôn ngữ hoán vị dữ liệu lý tưởng.
+JSON (JavaScript Object Notation) là 1 định dạng trao đổi dữ liệu để giúp việc đọc và viết dữ liệu trở nên dễ dàng hơn, máy tính cũng sẽ dễ phân tích và tạo ra JSON. Chúng là cơ sở dựa trên tập hợp của ngôn ngữ lập trình JavaScript. JSON là 1 định dạng kiểu text mà hoàn toàn độc lập với các ngôn ngữ hoàn chỉnh, thuộc họ hàng với các ngôn ngữ trong họ hàng của C, gồm có C, C++, C#, Java, JavaScript, Perl, Python, và nhiều ngôn ngữ khác. Những đặc tính đó đã tạo nên JSON 1 ngôn ngữ hoán vị dữ liệu lý tưởng.
 
 JSON được xây dựng trên 2 cấu trúc:
 
-Là tập hợp của các cặp tên và giá trị name-value. Trong những ngôn ngữ khác nhau, đây được nhận thấy như là 1 đối tượng (object), sự ghi (record), cấu trúc (struct), từ điển (dictionary), bảng băm (hash table), danh sách khoá (keyed list), hay mảng liên hợp.
-Là 1 tập hợp các giá trị đã được sắp xếp. Trong hầu hết các ngôn ngữ, this được nhận thấy như là 1 mảng, véc tơ, tập hợp hay là 1 dãy sequence.
-Đây là 1 cấu trúc dữ liệu phổ dụng. Hầu như tất cả các ngôn ngữ lập trình hiện đại đều hổ trợ chúng trong 1 hình thức nào đó. Chúng tạo nên ý nghĩa của 1 định dạng hoán vị dữ liệu với các ngôn ngữ lập trình cũng đã được cơ sở hoá trên cấu trúc này.
+* Là tập hợp của các cặp tên và giá trị name-value. Trong những ngôn ngữ khác nhau, đây có thể là 1 object, record, struct, dictionary, hash table, keyed list hay associative array.
+* Là 1 tập hợp các giá trị đã được sắp xếp. Trong hầu hết các ngôn ngữ, dữ liệu này được xem như array, véc tơ, list hay sequence.
+Đây là 1 cấu trúc dữ liệu phổ dụng. Hầu như tất cả các ngôn ngữ lập trình hiện đại đều hổ trợ. Chúng tạo nên ý nghĩa của 1 định dạng hoán vị dữ liệu với các ngôn ngữ lập trình cũng đã được cơ sở hoá trên cấu trúc này.
 
 **Cú pháp**
 
@@ -164,4 +166,3 @@ Thực hiện sau khi kiểm tra mã nguồn:
 
 .Kết quả lấy giá Bitcoin và hiện thị mỗi 5 giây
 image::03-wifi/btc.png[BTC Price, role="center", align="center", width=500]
-

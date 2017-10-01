@@ -13,7 +13,7 @@ HTML, Javascript và CSS là ba ngôn ngữ để xây dựng và phát triển 
 
 ==== HTML
 
-Viết đầu đủ là *Hyper Text Markup Language* - ngôn ngữ đánh dấu siêu văn bản dùng để cấu trúc nội dung của một trang Web, ví dụ như: chỉ định các đoạn văn bản, tiêu đề, bảng dữ liệu, hoặc nhúng hình ảnh hoặc video vào Web . Mỗi trang web chứa một loạt các liên kết đến các trang khác được gọi là `hyperlinks` (siêu liên kết). Mỗi trang được tạo ra từ nhiều `tag` (thẻ) khác nhau, với cấu trúc một `tag` như sau
+Viết đầy đủ là *Hyper Text Markup Language* - ngôn ngữ đánh dấu siêu văn bản dùng để cấu trúc nội dung của một trang Web, ví dụ như: chỉ định các đoạn văn bản, tiêu đề, bảng dữ liệu, hoặc nhúng hình ảnh hoặc video vào Web. Mỗi trang Web chứa một loạt các liên kết đến các trang khác được gọi là `hyperlinks` (siêu liên kết). Mỗi trang được tạo ra từ nhiều `tag` (thẻ) khác nhau, với cấu trúc một `tag` như sau
 
 .Cấu trúc 1 tag
 [source]
@@ -47,19 +47,19 @@ Trang HTML cơ bản có thể được thấy như sau:
 
 Với một số tag cơ bản như sau:
 
-* `<!DOCTYPE html>` cho biết là HTML5
-* `<html>` root của trang HTML
-* `<head>` chứa thông tin về tài liệu
-* `<title>` phần tiêu đề trang
-* `<body>` phần chứa nội dung trang hiển thị
-* `<h1>` nơi chứa phần tiêu đề chính
-* `<p>` phần ghi các đoạn văn bản
+* `<!DOCTYPE html>` cho biết là HTML5.
+* `<html>` root của trang HTML.
+* `<head>` chứa thông tin về tài liệu.
+* `<title>` phần tiêu đề trang.
+* `<body>` phần chứa nội dung trang hiển thị.
+* `<h1>` nơi chứa phần tiêu đề chính.
+* `<p>` phần ghi các đoạn văn bản.
 
 ==== Javascript
 
 Javascript là một ngôn ngữ được thiết kế chủ yếu để thêm tương tác vào các trang Web, và tạo ra các ứng dụng Web.
 
-Các chương trình Javascript có thể được nhúng trực tiếp vào HTML của Web. Và tùy vào mục đích cụ thể, script có thể chạy khi mở trang Web, nhấp chuột, gõ phím, gữi biểu mẫu, cập nhật dữ liệu, giao tiếp với cơ sở dữ liệu,...
+Các chương trình Javascript có thể được nhúng trực tiếp vào HTML của Web. Và tùy vào mục đích cụ thể, script có thể chạy khi mở trang Web, nhấp chuột, gõ phím, gửi biểu mẫu, cập nhật dữ liệu, giao tiếp với cơ sở dữ liệu,...
 
 Để nhúng chương trình viết bằng Javascript vào trang HTML, chỉ cần thêm tag `<script>` và thuộc tính `type`. Có thể thêm phần này ở phần `<head>` hoặc phần `<body>` của HTML. Ví dụ sau đây minh họa việc thêm một chương trình Javascript vào phần thân (<body>) của HTML:
 
