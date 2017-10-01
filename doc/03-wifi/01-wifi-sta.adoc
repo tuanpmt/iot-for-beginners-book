@@ -6,7 +6,7 @@
 
 Khi muốn kết nối vào mạng WiFi cục bộ thì ESP8266 cần phải hoạt động ở chế độ Station (STA), đồng thời nó phải được cung cấp tên (SSID) và mật khẩu mạng WiFi.
 
-Mỗi Access Point đều yêu cầu một phương thức mã hóa để Station sử dụng để tạo kết nối - ví dụ `WEP`, `WPA2`, tuy nhiên chúng ta có lẽ không cần quan tâm nhiều, vì ESP8266 sẽ tự động thực hiện các thao tác lựa chọn phưng thức mã hóa.
+Mỗi Access Point đều yêu cầu một phương thức mã hóa để Station sử dụng nhằm tạo kết nối - ví dụ các phương thức `WEP`, `WPA2`, tuy nhiên chúng ta có lẽ không cần quan tâm nhiều, vì ESP8266 sẽ tự động thực hiện các thao tác lựa chọn phương thức mã hóa.
 
 Khi kết nối thành công vào mạng WiFi thì ESP8266 sẽ khởi động DHCP Client (mặc định) để xin cấp phát địa chỉ IP trước khi bắt đầu các kết nối IP. Do đó, nếu như vì lý do gì đó, mà Access Point của bạn không có DHCP Server để cấp phát IP thì bạn phải cấu hình IP tĩnh cho ESP8266.
 
