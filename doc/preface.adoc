@@ -7,6 +7,13 @@ Chứng kiến sự phát triển như vũ bão của các sản phẩm ứng d�
 
 Nội dung được thiết kế một cách cơ bản giúp học viên có cái nhìn tổng quan về việc xây dựng hệ thống, sản xuất thiết bị và dễ dàng tham gia vào lĩnh vực IoT mới mẻ.
 
+=== Đôi lời về tác giả
+
+Chủ biên của cuốn sách là ông Phạm Minh Tuấn. Hiện tại đang là developer của công ty `Espressif Systems`, một công ty chuyên phát triển các các chipset WiFi và Bluetooth, trong đó có các dòng chip nổi tiếng là `ESP8266` và `ESP32`.
+Ngoài ra tác giả cũng là chủ sở hữu của công ty TNHH CÔNG NGHỆ NANOCHIP, và là founder của `IoT Maker Việt Nam`, chuyên cung cấp các sản phẩm về IoT, các mạch điện tử cũng như các giải pháp liên quan đến IoT.
+
+Với kinh nghiệm nhiều năm làm việc trong mảng IoT, tác giả xây dựng cuốn sách này với mục đích đóng góp 1 phần nhỏ những kiến thức của mình vào sự phát triển của ngành công nghiệp vẫn còn mới mẻ nhưng rất tiềm năng này.
+
 === Thuật ngữ hay sử dụng
 * `IoT` Internet Of Things hay internet vạn vật.
 * `ESP8266` chip xử lí tích hợp thu phát WiFi.

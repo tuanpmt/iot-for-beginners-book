@@ -3,8 +3,8 @@
 :toclevels: 					2
 :producer: 						Asciidoctor
 :keywords: 						IoT, ESP8266, IoTs, WoT
-:copyright: 					@2017 IoT Academy
-:author: 						  IoT Academy
+:copyright: 					@2017 IoT Maker VietNam
+:author: 						  IoT Maker Việt Nam
 :version: 						v1.0
 :front-cover-image: 	        image:cover.png[width=800,height=1400]
 :icons: 						font

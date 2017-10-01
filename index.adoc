@@ -27,3 +27,5 @@ include::doc/07-websocket/00-index.adoc[]
 include::doc/08-fota/00-index.adoc[]
 
 include::doc/A-cheatsheet/00-index.adoc[]
+
+include::doc/contributors/00-index.adoc[]
