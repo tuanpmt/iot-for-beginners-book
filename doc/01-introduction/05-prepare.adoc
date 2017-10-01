@@ -11,7 +11,7 @@ Tùy hệ điều hành mà chọn gói cài đặt thích hợp.
 
 *Bước 2*: Cài đặt bộ công cụ, trình biên dịch, SDK hỗ trợ chip ESP8266 trong Arudino IDE.
 
-Với bộ công cụ này, chúng ta có thể dễ dàng lập trình, biên dịch và sử dụng các thư viện dành cho ESP8266 trực tiếp trên Arduino IDE.Mở Arduino IDE, trên thanh Menu chọn `File` -> `Preferecens`, trong tab `settings` chọn các tùy chọn như hình dưới:
+Với bộ công cụ này, chúng ta có thể dễ dàng lập trình, biên dịch và sử dụng các thư viện dành cho ESP8266 trực tiếp trên Arduino IDE. Mở Arduino IDE, trên thanh Menu chọn `File` -> `Preferecens`, trong tab `settings` chọn các tùy chọn như hình dưới:
 
 .Thêm file thông tin board ESP8266
 image::01-intro/preferences.png[Thêm file hỗ trợ cài đặt board ESP8266, align="center", width=400]
@@ -57,7 +57,7 @@ image::01-intro/connect_USB.jpg[Connect USB, align="center", width=400]
 ==== Windows & Linux
 
 Tải bản cài đặt USB driver cho Windows http://www.wch.cn/download/CH341SER_ZIP.html và cho Linux http://www.wch.cn/download/CH341PAR_LINUX_ZIP.html Làm theo các yêu cầu cài đặt.
-Sau khi cài đặt, kết quả hiển thì trên Arduino như hình
+Sau khi cài đặt, kết quả hiển thì trên Arduino như hình:
 
 .Kết nối thành công
 image::01-intro/connect_ok.png[Kết nối thành công, align="center", width=400]
@@ -71,7 +71,7 @@ Tải bản cài đặt: https://arduino.esp8266.vn/_static/download/CH34x_Insta
 * Mở ứng dụng "Terminal" `cmd + space` --> Enter Terminal
 * Xóa driver: `sudo rm -rf /System/Library/Extensions/usb.kext`
 * Với một số máy, bạn phải thực thi thêm `sudo rm -rf /Library/Extensions/usbserial.kext`
-* Nếu không thể thực hiện được lệnh trên, bạn cần phải thay đổi `Security and Privacy` trong phần `System Preference`. Chọn `Allow Apps Downloaded From` từ `Mac App Store and Identified Developers` sang `Anywhere` - Và tải https://arduino.esp8266.vn/_static/download/CH34x_Install_V1.3.pkg[CH34x_Install_V1.3.pkg] về cài đặt lại
+* Nếu không thể thực hiện được lệnh trên, bạn cần phải thay đổi `Security and Privacy` trong phần `System Preference`. Chọn `Allow Apps Downloaded From` từ `Mac App Store and Identified Developers` sang `Anywhere` - Và tải https://arduino.esp8266.vn/_static/download/CH34x_Install_V1.3.pkg[CH34x_Install_V1.3.pkg] về cài đặt lại.
 
 .Lựa chọn Allow Apps Downloaded From Anywhere
 image::01-intro/mac.png[Lựa chọn Allow Apps Downloaded From Anywhere, align="center", width=400]
@@ -85,22 +85,22 @@ Mở Arduino IDE và lựa chọn (tham khảo cấu hình kết nối như hìn
 .Cấu hình Board ESP8266 WiFi Uno
 image::01-intro/port-setup.png[Cấu hình Board ESP8266 WiFi Uno, align="center", width=400]
 
-* Board: `Generic ESP8266 Module`
-* Flash Size: `4M (3M SPIFFS)`
-* Port: chọn cổng khi gắn thiết bị vào sẽ thấy xuất hiện
-* Upload speed: Chọn cao nhất, nếu nạp không được chọn thấp dần
+* Board: `Generic ESP8266 Module`.
+* Flash Size: `4M (3M SPIFFS)`.
+* Port: chọn cổng khi gắn thiết bị vào sẽ thấy xuất hiện.
+* Upload speed: Chọn cao nhất, nếu nạp không được chọn thấp dần.
 
 [[arduino-flash]]
 === Nạp chương trình xuống board dùng Arduino IDE
 
-Trên giao diện Arduino có 2 nút, ngoài cùng bên trái là nút `Verify`, để biên dịch chương trình, tương đương với `Sketch > Verify/Compile`, nút tiếp theo là `Upload`, tương đương `Sketch > Upload`. Khi đã lựa chọn board phù hợp, chương trình không có lỗi, thì nhấn `Upload` sẽ nạp chương trình vào board và thực thi sau đó
+Trên giao diện Arduino có 2 nút, ngoài cùng bên trái là nút `Verify`, để biên dịch chương trình, tương đương với `Sketch > Verify/Compile`, nút tiếp theo là `Upload`, tương đương `Sketch > Upload`. Khi đã lựa chọn board phù hợp, chương trình không có lỗi, thì nhấn `Upload` sẽ nạp chương trình vào board và thực thi sau đó.
 
 .Nạp chương trình
 image::01-intro/program.png[Nạp chương trình xuống board dùng Arduino IDE, align="center", width=400]
 
 [[export-binary]]
 === Xuất firmware binary trong Arduino IDE
-Với bất kỳ tình huống nào cần file Binary, bạn có thể được xuất ra bằng cách `Sketch > Export compiled Binary`, và file .bin sẽ nằm trong thư mục của Sketch
+Với bất kỳ tình huống nào cần file Binary, bạn có thể được xuất ra bằng cách `Sketch > Export compiled Binary`, và file .bin sẽ nằm trong thư mục của Sketch.
 
 .Xuất file Binary
 image::08-fota/export-fw.png[width=400, role="center", align="center"]

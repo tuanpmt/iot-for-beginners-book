@@ -8,13 +8,13 @@ Chứng kiến sự phát triển như vũ bão của các sản phẩm ứng d�
 Nội dung được thiết kế một cách cơ bản giúp học viên có cái nhìn tổng quan về việc xây dựng hệ thống, sản xuất thiết bị và dễ dàng tham gia vào lĩnh vực IoT mới mẻ.
 
 === Thuật ngữ hay sử dụng
-* `IoT` Internet Of Things hay internet vạn vật
-* `ESP8266` chip khả trình tích hợp thu phát WiFi
-* `Git` trình quản lý phiên bản
-* `Github` mạng xã hội lập trình viên
-* `IDE` Integrated Development Enviroment - môi trường phát triển tích hợp
-* `Compiler` trình biên dịch
-* `Logic Level` mức điện áp để chip hiểu được (1 hay 0)
+* `IoT` Internet Of Things hay internet vạn vật.
+* `ESP8266` chip xử lí tích hợp thu phát WiFi.
+* `Git` trình quản lý phiên bản.
+* `Github` mạng xã hội dành cho lập trình viên.
+* `IDE` Integrated Development Enviroment - môi trường phát triển tích hợp.
+* `Compiler` trình biên dịch.
+* `Logic Level` mức điện áp để chip hiểu được (1 hay 0).
 
 === Giải thích code trong bài
 
@@ -28,5 +28,5 @@ void setup()
 }
 ----
 
-<1> Dòng này giản thích đây là comment
-<2> Dòng này giải thích biến `a` tăng thêm 1 đơn vị
+<1> Dòng này giản thích đây là comment (chú thích).
+<2> Dòng này giải thích biến `a` tăng thêm 1 đơn vị.
