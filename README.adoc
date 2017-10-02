@@ -30,8 +30,22 @@ rvm use 2.2 --default
 gem install bundle
 ----
 
+== Build
+
+[bash]
+----
+MASK=iotmaker-wm.png make
+----
+- MASK=iotmaker-wm.png
+- MASK=vtca-wm.png
+- MASK=techmaster-wm.png
+
 == Cover
 https://www.canva.com/design/DACdV5lAwLk/BhC23oPRb5KIXh5CgrZVMw/edit?layouts=&layoutQuery=free&utm_source=onboarding
+
+== Watermask
+
+https://www.canva.com/design/DACirlaFzGM/pOxjq4dO-OCckyKDYuu21Q/edit
 
 == Others
 

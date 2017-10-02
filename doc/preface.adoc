@@ -9,10 +9,14 @@ Nội dung được thiết kế một cách cơ bản giúp học viên có cá
 
 === Đôi lời về tác giả
 
+<<<<<<< HEAD
 Chủ biên của cuốn sách là ông Phạm Minh Tuấn. Hiện tại đang là developer của công ty `Espressif Systems`, một công ty chuyên phát triển các chipset WiFi và Bluetooth, trong đó có các dòng chip nổi tiếng là `ESP8266` và `ESP32`.
 Ngoài ra tác giả cũng là chủ sở hữu của công ty TNHH CÔNG NGHỆ NANOCHIP, và là founder của `IoT Maker Việt Nam`, chuyên cung cấp các sản phẩm về IoT, các mạch điện tử cũng như các giải pháp liên quan đến IoT.
 
 Với kinh nghiệm nhiều năm làm việc trong mảng IoT, tác giả xây dựng cuốn sách này với mục đích đóng góp 1 phần nhỏ những kiến thức của mình vào sự phát triển của ngành công nghiệp vẫn còn mới mẻ nhưng rất tiềm năng này.
+=======
+Chủ biên của cuốn sách là ông https://twitter.com/tuanpmt[Phạm Minh Tuấn](https://github.com/tuanpmt[TuanPM]), có nhiều năm kinh nghiệm làm việc trong mảng IoT và phát triển các thư viện mã nguồn mở cho cộng đồng. Tác giả xây dựng cuốn sách này với mục đích đóng góp 1 phần nhỏ những kiến thức của mình vào sự phát triển của ngành công nghiệp vẫn còn mới mẻ nhưng rất tiềm năng này.
+>>>>>>> a7f9fe8a16848636824ebd5a6a4532c8827492b1
 
 === Thuật ngữ hay sử dụng
 * `IoT` - Internet Of Things hay internet vạn vật.
