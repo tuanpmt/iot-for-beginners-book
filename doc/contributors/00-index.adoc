@@ -1,35 +1,40 @@
 [[_contributors]]
-= Thành viên tham gia đóng góp và lời kết.
+= Lời kết
 
 === Các thành viên tham gia đóng góp.
 
-Ngoài chủ biên của cuốn sách là ông Phạm Minh Tuấn. Để hoàn thiện nội dung của sách còn có sự đóng góp của các thành viên sau:
+Để hoàn thiện nội dung của sách còn có sự đóng góp của các thành viên sau:
 
-1. Lâm Nhật Quân - Kĩ sư làm việc tại IoT Maker Việt Nam.
-2. Trịnh Hoàng Đức - Kĩ sư làm việc tại IoT Maker Việt Nam.
-3. Lê Phương Trình - Sinh viên Đại Học Bách Khoa, chuyên ngành điện tử viễn thông, khóa học 2014.
-4. Trần Phúc Vinh - Sinh viên Đại Học Bách Khoa, chuyên ngành kĩ thuật điện, khóa học 2014.
+- 1. *Phạm Minh Tuấn (TuanPM)* - Chủ biên
+- 2. *Lâm Nhật Quân* - Kĩ sư làm việc tại IoT Maker Việt Nam.
+- 3. *Trịnh Hoàng Đức* - Kĩ sư làm việc tại IoT Maker Việt Nam.
+- 4. *Lê Phương Trình* - Thực tập sinh tại IoT Maker Việt Nam - Sinh viên Đại Học Bách Khoa, chuyên ngành điện tử viễn thông, khóa học 2014.
+- 5. *Trần Phúc Vinh* - Thực tập sinh tại IoT Maker Việt Nam - Sinh viên Đại Học Bách Khoa, chuyên ngành kĩ thuật điện, khóa học 2014.
+
+Và sử đóng góp của cộng đồng tại tại https://arduino.esp8266.vn
 
 === Lời kết.
 
-Thật vui khi bạn đã đồng hành cùng chúng tôi đi đến hết cuốn sách này. Mục đích của cuốn sách là giúp những người mới bắt đầu tìm hiểu về `internet of things` có kiến thức cơ bản và hướng đi chính xác để nghiên cứu về IoT một cách nhanh chóng hơn. Hi vọng cuốn sách sẽ đến tay thật nhiều bạn đam mê lĩnh vực công nghệ còn mới mẻ nhưng rất tiềm năng này. Chúc các bạn thành công trên con đường mà mình đã chọn.
+Thật vui khi bạn đã đồng hành cùng chúng tôi đi đến hết cuốn sách này. Mục đích của cuốn sách là giúp những người mới bắt đầu tìm hiểu về `Internet Of Things (IoT)` có kiến thức cơ bản và hướng đi chính xác để nghiên cứu về IoT một cách nhanh chóng hơn. Hi vọng cuốn sách sẽ đến tay thật nhiều bạn đam mê lĩnh vực công nghệ còn mới mẻ nhưng rất tiềm năng này. Chúc các bạn thành công trên con đường mà mình đã chọn.
 
 Mặc dù đã cố gắng để hoàn thành tốt nhất nội dung cho cuốn sách, tuy nhiên vẫn không tránh khỏi những thiếu sót. Mọi ý kiến đóng góp xin gửi mail về địa chỉ support@iotmaker.vn
 
 Ngoài ra các bạn có thể tương tác với chúng tôi qua 1 số địa chỉ:
 
-1. Webstore : https://iotmaker.vn/
-2. Facebook : https://www.facebook.com/iotmaker.vn/
+- 1. Webstore : https://iotmaker.vn/
+- 2. Facebook : https://www.facebook.com/iotmaker.vn/
 
 Một số trang web đóng góp cho cộng đồng (mong nhận được sự chia sẻ và đóng góp của các bạn để cộng đồng IoT Việt Nam nói riêng cũng như cộng đồng kĩ thuật Việt Nam nói chung ngày một phát triển hơn):
 
-1. Về ESP8266 với Arduino : https://arduino.esp8266.vn/
-2. Về ESP32 : https://esp32.vn
-3. Về Rash berry : https://rpi.vn/
-4. Trang hỏi đáp về các vấn đề kĩ thuật : https://qa.iotmaker.vn
-5. Trang chia sẻ kiến thức chung : https://learn.iotmaker.vn/
+- 1. Về ESP8266 với Arduino : https://arduino.esp8266.vn/
+- 2. Về ESP32 : https://esp32.vn
+- 3. Facebook Group: https://www.facebook.com/groups/iotmaker/
 
 === Giấy phép sử dụng tài liệu.
 
+
+image::contributions/Cc-by-nc-sa_icon.svg[width="200", role="center", align="center"]
+
 - Tài liệu tuân theo giấy phép CC-BY-NC-SA (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
-- Bản quyền toàn bộ tài liệu này thuộc về IoT Maker Việt Nam, bạn được miễn phí sử dụng cho mục đích cá nhân, học tập và sử dụng trong các dự án của mình. Nếu bạn muốn sửa chữa, phân phối lại, bạn bắt buộc phải giữ nguyên giấy phép và cần có sự đồng ý của IoT Maker Việt Nam.
+- Bản quyền toàn bộ tài liệu này thuộc về https://iotmaker.vn[IoT Maker Việt Nam], bạn được miễn phí sử dụng cho mục đích cá nhân, học tập và sử dụng trong các dự án của mình, không được sử dụng cho mục đích thương mại. Nếu bạn muốn sửa chữa, phân phối lại, bạn bắt buộc phải giữ nguyên giấy phép và cần có sự đồng ý của https://iotmaker.vn[IoT Maker Việt Nam].
+- Chỉ duy nhất các các nhân, tổ chức được liệt kê tại http://iota.edu.vn là được phép sử dụng tài liệu cho mục đích thương mại.
