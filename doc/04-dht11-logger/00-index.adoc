@@ -20,3 +20,5 @@ include::03-esp8266.adoc[]
 include::04-extend.adoc[]
 
 == Tổng kết
+
+Sau khi hoàn thành dự án, chúng ta đã có cái nhìn tổng quan về trình tự các bước để xây dựng một dự án hoàn chỉnh trong việc thu thập dữ liệu của cảm biến cũng như xây dựng server để quản lí các máy khách. Từ đó là bước đệm để giúp bạn phát triển thêm nhiều các dự án thu thập và xử lí dữ liệu trong tương lai.

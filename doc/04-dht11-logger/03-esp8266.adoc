@@ -5,7 +5,7 @@ ESP8266 sử dụng thư viện HTTPClient để kết nối tới Web Server v�
 === Chuẩn bị
 - Cung cấp SSID và PASSWORD WiFi cho board mạch ESP8266 để kết nối vào mạng nội bộ với Web Server.
 - Cung cấp địa chỉ IP, port của Web Server.
-- Thư viện hỗ trợ lấy dữ liệu của DHT11. Dựa theo chuẩn truyền nhận 1 wire và sự phổ biến của dòng sensor DHTXX (DHT11, DHT22,...), có rất nhiều thư viện được xây dựng lên để việc lập trình với DHT11 trở nên dễ dàng hơn. Trong bài này chúng ta sẽ cài đặt và sử dụng thư viện `DHT sensor library` của Adafruit
+- Thư viện hỗ trợ lấy dữ liệu của DHT11. Dựa theo chuẩn truyền nhận 1 wire và sự phổ biến của dòng sensor DHTXX (DHT11, DHT22,...), có rất nhiều thư viện được xây dựng lên để việc lập trình với DHT11 trở nên dễ dàng hơn. Trong bài này chúng ta sẽ cài đặt và sử dụng thư viện `DHT sensor library` của Adafruit.
 
 .Hình ảnh thư viện DHT sensor library
 image::04-dht11/install-lib.png[height=900, scaledwidth="75%", align="center"]
@@ -23,7 +23,7 @@ include::code/dht11-logger/dht11-logger.ino[]
 ** `GET` là phương thức gửi dữ liệu.
 ** `/update?temp=30.6&humd=60` là nội dung cần gửi bao gồm cả pathname và dữ liệu.
 ** `HTTP/1.1` khai báo sử dụng giao thức HTTP version 1.1 để có thể tạo 1 HTTP request
-* `Host: 192.168.1.7:8000` thông tin về địa chỉ IP và port của server
+* `Host: 192.168.1.7:8000` thông tin về địa chỉ IP và port của server.
 * `Connection, Content-Length`
 
 Thực hiện sau khi kiểm tra mã nguồn:
@@ -32,8 +32,8 @@ Thực hiện sau khi kiểm tra mã nguồn:
 - <<arduino-flash>>
 
 
-Có thể xem thông các thông tin của quá trình truyền nhận dữ liệu với lệnh
-`curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0`. Thông tin hiển thị như bên dưới
+Có thể xem thông các thông tin của quá trình truyền nhận dữ liệu với lệnh:
+`curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0`. Thông tin hiển thị như bên dưới:
 
 [source, c]
 ----
@@ -54,12 +54,7 @@ name@yourname:~$ *   Trying 192.168.1.7...
 * Connection #0 to host 192.168.1.7 left intact
 ----
 
-Kết quả hiển thị trên Arduino IDE và màn hình Log của máy tính
+Kết quả hiển thị trên Arduino IDE và màn hình Log của máy tính:
 
 .Hình ảnh trên Arduino và terminal sau khi kết nối
 image::04-dht11/esp8266-server.png[height=366, align="center"]
-
-
-=== Tổng kết
-
-Sau khi hoàn thành dự án, chúng ta đã có cái nhìn tổng quan về trình tự các bước để xây dựng một dự án hoàn chỉnh trong việc thu thập dữ liệu của cảm biến cũng như xây dựng server để quản lí các máy khách. Từ đó là bước đệm để giúp bạn phát triển thêm nhiều các dự án thu thập và xử lí dữ liệu trong tương lai.

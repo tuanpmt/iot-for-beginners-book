@@ -4,7 +4,7 @@
 
 === MOSCA
 
-Mosca là 1 trong số rất nhiều server MQTT broker của giao thức MQTT. Có thể kế đến các server khác như HiveMQ, Apache Apollo, Mosquitto, Mongoose. Mosca có 1 số đặc điểm như sau:
+Mosca là 1 trong số rất nhiều server MQTT Broker của giao thức MQTT. Có thể kế đến các server khác như HiveMQ, Apache Apollo, Mosquitto, Mongoose. Mosca có 1 số đặc điểm như sau:
 
 * Nó là 1 Node.js Broker, được viết bằng ngôn ngữ JavaScript vì vậy để có thể xây dựng MQTT Broker, chúng ta cần Node.js để chạy. Mosca có thể nhúng vào ứng dụng của bạn nếu ứng dụng này được viết bằng Node.js
 
@@ -45,7 +45,7 @@ include::code/mosca-client/moscaClient.js[]
 
 ==== Kết quả
 
-Trên terminal, đi đến thư mục chứa file `moscaServer.js` và khởi chạy server bằng lệnh `node moscaServer.js`. Serser sẽ khởi động và lắng nghe các kết nối đến từ các MQTT Client. Tiếp theo, nạp chương trình trên Arduino cho ESP8266, sau đó khởi chạy MQTT Client trên máy tính bằng lệnh `node moscaClient.js`. Khi có các sự kiện kết nối , ngắt kết nối, pushlish 1 message hay subcrible 1 topic đến từ các client thì bên phía server đều sẽ hiển thị nội dung và thông tin. Các terminal hiển thị kết quả như hình bên dưới:
+Trên terminal, đi đến thư mục chứa file `moscaServer.js` và khởi chạy server bằng lệnh `node moscaServer.js`. Server sẽ khởi động và lắng nghe các kết nối đến từ các MQTT Client. Tiếp theo, nạp chương trình trên Arduino cho ESP8266, sau đó khởi chạy MQTT Client trên máy tính bằng lệnh `node moscaClient.js`. Khi có các sự kiện kết nối , ngắt kết nối, pushlish 1 message hay subcrible 1 topic đến từ các client thì bên phía server đều sẽ hiển thị nội dung và thông tin. Các terminal hiển thị kết quả như hình bên dưới:
 
 .Hình ảnh thông tin nhận được từ các client ở server mosca
 image::06-mqtt/moscarServer.png[width=600, align="center"]

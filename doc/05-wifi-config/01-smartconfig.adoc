@@ -2,20 +2,20 @@
 
 === Kiến thức
 
-SmartConfig là một giao thức được tạo ra nhằm cấu hình cho các thiết bị cho phép kết nối với mạng WiFi một cách dễ dàng nhất bằng smart phone. Nói một cách đơn giản, để kết nối WiFi cho thiết bị ESP8266, ta chỉ cần cung cấp thông tin mạng wifi (bao gồm SSID và password) cho ESP thông qua 1 ứng dụng trên smart phone.
+SmartConfig là một giao thức được tạo ra nhằm cấu hình cho các thiết bị kết nối với mạng WiFi một cách dễ dàng nhất bằng smart phone. Nói một cách đơn giản, để kết nối WiFi cho thiết bị ESP8266, ta chỉ cần cung cấp thông tin mạng wifi (bao gồm SSID và password) cho ESP thông qua 1 ứng dụng trên smart phone.
 
 .SmartConfig với ESP8266
 image::05-wificonfig/smart-config.png[SmartConfig, role="center", align="center", width=400]
 
-Chúng ta nên biết rằng, khi 1 điện thoại thông minh đã kết nối vào mạng WiFi có mật khẩu, thì toàn bộ dữ liệu trao đổi giữa Điện thoại và đầu mối khác trong mạng sẽ được mã hóa. Nghĩa là các thiết bị chưa được kết nối mạng và không có mật khẩu không thể giải mã được dữ liệu. Vậy làm thế nào để Ứng dụng trên điện thoại gởi thông tin kết nối này đến 1 thiết bị khác chưa hề kết nối mạng. Để làm được điều này, thì nhờ vào 2 đặc điểm sau:
+Chúng ta nên biết rằng, khi 1 điện thoại thông minh đã kết nối vào mạng WiFi có mật khẩu, thì toàn bộ dữ liệu trao đổi giữa Điện thoại và đầu mối khác trong mạng sẽ được mã hóa. Nghĩa là các thiết bị chưa được kết nối mạng và không có mật khẩu thì không thể giải mã được dữ liệu. Vậy làm thế nào để Ứng dụng trên điện thoại gởi thông tin kết nối này đến 1 thiết bị khác chưa hề kết nối mạng. Để làm được điều này, thì nhờ vào 2 đặc điểm sau:
 
-- ESP8266 có khả năng `lắng nghe` tất cả các gói tin không dây WiFi xung quanh nó, bao gồm cả các gói tin đã được mã hóa
+- ESP8266 có khả năng `lắng nghe` tất cả các gói tin không dây WiFi xung quanh nó, bao gồm cả các gói tin đã được mã hóa.
 - Các gói tin gởi trong mạng WiFi được mã hóa và không thể đọc được nội dung, tuy nhiên độ dài gói tin là một hằng số. Ví dụ, gói tin A chưa mã hóa có chiều dài là `x`, khi mã hóa gói tin A thành gói tin B, thì gói tin B sẽ có chiều dài là `x + n`, thì n là hằng số.
 
 Cách thức để giao thức ESPTOUCH thực hiện việc gởi thông tin SSID và mật khầu cho thiết bị như sau:
 
-- ESP8266 sẽ vào chế độ lắng nghe, lần lượt từng kênh
-- Điện thoại phải kết nối vào mạng WiFi được mã hóa
+- ESP8266 sẽ vào chế độ lắng nghe, lần lượt từng kênh.
+- Điện thoại phải kết nối vào mạng WiFi được mã hóa.
 - Ứng dụng trên điện thoại sẽ tiến hành gởi các gói tin với nội dung bất kỳ, nhưng có độ dài `n` theo từng ký tự của `SSID` và mật khẩu. Ví dụ, ssid của mạng là `mynetwork` thì sẽ có ký tự `m`, với ký tự ascii = 109, Ứng dụng sẽ gởi gói tin có độ dài 109 với nội dung bất kỳ, và lặp lại cho đến hết ký tự `k`, cũng như mật khẩu, và các ký tự khác như CRC.
 - Có thể giao thức ESPTOUCH sẽ mã hóa cả các thông số gởi đi, nhưng vẫn giữ nguyên tắc như trên.
 - ESP8266 sẽ phát hiện ra các gói tin với độ dài thay đổi này và ghép nối lại thành `SSID` và `password` để kêt nối vào mạng.

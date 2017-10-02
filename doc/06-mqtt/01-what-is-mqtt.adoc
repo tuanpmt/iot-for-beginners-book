@@ -4,30 +4,30 @@ image::06-mqtt/mqttorg-glow.png[width=200, role="center", align="center"]
 
 MQTT (Message Queuing Telemetry Transport) là một giao thức gởi dạng publish/subscribe sử dụng cho các thiết bị Internet of Things với băng thông thấp, độ tin cậy cao và khả năng được sử dụng trong mạng lưới không ổn định.
 
-Bởi vì giao thức này sử dụng băng thông thấp trong môi trường có độ trễ cao nên nó là một giao thức lý tưởng cho các ứng dụng M2M
+Bởi vì giao thức này sử dụng băng thông thấp trong môi trường có độ trễ cao nên nó là một giao thức lý tưởng cho các ứng dụng M2M.
 
-MQTT cũng là giao thức sử dụng trong Facebook Messager
+MQTT cũng là giao thức sử dụng trong Facebook Messager.
 
 Và MQTT là gì? Để có một cái nhìn toàn diện hoặc định nghĩa chi tiết, chỉ cần google "what is mqtt", "mqtt slides" ... Ở đây chúng ta chỉ nói ngắn gọn thôi, đủ để hiểu giao thức MQTT, bao gồm các định nghĩa *"subscribe", "publish", "qos", "retain", "last will and testament (lwt)"*
 
 
 === Publish, subscribe
 
-Trong một hệ thống sử dụng giao thức MQTT, nhiều node trạm (gọi là mqtt client - gọi tắt là client) kết nối tới một MQTT server (gọi là broker). Mỗi client sẽ đăng ký một vài kênh (topic), ví dụ như "/client1/channel1", "/client1/channel2". Quá trình đăng ký này gọi là *"subscribe"*, giống như chúng ta đăng ký nhận tin trên một kênh Youtube vậy. Mỗi client sẽ nhận được dữ liệu khi bất kỳ trạm nào khác gởi dữ liệu vào kênh đã đăng ký. Khi một client gởi dữ liệu tới kênh đó, gọi là *"publish"*.
+Trong một hệ thống sử dụng giao thức MQTT, nhiều node trạm (gọi là mqtt client - gọi tắt là client) kết nối tới một MQTT Server (gọi là Broker). Mỗi client sẽ đăng ký một vài kênh (topic), ví dụ như "/client1/channel1", "/client1/channel2". Quá trình đăng ký này gọi là *"subscribe"*, giống như chúng ta đăng ký nhận tin trên một kênh Youtube vậy. Mỗi Client sẽ nhận được dữ liệu khi bất kỳ trạm nào khác gởi dữ liệu vào kênh đã đăng ký. Khi một Client gởi dữ liệu tới kênh đó, gọi là *"publish"*.
 
 === QoS
 
 Ở đây có 3 tuỳ chọn *QoS (Qualities of service)* khi "publish" và "subscribe":
 
-- *QoS0* Broker/client sẽ gởi dữ liệu đúng 1 lần, quá trình gởi được xác nhận bởi chỉ giao thức TCP/IP, giống kiểu đem con bỏ chợ.
-- *QoS1* Broker/client sẽ gởi dữ liệu với ít nhất 1 lần xác nhận từ đầu kia, nghĩa là có thể có nhiều hơn 1 lần xác nhận đã nhận được dữ liệu.
-- *QoS2* Broker/client đảm bảm khi gởi dữ liệu thì phía nhận chỉ nhận được đúng 1 lần, quá trình này phải trải qua 4 bước bắt tay.
+- *QoS0* Broker/Client sẽ gởi dữ liệu đúng 1 lần, quá trình gởi được xác nhận bởi chỉ giao thức TCP/IP, giống kiểu đem con bỏ chợ.
+- *QoS1* Broker/Client sẽ gởi dữ liệu với ít nhất 1 lần xác nhận từ đầu kia, nghĩa là có thể có nhiều hơn 1 lần xác nhận đã nhận được dữ liệu.
+- *QoS2* Broker/Client đảm bảm khi gởi dữ liệu thì phía nhận chỉ nhận được đúng 1 lần, quá trình này phải trải qua 4 bước bắt tay.
 
 *Xem thêm QoS*: https://code.google.com/p/mqtt4erl/wiki/QualityOfServiceUseCases
 
-Một gói tin có thể được gởi ở bất kỳ QoS nào, và các client cũng có thể subscribe với bất kỳ yêu cầu QoS nào. Có nghĩa là client sẽ lựa chọn QoS tối đa mà nó có để nhận tin. Ví dụ, nếu 1 gói dữ liệu được publish với QoS2, và client subscribe với QoS0, thì gói dữ liệu được nhận về client này sẽ được broker gởi với QoS0, và 1 client khác đăng ký cùng kênh này với QoS 2, thì nó sẽ được Broker gởi dữ liệu với QoS2.
+Một gói tin có thể được gởi ở bất kỳ QoS nào, và các Client cũng có thể subscribe với bất kỳ yêu cầu QoS nào. Có nghĩa là Client sẽ lựa chọn QoS tối đa mà nó có để nhận tin. Ví dụ, nếu 1 gói dữ liệu được publish với QoS2, và Client subscribe với QoS0, thì gói dữ liệu được nhận về Client này sẽ được broker gởi với QoS0, và 1 Client khác đăng ký cùng kênh này với QoS 2, thì nó sẽ được Broker gởi dữ liệu với QoS2.
 
-Một ví dụ khác, nếu 1 client subscribe với QoS2 và gói dữ liệu gởi vào kênh đó publish với QoS0 thì client đó sẽ được Broker gởi dữ liệu với QoS0. QoS càng cao thì càng đáng tin cậy, đồng thời độ trễ và băng thông đòi hỏi cũng cao hơn.
+Một ví dụ khác, nếu 1 Client subscribe với QoS2 và gói dữ liệu gởi vào kênh đó publish với QoS0 thì Client đó sẽ được Broker gởi dữ liệu với QoS0. QoS càng cao thì càng đáng tin cậy, đồng thời độ trễ và băng thông đòi hỏi cũng cao hơn.
 
 === Retain
 

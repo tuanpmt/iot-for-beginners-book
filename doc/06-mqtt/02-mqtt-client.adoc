@@ -1,12 +1,12 @@
 == MQTT Client
 
-Như chúng ta đã tìm hiểu ở phần trước, 2 thành phần publisher và subscriber là đặc trưng tạo nên giao thức MQTT. Các MQTT Client không kết nối trực tiếp với nhau, mọi gói dữ liệu được gửi đi đều thông qua broker MQTT. Để có thể triển khai các ứng dụng của MQTT Client, chúng ta cần MQTT Broker (sẽ được trình bày trong phần sau). Ở phần này chúng ta sẽ làm quen với giao thức MQTT bằng các ví dụ sử dụng MQTT Client thông dụng và các dịch vụ MQTT Broker miễn phí và phổ biến, 2 trong số chúng là http://test.mostquitto.org và http://cloudmqtt.com
+Như chúng ta đã tìm hiểu ở phần trước, 2 thành phần publisher và subscriber là đặc trưng tạo nên giao thức MQTT. Các MQTT Client không kết nối trực tiếp với nhau, mọi gói dữ liệu được gửi đi đều thông qua MQTT Broker. Để có thể triển khai các ứng dụng của MQTT Client, chúng ta cần MQTT Broker (sẽ được trình bày trong phần sau). Ở phần này chúng ta sẽ làm quen với giao thức MQTT bằng các ví dụ sử dụng MQTT Client thông dụng và các dịch vụ MQTT Broker miễn phí và phổ biến, 2 trong số chúng là http://test.mostquitto.org và http://cloudmqtt.com
 
 === MQTT Lens
 
 **Thông tin**
 
-MQTT Lens là một tiện ích mở rộng của Chrome (Chrome Extension), nó sử dụng trình duyệt Chrome để kết nối đến broker MQTT cũng như test các tính năng publish/subcribe của giao thức MQTT. Đây là một công cụ rất hữu ích để kiểm tra kết nối đến broker MQTT và kiểm tra việc gửi và nhận gói tin.
+MQTT Lens là một tiện ích mở rộng của Chrome (Chrome Extension), nó sử dụng trình duyệt Chrome để kết nối đến  MQTT Broker cũng như test các tính năng publish/subcribe của giao thức MQTT. Đây là một công cụ rất hữu ích để kiểm tra kết nối đến MQTT Broker và kiểm tra việc gửi và nhận gói tin.
 
 Một số thông tin của MQTT Lens được trình bày ở bảng dưới.
 
@@ -21,7 +21,7 @@ Website:"https://chrome.google.com/webstore/detail/mqttlens/"
 
 **Kết nối**
 
-Chúng ta sẽ sử dụng công cụ này với dịch vụ broker MQTT tại iot.eclipse.org được trình bày như các bước bên dưới:
+Chúng ta sẽ sử dụng công cụ này với dịch vụ MQTT Broker tại iot.eclipse.org được trình bày như các bước bên dưới:
 
 * Bước 1: Cài đặt trình duyệt Chrome, thực hiện đăng nhập tài khoản của bạn vào chrome, truy cập vào địa chỉ https://chrome.google.com/webstore/category/extensions và gõ mqttlens vào mục tìm kiếm tiện ích như hình bên dưới.
 
@@ -33,14 +33,14 @@ image::06-mqtt/searchMQTTlens.png[width=600, align="center"]
 .Hình ảnh các bước thêm và khởi chạy tiện ích MQTT lens
 image::06-mqtt/addMQTTlens.png[width=600, align="center"]
 
-* Bước 3 : Tạo 1 MQTT client kết nối đến broker MQTT eclipse như các bước bên dưới.
+* Bước 3 : Tạo 1 MQTT Client kết nối đến MQTT Broker eclipse như các bước bên dưới.
 
 .Hình ảnh tạo 1 MQTT client
 image::06-mqtt/createATopic.png[width=600, align="center"]
 
 **Giải thích**
 
-Chúng ta sẽ tạo 1 connection có tên eclipse MQTT với host name của broker MQTT là `iot.eclipse.org`, broker này sẽ giúp trao đổi dữ liệu của các client với nhau và lắng nghe các client ở port 1883 (port sử dụng giao thức MQTT và không mã hóa dữ liệu, các port khác tham khảo tại https://test.mosquitto.org)
+Chúng ta sẽ tạo 1 connection có tên eclipse MQTT với host name của MQTT Broker là `iot.eclipse.org`, Broker này sẽ giúp trao đổi dữ liệu của các Client với nhau và lắng nghe các Client ở port 1883 (port sử dụng giao thức MQTT và không mã hóa dữ liệu, các port khác tham khảo tại https://test.mosquitto.org)
 Ở connection này sẽ đăng kí nhận gói tin tại topic `Home/garden/sensor/#` (kí tự # cho phép subcribe các topic `Home/garden/sensor/1`, `Home/garden/sensor/2` vv...). Tiếp theo chúng ta sẽ pulish 1 gói dữ liệu với nội dung `"Temp in garden: 27degree Celcius "` tại topic `Home/garden/sensor/1`.
 
 **Kết quả**: Tại mục subrcriptions, chúng ta sẽ nhận được gói dữ liệu đã publish do đã subcribe topic
@@ -51,7 +51,7 @@ image::06-mqtt/connect2Clients.png[width=600, align="center"]
 
 **Mở rộng**
 
-Tạo nhiều connection để subcribe và publish các gói tin với broker MQTT iot.eclipse.org đồng thời test các gói tin với QoS và LWT
+Tạo nhiều connection để subcribe và publish các gói tin với MQTT Broker iot.eclipse.org đồng thời test các gói tin với QoS và LWT
 
 === MQTT.js
 
@@ -80,7 +80,7 @@ Sau khi cài đặt xong, bạn có thể sử dụng module `mqtt` để thực
 
 **Nội dung thực hiện**
 
-2 client này sẽ kết nối vào cùng 1 MQTT Broker. Client A sẽ subscribe kênh `/client-a/sub`, nếu nhận bất kỳ dữ liệu nào được publish vào kênh này, client A sẽ public dữ liệu `Hello from client A` vào kênh `/client-b/sub` và đóng kết nối, kết thúc. Client B sẽ subscribe kênh `/client-b/sub`, nếu nhận bất kỳ dữ liệu nào được public vào kênh này, client B sẽ đóng kết nối và kết thúc. Ngay khi kết nối vào Broker, client B sẽ public 1 gói tin `Hello from client B` vào kênh `/client-a/sub`
+2 Client này sẽ kết nối vào cùng 1 MQTT Broker. Client A sẽ subscribe kênh `/client-a/sub`, nếu nhận bất kỳ dữ liệu nào được publish vào kênh này, client A sẽ public dữ liệu `Hello from client A` vào kênh `/client-b/sub` và đóng kết nối, kết thúc. Client B sẽ subscribe kênh `/client-b/sub`, nếu nhận bất kỳ dữ liệu nào được public vào kênh này, client B sẽ đóng kết nối và kết thúc. Ngay khi kết nối vào Broker, client B sẽ public 1 gói tin `Hello from client B` vào kênh `/client-a/sub`
 
 
 **Mã nguồn của client A**
@@ -118,9 +118,9 @@ Bạn có thể kiểm tra bằng cách mở 2 màn hình terminal, ở màn hì
 
 Các options:
 
-	* `-t` : MQTT topic, nơi sẽ thực hiện pushlish 1 message
-	* `-h` : Xác định máy chủ sẽ kết nối đến
-	* `-m` : Gửi 1 message dùng command line
+	* `-t` : MQTT topic, nơi sẽ thực hiện pushlish 1 message.
+	* `-h` : Xác định máy chủ sẽ kết nối đến.
+	* `-m` : Gửi 1 message dùng command line.
 	* `-v` : verbose, option cho phép ghi lại nhật kí hoạt động của các tập tin trong file cấu hình.
 
 .Hình ảnh message được publish dùng command line
@@ -147,7 +147,7 @@ include::code/ESP8266PubSub/ESP8266PubSub.ino[]
 
 **Giải thích mã nguồn:**
 
-Chúng ta sẽ tạo một biến `espClient` thuộc lớp `WiFiClient`, biến này được khai báo là MQTT client và sử dụng các thuộc tính của thư viện `PubSubClient`. Tại hàm `setup()` sẽ thiết lập ESP8266 ở chế độ station, kết nối đến mạng wifi. Bên cạnh đó hàm `setup()` cũng sẽ thực hiện chức năng tự động kết nối lại với broker MQTT khi xảy ra mất kết nối đồng thời thực hiện các chức năng publish, subscribe của 1 MQTT client thông qua hàm `reconnect()`. Hàm `callback()` có nhiệm vụ lấy dữ liệu của các puslisher khi publish 1 message sau đó gửi đến các client đã subscribe topic đó và kiểm tra nội dung của message để điều khiển led ở GPIO16. Hàm `loop()` có chức năng kết nối client là ESP8266 với broker, thực  hiện chức năng publish 1 message và subscribe topic. `client.loop()` sẽ kiểm tra thời gian kết nối của client với gói `KEEP_ALIVE` để đưa ra các thông tin về trạng thái kết nối của ESP8266 đồng thời lấy dữ liệu của message từ buffer để gửi đến các client đã subcribe topic.
+Chúng ta sẽ tạo một biến `espClient` thuộc lớp `WiFiClient`, biến này được khai báo là MQTT Client và sử dụng các thuộc tính của thư viện `PubSubClient`. Tại hàm `setup()` sẽ thiết lập ESP8266 ở chế độ station, kết nối đến mạng wifi. Bên cạnh đó hàm `setup()` cũng sẽ thực hiện chức năng tự động kết nối lại với MQTT Broker khi xảy ra mất kết nối đồng thời thực hiện các chức năng publish, subscribe của 1 MQTT Client thông qua hàm `reconnect()`. Hàm `callback()` có nhiệm vụ lấy dữ liệu của các puslisher khi publish 1 message sau đó gửi đến các client đã subscribe topic đó và kiểm tra nội dung của message để điều khiển led ở GPIO16. Hàm `loop()` có chức năng kết nối Client là ESP8266 với Broker, thực  hiện chức năng publish 1 message và subscribe topic. `client.loop()` sẽ kiểm tra thời gian kết nối của Client với gói `KEEP_ALIVE` để đưa ra các thông tin về trạng thái kết nối của ESP8266 đồng thời lấy dữ liệu của message từ buffer để gửi đến các Client đã subcribe topic.
 
 
 * **Bước 3 :** Mở MQTT lens trên trình duyệt Chrome, tạo 1 connection với host name `broker.mqtt-dashboard.com`, sử dụng port 1883. Thực hiện subscribe topic `ESP8266/connection/board`. Sau khi nhấn nút subscribe trên MQTT lens sẽ xuất hiện 1 message gửi từ esp8288 với nội dung `connnected`. Thực hiện pushlish các message vào topic `ESP8266/LED_GPIO16/status`. Nếu pushlish message với nội dung `on`, led GPIO16 trên board sẽ sáng, pushlish message `off` led GPIO16 trên board sẽ tắt. Các message với nội dung khác thì vẫn sẽ hiển thị dữ liệu nhận được trên serial terminal của Arduino nhưng sẽ không có tác dụng điều khiển led GPIO16. Kết quả hiển thị như hình bên dưới:
@@ -170,7 +170,7 @@ include::code/ESP8266MQTT/ESP8266MQTTClient.ino[]
 
 *Giải thích mã nguồn*
 
-Tương tự như mã nguồn của chương trình sử dụng thư viện pubsubCLient, chúng ta cũng sẽ khởi tạo ESP8266 là MQTT Client trong class MQTT của thư viện ESP8266MQTTClient. Cài đặt ESP8266 ở chế độ Station và kết nối đến network wifi. Chức năng của các hàm trong thư viện đã được giải thích ở file mã nguồn, ở hàm `mqtt.onConnect()` chúng ta sẽ subscribe topic là `esp8266/GPIO16`. Hàm `mqtt.onSubscribe()` sẽ thực hiện puslish các message ở topic đã chỉ định là `Broker/app`. Hàm `mqtt.onData()` sẽ nhận, kiểm tra và xử lí dữ liệu nhận được từ topic đã subscribe. Ở đây ta sẽ dùng 1 public MQTT Broker là  iot.eclipse.org, sử dụng phương thức websocket là lắng nghe các MQTT Client ở port 80, đây là port mặc định khi sư dụng websocket. Việc gửi nhận dữ liệu bằng phương thức websocket sẽ giúp giảm băng thông và độ trể khi truyền nhận dữ liệu thông qua giao thức MQTT. Chi tiết về websocket chúng ta sẽ được học ở các bài học sau. Ở `loop()` chúng ta chỉ cần gọi hàm `handle()` để khởi tạo và kiểm tra các thuộc tính của giao thức cũng như xử lí, truyền và nhận dữ liệu từ các topic đã subscribe và public.
+Tương tự như mã nguồn của chương trình sử dụng thư viện pubsubCLient, chúng ta cũng sẽ khởi tạo ESP8266 là MQTT Client trong class MQTT của thư viện ESP8266MQTTClient. Cài đặt ESP8266 ở chế độ Station và kết nối đến network wifi. Chức năng của các hàm trong thư viện đã được giải thích ở file mã nguồn, ở hàm `mqtt.onConnect()` chúng ta sẽ subscribe topic là `esp8266/GPIO16`. Hàm `mqtt.onSubscribe()` sẽ thực hiện puslish các message ở topic đã chỉ định là `Broker/app`. Hàm `mqtt.onData()` sẽ nhận, kiểm tra và xử lí dữ liệu nhận được từ topic đã subscribe. Ở đây ta sẽ dùng 1 public MQTT Broker là  iot.eclipse.org, sử dụng phương thức Websocket là lắng nghe các MQTT Client ở port 80, đây là port mặc định khi sử dụng Websocket. Việc gửi nhận dữ liệu bằng phương thức Websocket sẽ giúp giảm băng thông và độ trể khi truyền nhận dữ liệu thông qua giao thức MQTT. Chi tiết về Websocket chúng ta sẽ được học ở các bài học sau. Ở `loop()` chúng ta chỉ cần gọi hàm `handle()` để khởi tạo và kiểm tra các thuộc tính của giao thức cũng như xử lí, truyền và nhận dữ liệu từ các topic đã subscribe và public.
 
 NOTE: Để tìm hiểu chi tiết file cấu hình của thư viện, có thể xem tại https://github.com/tuanpmt/ESP8266MQTTClient/tree/master/src
 
@@ -181,7 +181,7 @@ Truy cập vào `App Store` trên hệ điều hành iOS hoặc `CH Play` trên 
 .Hình ảnh ứng dụng IoT Smartconfig trên hệ điều hành iOS và Android
 image::06-mqtt/iotSmartConfig.png[width=600, align="center"]
 
-Ứng dụng này sử dụng với ESP8266 và ESP32, ngoài chức năng cơ bản là publish, subscribe của giao thức MQTT, ứng dụng còn có chức năng smartconfig để ESP8266 và ESP32 có thể dễ dàng thiết lập kết nối với các network wifi khác nhau một cách thuận tiện và nhanh chóng và không phải nạp lại mã nguồn.
+Ứng dụng này sử dụng với ESP8266 và ESP32, ngoài chức năng cơ bản là publish, subscribe của giao thức MQTT, ứng dụng còn có chức năng smartconfig để ESP8266 và ESP32 có thể dễ dàng thiết lập kết nối với các network wifi khác nhau một cách thuận tiện và nhanh chóng mà không phải nạp lại mã nguồn.
 
 Tiếp theo, trượt ứng dụng qua phần MQTT, nhấn vào nút `connect` để kết nối đến server MQTT Broker `ws://iot.eclipse.org:80/ws`. Thực hiện subscribe topic `Broker/app` và publish message vào topic `esp8266/GPIO16`. Nếu publish message `on` vào `esp8266/GPIO16` thì led trên board ESP8266 WiFi Uno sẽ sáng, gửi `off` sẽ tắt led, đồng thời khi ESP8266 publish các message ở topic `Broker/app` thì nội dung các message sẽ được hiển thị trên ứng dụng. Kết quả hiển thị như hình bên dưới:
 

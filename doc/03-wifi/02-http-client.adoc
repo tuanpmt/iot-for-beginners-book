@@ -93,7 +93,7 @@ Một số HTTP status code thường thấy:
 
 * **3xx**: Nhóm mã trạng thái thông báo Client còn phải thực hiện thêm hành động để hoàn thành request. Mã trạng thái thường gặp trong nhóm:
 ** *301 Moved Permanently*: Thông báo tài nguyên được yêu cầu đã được chuyển hướng sang một URL mới và server sẽ gửi URL mới này trong response cho Client biết.
-* *4xx* Nhóm mã thông báo các lỗi từ phía Client: Được sử dụng khi server cho rằng phía Client đang xảy ra lỗi, với một request, hoặc tài nguyên không hợp lệ, hoặc một request không đúng. Các mã thông dụng:
+* *4xx*: Nhóm mã thông báo các lỗi từ phía Client. Được sử dụng khi server cho rằng phía Client đang xảy ra lỗi, với một request, hoặc tài nguyên không hợp lệ, hoặc một request không đúng. Các mã thông dụng:
 ** *400 Bad Request*: Thông báo request đã gửi là sai.
 ** *401 Unauthorized*: Chỉ ra rằng request cần được xác thực. Client có thể gửi lại request với header đã được xác thực. Trường hợp đã đính kèm header xác thực nhưng vẫn nhận được thông báo này tức là header xác thực chưa hợp lệ.
 ** *403 Forbidden*: Server từ chối quyền truy cập của Client.
@@ -145,7 +145,7 @@ Chúng ta có rất nhiều nguồn lấy tỉ giá, một trong số đó là h
 
 và giá trị của trường `USD` chính là giá trị chúng ta muốn hiển thị.
 
-NOTE: Đa số các dịch vụ Web hiện nay đều sử dụng giao thức bảo mật `HTTPS`, cũng là HTTP, nhưng quá trình truyền nhận được mã hóa dữ liệu, thực hiện xác thực trước khi gửi giữa Client và Server.
+NOTE: Đa số các dịch vụ Web hiện nay đều sử dụng giao thức bảo mật `HTTPS`, về cơ bản nó cũng là HTTP, nhưng quá trình truyền nhận được mã hóa dữ liệu, thực hiện xác thực trước khi gửi giữa Client và Server.
 
 Khi dùng HTTPS, chúng ta cần cung cấp SHA1 Fingerpint để Client có thể xác thực server. Bạn có thể dùng trình duyệt để truy cập trước để lấy. Nếu là `Chrome`, sau khi truy cập vào địa chỉ https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD, Nhấn Ctrl+Shift+I (Shift + ⌘ + I với MacOS) và đi đến `Security > View Certificate > Details > Thumbprint`. Bạn sẽ thấy hình như bên dưới, và copy nó.
 

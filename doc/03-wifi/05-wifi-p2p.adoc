@@ -12,8 +12,8 @@ Có một số ứng dụng đơn giản để kết nối 2 ESP8266 với nhau 
 
 Để trao đổi dữ liệu giữa 2 ESP8266 cần đáp ứng các điều kiện sau:
 
-* 1 ESP8266 sẽ khởi động _SoftAP_ để tạo mạng WiFi, đồng thời khởi động 1 TCP Server để làm Server
-* 1 ESP8266 phải là client với chế độ _WiFi Station_ và kết nối đến ESP8266 server trên
+* 1 ESP8266 sẽ khởi động _SoftAP_ để tạo mạng WiFi, đồng thời khởi động 1 TCP Server để làm Server.
+* 1 ESP8266 phải là client với chế độ _WiFi Station_ và kết nối đến ESP8266 server đã tạo ở trên.
 * Sau mỗi giây, Board ESP8266 này sẽ gởi dữ liệu vào Board kia, board nhận được dữ liệu sẽ in ra cổng Serial và gởi ngược lại.
 
 === Code
