@@ -1,13 +1,13 @@
 == Sử dụng ESP8266 như Websocket Client
 
-Trong một số ứng dụng khác, chúng ta có 1 Server Websocket để thực hiện các tác vụ thời gian thực với các ứng dụng khác như Ứng dụng điện thoại, trình duyệt Web. Thì ESP8266 có thể kết nối trực tiếp vào các server này như 1 Websocket Client để tiếp nhận, hoặc gởi thông tin thông qua Websocket.
+Trong một số ứng dụng khác, chúng ta có 1 Server Websocket để thực hiện các tác vụ thời gian thực như Ứng dụng điện thoại, trình duyệt Web. Thì ESP8266 có thể kết nối trực tiếp vào các server này như 1 Websocket Client để tiếp nhận, hoặc gởi thông tin thông qua Websocket.
 
 Một số dịch vụ sử dụng Websocket điển hình như dịch vụ tin nhắn https://slack.com[Slack], dịch vụ cơ sở dữ liệu thời gian thực https://firebase.google.com[Firebase]
 
 Ở phần này, chúng ta sẽ sử dụng Node.js để tự xây dựng 1 Web server, vừa đóng vai trò là 1 Websocket Server. Có những tính năng:
 
 * Có thể cung cấp file `index.html` chứa các đoạn mã javascript tạo kết nối Websocket giữa trình duyệt với Server, giống như phần <<server-nodejs>>
-* Cho phép kết nối Websocket đến, bao gồm từ trình duyệt, hanh từ ESP8266
+* Cho phép kết nối Websocket đến, bao gồm từ trình duyệt, hay từ ESP8266
 * Server sẽ broadcast tất cả các gói tin từ bất kỳ 1 client nào gởi đến, tới tất cả các client còn lại.
 
 Với tính năng như trên thì bạn có thể hình dung như sau: Nếu 1 cửa sổ trình duyệt có kết nối Websocket đến Server, khi nhấn 1 nút kiểm, thì sẽ gởi về server trạng thái của nút kiểm đó. Ví dụ `LED_ON`, server nhận được sẽ gởi dữ liệu `LED_ON` đến các trình duyệt còn lại (hoặc bao gồm cả ESP8266), và trình duyệt còn lại sẽ hiển thị trạng thái nút kiểm này đang bật.
@@ -40,7 +40,6 @@ include::code/server/server.js[]
 
 https://github.com/Links2004/arduinoWebSockets
 
-.server.js
 [source, c]
 ----
 include::code/WebSocketClient/WebSocketClient.ino[]
@@ -48,4 +47,3 @@ include::code/WebSocketClient/WebSocketClient.ino[]
 
 .Click nút kiểm sẽ thay đổi trạng thái LED trên board
 image::07-websocket/browser-esp.png[width=600, role="center", align="center"]
-
