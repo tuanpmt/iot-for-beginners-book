@@ -31,5 +31,6 @@ Một số trang web đóng góp cho cộng đồng (mong nhận được sự c
 
 === Giấy phép sử dụng tài liệu.
 
-- Tài liệu tuân theo giấy phép CC-BY-NC-SA (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
+- Tài liệu tuân theo giấy phép CC-BY-NC-SA. Thông tin giấy phép xem tại https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
 - Bản quyền toàn bộ tài liệu này thuộc về IoT Maker Việt Nam, bạn được miễn phí sử dụng cho mục đích cá nhân, học tập và sử dụng trong các dự án của mình. Nếu bạn muốn sửa chữa, phân phối lại, bạn bắt buộc phải giữ nguyên giấy phép và cần có sự đồng ý của IoT Maker Việt Nam.

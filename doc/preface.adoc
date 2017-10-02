@@ -9,19 +9,19 @@ Nội dung được thiết kế một cách cơ bản giúp học viên có cá
 
 === Đôi lời về tác giả
 
-Chủ biên của cuốn sách là ông Phạm Minh Tuấn. Hiện tại đang là developer của công ty `Espressif Systems`, một công ty chuyên phát triển các các chipset WiFi và Bluetooth, trong đó có các dòng chip nổi tiếng là `ESP8266` và `ESP32`.
+Chủ biên của cuốn sách là ông Phạm Minh Tuấn. Hiện tại đang là developer của công ty `Espressif Systems`, một công ty chuyên phát triển các chipset WiFi và Bluetooth, trong đó có các dòng chip nổi tiếng là `ESP8266` và `ESP32`.
 Ngoài ra tác giả cũng là chủ sở hữu của công ty TNHH CÔNG NGHỆ NANOCHIP, và là founder của `IoT Maker Việt Nam`, chuyên cung cấp các sản phẩm về IoT, các mạch điện tử cũng như các giải pháp liên quan đến IoT.
 
 Với kinh nghiệm nhiều năm làm việc trong mảng IoT, tác giả xây dựng cuốn sách này với mục đích đóng góp 1 phần nhỏ những kiến thức của mình vào sự phát triển của ngành công nghiệp vẫn còn mới mẻ nhưng rất tiềm năng này.
 
 === Thuật ngữ hay sử dụng
-* `IoT` Internet Of Things hay internet vạn vật.
-* `ESP8266` chip xử lí tích hợp thu phát WiFi.
-* `Git` trình quản lý phiên bản.
-* `Github` mạng xã hội dành cho lập trình viên.
-* `IDE` Integrated Development Enviroment - môi trường phát triển tích hợp.
-* `Compiler` trình biên dịch.
-* `Logic Level` mức điện áp để chip hiểu được (1 hay 0).
+* `IoT` - Internet Of Things hay internet vạn vật.
+* `ESP8266` - Chip xử lí tích hợp thu phát WiFi.
+* `Git` - Trình quản lý phiên bản.
+* `Github` - Mạng xã hội dành cho lập trình viên.
+* `IDE` - Viết tắt của Integrated Development Enviroment - môi trường phát triển tích hợp.
+* `Compiler` - Trình biên dịch.
+* `Logic Level` - Mức điện áp để chip hiểu được (1 hay 0).
 
 === Giải thích code trong bài
 
@@ -35,5 +35,5 @@ void setup()
 }
 ----
 
-<1> Dòng này giản thích đây là comment (chú thích).
+<1> Dòng này giải thích đây là comment (chú thích).
 <2> Dòng này giải thích biến `a` tăng thêm 1 đơn vị.
