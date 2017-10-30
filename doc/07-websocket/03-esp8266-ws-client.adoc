@@ -26,7 +26,7 @@ include::code/server/index.html[]
 ----
 
 === Node.js Websocket Server
-Trong phần này chúng ta cần dùng thư viện Websocket `ws` https://github.com/websockets/ws. Bạn có thể cài đặt bằng cách:
+Trong phần này chúng ta cần dùng thư viện Websocket `ws` https://github.com/websockets/ws. Bạn có thể cài đặt bằng cách thực thi lệnh:
 
 `npm install ws`
 
