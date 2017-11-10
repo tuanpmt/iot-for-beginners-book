@@ -1,7 +1,7 @@
 == Arduino là gì?
 
 .Board mạch Arduino
-image::01-intro/01.arduino.png[width=300, align="center"]
+image::images/01-intro/01.arduino.png[width=300, align="center"]
 
 https://arduino.cc[*Arduino*] là một IDE tích hợp sẵn editor, compiler, programmer và đi kèm với nó là các firmware có bootloader, các bộ thư viện được xây dựng sẵn và dễ dàng tích hợp. Ngôn ngữ sử dụng là `C/C++`. Tất cả đều opensource và được đóng góp, phát triển hàng ngày bởi cộng đồng. Triết lý thiết kế và sử dụng của Arduino giúp cho người mới, không chuyên rất dễ tiếp cận, các công ty, hardware dễ dàng tích hợp. Tuy nhiên, với trình biên dịch `C/C++` và các thư viện chất lượng được xây dựng bên dưới thì mức độ phổ biến ngày càng tăng và hiệu năng thì không hề thua kém các trình biên dịch chuyên nghiệp cho chip khác.
 
@@ -43,9 +43,9 @@ Link: https://github.com/iotmakervn/iot-wifi-uno-hw
 
 ifdef::render-svg[]
 .PINOUT
-image::01-intro/01.Iot-wifi-uno-hw-pinout.svg[width=400, align="center", role="center"]
+image::images/01-intro/01.Iot-wifi-uno-hw-pinout.svg[width=400, align="center", role="center"]
 endif::[]
 ifndef::render-svg[]
 .PINOUT
-image::01-intro/01.Iot-wifi-uno-hw-pinout.png[width=400, align="center", role="center"]
+image::images/01-intro/01.Iot-wifi-uno-hw-pinout.png[width=400, align="center", role="center"]
 endif::[]

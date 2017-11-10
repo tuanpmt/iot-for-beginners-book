@@ -9,17 +9,17 @@ OLED (Organic Light Emitting Diode) là loại màn hình hiển thị bao gồm
 Là màn hình loại nhỏ, kích thước tầm 0.96 inch cho tới 1.25 inch, được dùng khá rộng rãi trong các sản phẩm điện tử. Tấm nền được điều khiển bằng chip driver SSD1306. Chip này giao tiếp với các bộ điều khiển/MCU khác bằng giao tiếp LCD
 
 .OLED SSD1306
-image::01-intro/oled.jpg[OLED SSD1306, width=400, align="center", role="center"]
+image::images/01-intro/oled.jpg[OLED SSD1306, width=400, align="center", role="center"]
 
 === Giao tiếp I2C
 
 I2C (Inter-Integrated Circuit) là một loại bus nối tiếp được phát triển bởi hãng Philips nhằm truyền nhận dữ liệu giữa các IC. I2C sử dụng 2 đường truyền tín hiệu, 1 đường xung nhịp đồng hồ (SCL) do Master phát đi và 1 đường truyền dữ liệu theo 2 hướng (SDA)
 
 .I2C Clock
-image::02-helloworld/i2cClock.png[width=600, align="center", role="center"]
+image::images/02-helloworld/i2cClock.png[width=600, align="center", role="center"]
 
 .Mô hình mạng I2C
-image::01-intro/i2c-network.png[Mô hình mạng I2C, width=400, align="center", role="center"]
+image::images/01-intro/i2c-network.png[Mô hình mạng I2C, width=400, align="center", role="center"]
 
 Mạch vật lý I2C là mạch cực thu hở, do đó để mạng I2C có thể hoạt động được, cần tối thiểu 2 cặp điện trở pull-up như trên hình. Thông thường 4k7, hoặc 1k2. Tùy thuộc vào tốc độ truyền và khoảng cách truyền.
 
@@ -28,7 +28,7 @@ Mạch vật lý I2C là mạch cực thu hở, do đó để mạng I2C có th�
 **Bước 1: Đấu nối** nối chân GPIO4 của ESP8266 với chân SDA của OLED, chân GPIO5 với SCL. Cấp nguồn 3v3 vào VCC và đấu GND cho OLED. Tuy nhiên với board ESP8266 IoT Uno thì phần đấu nối đã ra sẵn header, bạn chỉ cần cắm OLED vào như hình
 
 .ESP8266 với OLED
-image::01-intro/oled-esp.png[ESP8266 với OLED, width=814, align="center", role="center"]
+image::images/01-intro/oled-esp.png[ESP8266 với OLED, width=814, align="center", role="center"]
 
 **Bước 2: Cài đặt thư viện** `ESP8266 and ESP32 OLED driver for SSD1306 display`, xem thêm <<install-library>>
 

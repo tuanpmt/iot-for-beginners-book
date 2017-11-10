@@ -60,11 +60,11 @@ Mặc dù IoT mang lại khá nhiều lợi ích ấn tượng, nó cũng gặp 
 
 [.right.text-center]
 .Hình minh họa
-image::01-intro/01.iot-concept.png[Hình minh họa IoT, role="center", align="center", width=500]
+image::images/01-intro/01.iot-concept.png[Hình minh họa IoT, role="center", align="center", width=500]
 
 
 .Sự phát triển của iot dự đoán đến năm 2020
-image::01-intro/01.iot_growth_technology.png[Sự phát triển của iot dự đoán đến năm 2020, align="center", width=500]
+image::images/01-intro/01.iot_growth_technology.png[Sự phát triển của iot dự đoán đến năm 2020, align="center", width=500]
 
 === Những ứng dụng thực tế trong cuộc sống
 

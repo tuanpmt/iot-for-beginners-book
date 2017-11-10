@@ -26,17 +26,17 @@ Chúng ta sẽ sử dụng công cụ này với dịch vụ MQTT Broker tại i
 * Bước 1: Cài đặt trình duyệt Chrome, thực hiện đăng nhập tài khoản của bạn vào chrome, truy cập vào địa chỉ https://chrome.google.com/webstore/category/extensions và gõ mqttlens vào mục tìm kiếm tiện ích như hình bên dưới.
 
 .Hình ảnh tìm kiếm tiện ích mqttlens trên chrome store
-image::06-mqtt/searchMQTTlens.png[width=600, align="center"]
+image::images/06-mqtt/searchMQTTlens.png[width=600, align="center"]
 
 * Bước 2: Thêm và khởi chạy MQTT lens
 
 .Hình ảnh các bước thêm và khởi chạy tiện ích MQTT lens
-image::06-mqtt/addMQTTlens.png[width=600, align="center"]
+image::images/06-mqtt/addMQTTlens.png[width=600, align="center"]
 
 * Bước 3 : Tạo 1 MQTT Client kết nối đến MQTT Broker eclipse như các bước bên dưới.
 
 .Hình ảnh tạo 1 MQTT client
-image::06-mqtt/createATopic.png[width=600, align="center"]
+image::images/06-mqtt/createATopic.png[width=600, align="center"]
 
 **Giải thích**
 
@@ -47,7 +47,7 @@ Chúng ta sẽ tạo 1 connection có tên eclipse MQTT với host name của MQ
 `Home/garden/sensor/#` như hình bên dưới.
 
 .Hình ảnh dữ liệu nhận được sau khi publish gói tin
-image::06-mqtt/connect2Clients.png[width=600, align="center"]
+image::images/06-mqtt/connect2Clients.png[width=600, align="center"]
 
 **Mở rộng**
 
@@ -102,7 +102,7 @@ include::code/client-b.js[]
 Kết quả hiển thị như hình bên dưới:
 
 .Hình ảnh kết quả khi khởi chạy các MQTT client
-image::06-mqtt/MQTTjsConsole.png[width=511, align="center"]
+image::images/06-mqtt/MQTTjsConsole.png[width=511, align="center"]
 
 Ngoài ra, MQTT.js còn cung cấp thêm các lệnh để có thể tương tác với Broker thông qua terminal. Để làm được điều này, chúng ta cài đặt MQTT.js như một module toàn cục bằng cách sử dụng lệnh:
 
@@ -124,7 +124,7 @@ Các options:
 	* `-v` : verbose, option cho phép ghi lại nhật kí hoạt động của các tập tin trong file cấu hình.
 
 .Hình ảnh message được publish dùng command line
-image::06-mqtt/MQTTjsCommand.png[width=600, align="center"]
+image::images/06-mqtt/MQTTjsCommand.png[width=600, align="center"]
 
 NOTE: Để xem thêm các API khác trong MQTT.js, bạn có thể sử dụng lệnh: `mqtt help [command]`.
 
@@ -153,7 +153,7 @@ Chúng ta sẽ tạo một biến `espClient` thuộc lớp `WiFiClient`, biến
 * **Bước 3 :** Mở MQTT lens trên trình duyệt Chrome, tạo 1 connection với host name `broker.mqtt-dashboard.com`, sử dụng port 1883. Thực hiện subscribe topic `ESP8266/connection/board`. Sau khi nhấn nút subscribe trên MQTT lens sẽ xuất hiện 1 message gửi từ esp8288 với nội dung `connnected`. Thực hiện pushlish các message vào topic `ESP8266/LED_GPIO16/status`. Nếu pushlish message với nội dung `on`, led GPIO16 trên board sẽ sáng, pushlish message `off` led GPIO16 trên board sẽ tắt. Các message với nội dung khác thì vẫn sẽ hiển thị dữ liệu nhận được trên serial terminal của Arduino nhưng sẽ không có tác dụng điều khiển led GPIO16. Kết quả hiển thị như hình bên dưới:
 
 .Kết quả hiển thị trên serial terminal và MQTT lens khi sử dụng thư viện pubsubClient
-image::06-mqtt/MQTTLEnsPubSUb.png[width=897, align="center"]
+image::images/06-mqtt/MQTTLEnsPubSUb.png[width=897, align="center"]
 
 ==== ESP8266MQTTClient
 
@@ -179,14 +179,14 @@ NOTE: Để tìm hiểu chi tiết file cấu hình của thư viện, có thể
 Truy cập vào `App Store` trên hệ điều hành iOS hoặc `CH Play` trên hệ điều hành Android. nhập từ khóa `IoT Smartconfig` và cài đặt ứng dụng `IoT Smartconfig` của developer Tuan PM. Hình ảnh ứng dụng hiển thị như bên dưới:
 
 .Hình ảnh ứng dụng IoT Smartconfig trên hệ điều hành iOS và Android
-image::06-mqtt/iotSmartConfig.png[width=600, align="center"]
+image::images/06-mqtt/iotSmartConfig.png[width=600, align="center"]
 
 Ứng dụng này sử dụng với ESP8266 và ESP32, ngoài chức năng cơ bản là publish, subscribe của giao thức MQTT, ứng dụng còn có chức năng smartconfig để ESP8266 và ESP32 có thể dễ dàng thiết lập kết nối với các network wifi khác nhau một cách thuận tiện và nhanh chóng mà không phải nạp lại mã nguồn.
 
 Tiếp theo, trượt ứng dụng qua phần MQTT, nhấn vào nút `connect` để kết nối đến server MQTT Broker `ws://iot.eclipse.org:80/ws`. Thực hiện subscribe topic `Broker/app` và publish message vào topic `esp8266/GPIO16`. Nếu publish message `on` vào `esp8266/GPIO16` thì led trên board ESP8266 WiFi Uno sẽ sáng, gửi `off` sẽ tắt led, đồng thời khi ESP8266 publish các message ở topic `Broker/app` thì nội dung các message sẽ được hiển thị trên ứng dụng. Kết quả hiển thị như hình bên dưới:
 
 .Hình ảnh subcribe topic và publish các message trên ứng dụng
-image::06-mqtt/MQTTApp.png[width=300, align="center"]
+image::images/06-mqtt/MQTTApp.png[width=300, align="center"]
 
 .Hình ảnh trên Serial terminal của Arduino
-image::06-mqtt/MQTTArduino.png[width=600, align="center"]
+image::images/06-mqtt/MQTTArduino.png[width=600, align="center"]

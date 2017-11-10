@@ -8,12 +8,12 @@ Trong đa phần các ứng dụng thì chế độ STA được sử dụng r�
 WiFi Access Point là một thiết bị xử lý kết nối trung tâm và phân phối các luồng dữ liệu. Như là việc xử lý các gói tin IP để định địa chỉ mạng LAN, định tuyến các gói tin từ Internet về các máy trạm (Station).
 
 .WiFi Access Point
-image::03-wifi/router.jpg[WiFi Access Point, role="center", align="center", width=400]
+image::images/03-wifi/router.jpg[WiFi Access Point, role="center", align="center", width=400]
 
 Thiết bị kết nối đến Access Point được gọi là Station, các máy tính Laptop, máy tính có card WiFi khi kết nối vào Access Point thì đều được gọi là Station
 
 .Mạng WiFi
-image::03-wifi/ap-sta.png[WiFi Network, role="center", align="center", width=400]
+image::images/03-wifi/ap-sta.png[WiFi Network, role="center", align="center", width=400]
 
 Các Station khi muốn kết nối vào Access Point thì cần xác định thông qua `BSSID`, thông thường chúng ta hay gọi là `SSID` - hay mạng WiFi. Bạn có thể dễ dàng xem danh sánh SSID xung quanh mình khi scan wifi trên máy tính để kết nối mạng Internet.
 

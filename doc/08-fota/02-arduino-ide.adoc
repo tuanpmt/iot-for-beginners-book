@@ -15,7 +15,7 @@ Trước khi bắt đầu, cần phải chắc chắn Arduino IDE đã được 
 Mở sketch ví dụ mẫu `BasicOTA.ino`. Vào File > Examples > ArduinoOTA.
 
 .Mở sketch ví dụ mẫu OTA
-image::08-fota/00.png[width=400, role="center", align="center"]
+image::images/08-fota/00.png[width=400, role="center", align="center"]
 
 Cung cấp chính xác SSID và mật khẩu mạng WiFi đang dùng để ESP8266 có thể kết nối vào
 
@@ -31,7 +31,7 @@ NOTE: Tùy vào phiên bản và board ESP bạn sử dụng, bạn có thể th
 Upload sketch `Ctrl+U` Khi hoàn thành, mở Serial Monitor `Ctrl+Shift+M` (xem <<arudino-term>>) và kiểm tra module đã trup cập được WIFI chưa
 
 .Kiểm tra module ESP8266 đã truy cập được mạng WiFi nội bộ chưa
-image::08-fota/basicota.png[width=600, role="center", align="center"]
+image::images/08-fota/basicota.png[width=600, role="center", align="center"]
 
 NOTE: ESP module nên được reset sau khi Upload xong firmware
 
@@ -46,7 +46,7 @@ include::code/BasicOTA/BasicOTA.ino[]
 Khi module kết nối tới mạng WiFi thành công, sau vài giây, cổng esp8266-ota sẽ xuất hiện trên Arduino IDE. Lúc này bạn hoàn toàn có thể bỏ kết nối Serial từ board mạch đến máy tính. Arduino IDE có thể nạp firmware mới thông qua WiFi. Chọn port với địa chỉ IP hiện trên cửa sổ Serial Monitor ở bước trước.
 
 .Chọn cổng nạp từ Network
-image::08-fota/select-port.png[width=400, role="center", align="center"]
+image::images/08-fota/select-port.png[width=400, role="center", align="center"]
 
 NOTE: Nếu cổng OTA không hiện lên, bạn cần thoát Arduino IDE, và mở lại. Kiểm tra lại port OTA. Nếu vẫn tiếp tục không hiển thị cổng OTA, kiểm tra tưòng lửa của máy và các cài đặt trên router.
 
@@ -58,7 +58,7 @@ Sau khi đã chọn đúng cổng nạp OTA, bạn hoàn toàn có thể sửa l
 * Firmware mới phải có các hàm khởi tạo và xử lý OTA như <<ota-step1>>
 
 .Nạp firmware thành công thông qua OTA
-image::08-fota/ota-ok.png[width=400, role="center", align="center"]
+image::images/08-fota/ota-ok.png[width=400, role="center", align="center"]
 
 === Sử dụng mật khẩu
 
@@ -72,7 +72,7 @@ ArduinoOTA.setPassword((const char *)"your-password");
 Sau đó upload lại sketch một lần nữa (dùng OTA). Sau khi biên dịch và upload xong, cửa sổ sẽ hiện lên yêu cầu nhập password:
 
 .Password cho OTA
-image::08-fota/ota-pass.png[width=300, role="center", align="center"]
+image::images/08-fota/ota-pass.png[width=300, role="center", align="center"]
 
 Nhập password, nếu đúng, kết quả là thông báo `Authenticating...OK` và quá trình nạp diễn ra bình thường.
 

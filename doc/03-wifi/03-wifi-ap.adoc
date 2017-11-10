@@ -44,5 +44,5 @@ Thực hiện sau khi kiểm tra mã nguồn:
 - <<arduino-flash>>
 
 .Khi khởi động 1 WiFiAccesspoint
-image::03-wifi/ap.png[WiFiAccesspoint, role="center", align="center", width=200]
+image::images/03-wifi/ap.png[WiFiAccesspoint, role="center", align="center", width=200]
 

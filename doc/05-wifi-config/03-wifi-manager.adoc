@@ -10,13 +10,13 @@ WifiManager là một thư viện cấu hình ESP8266 kết nối vào mạng Wi
 
 - Sử dụng các thiết bị có hổ trợ wifi, và có trình duyệt web (điện thoại thông minh, laptop, máy tính bảng...) để kết nối đến AP của ESP8266 vừa mới tạo ra. Có thể thấy một giao diện (với tên AP của ESP8266 là mặc định và không cài đặt mật khẩu cho ESP8266 AP) tương tự như sau :
 
-image::05-wificonfig/wifi_manager.png[kết nối bằng wifi manager, role="center", align="center", width=400]
+image::images/05-wificonfig/wifi_manager.png[kết nối bằng wifi manager, role="center", align="center", width=400]
 
-image::05-wificonfig/wifi_manager1.png[Giao diện wifi manager, role="center", align="center", width=400]
+image::images/05-wificonfig/wifi_manager1.png[Giao diện wifi manager, role="center", align="center", width=400]
 
 - Sau khi vào được giao diện option của ESP8266 AP ở địa chỉ 192.168.4.1, chọn mục cấu hình cho wifi cho ESP8266 (như ví dụ trên là Configure WiFi hoặc Configure WiFi (No Scan)), có thể sẽ thấy giao diện tiếp theo tương tự như sau :
 
-image::05-wificonfig/wifi_manager2.png[Kết nối bằng wifi manager , role="center", align="center", width=400]
+image::images/05-wificonfig/wifi_manager2.png[Kết nối bằng wifi manager , role="center", align="center", width=400]
 
 - Chọn mạng wifi cần kết nối và nhập mật khẩu để vào wifi.
 

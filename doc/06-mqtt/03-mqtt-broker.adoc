@@ -21,7 +21,7 @@ Mosca là 1 trong số rất nhiều server MQTT Broker của giao thức MQTT. 
 `sudo service mongod start`. Trên hệ điều hành Linux, có thể kiểm tra các kết nối trên hệ thống bằng lệnh `Netstat` như hình dưới:
 
 .Hình ảnh port 27017 đã mở thành công và lắng nghe các kết nối
-image::06-mqtt/netstatPort.png[width=600, align="center"]
+image::images/06-mqtt/netstatPort.png[width=600, align="center"]
 
 * **Bước 2 :** Tạo file Javascript để viết mã nguồn cho MQTT Broker. Ví dụ về mã nguồn của file serverMosca.js được viết bên dưới:
 
@@ -48,10 +48,10 @@ include::code/mosca-client/moscaClient.js[]
 Trên terminal, đi đến thư mục chứa file `moscaServer.js` và khởi chạy server bằng lệnh `node moscaServer.js`. Server sẽ khởi động và lắng nghe các kết nối đến từ các MQTT Client. Tiếp theo, nạp chương trình trên Arduino cho ESP8266, sau đó khởi chạy MQTT Client trên máy tính bằng lệnh `node moscaClient.js`. Khi có các sự kiện kết nối , ngắt kết nối, pushlish 1 message hay subcrible 1 topic đến từ các client thì bên phía server đều sẽ hiển thị nội dung và thông tin. Các terminal hiển thị kết quả như hình bên dưới:
 
 .Hình ảnh thông tin nhận được từ các client ở server mosca
-image::06-mqtt/moscarServer.png[width=600, align="center"]
+image::images/06-mqtt/moscarServer.png[width=600, align="center"]
 
 .Hình ảnh thông tin nhận được ở client mqtt.js và client ESP8266
-image::06-mqtt/mqttjsArduino.png[width=600, align="center"]
+image::images/06-mqtt/mqttjsArduino.png[width=600, align="center"]
 
 === Một số MQTT Broker sử dụng cho sản phẩm thực tế
 

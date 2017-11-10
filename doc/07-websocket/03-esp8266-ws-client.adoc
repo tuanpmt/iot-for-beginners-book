@@ -13,7 +13,7 @@ Một số dịch vụ sử dụng Websocket điển hình như dịch vụ tin 
 Với tính năng như trên thì bạn có thể hình dung như sau: Nếu 1 cửa sổ trình duyệt có kết nối Websocket đến Server, khi nhấn 1 nút kiểm, thì sẽ gởi về server trạng thái của nút kiểm đó. Ví dụ `LED_ON`, server nhận được sẽ gởi dữ liệu `LED_ON` đến các trình duyệt còn lại (hoặc bao gồm cả ESP8266), và trình duyệt còn lại sẽ hiển thị trạng thái nút kiểm này đang bật.
 
 .Hai cửa sổ trình duyệt sẽ hiển thị trạng thái nút kiểm giống nhau khi click thay đổi
-image::07-websocket/same-ctrl.png[width=600, role="center", align="center"]
+image::images/07-websocket/same-ctrl.png[width=600, role="center", align="center"]
 
 === Javascript Websocket Client trên trình duyệt
 
@@ -46,4 +46,4 @@ include::code/WebSocketClient/WebSocketClient.ino[]
 ----
 
 .Click nút kiểm sẽ thay đổi trạng thái LED trên board
-image::07-websocket/browser-esp.png[width=600, role="center", align="center"]
+image::images/07-websocket/browser-esp.png[width=600, role="center", align="center"]

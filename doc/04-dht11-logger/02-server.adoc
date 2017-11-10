@@ -76,7 +76,7 @@ include::code/index.html[]
 IMPORTANT: Cần phải có dữ liệu từ ESP8266 gửi lên server thì tại địa chỉ localhost:8000/get mới có dữ liệu.
 
 .Hình ảnh dữ liệu tại địa chỉ `localhost:8000/get`
-image::04-dht11/imageJSON.png[width=487, scaledwidth="60%", align="center"]
+image::images/04-dht11/imageJSON.png[width=487, scaledwidth="60%", align="center"]
 
 * Sử dụng `window.onload = function()` để load lại nội dung của graph, các lệnh trong hàm đã được giải thích trong code.
 
@@ -85,4 +85,4 @@ NOTE: Truy cập vào trang https://canvasjs.com/javascript-charts/ để lựa 
 **Hình ảnh trang HTML sau khi xây dựng**
 
 .Hình ảnh giao diện HTML
-image::04-dht11/graphHtml.png[width=437, align="center"]
+image::images/04-dht11/graphHtml.png[width=437, align="center"]

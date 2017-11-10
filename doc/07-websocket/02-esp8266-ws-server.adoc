@@ -53,7 +53,7 @@ Thực hiện sau khi kiểm tra mã nguồn:
 Sau khi biên dịch xong code trên Arduino, ta vào browser, truy cập vào địa chỉ IP của ESP8266 đã trả về trên Serial Monitor cùng với port đã thiết lập trên server, ở trường hợp này là 192.168.1.65:8000
 
 .Cửa sổ trình duyệt có thể điều khiển ESP8266 thông qua Web Socket
-image::07-websocket/websocketBrowser.png[width=500, role="center", align="center"]
+image::images/07-websocket/websocketBrowser.png[width=500, role="center", align="center"]
 
 === Video kết quả
 

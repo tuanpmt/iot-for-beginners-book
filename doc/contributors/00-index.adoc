@@ -33,7 +33,7 @@ Một số trang web đóng góp cho cộng đồng (mong nhận được sự c
 === Giấy phép sử dụng tài liệu.
 
 
-image::contributions/Cc-by-nc-sa_icon.svg[width="200", role="center", align="center"]
+image::images/contributions/Cc-by-nc-sa_icon.svg[width="200", role="center", align="center"]
 
 - Tài liệu tuân theo giấy phép CC-BY-NC-SA (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
 - Bản quyền toàn bộ tài liệu này thuộc về https://iotmaker.vn[IoT Maker Việt Nam], bạn được miễn phí sử dụng cho mục đích cá nhân, học tập và sử dụng trong các dự án của mình, không được sử dụng cho mục đích thương mại. Nếu bạn muốn sửa chữa, phân phối lại, bạn bắt buộc phải giữ nguyên giấy phép và cần có sự đồng ý của https://iotmaker.vn[IoT Maker Việt Nam].

@@ -5,7 +5,7 @@
 SmartConfig là một giao thức được tạo ra nhằm cấu hình cho các thiết bị kết nối với mạng WiFi một cách dễ dàng nhất bằng smart phone. Nói một cách đơn giản, để kết nối WiFi cho thiết bị ESP8266, ta chỉ cần cung cấp thông tin mạng wifi (bao gồm SSID và password) cho ESP thông qua 1 ứng dụng trên smart phone.
 
 .SmartConfig với ESP8266
-image::05-wificonfig/smart-config.png[SmartConfig, role="center", align="center", width=400]
+image::images/05-wificonfig/smart-config.png[SmartConfig, role="center", align="center", width=400]
 
 Chúng ta nên biết rằng, khi 1 điện thoại thông minh đã kết nối vào mạng WiFi có mật khẩu, thì toàn bộ dữ liệu trao đổi giữa Điện thoại và đầu mối khác trong mạng sẽ được mã hóa. Nghĩa là các thiết bị chưa được kết nối mạng và không có mật khẩu thì không thể giải mã được dữ liệu. Vậy làm thế nào để Ứng dụng trên điện thoại gởi thông tin kết nối này đến 1 thiết bị khác chưa hề kết nối mạng. Để làm được điều này, thì nhờ vào 2 đặc điểm sau:
 
@@ -22,7 +22,7 @@ Cách thức để giao thức ESPTOUCH thực hiện việc gởi thông tin SS
 - Khi ESP8266 kết nối thành công đến mạng, ESP8266 sẽ kết nối đến IP của Điện thoại, được cung cấp thông qua ESPTOUCH, và gởi thông tin kết nối thành công đến ứng dụng trên điện thoại.
 
 .Gói tin UDP
-image::05-wificonfig/data_packet.png[Cấu trúc gói tin UDP, role="center", align="center", width=400]
+image::images/05-wificonfig/data_packet.png[Cấu trúc gói tin UDP, role="center", align="center", width=400]
 
 Lưu ý:
 

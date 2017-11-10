@@ -22,19 +22,19 @@ Khi bạn không thể truy cập vào module ESP8266 theo công Serial, thì đ
 Với dịch vụ mDNS chạy trên máy tính, bạn dễ dàng truy cập vào ESP8266 theo đường dẫn http://esp8266-webupdate.local/update
 
 .Giao diện Web cập nhật firmware
-image::08-fota/web-updater.png[width=600, role="center", align="center"]
+image::images/08-fota/web-updater.png[width=600, role="center", align="center"]
 
 Bằng cách chọn file và nhấn cập nhật, ESP8266 sẽ tiến hành cập nhật firmware mới do bạn gởi lên. File này có thể được xuất ra bằng cách `Sketch > Export compiled Binary`, và file .bin sẽ nằm trong thư mục của Sketch
 
 .Xuất file Binary
-image::08-fota/export-fw.png[width=400, role="center", align="center"]
+image::images/08-fota/export-fw.png[width=400, role="center", align="center"]
 
 NOTE: Khi đã nhập http://esp8266-webupdate.local/update mà không thưc hiện được, hãy thay  esp8266-webupdate với địa chỉ IP của module (bạn có thể xem trong modem/router, hay Serial Terminal). Ví dụ, nếu IP của module là `192.168.1.100` thì URL phải là http://192.168.1.100/update. Phương pháp này hữu hiệu trong trường hợp host software cài đặt ở bước 1 không hoạt động.
 
 Nếu các bước diễn ra thành công tốt đẹp, thì trên trình duyệt và cửa sổ Serial Terminal (nếu mở) như hình
 
 .Thực hiện thành công cập nhật Firmware sử dụng WebUpdater
-image::08-fota/finish.png[width=600, role="center", align="center"]
+image::images/08-fota/finish.png[width=600, role="center", align="center"]
 
 === Bảo mật
 

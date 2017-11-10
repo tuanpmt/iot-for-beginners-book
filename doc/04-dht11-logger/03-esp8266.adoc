@@ -8,7 +8,7 @@ ESP8266 sử dụng thư viện HTTPClient để kết nối tới Web Server v�
 - Thư viện hỗ trợ lấy dữ liệu của DHT11. Dựa theo chuẩn truyền nhận 1 wire và sự phổ biến của dòng sensor DHTXX (DHT11, DHT22,...), có rất nhiều thư viện được xây dựng lên để việc lập trình với DHT11 trở nên dễ dàng hơn. Trong bài này chúng ta sẽ cài đặt và sử dụng thư viện `DHT sensor library` của Adafruit.
 
 .Hình ảnh thư viện DHT sensor library
-image::04-dht11/install-lib.png[height=900, scaledwidth="75%", align="center"]
+image::images/04-dht11/install-lib.png[height=900, scaledwidth="75%", align="center"]
 
 **Mã nguồn ESP8266**
 
@@ -57,4 +57,4 @@ name@yourname:~$ *   Trying 192.168.1.7...
 Kết quả hiển thị trên Arduino IDE và màn hình Log của máy tính:
 
 .Hình ảnh trên Arduino và terminal sau khi kết nối
-image::04-dht11/esp8266-server.png[height=366, align="center"]
+image::images/04-dht11/esp8266-server.png[height=366, align="center"]

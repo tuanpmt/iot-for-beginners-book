@@ -4,15 +4,15 @@
 **Đèn LED** viết tắt (Light Emitting Diodes) - là bóng bán dẫn có thể phát sáng với màu sắc khác nhau tùy thuộc vào chất liệu bán dẫn. Để điều khiển được bóng LED cần cung cấp mức điện áp chênh lệch giữa cực âm và cực dương của bóng LED cao hơn mức điện áp Vf (datasheet), thường là 3.2v, và dòng điện nhỏ hơn mức chịu đựng của nó, thường là 15mA.
 
 .Ký hiệu LED trên mạch điện (Cathode+, Anode-)
-image::02-helloworld/LED_symbol.svg[width=200, role="center", align="center"]
+image::images/02-helloworld/LED_symbol.svg[width=200, role="center", align="center"]
 
 .Mạch có thể chạy được như sau
-image::02-helloworld/led.png[width=400, role="center", align="center"]
+image::images/02-helloworld/led.png[width=400, role="center", align="center"]
 
 **Arduino IDE**
 
 .Arduini IDE
-image::02-helloworld/arduino-ide.png[width=400, role="center", align="center"]
+image::images/02-helloworld/arduino-ide.png[width=400, role="center", align="center"]
 
 <1> Biên dịch chương trình (kiểm tra có lỗi hay không).
 <2> Biên dịch và nạp chương trình.
@@ -22,7 +22,7 @@ image::02-helloworld/arduino-ide.png[width=400, role="center", align="center"]
 === Đấu nối
 
 .Mạch ESP8266 WiFi Uno có đấu nối sẵn LED vào Pin 16, và nút nhất vào Pin 0
-image::02-helloworld/btn-led.png[width=300, role="center", align="center"]
+image::images/02-helloworld/btn-led.png[width=300, role="center", align="center"]
 
 Với mã nguồn bên dưới, sau khi kiểm tra chương trình, bạn cần chắc chắn đã <<select-arduino-board>> và <<arduino-flash>>
 

@@ -15,4 +15,4 @@ Thông qua các ví dụ mẫu về điều khiển đèn LED, nút nhấn và O
 Một trong những ứng dụng có thể sử dụng các kiến thức này như là trò chơi Flappy Bird, bạn có thể thử nghiệm tại đây: https://github.com/esp8266vn/arduino-flappybird[https://github.com/esp8266vn/arduino-flappybird]
 
 .Arduino FlappyBird
-image::02-helloworld/arduino-flappybird.jpg[Aduino Flappybird, width=400, role="center", align="center"]
+image::images/02-helloworld/arduino-flappybird.jpg[Aduino Flappybird, width=400, role="center", align="center"]

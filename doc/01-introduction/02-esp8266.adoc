@@ -11,7 +11,7 @@ Hiện nay tất cả các dòng chip ESP8266 trên thị trường đều mang 
 === Sơ đồ chân
 
 .Sơ đồ chân ESP8266EX
-image::01-intro/01.esp8266-soc.svg[Sơ đồ chân ESP8266EX, width=500, align="center"]
+image::images/01-intro/01.esp8266-soc.svg[Sơ đồ chân ESP8266EX, width=500, align="center"]
 
 === Thông số phần cứng
 * 32-bit RISC CPU : Tensilica Xtensa LX106 chạy ở xung nhịp 80 MHz
@@ -30,7 +30,7 @@ image::01-intro/01.esp8266-soc.svg[Sơ đồ chân ESP8266EX, width=500, align="
 * Dải nhiệt độ hoạt động rộng : -40C ~ 125C
 
 .Một module tích hợp phổ biến (Module ESP12E)
-image::01-intro/01.ESP-12E.jpg[Module ESP12E, width=300, align="center"]
+image::images/01-intro/01.ESP-12E.jpg[Module ESP12E, width=300, align="center"]
 
 === SDK hỗ trợ chính thức từ hãng
 
@@ -92,7 +92,7 @@ Module ESP8266 chỉ bao gồm Chip ESP8266 và các linh kiện giúp chip có 
 Để đưa ESP8266 vào chế độ *Nạp* (Program) thì cần phải đặt mức logic 0 (0V - GND) vào chân *GPIO0*, đồng thời RESET chip. Rồi sau đó có thể dùng các công cụ nạp để gởi Firmware từ máy tính xuống.
 
 .Một mạch nạp tự động sử dụng chip USB CDC
-image::01-intro/auto-program.jpg[Mạch nạp tự động, width=500, align="center"]
+image::images/01-intro/auto-program.jpg[Mạch nạp tự động, width=500, align="center"]
 
 Hiện nay các Board mạch phát triển đều tích hợp các mạch nạp tự động, nghĩa là phần mềm sẽ tự động điều chỉnh các chân DTR và RTS của chip USB CDC, đưa ESP8266 vào chế độ nạp, sau đó sẽ gởi firmware xuống. Arduino IDE cũng vậy, nó sẽ điều chỉnh dựa trên việc khai báo Board mạch sử dụng.
 

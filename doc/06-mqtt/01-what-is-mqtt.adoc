@@ -1,5 +1,5 @@
 
-image::06-mqtt/mqttorg-glow.png[width=200, role="center", align="center"]
+image::images/06-mqtt/mqttorg-glow.png[width=200, role="center", align="center"]
 
 
 MQTT (Message Queuing Telemetry Transport) là một giao thức gởi dạng publish/subscribe sử dụng cho các thiết bị Internet of Things với băng thông thấp, độ tin cậy cao và khả năng được sử dụng trong mạng lưới không ổn định.

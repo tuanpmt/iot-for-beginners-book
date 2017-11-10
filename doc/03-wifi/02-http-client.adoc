@@ -11,14 +11,14 @@ Trong giao thức HTTP, việc thiết lập kết nối chỉ có thể xuất 
 
 
 .Cách thức HTTP hoạt động
-image::03-wifi/http1-req-res-details.png[Cách thức HTTP hoạt động, role="center", align="center", width=400]
+image::images/03-wifi/http1-req-res-details.png[Cách thức HTTP hoạt động, role="center", align="center", width=400]
 
 Khi nhắc tới HTTP thì Hyperlink, hay URL (Uniform Resource Locator) là những khái niệm được thấy hàng ngày
 
 *URL* được dùng để định dạng địa chỉ Website, chứa các thông tin yêu cầu từ client và server dựa vào đó xử lý, cấu trúc của nó như hình:
 
 .Cấu trúc 1 URL
-image::03-wifi/http1-url-structure.png[URL, role="center", align="center", width=400]
+image::images/03-wifi/http1-url-structure.png[URL, role="center", align="center", width=400]
 
 Ví dụ bạn có thể gởi thông tin về nhiệt độ đến server thông qua đường dẫn: `http://esp8266.vn/log.php?nhiet_do=30`
 
@@ -150,7 +150,7 @@ NOTE: Đa số các dịch vụ Web hiện nay đều sử dụng giao thức b�
 Khi dùng HTTPS, chúng ta cần cung cấp SHA1 Fingerpint để Client có thể xác thực server. Bạn có thể dùng trình duyệt để truy cập trước để lấy. Nếu là `Chrome`, sau khi truy cập vào địa chỉ https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD, Nhấn Ctrl+Shift+I (Shift + ⌘ + I với MacOS) và đi đến `Security > View Certificate > Details > Thumbprint`. Bạn sẽ thấy hình như bên dưới, và copy nó.
 
 .HTTPS Fingerprint
-image::03-wifi/fingerprint.png[HTTPS Finger print, role="center", align="center", width=500]
+image::images/03-wifi/fingerprint.png[HTTPS Finger print, role="center", align="center", width=500]
 
 Đây là đoạn Code lấy giá Bitcoin, cứ mỗi 5 giây, ESP8266 sẽ kết nối đến Cryptocompare server để lấy thông tin và hiển thị lên OLED.
 
@@ -165,4 +165,4 @@ Thực hiện sau khi kiểm tra mã nguồn:
 - <<arduino-flash>>
 
 .Kết quả lấy giá Bitcoin và hiện thị mỗi 5 giây
-image::03-wifi/btc.png[BTC Price, role="center", align="center", width=500]
+image::images/03-wifi/btc.png[BTC Price, role="center", align="center", width=500]

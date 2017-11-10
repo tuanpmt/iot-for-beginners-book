@@ -62,6 +62,6 @@ Hệ thống File và EEPROM cũng cần dung lượng để lưu trữ.
 * Sketch mới sẽ được copy.
 * Sketch mới khởi động.
 
-image::08-fota/update.png[width=400, role="center", align="center"]
+image::images/08-fota/update.png[width=400, role="center", align="center"]
 
 

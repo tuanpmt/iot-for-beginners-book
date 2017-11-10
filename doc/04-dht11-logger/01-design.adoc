@@ -3,7 +3,7 @@
 Hình ảnh bên dưới mô tả tổng quan dự án
 
 .Tổng quan mô hình của dự án
-image::04-dht11/projectIntro.png[height=596, align="center"]
+image::images/04-dht11/projectIntro.png[height=596, align="center"]
 
 Trong thực tế, khi thiết kế ứng dụng, người dùng cần một giao diện giám sát và điều khiển thân thiện, đồng thời có thể phát triển thêm các tính năng như hiển thị kết quả dưới dạng đồ thị (chart), lưu trữ dữ liệu theo thời gian chỉ định hay điều khiển trạng thái các thiết bị chỉ với 1 click chuột trên máy tính. Các dự án với mô hình phức tạp sẽ cần quản lí các kết nối cũng như dữ liệu của các thiết bị...
 
@@ -46,7 +46,7 @@ Tuy nhiên cũng đừng quá lo lắng nếu bạn chưa từng dùng những t
 Hình ảnh mô tả quá trình truyền,nhận dữ liệu của DHT11 như hình bên dưới
 
 .Quá trình truyền nhận dữ liệu trong chuẩn OneWire
-image::04-dht11/DHT11TimingDialog.png[width=981, align="center"]
+image::images/04-dht11/DHT11TimingDialog.png[width=981, align="center"]
 
 Tóm tắt
 
@@ -83,4 +83,4 @@ Một trong những địa chỉ web để học HTML cho người mới bắt �
 Kết nối sơ đồ mạch điện như hình bên dưới
 
 .Kết nối DHT11 và ESP8266 WiFi Uno
-image::04-dht11/DHT11Connect.png[height=511, scaledwidth="50%", align="center"]
+image::images/04-dht11/DHT11Connect.png[height=511, scaledwidth="50%", align="center"]

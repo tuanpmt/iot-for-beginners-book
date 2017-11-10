@@ -64,4 +64,4 @@ NOTE: Bạn cần file `esp8266-firware-2.0.bin` ở mục <<esp8266-ESPhttpUpda
 Nếu bạn thực hiện đầy đủ các bước như trên, kết quả thực thi sẽ như hình
 
 .Kết quả thực hiện OTA sử dụng HTTP Server
-image::08-fota/http-ota.png[width=600, role="center", align="center"]
+image::images/08-fota/http-ota.png[width=600, role="center", align="center"]
