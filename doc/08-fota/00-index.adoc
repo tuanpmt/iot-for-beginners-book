@@ -3,7 +3,7 @@
 
 Các phương pháp phát triển phần mềm và sản phẩm phổ biến hiện nay, thì xuất bản kết quả từng giai đoạn thường mang lại hiệu quả cao, sản phẩm có thể đến tay người dùng sớm, nhận được phản hồi sớm từ khách hàng, và được điều chỉnh để hợp lý hơn. Chính việc phát hành sản phẩm sớm thường sẽ ít tính năng và cần cập nhật thêm tính năng, nâng cao chất lượng sản phẩm trong tương lai.
 
-Cập nhật Ứng dụng từ xa trên các phần mềm điện thoại, máy tính đã rất phổ biến. Các phần mềm được cập nhật hàng tuần, tháng... để sửa lỗi, nâng cấp tính năng.
+Cập nhật ứng dụng từ xa trên các phần mềm điện thoại, máy tính đã rất phổ biến. Các phần mềm được cập nhật hàng tuần, tháng... để sửa lỗi, nâng cấp tính năng.
 
 Đối với các sản phẩm phần cứng cũng tương tự, chúng ta nên bổ sung các tính năng cập nhật từ xa ngay từ giai đoạn phát triển sản phẩm. Ngoài việc giúp nâng cấp các tính năng trong tương lai một cách dễ dàng, thì vấn để sửa lỗi, nâng cấp hệ thống từ xa sẽ giúp tiết kiệm được rất nhiều chi phí và nguồn lực.
 

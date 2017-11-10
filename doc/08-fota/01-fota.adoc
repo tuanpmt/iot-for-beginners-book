@@ -29,7 +29,7 @@ void setPassword(const char* password);
 
 Một số chức năng bảo vệ đã được xây dựng trong và không yêu cầu bất kỳ mã hóa nào cho nhà phát triển. ArduinoOTA và espota.py sử dụng Digest-MD5 để chứng thực việc tải firmware lên. Đơn giản là đảm bảo tính toàn vẹn của firmware bằng việc tính MD5.
 
-Hãy phân tích rủi ro cho riêng ứng dụng của bạn và tùy thuộc vào ứng dụng mà quyết định những chức năng cũng như thư viện để thực hiện. Nếu cần thiết, có thẻ xem xét việc thực hiện các phương thức bảo vệ khỏi bị hack, ví dụ như cập nhật OTA chỉ cho tải lên chỉ theo lịch trình cụ thể, kích hoạt OTA chỉ được người dùng nhấn nút chuyên dụng “Cập nhật”, v.v…
+Hãy phân tích rủi ro cho riêng ứng dụng của bạn và tùy thuộc vào ứng dụng mà quyết định những chức năng cũng như thư viện để thực hiện. Nếu cần thiết, có thể xem xét việc thực hiện các phương thức bảo vệ khỏi bị hack, ví dụ như cập nhật OTA chỉ cho tải lên chỉ theo lịch trình cụ thể, kích hoạt OTA chỉ được người dùng nhấn nút chuyên dụng “Cập nhật”, v.v…
 
 === An toàn
 
@@ -57,7 +57,7 @@ Hệ thống File và EEPROM cũng cần dung lượng để lưu trữ.
 
 === Update process - memory view
 
-* Sketch mới sẽ được chứa trong dung lượng trống gĩưa sketch cũ và spiff will be stored in the space between the old sketch and the spiff.
+* Sketch mới sẽ được chứa trong dung lượng trống gĩưa sketch cũ và spiff.
 * Trong lần reboot tiếp theo thì “eboot” bootloader kiểm tra các câu lệnh.
 * Sketch mới sẽ được copy.
 * Sketch mới khởi động.
