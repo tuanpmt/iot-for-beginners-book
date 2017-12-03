@@ -139,7 +139,7 @@ Với ứng dụng này, ESP8266 sẽ khởi tạo 1 Web Server, khi có bất k
 
 [source, c]
 ----
-include::code/WebServer/WebServer.ino[]
+include::code-{lang}/WebServer/WebServer.ino[]
 ----
 
 Thực hiện sau khi kiểm tra mã nguồn:

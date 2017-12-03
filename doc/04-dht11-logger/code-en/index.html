@@ -1,0 +1,95 @@
+<!DOCTYPE html>//<1>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DHT11</title>
+    <!-- Use a Javascript code at src destination to illustrate data in graph -->
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> //<2>
+</head>
+<body>
+    <h1> 1. TEMPERATURE AND HUMIDITY MEASUREMENTS:</h><br> //<3>
+        <h2> Temperature</h2> <input type="text" size="6" id="temp">&#176;C<br>
+        <h2> Humidity</h2> <input type="text" size="6" id="humd">%<br>
+        <h1> 2. CHART OVER TIME: </h1><br>
+        <!-- Configure the graph's size via "ChartContainer" ID -->
+        <div id="ChartContainer" style="height: 300px; width:80%;"></div>
+        <script type="text/javascript">
+            function httpGetAsync(theUrl, callback) { //<4>
+                        var xmlHttp = new XMLHttpRequest();
+                        xmlHttp.onreadystatechange = function() {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                        callback(JSON.parse(xmlHttp.responseText));
+                }
+                xmlHttp.open("GET", theUrl, true); // true for asynchronous
+                xmlHttp.send(null);
+            }
+
+            window.onload = function() {
+                var dataTemp = [];
+                var dataHumd = [];
+
+                var Chart = new CanvasJS.Chart("ChartContainer", {
+                    zoomEnabled: true, // Enable this attribute to zoom in the graph.
+                    title: {
+                        text: "Temperature & Humidity" // Graph's tittle
+                    },
+                    toolTip: { // Display temperature and humidity simultaneously
+                        shared: true
+                    },
+                    axisX: {
+                        title: "chart updates every 2 secs" // X-axis label
+                    },
+                    data: [{
+                            // Define the dataTemp's and dataHumd's attribute.
+                            type: "line", // Choose "line" graph type.
+                            xValueType: "dateTime", // Display "time" data on X axis.
+                            showInLegend: true, // Display "temp" at graph legend.
+                            name: "temp",
+                            dataPoints: dataTemp // Choose the data source to plot. In this case, "dataTemp".
+                        },
+                        {
+                            type: "line",
+                            xValueType: "dateTime",
+                            showInLegend: true,
+                            name: "humd",
+                            dataPoints: dataHumd
+                        }
+                        ],
+                    });
+                var yHumdVal = 0; // Declare a variable to store the humidity value on Y Axis.
+                var yTempVal = 0; // Declare a variable to store the temperature value on Y Axis.
+                var updateInterval = 2000; // The update interval, 2000ms = 2s
+                var time = new Date(); // Get current date.
+
+                var updateChart = function() {
+                    httpGetAsync('/get', function(data) {
+
+                        // Assign the value from localhost:8000/get to display on a textbox
+                        document.getElementById("temp").value = data[0].temp;
+                        document.getElementById("humd").value = data[0].humd;
+
+                        // Print received values from localhost:8000/get to console
+                        console.log(data);
+                        // Update the time and get new temperature, humidity value.
+                        time.setTime(time.getTime() + updateInterval);
+                        yTempVal = parseInt(data[0].temp);
+                        yHumdVal = parseInt(data[0].humd);
+                        dataTemp.push({ // Push new data from server.
+                            x: time.getTime(),
+                            y: yTempVal
+                        });
+                        dataHumd.push({
+                            x: time.getTime(),
+                            y: yHumdVal
+                        });
+                        Chart.render(); // Convert the data to graph on screen.
+                    });
+                };
+                updateChart(); // Run the first time
+                setInterval(function() { // Update the graph every "updateInterval" seconds.
+                    updateChart()
+                }, updateInterval);
+            }
+        </script>
+</body>
+</html>

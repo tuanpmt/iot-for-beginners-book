@@ -15,7 +15,7 @@ Khi kết nối thành công vào mạng WiFi thì ESP8266 sẽ khởi động D
 Với đoạn code này, nếu bạn cung cấp đúng `SSID` và `PASSWORD`, đồng thời Access Point hoạt động thì thiết bị sẽ kết nối và in ra Serial Terminal địa chỉ IP của ESP8266 trong mạng LAN
 [source, c]
 ----
-include::code/WiFiClient/WiFiClient.ino[]
+include::code-{lang}/WiFiClient/WiFiClient.ino[]
 ----
 
 === Sử dụng WiFiMulti
@@ -24,7 +24,7 @@ Tuy nhiên, đôi lúc ứng dụng bạn cần `nồi đồng cối đá`, thì
 
 [source, c]
 ----
-include::code/WiFiMulti/WiFiMulti.ino[]
+include::code-{lang}/WiFiMulti/WiFiMulti.ino[]
 ----
 
 Thực hiện sau khi kiểm tra mã nguồn:

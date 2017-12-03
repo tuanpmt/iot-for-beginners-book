@@ -1,41 +1,40 @@
 [[server-nodejs]]
 == Server Nodejs
+On Server side, we need to ensure that the server can serve many clients.
+If `path` is:
 
-Về phía Web Server, chúng ta cần đảm bảo nó có thể phục vụ cho nhiều Client, với `path` là:
+* `/update`: server will add new sensor data to database and display it on the screen.
+* `/get`: server will return a JSON string of stored data.
+* `/`: return the `index.html` file.
 
-* `/update` thì sẽ thêm mới dữ liệu để lưu trữ, và in ra màn hình
+* The structure of stored array on RAM: `[{"temp": 25, "humd":80, time: "time"}, ...]`
 
-* `/get` trả về dữ liệu đã lưu trữ định dạng JSON
-
-* `/` và còn lại thì trả về file `index.html`
-
-* Mảng dữ liệu lưu trữ có định dạng: `[{"temp": 25, "humd":80, time: "time"}, ...]`
-
-**Mã nguồn file `server.js`**
+**`server.js` source code**
 [source, javascript]
 ----
-include::code/server.js[]
+include::code-{lang}/server.js[]
 ----
 
-**Giải thích mã nguồn**
+**Explanation**
 
-<1> require dùng để load các thư viện hoặc module cần thiết cho dự án
+<1> `require` is used to load necessary modules or libraries.
 
-* `fs`: Module giúp đọc file từ server hoặc upload file lên server
-* `url`: Chia nhỏ URL thành những thành phần để dễ dàng truy xuất
-* `http`: Phương thức truyền nhận dữ liệu dùng http
-* `querystring`: Module giúp chuyển string sang object
-* `db = []`: Biến kiểu mảng nhằm chứa dữ liệu nhiệt độ, độ ẩm
+* `fs`: This module helps us read file from server or upload file
+* `url`: Divide URL into easy-to-access parts.
+* `http`: HTTP Communication Protocol.
+* `querystring`: Module have to convert string to object.
+* `db = []`: An array variable to store temperature and humidity values.
 
-<2> So sánh giá trị pathname để xử lí dữ liệu. Nếu `pathname =/update` thì sẽ tạo biến newData nhằm lấy dữ liệu client gửi lên thông qua URL, sau đó đẩy dữ liệu vào mảng db thông qua lệnh `db.push(newData)` , giá trị được hiển thị qua Log khi dùng lệnh `console.log(newData)`. Hàm `Date()` giúp lấy thời gian hiện tại.
+<2> This function will respond differently depending on the `pathname`. If `pathname=/update`, this function will create a `newData` variable and get data in client's request. Then it will push data to `db` variable using `db.push(newData)` command and that data will be display on logging screen when using `console.log(newData)`. `Date()` function helps us get current time and date.
 
-<3> Trả về định dạng JSON `('Content-Type': 'application/json')` của mảng db nếu pathname = /get, sau đó xóa giá trị của mảng. Hàm `response.end()` sẽ trả về HTTP code (mã 200 là kết quả OK)
+<3> Return the JSON format `('Content-Type': 'application/json')` of db variable if `pathname = /get`, then it deletes value of db. `response.end()` function returns HTTP code = 200 (OK)
 
-<4> Trả về nội dung của file index.html khi không xảy ra 2 trường hợp <2> và <3>. Dùng `fs` để đọc file index.html và gán nội dung vào content thông qua lệnh `fs.readFile('./index.html', function(error, content)`. Hàm `response.writeHead(200, {'Content-Type': 'text/html' })` nhằm khai báo mã HTTP code, định dạng trả về là HTML để đọc file
+<4> Return the `index.html` file if user doesn't use /update and /get. `fs` library is used to read `index.html` file and assign that file's content to `content` with `fs.readFile('./index.html', function(error, content)` command. `response.writeHead(200, {'Content-Type': 'text/html' })` defines the HTTP code "200" and the response type "HTML" to read file on user's browser.
 
-<5> Khởi tạo một server HTTP và mở port 8000 để các client truy cập
+<5> Start the HTTP server and open port 8000 on server to listen for client's request.
 
-Bạn có thể truy cập đến đường dẫn của file server.js và thực thi đoạn code trên với dòng lệnh `node server.js`, sau đó thử truy vập vào http://localhost:8000 để xem trang `index.html`. Hoặc truy cập vào http://localhost:8000/update?temp=20&humd=60 để xem màn hình Log in ra kết quả nhiệt độ và độ ẩm.
+Now, you should change to `server.js` directory and run `node server.js` on your terminal, then visit http://localhost:8000 on your web browser to view your `index.html` file. Or visit http://localhost:8000/update?temp=20&humd=60 to see the result on your logging screen.
+
 
 ----
 { temp: '20', humd: '60', time: 2017-08-21T16:56:23.358Z }
@@ -43,46 +42,46 @@ Bạn có thể truy cập đến đường dẫn của file server.js và thự
 { temp: '20', humd: '60', time: 2017-08-21T16:57:17.708Z }
 ----
 
-Ở phần cơ bản chúng ta chưa cần phải quan tâm đến file `index.html` và đoạn code Javascript trong đó. Cũng nhưng chưa quan tâm tới việc xử lý khi đường dẫn là `/get` hoặc `/\*`, mà chỉ quan tâm duy nhất khi nhận được với đường dẫn `/update`.
+While doing the basic function above, you don't need to understand the `index.html` and its Javascript code. Also, you've just handled the `\update` path, not `\get` or `/\*`. The `\update` is enough to run the basic function.
+In the advanced sections, we are building a popular function of the application. That's the data visualization on user's web browser. To achieve that, we will create an `index.html` file with Javascript codes. Those Javascript codes will request server to return data every 2 seconds and illustrate it in graph.
 
-Khi đã hoàn thành phần cơ bản chúng ta sẽ đi đến một ứng dụng khá phổ biến, người dùng cần hiển thị các dữ liệu thu thập một cách trực quan thông qua trình duyệt Web. Vì vậy chúng ta sẽ làm 1 file `index.html` chứa mã nguồn Javascript có thể yêu cầu Server trả về dữ liệu mỗi giây để hiển thị lên 1 biểu đồ canvas.
 
-**Mã nguồn file `index.html`**
+**`index.html` file**
 [source, html]
 ----
-include::code/index.html[]
+include::code-{lang}/index.html[]
 ----
 
-**Giải thích mã nguồn**
+**Explanation**
 
-<1> Những tag cơ bản khi khởi tạo 1 trang HTML
-* `<!DOCTYPE html>`          cho trình duyệt biết phiên bản HTML được sử dụng
-* `<html>`                   cho trình duyệt biết đây là văn bản HTML
-* `<head>`                   khai báo thông tin cho trang HTML
-* `<meta charset="UTF-8">`   cung cấp dữ liệu về văn bản HTML, dạng mã hóa charset="UTF-8"
-* `<title>DHT11</title>`     tiêu đề của trang
+<1> Some basic tags to set up your HTML file in the beginning:
+* `<!DOCTYPE html>`          : This is an instruction to the web browser about what version of HTML the page is written in.
+* `<html>`                   : Tell the browser that this is an HTML document.
+* `<head>`                   : This is a container for metadata. Metadata typically define the document title, character set, styles, links, scripts, and other meta information.
+* `<meta charset="UTF-8">`   : Define the character set used:
+* `<title>DHT11</title>`     : Define the title of the document.
 
-<2> Sử dụng CanvasJS Chart để vẽ biểu đồ nhiệt độ, độ ẩm.
-<3> Tạo 2 textbox tại tag tiêu đề phụ <h1> để hiển thị nhiệt độ, độ ẩm. Mỗi textbox sẽ có 1 `id` để cập nhật giá nhiệt độ, độ ẩm từ server. Mã định dạng `&#176;C` là của kí tự độ C
-<4> Hàm giúp lấy dữ liệu từ server
+<2> Use CanvasJS Chart to draw temperature and humidity graph.
+<3> Create 2 text boxes in <h1> heading to display current value of temperature and humidity. Each text box has a unique `id` to get sensor data from server. The `&#176;C` means `°C`.
+<4> Get data from server using this function.
 
 
-**Phân tích phần vẽ biểu đồ**
+**Graph Analysis**
 
-* Chúng ta sẽ lấy dữ liệu từ server gửi xuống và vẽ biểu đồ dùng mã Javascrpit, sử dụng tag
-`<scrpit>code JS </scrpit>` để chèn nội dung code Javascrpit vào file HTML.
-* Việc lấy dữ liệu được thực thi bằng hàm `httpGetAsync()`. Hàm này sử dụng đối tượng `XMLHttpRequest` để lấy dữ liệu từ server mà không cần phải load lại trang, dữ liệu `xmlHttp.responseText` lấy từ server tại địa chỉ `localhost:8000/get` ở định dạng JSON nên cần phải chuyển sang dạng Object bằng hàm JSON.parse().
+* Using `<script> JS code </script>` tag in your HTML file, you can get data from server and visualize it in graph.
+* You can get data by executing `httpGetAsync()` function. This function use `XMLHttpRequest` object to get data from server without reload webpage. Because the data `xmlHttp.responseText` returned from `localhost:8000/get` is formatted in JSON, you need to use `JSON.parse()` to convert it to `Object` type.
 
-IMPORTANT: Cần phải có dữ liệu từ ESP8266 gửi lên server thì tại địa chỉ localhost:8000/get mới có dữ liệu.
 
-.Hình ảnh dữ liệu tại địa chỉ `localhost:8000/get`
+IMPORTANT: ESP8266 must have sent data to server, or localhost:8000/get won't return values.
+
+.An example of data at `localhost:8000/get`
 image::04-dht11/imageJSON.png[width=487, scaledwidth="60%", align="center"]
 
-* Sử dụng `window.onload = function()` để load lại nội dung của graph, các lệnh trong hàm đã được giải thích trong code.
+* Use `window.onload = function()` to reload the graph, we have explained at the end of each line.
 
-NOTE: Truy cập vào trang https://canvasjs.com/javascript-charts/ để lựa chọn và xây dựng những đồ thị phù hợp với mục đích của bạn.
+NOTE: Visit https://canvasjs.com/javascript-charts/ for more graphs and choose suitable ones for your project.
 
-**Hình ảnh trang HTML sau khi xây dựng**
+**The finished HTML file**
 
-.Hình ảnh giao diện HTML
+.An HTML interface.
 image::04-dht11/graphHtml.png[width=437, align="center"]

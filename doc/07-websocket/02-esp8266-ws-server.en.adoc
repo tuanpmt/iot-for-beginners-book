@@ -26,21 +26,21 @@ In order to use ESPAsyncWebserver and run applications, we need to use ESPAsyncT
 
 [source, javascript]
 ----
-include::code-en/client/client.js[]
+include::code-{lang}/client/client.js[]
 ----
 
 === Embedded HTML file include JS code into ESP8266
 
 [source, html]
 ----
-include::code-en/client/index.html[]
+include::code-{lang}/client/index.html[]
 ----
 
 === Completed program for ESP8266
 
 [source, c]
 ----
-include::code-en/websocket/websocket.ino[]
+include::code-{lang}/websocket/websocket.ino[]
 ----
 
 Execute after check the source code:

@@ -10,7 +10,7 @@ Open sample: `File > Examples > ESP8266HTTPUpdateServer > WebUpdater`
 
 [source, c]
 ----
-include::code-en/WebUpdater/WebUpdater.ino[]
+include::code-{lang}/WebUpdater/WebUpdater.ino[]
 ----
 
 Provide the correct SSID, WiFi password you are using, flash firmware `WebUpdater` onto ESP8266 <<select-arduino-board>> and <<arduino-flash>>

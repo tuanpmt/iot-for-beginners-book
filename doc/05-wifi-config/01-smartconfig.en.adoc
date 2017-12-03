@@ -1,56 +1,65 @@
 == Smartconfig
 
-=== Kiến thức
+=== Introduction
 
-SmartConfig là một giao thức được tạo ra nhằm cấu hình cho các thiết bị kết nối với mạng WiFi một cách dễ dàng nhất bằng smart phone. Nói một cách đơn giản, để kết nối WiFi cho thiết bị ESP8266, ta chỉ cần cung cấp thông tin mạng wifi (bao gồm SSID và password) cho ESP thông qua 1 ứng dụng trên smart phone.
+SmartConfig protocol helps users connect ESP8266 devices to a WiFi network through simple configuration on a smartphone. With this protocol, a smartphone sends UDP packets to the Wi-Fi Access Point (AP), and encodes the SSID and password into the Length field of a sequence of UDP packets. The ESP8266 device can reach those packets, decode the information, get the SSID and password from decoded data and connect it to the network.
 
-.SmartConfig với ESP8266
+.SmartConfig with ESP8266
 image::05-wificonfig/smart-config.png[SmartConfig, role="center", align="center", width=400]
 
-Chúng ta nên biết rằng, khi 1 điện thoại thông minh đã kết nối vào mạng WiFi có mật khẩu, thì toàn bộ dữ liệu trao đổi giữa Điện thoại và đầu mối khác trong mạng sẽ được mã hóa. Nghĩa là các thiết bị chưa được kết nối mạng và không có mật khẩu thì không thể giải mã được dữ liệu. Vậy làm thế nào để Ứng dụng trên điện thoại gởi thông tin kết nối này đến 1 thiết bị khác chưa hề kết nối mạng. Để làm được điều này, thì nhờ vào 2 đặc điểm sau:
+We should know that, when a smartphone connects to a secured wifi network, all the data between your router and your smartphone will be encrypted during the transmission. So any other devices, which are not connected to the network at the beginning, cannot decrypt and read the data packets. So how can a smartphone app send the information to the unconnected devices directly? The solution is based on 2 things:
 
-- ESP8266 có khả năng `lắng nghe` tất cả các gói tin không dây WiFi xung quanh nó, bao gồm cả các gói tin đã được mã hóa.
-- Các gói tin gởi trong mạng WiFi được mã hóa và không thể đọc được nội dung, tuy nhiên độ dài gói tin là một hằng số. Ví dụ, gói tin A chưa mã hóa có chiều dài là `x`, khi mã hóa gói tin A thành gói tin B, thì gói tin B sẽ có chiều dài là `x + n`, thì n là hằng số.
+- ESP8266 is capable of `sniffing` out all the packets being passed around, even the encrypted packets!
 
-Cách thức để giao thức ESPTOUCH thực hiện việc gởi thông tin SSID và mật khầu cho thiết bị như sau:
+- The content of an encrypted packet in a WiFi network cannot be read, but the length field of that packet is a constant and ESP8266 can reach that. For example, we have an unencrypted packet "A" with the length of `x`. When "A" is encrypted into "B", `x + n` is the new length of "B" and `n` is a constant.
 
-- ESP8266 sẽ vào chế độ lắng nghe, lần lượt từng kênh.
-- Điện thoại phải kết nối vào mạng WiFi được mã hóa.
-- Ứng dụng trên điện thoại sẽ tiến hành gởi các gói tin với nội dung bất kỳ, nhưng có độ dài `n` theo từng ký tự của `SSID` và mật khẩu. Ví dụ, ssid của mạng là `mynetwork` thì sẽ có ký tự `m`, với ký tự ascii = 109, Ứng dụng sẽ gởi gói tin có độ dài 109 với nội dung bất kỳ, và lặp lại cho đến hết ký tự `k`, cũng như mật khẩu, và các ký tự khác như CRC.
-- Có thể giao thức ESPTOUCH sẽ mã hóa cả các thông số gởi đi, nhưng vẫn giữ nguyên tắc như trên.
-- ESP8266 sẽ phát hiện ra các gói tin với độ dài thay đổi này và ghép nối lại thành `SSID` và `password` để kêt nối vào mạng.
-- Khi ESP8266 kết nối thành công đến mạng, ESP8266 sẽ kết nối đến IP của Điện thoại, được cung cấp thông qua ESPTOUCH, và gởi thông tin kết nối thành công đến ứng dụng trên điện thoại.
 
-.Gói tin UDP
-image::05-wificonfig/data_packet.png[Cấu trúc gói tin UDP, role="center", align="center", width=400]
+Here is the ESP-TOUCH operation process sending SSID and password to an ESP8266 device:
 
-Lưu ý:
+* Enable SmartConfig function on ESP8266 device and it starts sniffing all the packets.
+* Connect your smartphone to router.
+* Input the router's SSID and password on phone app and it will broadcast a packet with random contents with encoded SSID and password in Length field.
+- For example, you have a network with SSID `mynetwork`. The first letter `m` corresponds to `109` in ASCII code. To broadcast letter `m`, that app will send a packet which has random contents and a length of 109 to router. And the process is repeated to broadcast each letter in the SSID name. This method is also used to broadcast password, smartphone's IP address and other letters to ESP8266 devices.
 
- * Khoảng cách giữa thiết bị và router càng xa thì thời gian kết nối sẽ càng lâu.
- * Nếu thiết bị không thể kết nối với router trong khoảng thời gian quy định thì ứng dụng sẽ trả về thông báo cấu hình thất bại. Người dùng có thể cài đặt thời gian timeout này thông qua lệnh esptouch_set_timeout(uint8 time_s)
- * Trong quá trình cấu hình kết nối thiết bị bằng SmartConfig, thiết bị phải được cài đặt ở chế độ Station.
- * Người dùng có thể cấu hình cho nhiều thiết bị kết nối chung vào một router cùng lúc.
- * ESP Touch hiện nay hỗ trợ đối với Access Point chuẩn 802.11n 2.4Ghz
+*  ESPTOUCH protocol could encrypt transmitted data in the process above but the principle is the same.
+*  ESP8266 devices will sniff out those packets whose length changes over time, then decrypt the data and extract the SSID,  password and other related information.
+*  When ESP8266 has successfully connected to wifi network, it will connect to user's smartphone using the decoded IP address and send a message to notify the app of its successful connection.
 
-=== Thực hiện SmartConfig với ESP8266
 
-Trong ví dụ dưới đây, chúng ta sẽ tiến hành kết nối wifi cho board ESP8266 bằng SmartConfig. Sử dụng ứng dụng ESP8266 SmartConfig (Android). Bạn có thể dễ dàng tìm thấy ứng dụng này cũng như các ứng dụng tương tự trên Play Store (Android) hay iTunes (iOS) để thực hiện việc kết nối bằng SmartConfig này.
+.A UDP packet structure
+image::05-wificonfig/data_packet.png[A UDP packet structure, role="center", align="center", width=400]
 
-Trước tiên, ta sẽ nạp chương trình cho ESP8266. Điểm mấu chốt trong chương trình này chính là hàm `WiFi.beginSmartConfig()` được cung cấp trong thư viện ESP8266WiFi. Hàm này cho phép thiết bị khởi động chế độ SmartConfig, thu thập các thông tin từ các gói tin và giải mã chúng để có thể kết nối vào mạng Wifi.
+NOTE:
 
-Sau khi nạp xong chương trình, ta nhấn giữ button (GPIO0) trong 3s để thiết bị đi vào chế độ smartconfig. (Lúc này bạn sẽ thấy led trên board nhấp nháy nhanh hơn). Dùng smart phone của bạn truy cập vào wifi muốn kết nối, sau đó mở ứng dụng smartconfig và nhập các thông tin SSID và PASSWORD (nếu có) của wifi. Nhấn **CONFIRM** để xác nhận.
+ * It will take longer time to establish the connection with greater distance.
+ * If the device cannot connect to the router within a specified time period, the App will return a configuration failure message. Users can define the overtime settings through `esptouch_set_timeout(uint8 time_s)` .
+ * Your ESP8266 device should be configured as a STATION when it connects to network using SmartConfig.
+ * Users can configure multiple devices to connect to the same router simultaneously.
+ * ESPTOUCH supports 802.11n and 2.4GHz wireless routers .
 
-.Video Demo
+
+
+=== Running SmartConfig on ESP8266
+
+
+In the following example, our ESP8266 is connecting to a wifi network using SmartConfig and on Android, we are using `SmartConfig` app to input the SSID and its password. You can easily search for this app as well as other similar app on Play Store (Android) and iTunes (iOS).
+
+First, you need to upload the compiled code to ESP8266. The key command in this program is the `WiFi.beginSmartConfig()` line and it's provided in ESP8266WiFi library. This command allows the device to enter SmartConfig mode, sniff out the desired packets and decrypt them to connect to a wifi network.
+
+After uploading your sketch, you should hold the GPIO0 button in 3 seconds, the built-in LED will blink faster and your device will enter SmartConfig mode. Connect your smartphone to a desired wifi network, open `SmartConfig` app, input the SSID and PASSWORD (if any), and press **CONFIRM**.
+
+
+.A demo video:
 video::-RqMKvMLPi0[youtube]
 
 === Code
 
 [source, c]
 ----
-include::code/Smartconfig/Smartconfig.ino[]
+include::code-{lang}/Smartconfig/Smartconfig.ino[]
 ----
 
-Thực hiện sau khi kiểm tra mã nguồn:
+After reviewing your code:
 
 - <<select-arduino-board>>
 - <<arduino-flash>>

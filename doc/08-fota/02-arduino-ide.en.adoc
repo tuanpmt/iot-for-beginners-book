@@ -38,7 +38,7 @@ NOTE: ESP module should be resetted after complete uploading firmware
 
 [source, c]
 ----
-include::code-en/BasicOTA/BasicOTA.ino[]
+include::code-{lang}/BasicOTA/BasicOTA.ino[]
 ----
 
 === Step 2: Chose uploading port via OTA

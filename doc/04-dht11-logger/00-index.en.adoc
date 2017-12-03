@@ -1,14 +1,15 @@
 
 [[_DHT11_logger]]
-= Dự án đọc cảm biến DHT11 và gởi về Server
+= Temperature and Humidity Monitor using DHT11, ESP8266 and Node.js server
 
-Trong bài này chúng ta sẽ xây dựng ứng dụng dùng cảm biến DHT11 để thu thập nhiệt độ, độ ẩm của môi trường. Thông tin về nhiệt độ và độ ẩm sẽ được hiển thị trên máy tính và hiển thị trên trình duyệt web bằng cách truy cập vào 1 địa chỉ URL được chỉ định. Một số kiến thức cần thiết :
+In this project, using DHT11 temperature and humidity sensor, we will build a small circuit to monitor the temperature and humidity of the surroundings. That data will be sent back to PC and we can read that data on an Arduino IDE terminal. We can also visit a given URL to view it and its plot on a web interface.
+Some background knowledge:
 
-* *Nhiệt độ* là đại lượng thể hiện tính chất vật lý `nóng, lạnh` của vật chất. Nhiệt độ được đo bằng các đơn vị khác nhau và có thể biến đổi bằng các công thức. Trong hệ đo lường quốc tế, nhiệt độ được đo bằng đơn vị Kelvin, ký hiệu là K. Trong đời sống ở Việt Nam và nhiều nước, nó được đo bằng độ C.
+* *The temperature* is a physical quantity expressing the subjective perceptions of `hot and cold`. Temperature is measured with a thermometer, historically calibrated in various temperature scales and units of measurement. The most commonly used scales are the Celsius scale, denoted in °C (informally, degrees centigrade), the Fahrenheit scale (°F), and the Kelvin scale. The Kelvin (K) is the unit of temperature in the International System of Units (SI), in which temperature is one of the seven fundamental base units. In Vietnam and most of the world, the Celsius scale is used for most temperature measuring purposes. We are using °C in this project.
 
-* *Độ ẩm tương đối* là tỷ số của áp suất hơi nước hiện tại của bất kỳ một hỗn hợp khí nào với hơi nước so với áp suất hơi nước bão hòa tính theo đơn vị là %. Định nghĩa khác của độ ẩm tương đối là tỷ số giữa khối lượng nước trên một thể tích hiện tại so với khối lượng nước trên cùng thể tích đó khi hơi nước bão hòa
+* *The relative humidity* is the ratio of the partial pressure of water vapor to the equilibrium vapor pressure of water at a given temperature. Relative humidity is normally expressed as a percentage; a higher percentage means that the air–water mixture is more humid.
 
-* *DHT11* là một cảm biến có khả năng đo nhiệt độ và độ ẩm không khí với độ chính xác vừa phải, giá cả phải chăng. Có thể lấy dữ liệu đo được của cảm biến bằng giao thức OneWire.
+* *The DHT11* is a basic and low-cost digital temperature and humidity sensor. It's fairly simple to use and we can grab its data with 1-WIRE Protocol.
 
 
 include::01-design.{lang}.adoc[]
@@ -19,6 +20,6 @@ include::03-esp8266.{lang}.adoc[]
 
 include::04-extend.{lang}.adoc[]
 
-== Tổng kết
+== Summary
 
-Sau khi hoàn thành dự án, chúng ta đã có cái nhìn tổng quan về trình tự các bước để xây dựng một dự án hoàn chỉnh trong việc thu thập dữ liệu của cảm biến cũng như xây dựng server để quản lí các máy khách. Từ đó là bước đệm để giúp bạn phát triển thêm nhiều các dự án thu thập và xử lí dữ liệu trong tương lai.
+Upon completion of this project, you will have an overview of building a complete sensors data logging project as well as building a web server to serve the clients from scratch. This will help you lay the foundations for many larger data logging and analyzing projects in the future.

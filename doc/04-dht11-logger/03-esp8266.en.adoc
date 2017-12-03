@@ -1,39 +1,39 @@
-== Code ESP8266
+== Code on ESP8266
 
-ESP8266 sử dụng thư viện HTTPClient để kết nối tới Web Server và lấy dữ liệu nhiệt độ, đổ ẩm thông qua phương thức GET với query là `temp` và `humd`.
+ESP8266 uses HTTPClient library to make a connection and send DHT11 `temp` and `humd` data to web server via `GET` method.
 
-=== Chuẩn bị
-- Cung cấp SSID và PASSWORD WiFi cho board mạch ESP8266 để kết nối vào mạng nội bộ với Web Server.
-- Cung cấp địa chỉ IP, port của Web Server.
-- Thư viện hỗ trợ lấy dữ liệu của DHT11. Dựa theo chuẩn truyền nhận 1 wire và sự phổ biến của dòng sensor DHTXX (DHT11, DHT22,...), có rất nhiều thư viện được xây dựng lên để việc lập trình với DHT11 trở nên dễ dàng hơn. Trong bài này chúng ta sẽ cài đặt và sử dụng thư viện `DHT sensor library` của Adafruit.
+=== Preparation:
+- A local WiFi Access Point's SSID and Password.
+- An IP and Port of Web Server.
+- A library to help us get data from DHT11. Because of the popularity of the DHTXX sensors, many libraries have been released to support users. In this project, we are using the `DHT sensor library` of Adafruit.
 
-.Hình ảnh thư viện DHT sensor library
+.DHT sensor library
 image::04-dht11/install-lib.png[height=900, scaledwidth="75%", align="center"]
 
-**Mã nguồn ESP8266**
+**Source code on ESP8266**
 
 [source, c]
 ----
-include::code/dht11-logger/dht11-logger.ino[]
+include::code-{lang}/dht11-logger/dht11-logger.ino[]
 ----
 
-<1> ESP8266 sẽ gửi dữ liệu lên server sau khi kết nối thành công đến server thông qua lệnh `client.print()`. Nội dung gửi :
-
-* GET /update?temp=30.6&humd=60 HTTP/1.1 với :
-** `GET` là phương thức gửi dữ liệu.
-** `/update?temp=30.6&humd=60` là nội dung cần gửi bao gồm cả pathname và dữ liệu.
-** `HTTP/1.1` khai báo sử dụng giao thức HTTP version 1.1 để có thể tạo 1 HTTP request
-* `Host: 192.168.1.7:8000` thông tin về địa chỉ IP và port của server.
+<1> After successfully connected to server, ESP8266 will use `client.print()` command to send a data packet to server.
+A packet example:
+* GET /update?temp=30.6&humd=60 HTTP/1.1 :
+** `GET` is an HTTP method, which is used to request data from a specified resource.
+** `/update?temp=30.6&humd=60` is the data packet we want to send, it includes a pathname and sensor data.
+** `HTTP/1.1` is the version of HTTP used in the project.
+* `Host: 192.168.1.7:8000`: the IP and Port of server.
 * `Connection, Content-Length`
 
-Thực hiện sau khi kiểm tra mã nguồn:
+After reviewing your source code:
 
 - <<select-arduino-board>>
 - <<arduino-flash>>
 
 
-Có thể xem thông các thông tin của quá trình truyền nhận dữ liệu với lệnh:
-`curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0`. Thông tin hiển thị như bên dưới:
+You can use `curl` command to view the HTTP request headers and other things:
+`curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0`. Here is the output:
 
 [source, c]
 ----
@@ -41,11 +41,11 @@ name@yourname:~$ curl -v http://192.168.1.7:8000/update?temp=28.0&humd=45.0
 [1] 9277
 name@yourname:~$ *   Trying 192.168.1.7...
 * Connected to 192.168.1.7 (192.168.1.7) port 8000 (#0)
-> GET /update?temp=28.0 HTTP/1.1    // > Thông tin gửi từ ESP8266
+> GET /update?temp=28.0 HTTP/1.1    // > Message sent from ESP8266
 > Host: 192.168.1.7:8000
 > User-Agent: curl/7.47.0
 > Accept: */*
->                                  // < Thông tin gửi từ server
+>                                  // < Message sent from server
 < HTTP/1.1 200 OK
 < Date: Wed, 23 Aug 2017 17:22:49 GMT
 < Connection: keep-alive
@@ -54,7 +54,7 @@ name@yourname:~$ *   Trying 192.168.1.7...
 * Connection #0 to host 192.168.1.7 left intact
 ----
 
-Kết quả hiển thị trên Arduino IDE và màn hình Log của máy tính:
+The result will be displayed on Arduino and PC logging screen.
 
-.Hình ảnh trên Arduino và terminal sau khi kết nối
+.The server terminal and the Arduino screen during the transmission.
 image::04-dht11/esp8266-server.png[height=366, align="center"]

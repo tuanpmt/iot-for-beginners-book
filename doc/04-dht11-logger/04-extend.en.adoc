@@ -1,17 +1,18 @@
-== Ứng dụng mở rộng
+== Extending your application
 
-=== Dùng ESP8266 như 1 Web Server
+=== ESP8266 Web Server
 
-Xây dựng 1 dự án giám sát và điều khiển nhiệt độ, độ ẩm hiển thị trên web với giao diện điều khiển :
+You should try to add some new features to the project. Here are some ideas:
 
-* Hiển thị giá trị nhiệt độ, độ ẩm.
-* Hiển thị chart nhiệt độ, độ ẩm theo thời gian.
-* Có 2 chế độ Auto và Manual.
-**  Với chế độ Auto, nhiệt độ > 35ºC sẽ tự động bật quạt, độ ẩm > 50% sẽ bật máy phun sương.
-**  Với chế độ manual có thể điều khiển quạt và máy phun sương bằng các nút nhấn ở ON/OFF
-* Có tùy chọn hiển thị lịch sử nhiệt độ, độ ẩm theo thời gian từ ngày aa/bb/cccc đến ngày xx/yy/zzzz
+* Measure and display temperature and humidity in real-time
+* Illustrate in graph the sensor data over time.
+* Have 2 modes: Auto and Manual.
+** The Auto mode: turns your fan on automatically when the temperature > 35ºC or turn on a humidifier when the humidity is below 50%.
+** The Manual mode: controls your fan and humidifier manually with ON/OFF switch on web interface.
+* Display temperature and humidity history in a specified date interval, from aa/bb/cccc to xx/yy/zzzz.
 
-Hình ảnh thiết kế giao diện như bên dưới:
+This is an example of a graphical user interface:
 
-.Giao diện điều khiển trên trang HTML
+
+.An control interface on HTML
 image::04-dht11/control interface.png[width=500, align="center"]

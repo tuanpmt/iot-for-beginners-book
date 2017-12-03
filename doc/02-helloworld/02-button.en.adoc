@@ -22,14 +22,14 @@ Thực hiện sau khi kiểm tra mã nguồn:
 
 [source, c]
 ----
-include::code/button-poll/button-poll.ino[]
+include::code-{lang}/button-poll/button-poll.ino[]
 ----
 
 === Mã nguồn dùng ngắt
 
 [source, c]
 ----
-include::code/button/button.ino[]
+include::code-{lang}/button/button.ino[]
 ----
 
 === Các khái niệm

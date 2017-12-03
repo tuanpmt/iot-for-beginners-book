@@ -24,7 +24,7 @@ You need to provide SSID, correct WiFi password, execute <<select-arduino-board>
 
 [source, c]
 ----
-include::code-en/httpUpdate/httpUpdate.ino[]
+include::code-{lang}/httpUpdate/httpUpdate.ino[]
 ----
 
 <1> Your fimrware, assume that you modify as `2.0` and place on server, after that you undo to `1.0` and upload onto board
@@ -52,7 +52,7 @@ Base on the knowledge at <<server-nodejs>>, we can build a OTA server using Node
 .server.js
 [source, javascript]
 ----
-include::code-en/ota-server/server.js[]
+include::code-{lang}/ota-server/server.js[]
 ----
 
 Execute `node server.js` to start server

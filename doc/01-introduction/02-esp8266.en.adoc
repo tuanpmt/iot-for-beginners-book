@@ -1,73 +1,72 @@
 == ESP8266
 
-ESP8266 là dòng chip tích hợp Wi-Fi 2.4Ghz có thể lập trình được, rẻ tiền được sản xuất bởi một công ty bán dẫn Trung Quốc: Espressif Systems.
+ESP8266 is a cheap WiFi 2.4Ghz compatible SoC which is manufactured by a Chinese semiconductor company: Espressif Systems.
 
-Được phát hành đầu tiên vào tháng 8 năm 2014, đóng gói đưa ra thị trường dạng Mô dun ESP-01, được sản xuất bởi bên thứ 3: AI-Thinker. Có khả năng kết nối Internet qua mạng Wi-Fi một cách nhanh chóng và sử dụng rất ít linh kiện đi kèm. Với giá cả có thể nói là rất rẻ so với tính năng và khả năng ESP8266 có thể làm được.
+It was initially designed in August 2017, packed in a ESP-07 module which was manufactured by a third-party: AI-Thinker. It comes with the ability to connect to the Internet through WiFi network with decent speed, consumes little energy and requires less external components. ESP8266 has a good ratio of cost to performance.
 
-ESP8266 có một cộng đồng các nhà phát triển trên thế giới rất lớn, cung cấp nhiều Module lập trình mã nguồn mở giúp nhiều người có thể tiếp cận và xây dựng ứng dụng rất nhanh.
+ESP8266 now has a large community worldwide, providing various modules bundled with open source codes, which are user-friendly and cut time-to-market.
 
-Hiện nay tất cả các dòng chip ESP8266 trên thị trường đều mang nhãn ESP8266EX, là phiên bản nâng cấp của ESP8266
+At the time of writing, ESP8266EX is the standard in the ESP8266 family.
 
-=== Sơ đồ chân
+=== Pin mapping
 
-.Sơ đồ chân ESP8266EX
-image::01-intro/01.esp8266-soc.svg[Sơ đồ chân ESP8266EX, width=500, align="center"]
+.ESP8266EX pin mapping
+image::01-intro/01.esp8266-soc.svg[ESP8266EX pin mapping, width=500, align="center"]
 
-=== Thông số phần cứng
-* 32-bit RISC CPU : Tensilica Xtensa LX106 chạy ở xung nhịp 80 MHz
-* Hổ trợ Flash ngoài từ 512KiB đến 4MiB
-* 64KBytes RAM thực thi lệnh
-* 96KBytes RAM dữ liệu
+=== Hardware description
+* 32-bit RISC CPU : Tensilica Xtensa LX106 running at 80 MHz
+* Support for external Flash of 512KiB to 4MiB
+* 64KBytes RAM for instructions
+* 96KBytes RAM for data
 * 64KBytes boot ROM
-* Chuẩn wifi EEE 802.11 b/g/n, Wi-Fi 2.4 GHz
-** Tích hợp TR switch, balun, LNA, khuếch đại công suất và matching network
-** Hổ trợ WEP, WPA/WPA2, Open network
-* Tích hợp giao thức TCP/IP
-* Hổ trợ nhiều loại anten
-* 16 chân GPIO
-* Hổ trợ SDIO 2.0, UART, SPI, I²C, PWM,I²S với DMA
+* EEE 802.11 b/g/n, Wi-Fi 2.4 GHz compatible
+** Integrate TR switch, balun, LNA, Power Amplification and Matching network
+** Support for WEP, WPA/WPA2, Open network
+* Integrate TCP/IP
+* Support for many types of antennae
+* 16 GPIO pins
+* SDIO 2.0, UART, SPI, I²C, PWM,I²S với DMA
 * 1 ADC 10-bit
-* Dải nhiệt độ hoạt động rộng : -40C ~ 125C
+* Operating Temperature Range : -40C ~ 125C
 
-.Một module tích hợp phổ biến (Module ESP12E)
+.A popular integrated module (Module ESP12E)
 image::01-intro/01.ESP-12E.jpg[Module ESP12E, width=300, align="center"]
 
-=== SDK hỗ trợ chính thức từ hãng
+=== Officially supported SDK
 
-Espressif hiện đã hỗ trợ 3 nền tảng SDK (Software Development Kit - Gói phát triển phần mềm) độc lập, là: **NONOS SDK**, **RTOS SDK** và **Arduino**. Cả 3 đều có những ưu điểm riêng phù hợp với từng ứng dụng nhất định, và sử dụng chung nhiều các hàm điều khiển phần cứng. Hiện nay **Arduino** đang được sử dụng rộng rãi bởi tính dễ sử dụng, kiến trúc phần mềm tốt và tận dụng được nhiều thư viện cộng đồng
+Espressif now has 3 separate SDKs, which are **NONOS SDK**, **RTOS SDK**, and **Arduino**. All 3 have their own perks, suitable for particular purposes and they use similar HAL APIs. At the moment, **Arduino** are widely used due to its ease-of-use, good software structure and making good use of libraries.
 
 ==== ESP8266 NONOS SDK
 
-Hiện nay, **NONOS SDK** phiên bản từ **2.0.0** trở lên đã ổn định và cung cấp gần như là đầy đủ tất cả các tính năng mà ESP8266 có thể thực hiện:
+**NONOS SDK** since version **2.0.0** is fairly stable and provides almost all functions that ESP8266 is capable of:
 
-* Các API cho Timer, System, Wifi, đọc ghi SPI Flash, Sleep và các Module phần cứng: GPIO, SPI, I²C, PWM, I²S với DMA.
-* `Smartconfig`: Hỗ trợ cấu hình thông số Wi-Fi cho ESP8266 nhanh chóng.
-* `Sniffer` API: Bắt các gói tin trong mạng không dây 2.4Ghz.
-* `SNTP` API: Đồng bộ thời gian với Máy chủ thời gian.
-* `WPA2 Enterprise` API: Cung cấp việc quản lý kết nối Wi-Fi bằng tài khoản sử dụng các máy chủ RADIUS.
-* `TCP/UDP` API: Cho kết nối internet và hỗ trợ các Module dựa trên các giao thức như: HTTP, MQTT, CoAP.
-* `mDNS` API: Giúp tìm ra **IP** của thiết bị trong mạng nội bộ bằng tên (hostname).
-* `MESH` API: Liên kết các module ESP8266 với cấu trúc mạng MESH
-* `FOTA` API: Firmware Over The Air - cập nhật firmware từ xa cho thiết bị .
-* `ESP-Now` API: Sử dụng các gói tin Wireless 2.4GHz trao đổi trực tiếp với ESP8266 khác mà không cần kết nối tới Access Point.
-* `Simple Pair` API: Thiết lập kết nối bảo mật giữa 2 thiết bị tự động.
-
+* APIs for Timer, System, Wifi, reading\writing SPI Flash, Sleep and hardware peripherals: GPIO, SPI, I²C, PWM, I²S với DMA.
+* `Smartconfig`: Support for fast configuration of Wi-Fi.
+* `Sniffer` API: Wireless packet capture at 2.4Ghz.
+* `SNTP` API: Time syncing with a Time Server.
+* `WPA2 Enterprise` API: Provide a management system for WiFi by using accounts form RADIUS servers.
+* `TCP/UDP` API: Allows for Internet connection and supports for protocols such as: HTTP, MQTT, CoAP.
+* `mDNS` API: Locating the **IP** of devices in a network using hostname.
+* `MESH` API: Connecting ESP8266 modules in a mesh.
+* `FOTA` API: Firmware Over The Air.
+* `ESP-Now` API: Using wirelessly transmitted data package at 2.4GHz to communicate directly with other ESP8266s without an Access Point.
+* `Simple Pair` API: Set up a secured connection between two devices.
 
 ==== ESP8266 RTOS SDK
 
-**RTOS SDK** sử dụng **FreeRTOS** làm nền tảng, đồng thời hầu hết các API của **NON OS** SDK đều có thể sử dụng với **RTOS SDK**.
+**RTOS SDK** has **FreeRTOS** at its core, and almost all **NON OS** SDK APIs are compatible with **RTOS SDK**.
 
 === ESP8285
 
-ESP8285 là một phiên bản khác sau này của ESP8266EX, giống hoàn toàn ESP8266EX ngoại trừ việc thay vì dùng SPI FLASH bên ngoài thì ESP8285 tích hợp 1MiB Flash bên trong giúp giảm diện tích phần cứng và đơn giản hóa quá trình sản xuất.
+ESP8285 is a successor of ESP8266EX, they are identical except ESP8225 has an 1 MiB internal Flash, rendering SPI FLASH obsolete and in turns reducing size and manufacturing cost.
 
-=== Module và Board mạch phát triển
+=== Module and development board
 
-ESP8266 cần ít nhất thêm 7 linh kiện nữa mới có thể hoạt động, trong đó phần khó nhất là Antena. Đòi hỏi phải được sản xuất, kiểm tra với các thiết bị hiện đại. Do đó, trên thị trường xuất hiện nhiều Module và Board mạch phát triển đảm đương hết để người dùng đơn giản nhất trong việc phát triển ứng dụng. Một số Module và Board phát triển phổ biến:
+ESP8266 needs at least 7 extra components for proper functionality, one of which is antenna. The antenna requires top-notch equipments for manufacturing and testing. For that reason, many modules and development boards are pre-built to work out-of-the-box.
 
-.Một số module ESP8266 trên thị trường
+.Some common ESP8266 modules
 |===
-|Tên        |Số chân|Pitch |LEDs |Antenna     |Shielded|Dimensions
+|Module     |Pins   |Pitch |LEDs |Antenna     |Shielded|Dimensions
 |ESP-01     |6      |0.1"  |Yes  |PCB         |No      |14.3 × 24.8
 |ESP-02     |6      |0.1"  |No   |U-FL        |No      |14.2 × 14.2
 |ESP-03     |10     |2mm   |No   |Ceramic     |No      |17.3 × 12.1
@@ -86,14 +85,14 @@ ESP8266 cần ít nhất thêm 7 linh kiện nữa mới có thể hoạt độn
 |ESP-14     |22     |2mm   |No   |PCB         |Yes     |24.3 x 16.2
 |===
 
-=== Board mạch phát triển ESP8266
+=== ESP8266 development board
 
-Module ESP8266 chỉ bao gồm Chip ESP8266 và các linh kiện giúp chip có thể hoạt động được, tuy nhiên, trong quá trình phát triển sản phẩm, chúng ta cần phải *nạp* chương trình cho chip trước khi đưa vào hoạt động thực tế. Quá trình này là quá trình gởi dữ liệu Binary (đã biên dịch trên máy tính) xuống bộ nhớ Flash của ESP8266.
-Để đưa ESP8266 vào chế độ *Nạp* (Program) thì cần phải đặt mức logic 0 (0V - GND) vào chân *GPIO0*, đồng thời RESET chip. Rồi sau đó có thể dùng các công cụ nạp để gởi Firmware từ máy tính xuống.
+ESP8266 module includes only ESP8266 chip and other extra components; however, to function properly, we need to *program* it before putting it into operation. This process is called programming binary firmware (pre-conpiled on the computer) to the ESP8266 Flash.
+To put ESP8266 in *Program* mode, *GPIO0* needs connecting to logic 0 (0V - GND) while RESETing the chip. Then the chip is ready for programming.
 
-.Một mạch nạp tự động sử dụng chip USB CDC
-image::01-intro/auto-program.jpg[Mạch nạp tự động, width=500, align="center"]
+.An automatic programmer using USB CDC
+image::01-intro/auto-program.jpg[Automatic programmer, width=500, align="center"]
 
-Hiện nay các Board mạch phát triển đều tích hợp các mạch nạp tự động, nghĩa là phần mềm sẽ tự động điều chỉnh các chân DTR và RTS của chip USB CDC, đưa ESP8266 vào chế độ nạp, sau đó sẽ gởi firmware xuống. Arduino IDE cũng vậy, nó sẽ điều chỉnh dựa trên việc khai báo Board mạch sử dụng.
+Most development boards have a buil-in programmer, which means they will automatically configure DRT and RTS of USB CDC, put the chip in progamming mode, then download the firmware. Arduino IDE does the same thing, it will tweak all options in accordance with the reported board.
 
-TIP: Nếu bạn là người mới bắt đầu và chưa rõ về phần cứng, thì tốt nhất nên sử dụng một Board mạch phát triển sẵn có các chế độ nạp tự động. Khi bạn chuyển sang sản xuất phần cứng cho các ứng dụng cụ thể, thì có thể tách rời phần nạp tự động này ra để tiết giảm chi phí. Các mạch điện này đều được công bố rộng rãi.
+TIP: If you are a beginner and do not know much about hardware, it'd be best to use a development board with built-in programmer. When you start designing the hardware for your project, it'll then be preferable to use a separate programmer cost-wise. These circuits are easy to find.

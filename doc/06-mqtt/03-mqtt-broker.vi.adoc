@@ -29,7 +29,7 @@ image::06-mqtt/netstatPort.png[width=600, align="center"]
 
 [source, javascript]
 ----
-include::code/mosca-server/moscaServer.js[]
+include::code-{lang}/mosca-server/moscaServer.js[]
 ----
 
 * **Bước 3 :** Viết mã nguồn cho ESP8266. Để nhanh chóng, chúng ta sẽ dùng mã nguồn của thư viện ESP8266MQTTClient đã viết ở mục trước. Sửa đổi địa chỉ của MQTT Broker từ `mqtt.begin("mqtt://iot.eclipse.org:1883");` thành `mqtt.begin("mqtt://your-local-ip:1883");` với your-local-ip là địa chỉ IP của máy tính (ví dụ 192.168.1.7), chú ý rằng ESP8266 và MQTT Broker phải kết nối chung 1 network WiFi.
@@ -40,7 +40,7 @@ include::code/mosca-server/moscaServer.js[]
 
 [source, javascript]
 ----
-include::code/mosca-client/moscaClient.js[]
+include::code-{lang}/mosca-client/moscaClient.js[]
 ----
 
 ==== Kết quả

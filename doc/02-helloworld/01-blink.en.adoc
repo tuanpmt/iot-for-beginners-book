@@ -30,14 +30,14 @@ Với mã nguồn bên dưới, sau khi kiểm tra chương trình, bạn cần 
 
 [source, c]
 ----
-include::code/blink-delay/blink-delay.ino[]
+include::code-{lang}/blink-delay/blink-delay.ino[]
 ----
 
 === Mã nguồn chớp tắt dùng định thời
 
 [source, c]
 ----
-include::code/blink-poll/blink-poll.ino[]
+include::code-{lang}/blink-poll/blink-poll.ino[]
 ----
 
 === Digital IO

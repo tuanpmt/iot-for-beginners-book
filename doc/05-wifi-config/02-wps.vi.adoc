@@ -30,7 +30,7 @@ ESP8266 hổ trợ hàm `WiFi.beginWPSConfig()` trong thư viện ESP8266WiFi. V
 
 [source, c]
 ----
-include::code/WPS/WPS.ino[]
+include::code-{lang}/WPS/WPS.ino[]
 ----
 
 Thực hiện sau khi kiểm tra mã nguồn:

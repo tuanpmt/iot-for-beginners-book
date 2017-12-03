@@ -22,7 +22,7 @@ With `index.html` file which includes Javascript code to create connection to We
 .index.html
 [source, html]
 ----
-include::code-en/server/index.html[]
+include::code-{lang}/server/index.html[]
 ----
 
 === Node.js Websocket Server
@@ -33,7 +33,7 @@ In this article, we use WebSockets library `ws` https://github.com/websockets/ws
 .server.js
 [source, javascript]
 ----
-include::code-en/server/server.js[]
+include::code-{lang}/server/server.js[]
 ----
 
 === ESP8266 Websocket Client
@@ -42,7 +42,7 @@ https://github.com/Links2004/arduinoWebSockets
 
 [source, c]
 ----
-include::code-en/WebSocketClient/WebSocketClient.ino[]
+include::code-{lang}/WebSocketClient/WebSocketClient.ino[]
 ----
 
 .Click the checkbox will change LED's status on board

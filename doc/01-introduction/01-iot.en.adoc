@@ -1,98 +1,75 @@
-== ESP8266
+== Internet Of Things (IoT)
 
-ESP8266 is a cheap WiFi 2.4Ghz compatible SoC which is manufactured by a Chinese semiconductor company: Espressif Systems.
+=== Internet of Things (IoT) là gì?
 
-It was initially designed in August 2017, packed in a ESP-07 module which was manufactured by a third-party: AI-Thinker. It comes with the ability to connect to the Internet through WiFi network with decent speed, consumes little energy and requires less external components. ESP8266 has a good ratio of cost to performance.
+[quote, Wikipedia]
+Internet of Things (IoT) - Mạng lưới vạn vật kết nối Internet là một kịch bản của thế giới, khi mà mỗi đồ vật, con người được cung cấp một định danh của riêng mình, và tất cả có khả năng truyền tải, trao đổi thông tin, dữ liệu qua một mạng duy nhất mà không cần đến sự tương tác trực tiếp giữa người với người, hay người với máy tính. IoT đã phát triển từ sự hội tụ của công nghệ không dây, công nghệ vi cơ điện tử và Internet[1]. Nói đơn giản là một tập hợp các thiết bị có khả năng kết nối với nhau, với Internet và với thế giới bên ngoài để thực hiện một công việc nào đó.
+**Link**: http://vi.wikipedia.org/wiki/Mạng_lưới_vạn_vật_kết_nối_Internet
 
-ESP8266 now has a large community worldwide, providing various modules bundled with open source codes, which are user-friendly and cut time-to-market.
 
-At the time of writing, ESP8266EX is the standard in the ESP8266 family.
+Internet of things (IoT) dùng để chỉ các đối tượng có thể được nhận biết cũng như chỉ sự tồn tại của chúng trong một kiến trúc tổng hòa mang tính kết nối: Mạng lưới vạn vật kết nối Internet, hay gọi đơn giản hơn là `Things`.
 
-=== Pin mapping
+IoT có thể là bộ cảm ứng được lắp ráp trong một chiếc tủ lạnh để ghi lại nhiệt độ, là một trái tim được cấy ghép trong cơ thể con người,... Hiểu đơn giản, IoT có thể khiến mọi vật giờ đây có thể giao tiếp với nhau dễ dàng hơn và ưu điểm lớn nhất của `“Thông minh”` là khả năng phòng ngừa và cảnh báo tại bất kì đâu.
 
-.ESP8266EX pin mapping
-image::01-intro/01.esp8266-soc.svg[ESP8266EX pin mapping, width=500, align="center"]
+Cụm từ Internet of things được đưa ra bởi Kevin Ashton vào năm 1999, tiếp sau đó nó cũng được dùng nhiều trong các ấn phẩm đến từ các hãng và nhà phân tích. Họ cho rằng IoT là một hệ thống phức tạp, bởi nó là một lượng lớn các đường liên kết giữa máy móc, thiết bị và dịch vụ với nhau. Ban đầu, IoT không mang ý nghĩa tự động và thông minh. Về sau, người ta đã nghĩ đến khả năng kết hợp giữa hai khái niệm IoT - Autonomous control lại với nhau. Nó có thể quan sát sự thay đổi và phản hồi với môi trường xung quanh, cũng có thể tự điều khiển bản thân mà không cần kết nối mạng. Việc tích hợp trí thông minh vào IoT còn có thể giúp các thiết bị, máy móc, phần mềm thu thập và phân tích các dữ liệu điện tử của con người khi chúng ta tương tác với chúng. Xu hướng tất yếu trong tương lai, con người có thể giao tiếp với máy móc chỉ qua mạng internet không dây mà không cần thêm bất cứ hình thức trung gian nào khác.
 
-=== Hardware description
-* 32-bit RISC CPU : Tensilica Xtensa LX106 running at 80 MHz
-* Support for external Flash of 512KiB to 4MiB
-* 64KBytes RAM for instructions
-* 96KBytes RAM for data
-* 64KBytes boot ROM
-* EEE 802.11 b/g/n, Wi-Fi 2.4 GHz compatible
-** Integrate TR switch, balun, LNA, Power Amplification and Matching network
-** Support for WEP, WPA/WPA2, Open network
-* Integrate TCP/IP
-* Support for many types of antennae
-* 16 GPIO pins
-* SDIO 2.0, UART, SPI, I²C, PWM,I²S với DMA
-* 1 ADC 10-bit
-* Operating Temperature Range : -40C ~ 125C
+Câu hỏi đặt ra là, điều gì giúp IoT “thông minh” và “hiểu” con người? Ban đầu, người ta cho rằng Internet của vạn vật chủ yếu xoay quanh giao tiếp M2M (các thiết bị kết nối với nhau thông qua một thiết bị khác điều khiển). Nhưng khi hướng đến sự “thông minh hóa”, đó không chỉ là giao tiếp giữa M2M nữa mà cần phải đề cập đến các cảm biến (sensor). Và cũng đừng lầm tưởng rằng Sensor là một cỗ máy hoạt động dưới sự vận hành của các thiết bị khác mà thực chất, nó tương tự như đôi mắt và đôi tai của loài người với sự ghi nhận liên tục những đo lường, định lượng, thu thập dữ liệu từ thế giới bên ngoài. Suy cho cùng, Internet of things đem đến sự kết nối giữa máy móc và cảm biến, và nhờ đến dữ liệu điện toán đám mây để mã hóa dữ liệu. Những ứng dụng điện toán đám mây là mắt xích quan trọng giúp cho Internet of things có thể hoạt động nhờ sự phân tích, xử lí và sử dụng dữ liệu mà các cảm biến thu thập được.
 
-.A popular integrated module (Module ESP12E)
-image::01-intro/01.ESP-12E.jpg[Module ESP12E, width=300, align="center"]
+Tình hình trên thế giới hiện nay, tác động của IOT rất đa dạng và tích cực ở nhiều lĩnh vực: quản lý hạ tầng, y tế, xây dựng và tự động hóa, giao thông…. John Chambers (CEO của Cisco) đã công bố: Cho đến năm 2024 sẽ có 500 tỷ thiết bị được kết nối. Thực tế, con số này lớn hơn gần 100 lần số người trên Trái đất, điều đó cho thấy “vạn vật” nhiều hơn con người rất nhiều. Chúng ta đều biết ứng dụng IoT có thể “nói chuyện” với con người thông qua bàn phím, thiết bị cũng được thiết kế ngày càng hoàn thiện với nhiều cảm biến hơn để có thể giao tiếp một cách nhanh nhất và chính xác nhất với con người, thu thập dữ liệu đơn giản từ mỗi người chúng ta. Nhưng quan trọng nhất, tuy giao tiếp với con người nhưng ứng dụng IoT không phải là con người.
 
-=== Officially supported SDK
+Người ta cho rằng, IoT là chìa khóa của sự thành công, là bước ngoặt và cơ hội lớn của tương lai. Để không bị tụt lại phía sau, các chính phủ và doanh nghiệp cần có sự đổi mới và đầu tư mạnh tay hơn để phát triển các sản phẩm ứng dụng công nghệ Internet of things.
 
-Espressif now has 3 separate SDKs, which are **NONOS SDK**, **RTOS SDK**, and **Arduino**. All 3 have their own perks, suitable for particular purposes and they use similar HAL APIs. At the moment, **Arduino** are widely used due to its ease-of-use, good software structure and making good use of libraries.
+Các hashtag: https://www.google.com/search?q=iot[*#IoT*] https://www.google.com/search?q=iot[*#InternetOfThings*]
 
-==== ESP8266 NONOS SDK
+=== Hệ thống Internet of Things (IoT)
 
-**NONOS SDK** since version **2.0.0** is fairly stable and provides almost all functions that ESP8266 is capable of:
+Hệ thống IoT cho phép người dùng tiến sâu hơn vào việc tự động hóa, phân tích, tích hợp. Giúp cho việc cải thiện tầm nhìn, tính chính xác, nâng tầm các công nghệ về cảm biến, kết nối, robot để đạt hiệu quả cao nhất.
 
-* APIs for Timer, System, Wifi, reading\writing SPI Flash, Sleep and hardware peripherals: GPIO, SPI, I²C, PWM, I²S với DMA.
-* `Smartconfig`: Support for fast configuration of Wi-Fi.
-* `Sniffer` API: Wireless packet capture at 2.4Ghz.
-* `SNTP` API: Time syncing with a Time Server.
-* `WPA2 Enterprise` API: Provide a management system for WiFi by using accounts form RADIUS servers.
-* `TCP/UDP` API: Allows for Internet connection and supports for protocols such as: HTTP, MQTT, CoAP.
-* `mDNS` API: Locating the **IP** of devices in a network using hostname.
-* `MESH` API: Connecting ESP8266 modules in a mesh.
-* `FOTA` API: Firmware Over The Air.
-* `ESP-Now` API: Using wirelessly transmitted data package at 2.4GHz to communicate directly with other ESP8266s without an Access Point.
-* `Simple Pair` API: Set up a secured connection between two devices.
+Các hệ thống IoT phát triển, khai thác các tiến bộ của phần mềm, giảm giá thành khi xây dụng phần cứng và tận dụng các công nghệ hiện đại. Những cải tiến này làm thay đổi cách vận hành của quá trình sản xuất sản phẩm, dịch vụ, xã hội, kinh tế và ảnh hưởng đến cả chính trị
 
-==== ESP8266 RTOS SDK
+==== Những điểm mấu chốt của IoT
 
-**RTOS SDK** has **FreeRTOS** at its core, and almost all **NON OS** SDK APIs are compatible with **RTOS SDK**.
+Những vấn đề quan trọng nhất của hệ thống IoT bao gồm trí thông minh nhân tạo, kết nối, cảm biến và các thiết bị nhỏ nhưng mang tính cơ động cao, chúng được mô tả sơ lược như bên dưới:
 
-=== ESP8285
+- *AI (Artifical Intelligence)* - Hệ thống IoT về cơ bản được hiểu là làm cho mọi thiết bị trở nên *thông minh*, nghĩa là nó giúp nâng cao mọi khía cạnh của cuộc sống bằng những dữ liệu thu thập được, thông qua các thuật toán tính toán nhân tạo và kết nối mạng. Một ví dụ đơn giản như hộp đựng gạo của bạn, khi biết rằng gạo sắp hết, hệ thống tự động đặt một đơn hàng mới cho nhà cung cấp.
+- *Connectivity* - Là một đặc trưng cơ bản của IoT, hiện nay các mạng thiết bị đang trở nên phổ biến, nhiều mạng thiết bị ngày càng nhỏ hơn, rẻ hơn và được phát triển phù hợp với thực tế cũng như nhu cầu của người dùng .
+- *Sensors* - IoT sẽ mất đi sự quan trọng của mình nếu không có sensors. Các cảm biến hoạt động giống như một công cụ giúp IoT chuyển từ mạng lưới các thiết bị thụ động sang mạng lưới các thiết bị tích cực, đồng thời có thể tương tác với thế giới thực.
+- *Active Engagement* Ngày nay, phần lớn các tương tác của những công nghệ kết nối xảy ra 1 cách thụ động. IoT được cho là sẽ đem đến những hệ thống mang tích tích cực về nội dung, sản phẩm cũng như các dịch vụ gắn kết.
+- *Small Devices* - Như đã được dự đoán từ trước, các thiết bị ngày càng được tối ưu với mục đích nâng cao độ chính xác, khả năng mở rộng cũng như tính linh hoạt. Nó được thiết kế ngày càng nhỏ hơn, rẻ hơn và mạnh mẽ hơn theo thời gian.
 
-ESP8285 is a successor of ESP8266EX, they are identical except ESP8225 has an 1 MiB internal Flash, rendering SPI FLASH obsolete and in turns reducing size and manufacturing cost.
+==== IoT − Những lợi ích mang lại
 
-=== Module and development board
+Những lợi ích mà IoT đem lại được dàn trải hầu hết đến các tất cả các lĩnh vực trong đời sống, kinh doanh... Dưới đây liệt kê ngắn gọn một số tính năng hữu ích của IoT:
 
-ESP8266 needs at least 7 extra components for proper functionality, one of which is antenna. The antenna requires top-notch equipments for manufacturing and testing. For that reason, many modules and development boards are pre-built to work out-of-the-box.
+- *Cải thiện việc gắn kết khách hàng* - Hệ thống IoT giúp phân tích các điểm mù hiện tại, tìm ra những sai sót về độ chính xác. IoT thay đổi điều này để mang lại nhiều sự gắn kết hơn và hiệu quả hơn với người dùng. Một ứng dụng tại các cửa hàng, dịch vụ iBeacon giúp tăng số lượng sản phẩm tới người tiêu dùng bằng cách chỉ dẫn người dùng tới khu vực cụ thể trong cửa hàng và đưa ra các gợi ý về sản phẩm. Chúng cung cấp các thông tin chi tiết, các đánh giá về sản phẩm,  ...Bên cạnh đó chúng cũng có khả năng cho phép người dùng chia sẻ các sản phẩm qua mạng xã hội ...
+- *Tối ưu hóa công nghệ* - giúp nâng cao trải nghiệm của khách hàng cũng như cải thiện việc sử dụng thiết bị và hỗ trợ cải tiến công nghệ.
 
-.Some common ESP8266 modules
-|===
-|Module     |Pins   |Pitch |LEDs |Antenna     |Shielded|Dimensions
-|ESP-01     |6      |0.1"  |Yes  |PCB         |No      |14.3 × 24.8
-|ESP-02     |6      |0.1"  |No   |U-FL        |No      |14.2 × 14.2
-|ESP-03     |10     |2mm   |No   |Ceramic     |No      |17.3 × 12.1
-|ESP-04     |10     |2mm   |No   |None        |No      |14.7 × 12.1
-|ESP-05     |3      |0.1"  |No   |U-FL        |No      |14.2 × 14.2
-|ESP-06     |11     |misc  |No   |None        |Yes     |14.2 × 14.7
-|ESP-07     |14     |2mm   |Yes  |Ceramic+U-FL|Yes     |20.0 × 16.0
-|ESP-08     | 10    |2mm   |No   |None        |Yes     |17.0 × 16.0
-|ESP-09     | 10    |misc  |No   |None        |No      |10.0 × 10.0
-|ESP-10     | 3     |2mm   |No   |None        |No      |14.2 × 10.0
-|ESP-11     | 6     |0.05" |No   |Ceramic     |No      |17.3 × 12.1
-|ESP-12     |14     |2mm   |Yes  |PCB         |Yes     |24.0 × 16.0
-|ESP-12E    |20     |2mm   |Yes  |PCB         |Yes     |24.0 × 16.0
-|ESP-12F    |20     |2mm   |Yes  |PCB         |Yes     |24.0 × 16.0
-|ESP-13     |16     |1.5mm |No   |PCB         |Yes     |18.0 x 20.0
-|ESP-14     |22     |2mm   |No   |PCB         |Yes     |24.3 x 16.2
-|===
+- *Giảm sự hao phí* - IoT giúp việc quản lí tài nguyên ở các lĩnh vực được cải thiện 1 cách rõ ràng. Các phân tích hiện tại thường cung cấp cho chúng ta cái nhìn ở khía cạnh bên ngoài, trong khi IoT cung cấp các dữ liêu, thông tin thực tế để quản lí tài nguyên một cách hiệu quả hơn.
 
-=== ESP8266 development board
+- *Tăng cường việc thu thập dữ liệu* - Thông thường, việc thu thập dữ liệu bị hạn chế do thiết kế hệ thống mang tính thụ động. IoT phá vỡ sự ràng buộc, giới hạn của thiết kế và tạo ra 1 hình ảnh chính xác của tất cả mọi thứ.
 
-ESP8266 module includes only ESP8266 chip and other extra components; however, to function properly, we need to *program* it before putting it into operation. This process is called programming binary firmware (pre-conpiled on the computer) to the ESP8266 Flash.
-To put ESP8266 in *Program* mode, *GPIO0* needs connecting to logic 0 (0V - GND) while RESETing the chip. Then the chip is ready for programming.
+==== IoT − Những thách thức gặp phải
 
-.An automatic programmer using USB CDC
-image::01-intro/auto-program.jpg[Automatic programmer, width=500, align="center"]
+Mặc dù IoT mang lại khá nhiều lợi ích ấn tượng, nó cũng gặp phải những thách thức đáng kể. Dưới đây là 1 số vấn đề chính của IoT :
 
-Most development boards have a buil-in programmer, which means they will automatically configure DRT and RTS of USB CDC, put the chip in progamming mode, then download the firmware. Arduino IDE does the same thing, it will tweak all options in accordance with the reported board.
+- *Kiểm soát an ninh* - IoT tạo ra 1 hệ sinh thái mà ở đó các thiết bị kết nối liên tục và giao tiếp với nhau qua mạng lưới các kết nối. Tuy nhiên, hệ thống thường chưa chú trọng đến các biện pháp an ninh nhằm bảo mật thông tin, dẫn đến nó có thể gặp phải các cuộc tấn công nhằm lấy cắp thông tin của người dùng.
+- *Tính bảo mật* - Do tính bảo mật chưa cao cộng với bản chất của IoT là không cần nhiều sự tương tác của con người nên các kẻ tấn công có thể cung cấp các thông tin người dùng giả mạo.
+- *Tính phức tạp* - Một số hệ thống IoT có độ phức tạp về thiết kế và triển khai ứng dụng cũng như khó khăn trong việc bảo trì, nâng cấp  hệ thống do sử dụng nhiều công nghệ còn khá mới mẻ.
+- *Tính linh hoạt* - Có nhiều sự lo ngại khi đề cập đến tính linh hoạt của hệ thống IoT khi tích hợp với các hệ thống khác bởi các hệ thống khi kết hợp có thể xảy ra xung đột và các tính năng sẽ bị khóa lẫn nhau.
+- *Tuân thủ các tiêu chuẩn* - Giống như các công nghệ khác trong lĩnh vực thương mại, IoT cũng phải tuân thủ các tiêu chuẩn, quy định đã đặt ra trước đó. Tính phức tạp của IoT làm cho việc tuân thủ các tiêu chuẩn là một thử thách thực sự
 
-TIP: If you are a beginner and do not know much about hardware, it'd be best to use a development board with built-in programmer. When you start designing the hardware for your project, it'll then be preferable to use a separate programmer cost-wise. These circuits are easy to find.
+[.right.text-center]
+.Hình minh họa
+image::01-intro/01.iot-concept.png[Hình minh họa IoT, role="center", align="center", width=500]
+
+
+.Sự phát triển của iot dự đoán đến năm 2020
+image::01-intro/01.iot_growth_technology.png[Sự phát triển của iot dự đoán đến năm 2020, align="center", width=500]
+
+=== Những ứng dụng thực tế trong cuộc sống
+
+Những ứng dụng của IoT vào các lĩnh vực trong đời sống là vô cùng phong phú và đa dạng. Chúng ta sẽ cùng điểm qua một số ứng dụng điển hình đã mang lại `"tiếng tăm"` cho IoT:
+
+- *Smart Home* - Theo thống kê, smart home là ứng dụng liên quan đến IoT được tìm kiếm nhiều nhất trên Google. Smart Home là 1 ngôi nhà với rất nhiều tính năng tự động như bật máy điều không khí khi bạn sắp về tới nhà, tắt đèn ngay khi bạn rời khỏi nhà, mở khóa khi người thân trong gia đình đang ở cửa nhà, mở garage khi bạn lái xe đi làm về ... còn rất nhiều những tính năng giúp nâng cao chất lượng cuộc sống khi sử dụng smart home.
+- *Vật dụng mang theo trên người* - Có thể kể đến một số thiết bị như `Dashbon Mask`, đây là 1 chiếc smart headphone giúp bạn vừa có thể nghe nhạc với âm thanh có độ trung thực cao vừa có thể xem phim HD với máy chiếu ảo , hoặc `AMPL SmartBag` ba lô có pin dự phòng có thể sạc điện cho các thiết bị di động, kể cả máy tính.
+- *Connected cars* - Giúp nâng cao những trải nghiệm cho người dùng xe ôtô, 1 chiếc `Connected car` có thể tối ưu các hoạt động của nó như thông báo khi hết nhiên liệu, đưa ra các cảnh báo khi có vật tới gần hoặc mới đây nhất là xe điện tự lái của hãng Tesla...

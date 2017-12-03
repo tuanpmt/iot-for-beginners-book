@@ -1,86 +1,92 @@
-== Thiết kế ứng dụng
+== The Project Diagram
 
-Hình ảnh bên dưới mô tả tổng quan dự án
+The following diagram shows an overview of this project.
 
-.Tổng quan mô hình của dự án
+.The overview of the project
 image::04-dht11/projectIntro.png[height=596, align="center"]
 
-Trong thực tế, khi thiết kế ứng dụng, người dùng cần một giao diện giám sát và điều khiển thân thiện, đồng thời có thể phát triển thêm các tính năng như hiển thị kết quả dưới dạng đồ thị (chart), lưu trữ dữ liệu theo thời gian chỉ định hay điều khiển trạng thái các thiết bị chỉ với 1 click chuột trên máy tính. Các dự án với mô hình phức tạp sẽ cần quản lí các kết nối cũng như dữ liệu của các thiết bị...
+In practice, when designing the application, we should notice that users usually need a user-friendly graphical interface with many useful functions such as chart or graph illustrations, data extraction in desired time intervals, the database storing or 1-click device states control from PC,... Many larger and more complex projects will also need different methods to manage their connections and data.
 
-Chúng ta sẽ giải quyết những vấn đề trên thông qua ứng dụng đọc nhiệt độ, độ ẩm của môi trường và gửi về server. Đây là một ứng dụng khá đơn giản, hữu ích và dễ làm. Thông qua phần này chúng ta có thể xây dựng được một ứng dụng *IoT* thực tế, nắm bắt được các kiến thức cơ bản về thu thập dữ liệu, xây dựng thiết bị và server.
+To help you deal with those problems, we will guide you build a temperature and humidity monitoring application with capabilities of sending data back to a given web server and displaying it on a website. This is a simple, useful and easy IoT application, which will provide us with some basics on sensors data collecting and web server building.
 
-=== Yêu cầu
 
-- Dùng cảm biến DHT11 để thu thập nhiệt độ, độ ẩm của môi trường và kết nối với board mạch ESP8266
-- Board mạch ESP8266 sẽ kết nối không dây đến mạng WiFi và gởi dữ liệu về HTTP Server
-- Phần cơ bản: HTTP Server hiển thị dữ liệu nhiệt độ, độ ẩm ra màn hình Log trên máy tính
-- Phần nâng cao: HTTP Server lưu trữ dữ liệu, và cung cấp file HTML cho người dùng có thể xem qua Browser
+=== Requirements
 
-=== Phân tích
+- DHT11: Collecting the environment temperature and humidity data; Connecting and sending data to ESP8266.
+- ESP8266: Connecting to a WiFi Access Point and sending data to an HTTP server; displaying data on Arduino terminal screen.
+- Basic functions of HTTP server: Displaying current temperature and humidity on PC screen.
+- Advanced functions of HTTP server: Storing sensor data; interpreting users' requests and returning a result HTML file to view on web browsers.
 
-- Chúng ta cần 1 Web Server viết bằng Javascript, thực thi bởi Node.js, lắng nghe ở Port được chỉ định trên máy tính cá nhân. Ở đây là port 8000
-- Máy tính phải có kết nối cùng mạng WiFi nội bộ với ESP8266 và cần biết địa chỉ IP của máy tính để ESP8266 có thể truy cập, ví dụ IP là `192.168.1.102`
-- ESP8266 sau khi kết nối vào mạng WiFi nội bộ, sẽ tiến hành đọc thông số nhiệt độ, độ ẩm từ cảm biến DHT11 và gởi về Server sau mỗi 2 giây.
-- Quá trình gởi được thực hiện bởi phương thức `GET`, ví dụ `http://192.168.1.102/update?temp=25&humd=80` với `192.168.1.102` là địa chỉ Web Server, `/update` là đường dẫn, `temp=20` và `humd=80` chứa thông tin nhiệt độ 20 độ C và độ ẩm 80%.
-- Web Server trả về trạng thái HTTP status = 200 (OK), cùng với việc hiển thị ra cửa sổ log giá trị nhiệt độ, độ ẩm.
-- Ở phần nâng cao:
-  -- Web Server lưu trữ dữ liệu nhiệt độ, độ ẩm trong mảng, chứa ở bộ nhớ RAM
-  -- Web Server còn cung cấp 1 file `index.html` chứa mã Javascript có thể yêu cầu lấy dữ liệu nhiệt độ, độ ẩm lưu trong RAM, và hiển thị lên biểu đồ
 
-=== Kiến thức
+=== Project Analysis
 
-Sẽ dễ dàng hơn nếu chúng ta có những kiến thức cơ bản về
+- We will need a web server written in Javascript and implemented by Node.js and it will keep listening to a given port on PC. In this project, we are using port 8000.
+- ESP8266 and your PC must connect to the same WiFi Access Point. ESP8266 also need to know your PC's IP to access the PC's server. In this project, our PC's IP is `192.168.1.102` .
+- After successfully connected to a WiFi Access Point, ESP8266 will read the current temperature and humidity data from DHT11 and send to the server every 2 seconds.
+- Using `GET` method, web server can receive data from ESP8266. For example, `http://192.168.1.102/update?temp=25&humd=80`, `192.168.1.102` is the web server IP address, `/update` is a path, `temp=20` and `humd=80` contain the temperature "20°C" and humidity "80%".
+- Web Server returns the HTTP Status = 200 (OK) and displays a logging window with current temperature and humidity.
+- Advanced Functions:
+  -- Web Server saves data in an array variable in RAM.
+  -- Web Server returns an `index.html` file to user with a special Javascript code to get the data stored in RAM and visualize it on screen.
 
-* Chuẩn truyền dữ liệu OneWire giữa các IC
-* Ngôn ngữ Javascript để xây dựng server bằng cách dùng Node.js
-* Ngôn ngữ HTML để xây dựng 1 trang html đơn giản nhằm hiển thị dữ liệu
 
-Tuy nhiên cũng đừng quá lo lắng nếu bạn chưa từng dùng những thứ này, chúng ta sẽ hiểu nó khi đọc các phần tiếp theo.
+=== Project-related Knowledge
 
-**Cảm biến DHT 11 và chuẩn dữ liệu OneWire**
+It would be easier to understand if you already had some basics about:
 
-* DHT11 là cảm biến có chức năng đo nhiệt độ, độ ẩm của môi trường, được dùng khá phổ biến vì giá thành thấp và độ ổn định cao. Cảm biến sử dụng chuẩn truyền dữ liệu OneWire. Thông tin chi tiết về DHT11 có thể xem tại http://www.micropik.com/PDF/dht11.pdf[*Datasheet*]
+ - Communicating between ICs with 1-Wire Protocol.
 
-* OneWire là chuẩn giao tiếp nối tiếp được thiết kế bởi hãng Dallas. Đó là hệ thống bus nhằm kết nối các thiết bị với nhau để truyền hoặc nhận dữ liệu.Trong chuẩn giao tiếp này thường chỉ sử dụng 1 chân đồng thời là vừa là nguồn cung cấp vừa là chân truyền nhận dữ liệu. Cũng giống như các chuẩn giao tiếp khác, OneWire cũng gồm 3 giai đoạn reqquest (hỏi) -> respond (đáp) -> data reading (truyền nhận dữ liệu).
+ - Using Javascript and Node.js to build a simple web server.
 
-Hình ảnh mô tả quá trình truyền,nhận dữ liệu của DHT11 như hình bên dưới
+ - Building a simple HTML website to display sensor data.
 
-.Quá trình truyền nhận dữ liệu trong chuẩn OneWire
+However, do not get too worried when you have never done such things before, you'll understand them more thoroughly while reading the next parts.
+
+
+**DHT11 Sensor and 1-Wire Communication Protocol**
+
+
+* DHT11 is a widely used, low-cost and high-stability sensor and is usually used to measure the temperature and humidity of the environment. It uses 1-Wire Communication Protocol to send data to microcontroller. For more information, visit the manufacturer's datasheet:
+http://www.micropik.com/PDF/dht11.pdf[*Datasheet*]
+
+* 1-Wire is a device communication bus system designed by Dallas Semiconductor Corp. that provides low-speed data, signaling, and power over a single conductor. One distinctive feature of the bus is the possibility of using only 2 wires: data and ground. Like other communication protocols, a signal sequence of 1-Wire contains 3 steps: request -> respond -> data reading.
+
+A detailed signal diagram is shown below:
+
+.The data timing diagram of 1-Wire
 image::04-dht11/DHT11TimingDialog.png[width=981, align="center"]
 
-Tóm tắt
+Summary:
 
-  1. Master (ESP8266) gửi tín hiệu `START`, DHT11 sẽ chuyển từ chế độ tiết kiệm năng lượng (low-power mode) sang chế độ làm việc bình thường (high-speed mode)
+  1. If the Master (ESP8266) sends the `START` signal, DHT11 will transition from low-power mode to high-speed mode.
+  2. DHT11 receives the signal and responds to the master, then the Master starts the data transmission.
+  3. During a signal period, DHT11 sends a 40 bits data packet to the bus.
+  4. If the Master wants to end the transmission, it will send a `STOP` signal and the process will stop.
 
-  2. DHT11 nhận được tín hiệu và phản hồi đến master, master nhận tín hiệu và bắt đầu quá trình truyền dữ liệu.
+For more information, visit https://www.maximintegrated.com/en/app-notes/index.mvp/id/1796[*maximintegrated.com*]
 
-  3. DHT11 sẽ gửi dữ liệu lên bus, mỗi lần gửi là 1 gói 40 bits data.
+**HTML Language**
 
-  4. Khi muốn kết thúc, Master sẽ gửi tín hiệu `STOP`, kết thúc quá trình truyền nhận dữ liệu
+A popular website to help newbies learn HTML is https://www.w3schools.com/html/default.asp[*w3school.com/HTML*]. But you shouldn't dive into learning HTML at this moment because it would take a long time to completely master it. You only need to learn some basic features of HTML to complete this project.
 
-Chi tiết về chuẩn OneWire xem tại https://www.maximintegrated.com/en/app-notes/index.mvp/id/1796[*maximintegrated.com*]
+**Node.js and Javascript**
 
-**Ngôn ngữ HTML**
+To create a Node.js server, you need to know some basics of Javascript and Node.js. To learn Javascript, you can visit https://www.w3schools.com/js/default.asp[*w3school.com/Javascript*]. A useful website for newbies to learn Node.js is https://www.codeschool.com/courses/real-time-web-with-node-js[*codeschool.com*]
 
-Một trong những địa chỉ web để học HTML cho người mới bắt đầu là https://www.w3schools.com/html/default.asp[*w3school.com/HTML*], lưu ý rằng chúng ta sẽ không đi quá sâu vào việc học HTML, bởi việc này có thể ảnh hướng đến tiến độ thực hiện của project, tại thời điểm này chúng ta chỉ cần học đủ để xây dựng project hoàn chỉnh.
 
-**Node.js và Javascript**
+=== Building the Project:
 
-Để tạo server dùng Node.js cần trang bị một số kiến thức cơ bản về  Javascript và Node.js, để học Javascript chúng ta có thể truy cập địa chỉ URL https://www.w3schools.com/js/default.asp[*w3school.com/Javascrpit*], với Node.js thì https://www.codeschool.com/courses/real-time-web-with-node-js[*codeschool.com*] thật sự hữu ích với người mới bắt đầu.
+**Required Components**
 
-=== Thực hiện
+  * [x] DHT11 sensor.
+  * [x] ESP8266 WiFi Uno Board.
+  * [x] Male-to-Female Jumper Wires.
+  * [x] 5k Ohm Resistors.
+  * [x] USB micro-B cable.
 
-**Linh kiện cần có**
+**Wiring**
 
-  * [x] Cảm biến DHT11
-  * [x] Board ESP8266 WiFi Uno
-  * [x] Dây nối male-female header
-  * [x] Điện trở 5K Ohm
-  * [x] Cable kết nối giữa board ESP8266 và máy tính
+Using the following diagram to assemble the circuit.
 
-**Đấu nối**
-
-Kết nối sơ đồ mạch điện như hình bên dưới
-
-.Kết nối DHT11 và ESP8266 WiFi Uno
+.Wiring the DHT11 and ESP8266 WiFi Uno Board.
 image::04-dht11/DHT11Connect.png[height=511, scaledwidth="50%", align="center"]

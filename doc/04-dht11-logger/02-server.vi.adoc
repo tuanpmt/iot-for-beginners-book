@@ -14,7 +14,7 @@ Về phía Web Server, chúng ta cần đảm bảo nó có thể phục vụ ch
 **Mã nguồn file `server.js`**
 [source, javascript]
 ----
-include::code/server.js[]
+include::code-{lang}/server.js[]
 ----
 
 **Giải thích mã nguồn**
@@ -50,7 +50,7 @@ Khi đã hoàn thành phần cơ bản chúng ta sẽ đi đến một ứng d�
 **Mã nguồn file `index.html`**
 [source, html]
 ----
-include::code/index.html[]
+include::code-{lang}/index.html[]
 ----
 
 **Giải thích mã nguồn**

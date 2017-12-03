@@ -14,7 +14,7 @@ image::04-dht11/install-lib.png[height=900, scaledwidth="75%", align="center"]
 
 [source, c]
 ----
-include::code/dht11-logger/dht11-logger.ino[]
+include::code-{lang}/dht11-logger/dht11-logger.ino[]
 ----
 
 <1> ESP8266 sẽ gửi dữ liệu lên server sau khi kết nối thành công đến server thông qua lệnh `client.print()`. Nội dung gửi :

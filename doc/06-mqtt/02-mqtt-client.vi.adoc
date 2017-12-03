@@ -88,7 +88,7 @@ Sau khi cài đặt xong, bạn có thể sử dụng module `mqtt` để thực
 .client-a.js
 [source, javascript]
 ----
-include::code/client-a.js[]
+include::code-{lang}/client-a.js[]
 ----
 
 **Mã nguồn của client B**
@@ -96,7 +96,7 @@ include::code/client-a.js[]
 .client-b.js
 [source, javascript]
 ----
-include::code/client-b.js[]
+include::code-{lang}/client-b.js[]
 ----
 
 Kết quả hiển thị như hình bên dưới:
@@ -118,10 +118,10 @@ Bạn có thể kiểm tra bằng cách mở 2 màn hình terminal, ở màn hì
 
 Các options:
 
-	* `-t` : MQTT topic, nơi sẽ thực hiện pushlish 1 message.
-	* `-h` : Xác định máy chủ sẽ kết nối đến.
-	* `-m` : Gửi 1 message dùng command line.
-	* `-v` : verbose, option cho phép ghi lại nhật kí hoạt động của các tập tin trong file cấu hình.
+    * `-t` : MQTT topic, nơi sẽ thực hiện pushlish 1 message.
+    * `-h` : Xác định máy chủ sẽ kết nối đến.
+    * `-m` : Gửi 1 message dùng command line.
+    * `-v` : verbose, option cho phép ghi lại nhật kí hoạt động của các tập tin trong file cấu hình.
 
 .Hình ảnh message được publish dùng command line
 image::06-mqtt/MQTTjsCommand.png[width=600, align="center"]
@@ -142,7 +142,7 @@ Trong phần này chúng ta sẽ thực hiện kết nối board ESP8266 WiFi Un
 
 [source, c]
 ----
-include::code/ESP8266PubSub/ESP8266PubSub.ino[]
+include::code-{lang}/ESP8266PubSub/ESP8266PubSub.ino[]
 ----
 
 **Giải thích mã nguồn:**
@@ -165,7 +165,7 @@ Tiếp theo, chúng ta sẽ tìm hiểu cách sử dụng thư viện ESP8266MQT
 
 [source, c]
 ----
-include::code/ESP8266MQTT/ESP8266MQTTClient.ino[]
+include::code-{lang}/ESP8266MQTT/ESP8266MQTTClient.ino[]
 ----
 
 *Giải thích mã nguồn*

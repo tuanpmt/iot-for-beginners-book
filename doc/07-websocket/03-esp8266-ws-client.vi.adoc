@@ -22,7 +22,7 @@ Với file `index.html` có chứa mã nguồn Javascript tạo kết nối đ�
 .index.html
 [source, html]
 ----
-include::code-vi/server/index.html[]
+include::code-{lang}/server/index.html[]
 ----
 
 === Node.js Websocket Server
@@ -33,7 +33,7 @@ Trong phần này chúng ta cần dùng thư viện Websocket `ws` https://githu
 .server.js
 [source, javascript]
 ----
-include::code-vi/server/server.js[]
+include::code-{lang}/server/server.js[]
 ----
 
 === ESP8266 Websocket Client
@@ -42,7 +42,7 @@ https://github.com/Links2004/arduinoWebSockets
 
 [source, c]
 ----
-include::code-vi/WebSocketClient/WebSocketClient.ino[]
+include::code-{lang}/WebSocketClient/WebSocketClient.ino[]
 ----
 
 .Click nút kiểm sẽ thay đổi trạng thái LED trên board
