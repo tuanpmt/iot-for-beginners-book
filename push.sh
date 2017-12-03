@@ -3,7 +3,7 @@
 
 # Fill this out with the correct org/repo
 ORG=tuanpmt
-REPO="iot-for-beginners-book"
+REPO=iot-for-beginners-book
 # This probably should match an email for one of your users.
 EMAIL=tuanpm@live.com
 

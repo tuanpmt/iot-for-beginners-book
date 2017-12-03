@@ -4,11 +4,12 @@ before_install:
   - gem install bundler
   - bundle install
 script:
-  - make html
-  - make pdf
+  - LANG=vi make html
+  - LANG=en make html
+  - LANG=vi make pdf
+  - LANG=en make pdf
 after_success:
-  - ./script/tag_on_master.sh
-  - ./script/push.sh
+  - ./push.sh
 env:
   global:
     - secure: "DA4m+7NgxPinsdZ6xi+558ilWqbfloDvCgacVPVqYfugqe0x7rDgJAwGqx8gHOlG84tqXIxUPNths92RKsx50EDTZcIo1LjF1rbEuSe7bdTLO0Sw+ipxgzP34Ys94/F87RG/Ah4jkeTsdP0fynPk6piFR5dgv34DE0lkEuhpDaQwZzJEjXnHR12kuUBgaE34IwdTdQ/wpYGv6Ev7ZutgYuHS1XAOujNO2zfuH8htjuY3nnwFQcdkMwYg0F5ROSFoSrCc1XxHI26NFQu/yx3NFzkY3lmjxv/EEi/HI7K/8QaPcKXsTpxwSCxQVbeF/gDjhLOGbcqUDHVEPDL+K2dk98+Qb9/U0xbB52vPEXrS8y2NNhUqbBZjSulzXXHUETi407JAAtbA7PIGxuENdSWlf7QHhSs5S8jkqBSxKG0tjUmyYUrGReWPLmjR9weN6o2tSiUE5pbPLxy0PByV6J7OF5mAHJGFUhSByum1WXIdOVZ3xDA7MfGjF6whCO30tCMOkGIImDz5F5RrUqrLsHjcezT0dSWvuAhcagu4l9VSlX2WZ6J7Zj93YfwYKOdeRkqZnQG6aGA4zNWXCePcw+A79kZKrEK2NJIHNVAAqnygnthgCzr5NVPimMpkYRP8Pw3iewKycC1EOMGiAPtrHURrd+P+GUqOuclP4lik7/FgecQ="
