@@ -22,3 +22,5 @@ $ LANG=vi make html
 
 == Contributing
 
+include::doc/contributing/00-index.en.adoc[]
+
