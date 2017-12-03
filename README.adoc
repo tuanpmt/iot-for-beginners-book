@@ -1,52 +1,24 @@
-= Internet Of Things cơ bản
+= Internet Of Things for beginners
 
-- install ruby, bundle
-- install component
-- Navigate to project root, run
+== About
+
+Welcome to the first edition of the *Internet Of Things for beginners* book.
+
+You can find this book online at:
+
+Currently support English and Vietnamese language
+
+== How To Generate the Book
+
+You can generate the e-book files manually with Asciidoctor. If you run the following you may actually get HTML, (Epub, Mobi - need to fix images dir) and PDF output files:
 
 ----
 $ bundle install
-$ bundle exec rake book:build
+$ LANG=en make pdf
+$ LANG=vi make pdf
+$ LANG=en make html
+$ LANG=vi make html
 ----
 
-- INSTALL wavedrom follow instal phatomjs and wavedrom-cli
-- Install mermaid (require nodejs)
+== Contributing
 
-[bash]
-....
-npm install -g mermaid
-....
-
-Update ruby
-
-----
-I suggest that you use RVM to install Ruby.
-
-curl -sSL https://get.rvm.io | bash -s stable --ruby
-You need to restart the terminal in order to run rvm:
-
-rvm install 2.2
-rvm use 2.2 --default
-gem install bundle
-----
-
-== Build
-
-[bash]
-----
-MASK=iotmaker-wm.png make
-----
-- MASK=iotmaker-wm.png
-- MASK=vtca-wm.png
-- MASK=techmaster-wm.png
-
-== Cover
-https://www.canva.com/design/DACdV5lAwLk/BhC23oPRb5KIXh5CgrZVMw/edit?layouts=&layoutQuery=free&utm_source=onboarding
-
-== Watermask
-
-https://www.canva.com/design/DACirlaFzGM/pOxjq4dO-OCckyKDYuu21Q/edit
-
-== Others
-
-Table: http://mrhaki.blogspot.com/2014/11/awesome-asciidoctor-styling-columns-and.html

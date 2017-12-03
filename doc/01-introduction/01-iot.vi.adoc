@@ -1,0 +1,75 @@
+== Internet Of Things (IoT)
+
+=== Internet of Things (IoT) là gì?
+
+[quote, Wikipedia]
+Internet of Things (IoT) - Mạng lưới vạn vật kết nối Internet là một kịch bản của thế giới, khi mà mỗi đồ vật, con người được cung cấp một định danh của riêng mình, và tất cả có khả năng truyền tải, trao đổi thông tin, dữ liệu qua một mạng duy nhất mà không cần đến sự tương tác trực tiếp giữa người với người, hay người với máy tính. IoT đã phát triển từ sự hội tụ của công nghệ không dây, công nghệ vi cơ điện tử và Internet[1]. Nói đơn giản là một tập hợp các thiết bị có khả năng kết nối với nhau, với Internet và với thế giới bên ngoài để thực hiện một công việc nào đó.
+**Link**: http://vi.wikipedia.org/wiki/Mạng_lưới_vạn_vật_kết_nối_Internet
+
+
+Internet of things (IoT) dùng để chỉ các đối tượng có thể được nhận biết cũng như chỉ sự tồn tại của chúng trong một kiến trúc tổng hòa mang tính kết nối: Mạng lưới vạn vật kết nối Internet, hay gọi đơn giản hơn là `Things`.
+
+IoT có thể là bộ cảm ứng được lắp ráp trong một chiếc tủ lạnh để ghi lại nhiệt độ, là một trái tim được cấy ghép trong cơ thể con người,... Hiểu đơn giản, IoT có thể khiến mọi vật giờ đây có thể giao tiếp với nhau dễ dàng hơn và ưu điểm lớn nhất của `“Thông minh”` là khả năng phòng ngừa và cảnh báo tại bất kì đâu.
+
+Cụm từ Internet of things được đưa ra bởi Kevin Ashton vào năm 1999, tiếp sau đó nó cũng được dùng nhiều trong các ấn phẩm đến từ các hãng và nhà phân tích. Họ cho rằng IoT là một hệ thống phức tạp, bởi nó là một lượng lớn các đường liên kết giữa máy móc, thiết bị và dịch vụ với nhau. Ban đầu, IoT không mang ý nghĩa tự động và thông minh. Về sau, người ta đã nghĩ đến khả năng kết hợp giữa hai khái niệm IoT - Autonomous control lại với nhau. Nó có thể quan sát sự thay đổi và phản hồi với môi trường xung quanh, cũng có thể tự điều khiển bản thân mà không cần kết nối mạng. Việc tích hợp trí thông minh vào IoT còn có thể giúp các thiết bị, máy móc, phần mềm thu thập và phân tích các dữ liệu điện tử của con người khi chúng ta tương tác với chúng. Xu hướng tất yếu trong tương lai, con người có thể giao tiếp với máy móc chỉ qua mạng internet không dây mà không cần thêm bất cứ hình thức trung gian nào khác.
+
+Câu hỏi đặt ra là, điều gì giúp IoT “thông minh” và “hiểu” con người? Ban đầu, người ta cho rằng Internet của vạn vật chủ yếu xoay quanh giao tiếp M2M (các thiết bị kết nối với nhau thông qua một thiết bị khác điều khiển). Nhưng khi hướng đến sự “thông minh hóa”, đó không chỉ là giao tiếp giữa M2M nữa mà cần phải đề cập đến các cảm biến (sensor). Và cũng đừng lầm tưởng rằng Sensor là một cỗ máy hoạt động dưới sự vận hành của các thiết bị khác mà thực chất, nó tương tự như đôi mắt và đôi tai của loài người với sự ghi nhận liên tục những đo lường, định lượng, thu thập dữ liệu từ thế giới bên ngoài. Suy cho cùng, Internet of things đem đến sự kết nối giữa máy móc và cảm biến, và nhờ đến dữ liệu điện toán đám mây để mã hóa dữ liệu. Những ứng dụng điện toán đám mây là mắt xích quan trọng giúp cho Internet of things có thể hoạt động nhờ sự phân tích, xử lí và sử dụng dữ liệu mà các cảm biến thu thập được.
+
+Tình hình trên thế giới hiện nay, tác động của IOT rất đa dạng và tích cực ở nhiều lĩnh vực: quản lý hạ tầng, y tế, xây dựng và tự động hóa, giao thông…. John Chambers (CEO của Cisco) đã công bố: Cho đến năm 2024 sẽ có 500 tỷ thiết bị được kết nối. Thực tế, con số này lớn hơn gần 100 lần số người trên Trái đất, điều đó cho thấy “vạn vật” nhiều hơn con người rất nhiều. Chúng ta đều biết ứng dụng IoT có thể “nói chuyện” với con người thông qua bàn phím, thiết bị cũng được thiết kế ngày càng hoàn thiện với nhiều cảm biến hơn để có thể giao tiếp một cách nhanh nhất và chính xác nhất với con người, thu thập dữ liệu đơn giản từ mỗi người chúng ta. Nhưng quan trọng nhất, tuy giao tiếp với con người nhưng ứng dụng IoT không phải là con người.
+
+Người ta cho rằng, IoT là chìa khóa của sự thành công, là bước ngoặt và cơ hội lớn của tương lai. Để không bị tụt lại phía sau, các chính phủ và doanh nghiệp cần có sự đổi mới và đầu tư mạnh tay hơn để phát triển các sản phẩm ứng dụng công nghệ Internet of things.
+
+Các hashtag: https://www.google.com/search?q=iot[*#IoT*] https://www.google.com/search?q=iot[*#InternetOfThings*]
+
+=== Hệ thống Internet of Things (IoT)
+
+Hệ thống IoT cho phép người dùng tiến sâu hơn vào việc tự động hóa, phân tích, tích hợp. Giúp cho việc cải thiện tầm nhìn, tính chính xác, nâng tầm các công nghệ về cảm biến, kết nối, robot để đạt hiệu quả cao nhất.
+
+Các hệ thống IoT phát triển, khai thác các tiến bộ của phần mềm, giảm giá thành khi xây dụng phần cứng và tận dụng các công nghệ hiện đại. Những cải tiến này làm thay đổi cách vận hành của quá trình sản xuất sản phẩm, dịch vụ, xã hội, kinh tế và ảnh hưởng đến cả chính trị
+
+==== Những điểm mấu chốt của IoT
+
+Những vấn đề quan trọng nhất của hệ thống IoT bao gồm trí thông minh nhân tạo, kết nối, cảm biến và các thiết bị nhỏ nhưng mang tính cơ động cao, chúng được mô tả sơ lược như bên dưới:
+
+- *AI (Artifical Intelligence)* - Hệ thống IoT về cơ bản được hiểu là làm cho mọi thiết bị trở nên *thông minh*, nghĩa là nó giúp nâng cao mọi khía cạnh của cuộc sống bằng những dữ liệu thu thập được, thông qua các thuật toán tính toán nhân tạo và kết nối mạng. Một ví dụ đơn giản như hộp đựng gạo của bạn, khi biết rằng gạo sắp hết, hệ thống tự động đặt một đơn hàng mới cho nhà cung cấp.
+- *Connectivity* - Là một đặc trưng cơ bản của IoT, hiện nay các mạng thiết bị đang trở nên phổ biến, nhiều mạng thiết bị ngày càng nhỏ hơn, rẻ hơn và được phát triển phù hợp với thực tế cũng như nhu cầu của người dùng .
+- *Sensors* - IoT sẽ mất đi sự quan trọng của mình nếu không có sensors. Các cảm biến hoạt động giống như một công cụ giúp IoT chuyển từ mạng lưới các thiết bị thụ động sang mạng lưới các thiết bị tích cực, đồng thời có thể tương tác với thế giới thực.
+- *Active Engagement* Ngày nay, phần lớn các tương tác của những công nghệ kết nối xảy ra 1 cách thụ động. IoT được cho là sẽ đem đến những hệ thống mang tích tích cực về nội dung, sản phẩm cũng như các dịch vụ gắn kết.
+- *Small Devices* - Như đã được dự đoán từ trước, các thiết bị ngày càng được tối ưu với mục đích nâng cao độ chính xác, khả năng mở rộng cũng như tính linh hoạt. Nó được thiết kế ngày càng nhỏ hơn, rẻ hơn và mạnh mẽ hơn theo thời gian.
+
+==== IoT − Những lợi ích mang lại
+
+Những lợi ích mà IoT đem lại được dàn trải hầu hết đến các tất cả các lĩnh vực trong đời sống, kinh doanh... Dưới đây liệt kê ngắn gọn một số tính năng hữu ích của IoT:
+
+- *Cải thiện việc gắn kết khách hàng* - Hệ thống IoT giúp phân tích các điểm mù hiện tại, tìm ra những sai sót về độ chính xác. IoT thay đổi điều này để mang lại nhiều sự gắn kết hơn và hiệu quả hơn với người dùng. Một ứng dụng tại các cửa hàng, dịch vụ iBeacon giúp tăng số lượng sản phẩm tới người tiêu dùng bằng cách chỉ dẫn người dùng tới khu vực cụ thể trong cửa hàng và đưa ra các gợi ý về sản phẩm. Chúng cung cấp các thông tin chi tiết, các đánh giá về sản phẩm,  ...Bên cạnh đó chúng cũng có khả năng cho phép người dùng chia sẻ các sản phẩm qua mạng xã hội ...
+- *Tối ưu hóa công nghệ* - giúp nâng cao trải nghiệm của khách hàng cũng như cải thiện việc sử dụng thiết bị và hỗ trợ cải tiến công nghệ.
+
+- *Giảm sự hao phí* - IoT giúp việc quản lí tài nguyên ở các lĩnh vực được cải thiện 1 cách rõ ràng. Các phân tích hiện tại thường cung cấp cho chúng ta cái nhìn ở khía cạnh bên ngoài, trong khi IoT cung cấp các dữ liêu, thông tin thực tế để quản lí tài nguyên một cách hiệu quả hơn.
+
+- *Tăng cường việc thu thập dữ liệu* - Thông thường, việc thu thập dữ liệu bị hạn chế do thiết kế hệ thống mang tính thụ động. IoT phá vỡ sự ràng buộc, giới hạn của thiết kế và tạo ra 1 hình ảnh chính xác của tất cả mọi thứ.
+
+==== IoT − Những thách thức gặp phải
+
+Mặc dù IoT mang lại khá nhiều lợi ích ấn tượng, nó cũng gặp phải những thách thức đáng kể. Dưới đây là 1 số vấn đề chính của IoT :
+
+- *Kiểm soát an ninh* - IoT tạo ra 1 hệ sinh thái mà ở đó các thiết bị kết nối liên tục và giao tiếp với nhau qua mạng lưới các kết nối. Tuy nhiên, hệ thống thường chưa chú trọng đến các biện pháp an ninh nhằm bảo mật thông tin, dẫn đến nó có thể gặp phải các cuộc tấn công nhằm lấy cắp thông tin của người dùng.
+- *Tính bảo mật* - Do tính bảo mật chưa cao cộng với bản chất của IoT là không cần nhiều sự tương tác của con người nên các kẻ tấn công có thể cung cấp các thông tin người dùng giả mạo.
+- *Tính phức tạp* - Một số hệ thống IoT có độ phức tạp về thiết kế và triển khai ứng dụng cũng như khó khăn trong việc bảo trì, nâng cấp  hệ thống do sử dụng nhiều công nghệ còn khá mới mẻ.
+- *Tính linh hoạt* - Có nhiều sự lo ngại khi đề cập đến tính linh hoạt của hệ thống IoT khi tích hợp với các hệ thống khác bởi các hệ thống khi kết hợp có thể xảy ra xung đột và các tính năng sẽ bị khóa lẫn nhau.
+- *Tuân thủ các tiêu chuẩn* - Giống như các công nghệ khác trong lĩnh vực thương mại, IoT cũng phải tuân thủ các tiêu chuẩn, quy định đã đặt ra trước đó. Tính phức tạp của IoT làm cho việc tuân thủ các tiêu chuẩn là một thử thách thực sự
+
+[.right.text-center]
+.Hình minh họa
+image::01-intro/01.iot-concept.png[Hình minh họa IoT, role="center", align="center", width=500]
+
+
+.Sự phát triển của iot dự đoán đến năm 2020
+image::01-intro/01.iot_growth_technology.png[Sự phát triển của iot dự đoán đến năm 2020, align="center", width=500]
+
+=== Những ứng dụng thực tế trong cuộc sống
+
+Những ứng dụng của IoT vào các lĩnh vực trong đời sống là vô cùng phong phú và đa dạng. Chúng ta sẽ cùng điểm qua một số ứng dụng điển hình đã mang lại `"tiếng tăm"` cho IoT:
+
+- *Smart Home* - Theo thống kê, smart home là ứng dụng liên quan đến IoT được tìm kiếm nhiều nhất trên Google. Smart Home là 1 ngôi nhà với rất nhiều tính năng tự động như bật máy điều không khí khi bạn sắp về tới nhà, tắt đèn ngay khi bạn rời khỏi nhà, mở khóa khi người thân trong gia đình đang ở cửa nhà, mở garage khi bạn lái xe đi làm về ... còn rất nhiều những tính năng giúp nâng cao chất lượng cuộc sống khi sử dụng smart home.
+- *Vật dụng mang theo trên người* - Có thể kể đến một số thiết bị như `Dashbon Mask`, đây là 1 chiếc smart headphone giúp bạn vừa có thể nghe nhạc với âm thanh có độ trung thực cao vừa có thể xem phim HD với máy chiếu ảo , hoặc `AMPL SmartBag` ba lô có pin dự phòng có thể sạc điện cho các thiết bị di động, kể cả máy tính.
+- *Connected cars* - Giúp nâng cao những trải nghiệm cho người dùng xe ôtô, 1 chiếc `Connected car` có thể tối ưu các hoạt động của nó như thông báo khi hết nhiên liệu, đưa ra các cảnh báo khi có vật tới gần hoặc mới đây nhất là xe điện tự lái của hãng Tesla...

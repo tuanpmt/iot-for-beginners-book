@@ -1,0 +1,36 @@
+[preface]
+= Lời mở đầu
+
+*Internet Of Things (IoT)* – *Internet vạn vật* dường như đang đứng trước một bước ngoặt để đi đến giai đoạn tiếp theo cho một thế giới hiện đại, văn minh. Đó là viễn cảnh mà mọi vật đều có thể kết nối với nhau thông qua Internet không dây. Các doanh nghiệp đang có xu hướng ứng dụng sản phẩm công nghệ IoT vào sản xuất ngày càng nhiều bởi thị trường sáng tạo tiềm năng và chi phí sản xuất ngày càng thấp.
+
+Chứng kiến sự phát triển như vũ bão của các sản phẩm ứng dụng công nghệ IoT và thị trường công nghệ Start up tiềm năng đang ngày càng sôi động hơn bao giờ hết, quyển sách này cung cấp các nội dung về IoT với triết lí Không chỉ là thực tế – không rời rạc, hướng đến những người trẻ tuổi đã, đang và muốn tập trung năng lực của mình cho không gian Internet Of Things. Mong muốn cho ra đời những sản phẩm độc đáo, sáng tạo, ngày càng hoàn thiện và đồng bộ để có thể đáp ứng nhu cầu của cuộc sống.
+
+Nội dung được thiết kế một cách cơ bản giúp học viên có cái nhìn tổng quan về việc xây dựng hệ thống, sản xuất thiết bị và dễ dàng tham gia vào lĩnh vực IoT mới mẻ.
+
+=== Đôi lời về tác giả
+
+Chủ biên của cuốn sách là ông https://twitter.com/tuanpmt[Phạm Minh Tuấn](https://github.com/tuanpmt[TuanPM]), có nhiều năm kinh nghiệm làm việc trong mảng IoT và phát triển các thư viện mã nguồn mở cho cộng đồng. Tác giả xây dựng cuốn sách này với mục đích đóng góp 1 phần nhỏ những kiến thức của mình vào sự phát triển của ngành công nghiệp vẫn còn mới mẻ nhưng rất tiềm năng này.
+
+=== Thuật ngữ hay sử dụng
+* `IoT` - Internet Of Things hay internet vạn vật.
+* `ESP8266` - Chip xử lí tích hợp thu phát WiFi.
+* `Git` - Trình quản lý phiên bản.
+* `Github` - Mạng xã hội dành cho lập trình viên.
+* `IDE` - Viết tắt của Integrated Development Enviroment - môi trường phát triển tích hợp.
+* `Compiler` - Trình biên dịch.
+* `Logic Level` - Mức điện áp để chip hiểu được (1 hay 0).
+
+=== Giải thích code trong bài
+
+[source, c]
+----
+void setup()
+{
+    //comment <1>
+    int a = 1;
+    a ++; <2>
+}
+----
+
+<1> Dòng này giải thích đây là comment (chú thích).
+<2> Dòng này giải thích biến `a` tăng thêm 1 đơn vị.

@@ -1,0 +1,4 @@
+:toc-title: Table of Content
+:figure-caption: Figure
+:table-caption: Table
+:esp: ESP8266

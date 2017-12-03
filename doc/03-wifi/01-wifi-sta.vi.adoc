@@ -1,0 +1,33 @@
+== Chế độ WiFi Station
+
+=== Kiến thức
+
+Để kết nối được vào mạng Internet, thì đầu tiên ESP8266 phải kết nối vào mạng WiFi nội bộ, và mạng WiFi nội bộ phải có kết nối WAN Internet. Đa phần các Modem hiện nay đều tích hợp luôn cả WiFi Access Point, do đó khá dễ dàng trong việc triển khai các ứng dụng IoT.
+
+Khi muốn kết nối vào mạng WiFi cục bộ thì ESP8266 cần phải hoạt động ở chế độ Station (STA), đồng thời nó phải được cung cấp tên (SSID) và mật khẩu mạng WiFi.
+
+Mỗi Access Point đều yêu cầu một phương thức mã hóa để Station sử dụng nhằm tạo kết nối - ví dụ các phương thức `WEP`, `WPA2`, tuy nhiên chúng ta có lẽ không cần quan tâm nhiều, vì ESP8266 sẽ tự động thực hiện các thao tác lựa chọn phương thức mã hóa.
+
+Khi kết nối thành công vào mạng WiFi thì ESP8266 sẽ khởi động DHCP Client (mặc định) để xin cấp phát địa chỉ IP trước khi bắt đầu các kết nối IP. Do đó, nếu như vì lý do gì đó, mà Access Point của bạn không có DHCP Server để cấp phát IP thì bạn phải cấu hình IP tĩnh cho ESP8266.
+
+=== Kết nối vào mạng WiFi nội bộ
+
+Với đoạn code này, nếu bạn cung cấp đúng `SSID` và `PASSWORD`, đồng thời Access Point hoạt động thì thiết bị sẽ kết nối và in ra Serial Terminal địa chỉ IP của ESP8266 trong mạng LAN
+[source, c]
+----
+include::code/WiFiClient/WiFiClient.ino[]
+----
+
+=== Sử dụng WiFiMulti
+
+Tuy nhiên, đôi lúc ứng dụng bạn cần `nồi đồng cối đá`, thì có 2-3 mạng WiFi để backup là bình thường, class WiFiMulti sẽ giúp bạn điều đó. Cùng với một hàm monitor đơn giản để báo cho các chức năng khác biết khi mạng đã được thiết lập.
+
+[source, c]
+----
+include::code/WiFiMulti/WiFiMulti.ino[]
+----
+
+Thực hiện sau khi kiểm tra mã nguồn:
+
+- <<select-arduino-board>>
+- <<arduino-flash>>

@@ -1,0 +1,67 @@
+== Cập nhật firmware từ xa
+
+Cập nhật firmware OTA (Over the Air) là tiến trình tải firmware mới vào ESP8266 module thay vì sử dụng cổng Serial. Tính năng này thực sự rất hữu dụng trong nhiều trường hợp giới hạn về kết nối vật lý đến ESP Module.
+
+OTA có thể thực hiện với:
+
+* Arduino IDE
+* Web Browser
+* HTTP Server
+
+Sử dụng OTA với tùy chọn dùng Arduino IDE trong quá trình phát triển, thử nghiệm, 2 tùy chọn còn lại phù hợp cho việc triển khai ứng dụng thực tế, cung cấp tính năng cập nhật OTA thông qua web hay sử dụng HTTP Server.
+
+Trong tất cả các trường hợp, thì Firmware hỗ trợ OTA phải được nạp lần đầu tiên qua cổng Serial, nếu mọi thứ hoạt động trơn tru, logic ứng dụng OTA hoạt động đúng thì có thể thực hiện việc cập nhật firmware thông qua OTA.
+
+Sẽ không có đảm bảo an ninh đối với quá trình cập nhật OTA bị hack. Nó phụ thuộc vào nhà phát triển đảm bảo việc cập nhật được phép từ nguồn hợp pháp, đáng tin cậy. Khi cập nhật hoàn tất, ESP8266 sẽ khởi động lại và thực thi code mới. Nhà phát triển phải đảm bảo ứng dụng thực trên module phải được tắt và khởi động lại 1 cách an toàn. Nội dung bên dưới cung cấp bổ sung các thông tin về an ninh, và an toàn cho tiến trình cập nhật OTA.
+
+=== Bảo mật
+
+Khi ESP8266 được phép thực thi OTA, có nghĩa nó được kết nối mạng không dây và có khả năng được cập nhập Sketch mới. Cho nên khả năng ESP8266 bị tấn công sẽ nhiều hơn và bị nạp bởi mã thực thi khác là rất cao. Để giảm khả năng bị tấn công cần xem xét bảo vệ cập nhật của bạn với một mật khẩu, cổng sử dụng cố định khác biệt, v.v…
+
+Kiểm tra những tính năng được cung cấp bởi thư viện ArduinoOTA thường xuyên, có thể được nâng cấp khả năng bảo vệ an toàn:
+
+[source, c]
+----
+void setPort(uint16_t port);
+void setHostname(const char* hostname);
+void setPassword(const char* password);
+----
+
+Một số chức năng bảo vệ đã được xây dựng trong và không yêu cầu bất kỳ mã hóa nào cho nhà phát triển. ArduinoOTA và espota.py sử dụng Digest-MD5 để chứng thực việc tải firmware lên. Đơn giản là đảm bảo tính toàn vẹn của firmware bằng việc tính MD5.
+
+Hãy phân tích rủi ro cho riêng ứng dụng của bạn và tùy thuộc vào ứng dụng mà quyết định những chức năng cũng như thư viện để thực hiện. Nếu cần thiết, có thể xem xét việc thực hiện các phương thức bảo vệ khỏi bị hack, ví dụ như cập nhật OTA chỉ cho tải lên chỉ theo lịch trình cụ thể, kích hoạt OTA chỉ được người dùng nhấn nút chuyên dụng “Cập nhật”, v.v…
+
+=== An toàn
+
+Quá trình OTA tiêu tốn nguồn tài nguyên và băng thông của ESP8266 khi tải lên. Sau đó, ESP8266 được khởi động lại và một Sketch mới được thực thi. Cần phân tích và kiểm tra ảnh hưởng của quá trình này tới các chức năng cũ và sketch mới của ESP module.
+
+Nếu ESP được đặt ở xa và điều khiển một vài thiết bị, ta nên chú ý tới hoạt động của thiết bị nếu thiết bị ngừng hoạt động đột xuất do quá trình cập nhật. Do đó, ta cần phải xác định được trạng thái làm việc an toàn của thiết bị trước quá trình cập nhật. Ví dụ, module được dùng để điều khiển hệ thống tưới nước tự động trong vườn. Nếu trong quá trình hoạt động mà hệ thống điều khiển bị tắt đột ngột và các van bị mở, thì cả vườn sẽ bị ngập nước.
+
+Các hàm sau đây được cung cấp bởi thư viện ArduinoOTA và được dùng để xử lý ứng dụng trong quá trình cập nhật OTA hoặc để xử lý khi OTA gặp lỗi:
+
+[source, c]
+----
+void onStart(OTA_CALLBACK(fn));
+void onEnd(OTA_CALLBACK(fn));
+void onProgress(OTA_CALLBACK_PROGRESS(fn));
+void onError(OTA_CALLBACK_ERROR (fn));
+----
+
+=== Yêu cầu căn bản
+
+Bộ nhớ Flash phải có đủ dung lượng để lưu cả sketch cũ (đang vận hành trên hệ thống) và sketch mới (cập nhật OTA).
+
+Hệ thống File và EEPROM cũng cần dung lượng để lưu trữ.
+
+*Hàm* `ESP.getFreeSketchSpace();` được dùng để kiểm tra dung lượng trống cho sketch mới.
+
+=== Update process - memory view
+
+* Sketch mới sẽ được chứa trong dung lượng trống gĩưa sketch cũ và spiff.
+* Trong lần reboot tiếp theo thì “eboot” bootloader kiểm tra các câu lệnh.
+* Sketch mới sẽ được copy.
+* Sketch mới khởi động.
+
+image::08-fota/update.png[width=400, role="center", align="center"]
+
+

@@ -1,0 +1,150 @@
+[[web-server]]
+== Web Server
+
+=== Web Server là gì?
+
+Web Server là một máy chủ Web mà khi có bất kỳ một Web Client nào (chẳng hạn Web Browser) truy cập vào, thì nó sẽ căn cứ trên các thông tin yêu cầu truy cập để xử lý, và phản hồi lại nội dung. Đa phần các nội dung Web Server phục vụ là HTML, Javascript, CSS, JSON và bao gồm cả các dữ liệu Binary.
+
+Mặc định các Web Server phục vụ trên Port 80, và 443 cho dịch vụ Web có bảo mật `HTTPS`
+
+=== HTML - Javascript - CSS
+
+HTML, Javascript và CSS là ba ngôn ngữ để xây dựng và phát triển Web. Những hiểu biết cơ bản về chúng sẽ tạo điều kiện thuận lợi cho các quá trình tiếp theo sau được dễ dàng hơn.
+
+==== HTML
+
+Viết đầy đủ là *Hyper Text Markup Language* - ngôn ngữ đánh dấu siêu văn bản dùng để cấu trúc nội dung của một trang Web, ví dụ như: chỉ định các đoạn văn bản, tiêu đề, bảng dữ liệu, hoặc nhúng hình ảnh hoặc video vào Web. Mỗi trang Web chứa một loạt các liên kết đến các trang khác được gọi là `hyperlinks` (siêu liên kết). Mỗi trang được tạo ra từ nhiều `tag` (thẻ) khác nhau, với cấu trúc một `tag` như sau
+
+.Cấu trúc 1 tag
+[source]
+....
+
+<tagname> nội dung tag...</tagname>
+
+....
+
+** Các tag thường đi theo cặp, bắt đầu bởi <tagname> và kết thúc bằng </tagname>
+
+IMPORTANT: Tag kết thúc phải có dấu gạch chéo `/` phía trước tên thẻ.
+
+Trang HTML cơ bản có thể được thấy như sau:
+
+[source,html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+</head>
+<body>
+
+	<h1>This is a Heading</h1>
+	<p>This is a paragraph.</p>
+
+</body>
+</html>
+----
+
+Với một số tag cơ bản như sau:
+
+* `<!DOCTYPE html>` cho biết là HTML5.
+* `<html>` root của trang HTML.
+* `<head>` chứa thông tin về tài liệu.
+* `<title>` phần tiêu đề trang.
+* `<body>` phần chứa nội dung trang hiển thị.
+* `<h1>` nơi chứa phần tiêu đề chính.
+* `<p>` phần ghi các đoạn văn bản.
+
+==== Javascript
+
+Javascript là một ngôn ngữ được thiết kế chủ yếu để thêm tương tác vào các trang Web, và tạo ra các ứng dụng Web.
+
+Các chương trình Javascript có thể được nhúng trực tiếp vào HTML của Web. Và tùy vào mục đích cụ thể, script có thể chạy khi mở trang Web, nhấp chuột, gõ phím, gửi biểu mẫu, cập nhật dữ liệu, giao tiếp với cơ sở dữ liệu...
+
+Để nhúng chương trình viết bằng Javascript vào trang HTML, chỉ cần thêm tag `<script>` và thuộc tính `type`. Có thể thêm phần này ở phần `<head>` hoặc phần `<body>` của HTML. Ví dụ sau đây minh họa việc thêm một chương trình Javascript vào phần thân (<body>) của HTML:
+
+[source,html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My first JavaScript page</title>
+</head>
+<body>
+
+
+  <script type="text/javascript">
+    // chương trình Javascript nên được viết ở đây
+    // ngay trước </body>
+  </script>
+</body>
+</html>
+----
+
+
+==== CSS
+
+CSS là từ viết tắt của *Cascading Style Sheets*, là một ngôn ngữ được thiết kế để xử lý giao diện Web, giúp các trang Web được đẹp hơn. CSS có thể kiểm soát được màu sắc của văn bản, phong chữ, kích cỡ chữ, khoảng cách giữa các đoạn văn, hình nền hoặc màu nền, và nhiều hiệu ứng khác.
+
+Một đoạn CSS bao gồm 4 phần như thế này:
+
+[source, css]
+----
+vùng-chọn {
+   thuộc-tính-a: giá-trị-x;
+   thuộc-tính-b: giá-trị-y;
+   .....
+}
+----
+
+Ví dụ về sử dụng CSS trong HTML
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first JavaScript page</title>
+  <style>
+    .class-select {
+      background-color: red;
+    }
+
+    #id-select {
+      background-color: green;
+    }
+
+    div {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="id-select"> css select by id </div>
+  <div class="class-select"> css select by class </div>
+</body>
+</html>
+----
+
+Với đoạn HTML bên trên, thì màu nền của tag div có id = `id-select` sẽ có màu xanh lá cây, tag div có class = `class-select` sẽ có màu đỏ, và chữ của tất cả những thẻ div có màu xanh nước biển.
+
+=== Ứng dụng điều khiển đèn LED thông qua Webserver
+
+ESP8266 hoàn toàn có thể thực hiện vai trò Web Server để phục vụ cho một vài kết nối đến, tận dụng giao diện Web để điều khiển, cấu hình cho nó.
+
+
+=== ESP8266 Web Server
+
+Với ứng dụng này, ESP8266 sẽ khởi tạo 1 Web Server, khi có bất kỳ client nào kết nối tới (Web Browser) thì ESP8266 sẽ gởi về 1 trang HTML với các thông tin để Client có thể điều khiển chớp tắt đèn LED của board.
+
+[source, c]
+----
+include::code/WebServer/WebServer.ino[]
+----
+
+Thực hiện sau khi kiểm tra mã nguồn:
+
+- <<select-arduino-board>>
+- <<arduino-flash>>
+
+=== Kết hợp WiFi AP và Web Server

@@ -1,0 +1,37 @@
+== C - Cheatsheet
+
+[cols="a,a", frame=none, grid=none]
+|===
+|
+[source, c]
+----
+include::code/c-cheatsheet.c[lines=1..56]
+----
+|
+[source, c]
+----
+include::code/c-cheatsheet.c[lines=57..112]
+----
+|
+[source, c]
+----
+include::code/c-cheatsheet.c[lines=114..178]
+----
+|
+[source, c]
+----
+include::code/c-cheatsheet.c[lines=179..244]
+----
+|
+[source, c]
+----
+include::code/c-cheatsheet.c[lines=245..272]
+----
+|
+[source, c]
+----
+include::code/c-cheatsheet.c[lines=273..302]
+----
+|===
+
+https://www.cheatography.com/ashlyn-black/cheat-sheets/c-reference/

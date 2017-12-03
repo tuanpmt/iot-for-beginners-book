@@ -1,0 +1,38 @@
+== Nút nhấn
+
+=== Kiến thức
+Nút nhấn sẽ giúp việc ESP8266 khởi động một hành động nào đó khi cần thiết. Trong nhiều ứng dụng chúng ta hầu như đều cần những kích hoạt từ bên ngoài. Xuyên suốt cuốn sách này, sẽ dùng nút nhấn để kích hoạt chạy các ứng dụng mẫu cũng như đèn LED để thông báo các trạng thái. Trong phần này, nhấn nút đèn LED sẽ chuyển trạng thái (từ sáng -> tắt và ngược lại).
+
+Đây là ví dụ đơn giản, trong thực tế việc xử lý nút nhấn khá phiền phức. Bởi vì nút nhấn vật lý khi được nhấn sẽ tạo ra hàng loạt các xung lên xuống (nhiễu, bouncing...). Thường thì chỉ cần đảm bảo mức Logic của chân đo được đã được giữ ổn định trong khoảng 100 mili giây là được xem đã ổn định.
+
+Ngoài cách dùng ngắt để xác định nút nhấn có được nhấn hay không - cách này sẽ tiết kiệm tài nguyên tính toán của CPU, nó chỉ được gọi khi có sự kiện xảy ra, thì còn một cách nữa là hỏi vòng: Cách này đỏi hỏi CPU liên tục kiểm tra xem mức Logic của nút nhấn. Đồng thời việc đáp ứng cũng không nhanh bằng sử dụng ngắt.
+
+image::02-helloworld/button-circuit.jpg[width=300, align="center", role="center"]
+
+NOTE: Yêu cầu: Nhấn nút (GPIO0) thì chớp tắt đèn LED (GPIO6) và in ra cổng Serial
+
+TIP: Mạch ESP8266 WiFi Uno đấu sẵn nút nhấn vào GPIO0
+
+Thực hiện sau khi kiểm tra mã nguồn:
+
+- <<select-arduino-board>>
+- <<arduino-flash>>
+
+=== Mã nguồn dùng hỏi vòng
+
+[source, c]
+----
+include::code/button-poll/button-poll.ino[]
+----
+
+=== Mã nguồn dùng ngắt
+
+[source, c]
+----
+include::code/button/button.ino[]
+----
+
+=== Các khái niệm
+* **Ngắt** Ngắt là một khái niệm liên quan nhiều đến phần cứng, một sự kiện nào đó xảy ra, bắt buộc CPU phải dừng các tác vụ bình thường khác đang thực thi để thực hiện tác vụ Ngắt. Ví dụ, cấu hình ngắt khi có thay đổi mức logic từ 1 về 0 (cạnh xuống) của GPIO, thì khi mức logic thay đổi trên GPIO đó, CPU sẽ ngay lập tức dừng và lưu các trạng thái tại chương trình chính và nhảy vào hàm ngắt để thực thi các lệnh trong đó.
+* **pull-up/pull-down** Đa số các chân GPIO của Chip đều có thể có 3 trạng thái, trạng thái là ngõ ra mức cao (logic 1), trạng thái là ngõ ra mức thấp (logic 0) và trạng thái ngõ vào (input). Ở trạng thái Input, thì các GPIO được cấu hình trở kháng cao (Hi-Z), hay còn gọi là trạng thái cách ly, không cho dòng điện đi qua, nhưng vẫn cảm nhận được điện áp. Ở trạng thái Hi-Z, nếu không xác định mức logic trước cho GPIO thì GPIO này bị thả trôi, nghĩa là rất dễ ảnh hưởng bởi môi trường, khi đọc về sẽ không đoán định được mức Logic. Pull-up là nối 1 điện trở với GPIO này lên mức logic 1, xác định trước 1 điện áp cho nó để đảm bảo không không có tác động điện nào thì nó là mức logic 1. Tương tự, pull-down xác định trước mức logic 0 cho GPIO.
+

@@ -1,0 +1,39 @@
+== WPS
+
+=== WPS là gì?
+
+Nếu đã từng cấu hình cho một router wifi, sẽ gặp qua các thuật ngữ WPS trong các menu cấu hình của router. Hoặc từng nhìn thấy một nút nhấn trên các router với chữ viết bên cạnh WPS. Vậy WPS là gì ? Quá trình thực hiện kết nối như thế nào ? Cũng như thực hiện WPS với ESP8266, là những những nội dung sẽ được nói đến ở phần này.
+
+WPS là từ viết tắc của Wifi Protected Setup, một phương thức giúp việc kết nối với mạng không dây giữa router và thiết bị kết nối không dây một cách nhanh chóng và dễ dàng, thay vì làm một cách thủ công: tìm mạng wifi cần kết nối và nhập mật khẩu để vào mạng wifi. WPS chỉ hoạt động khi cả hai thiết bị là router và thiết bị cần kết nối đến router có hổ trợ chuẩn bảo mật cá nhân WPA/WPA2.
+
+WPS có ba chế độ hoạt động : chế độ kết nối với mã PIN, chế độ kết nối bằng nút nhấn, và chế độ kết nối NFC - Near Field Communication (chưa phổ biến). Một trong những chế độ phổ biến và sẽ thực hiện trong phần này là chế độ kết nối bằng nút nhấn.
+
+Ở chế độ kết nối bằng nút nhấn, điều trước tiên cần thực hiện :
+
+- Nhấn nút WPS trên router, để giúp router vào chế độ bảo mật đặc biệt, ở chế độ này router sẽ cho phép các yêu cầu kết nối đến router từ các thiết bị WPS (các thiết bị có hổ trợ WPS).
+- Tiếp theo là nhấn nút nhấn ở thiết bị WPS. Nút nhấn này giúp thiết bị WPS kết nối đến router, việc kết nối này có thể thất bại nếu quá thời gian. Thời gian này được nhà sản xuất các thiết bị hổ trợ chế độ này quy đinh, khoảng từ 1 phút đến 5 phút.
+
+.Nút nhấn WPS trên router
+image::05-wificonfig/wps_button.jpg[WPS button, role="center", align="center", width=400]
+
+=== Thực hiện WPS với ESP8266
+
+ESP8266 hổ trợ hàm `WiFi.beginWPSConfig()` trong thư viện ESP8266WiFi. Với hàm này giúp ESP8266 vào chế độ cấu hình với WPS và kết nối đến mạng wifi của router. Ví dụ này ESP8266 sẽ được đưa sẳn vào chế độ WPS, mà không cần thêm nút nhấn nào.
+
+[NOTE]
+----
+- WPS chỉ có thể thực hiện khi ESP8266 ở chế độ STA (Station)
+- Router phải ở trong chế độ WPS trước
+----
+
+=== Code
+
+[source, c]
+----
+include::code/WPS/WPS.ino[]
+----
+
+Thực hiện sau khi kiểm tra mã nguồn:
+
+- <<select-arduino-board>>
+- <<arduino-flash>>

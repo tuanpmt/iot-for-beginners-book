@@ -1,0 +1,13 @@
+[[_websocket]]
+= Websocket
+
+include::01-websocket.{lang}.adoc[]
+
+include::02-esp8266-ws-server.{lang}.adoc[]
+
+include::03-esp8266-ws-client.{lang}.adoc[]
+
+== Tổng kết
+
+Việc sử dụng giao thức websocket sẽ có nhiều lợi ích cho các kết nối 2 chiều, luôn được duy trì và có độ trễ thấp.
+
