@@ -1,33 +1,33 @@
 == Node.js
 
-Node.js là một Javascript Run time Cross Platform (chạy đa hệ điều hành) được xây dựng dựa trên mã nguồn mở Google's V8 JavaScript engine cho Chrome (Browser). Node.js cho phép các lập trình viên có thể xây dựng ứng dụng Server Side, truy cập vào tài nguyên hệ thống và thực hiện được phần lớn các tác vụ hệ điều hành có thể thực hiện bằng ngôn ngữ Javascript, hoặc liên kết C++.
+Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine for Chrome. Node.js allows execution of JavaScript code on server-side, accesses system resources and runs most of OS task using JavaScript and C++ linking.
 
-Hiện nay trên thế giới đã có nhiều công ty ứng dụng Node.js xây dựng các hệ thống production lớn, như Paypal, hoặc các microservice dựa trên Node.js cũng được triển khai ở đa số các hãng hàng đầu về công nghệ.
+Lots of companies nowsaday implement Node.js in their production system (e.g Paypal). Node.js-based microservices are also deployed in many leading tech companies.
 
-Nền tảng Cloud của gần như tất cả các nhà phát triển lớn hiện nay đều hỗ trợ thực thi Node.js, điển hình như Amazon Lambda, Google Script, IBM Blumix, Microsoft Azure ...
+Cloud platforms of numerous companies support executing Node.js (e.g. Amazon Lambda, Google Script, IBM Blumix, Microsoft Azure)
 
-Ngôn ngữ lập trình Javascript được cải tiến liên tục, hiện nay là Ecmascript 6 (ES5, ES2015) và đang được cải tiến rất nhanh, với nhiều ưu điểm như dễ học, xúc tích, OOP...
+JavaScript is continuously improved with the latest version Ecmascript 6 (ES5, ES2015) and at an astouding pace. It comes with many benefits such as accessibility, simplicity, OOP, etc.
 
-Một lý do Node.js được ưa chuộng nữa là đa phần các lập trình viên viết Web, Mobile đều biết, và giờ đây, nhờ Node.js mà họ có thể triển khai các ứng dụng Server Side bằng Javascript, mà không cần dùng ngôn ngữ nào khác (như trước kia phải cần Java, PHP ...)
+Another reason for Node.js popularity is that most Web and Mobile developers already know JavaScript, now Node.js enables them to deploy applications on server-side without using another lanugage (historically Java, PHP, etc.)
 
-=== Lý do sử dụng Node.js trong cuốn sách này
+=== Why we use Node.js in this book
 
-Một hệ thống Internet Of Things đầy đủ khá phức tạp, bao gồm thiết bị, Server xử lý kết nối, Server dữ liệu (Database), các hệ thống cân bằng tải, các hệ thống phân thích, báo cáo dữ liệu, trí tuệ nhân tạo. Mô hình ví dụ của Google IoT Core
+A full-fledged Internet of Things is undoubtedly complicated: devices, server processing, database, analysis system, data reporting, artificial intelligence. A Google Iot Core diagram
 
 .Google IoT Core Diagram
 image::01-intro/benefits-diagram-2x.png[width=500, align="center"]
 
-`Server` là một thành phần không thể thiếu trong hệ thống IoT. Với nhiều ưu điểm của Node.js thì nó rất phù hợp trong việc phát triển các Server cho IoT trong tương lai. Ngoài ra, Node.js được cộng đồng hỗ trợ rất nhiều, và không khó để tìm thấy 1 package cần thiết, tiết kiệm rất nhiều thời gian phát triển ứng dụng.
+`Server` is a crucial part in an IoT system. With all its merits, Node.js is exellent for server-side development in IoT. Besides, Node.js is supported by an active community, finding a suitable package is efforless, which in turn saves lots of time.
 
-=== Cuốn sách này có hướng dẫn Node.js ?
+=== Does this book teach Node.js ?
 
-**Không**, nhưng bạn đừng vội thất vọng, các ứng dụng Node.js sử dụng để thực hiện các bài tập trong cuốn sách này khá đơn giản và `ít` mã nguồn, đủ cho bạn vẫn hiểu dù cho trước đây chưa bao giờ lập trình với Node.js.
+Regrettably **No**, but don't feel disappointed, Node.js applications in this book are quite simple and not so intensisve, just enough so you can get started with Node.js programming.
 
 == Sublime Text
 
-Nếu ở phần Chip, lập trình cho ESP8266 bạn đã có Arduino IDE, bao gồm cả trình soạn thảo. Nhưng với Node.js thì bạn cần 1 trình soạn thảo khác. Ngoài Sublime Text, bạn có thể lựa chọn các trình soạn thảo phổ biến hiện nay như `Atom`, `Visual Code`, nhưng đừng dại sử dụng Nodepad, mặc dù là vẫn được.
+We have Arduino IDE for programming ESP8266, but you still need another text editor for Node.js. Aside from Sublime Text, you might prefer others such as `Atom` or `Visual Code`; however, Notepad is not recommended.
 
-Sublime Text là một trình soạn thảo được nhiều lập trình viên ưu thích hàng đầu hiện nay, bởi nhiều lý do, trong đó tốc độ là quan trọng nhất. Nó thực sự nhanh, nhanh gần như là số 1 trong số các trình soạn thảo hiện nay. Ngoài ra nó miễn phí (lâu lâu nhắc mua, khung thoại mà nhiều lập trình viên bảo thiếu thì buồn).
+Sublime Text is among developers' first choice due to many reasons with speed is a major factor, sometimes considered to be the fastest. Also it's free (it frequently reminds you of purchase, which many developers find content with)
 
 .Sublime Text
 image::01-intro/sublime.png[Sublime Text, align="center", width=600]

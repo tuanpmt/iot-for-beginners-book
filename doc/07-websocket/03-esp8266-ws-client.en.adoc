@@ -1,39 +1,39 @@
-== Sử dụng ESP8266 như Websocket Client
+== Using ESP8266 as Websocket Client
 
-Trong một số ứng dụng khác, chúng ta có 1 Server Websocket để thực hiện các tác vụ thời gian thực như Ứng dụng điện thoại, trình duyệt Web. Thì ESP8266 có thể kết nối trực tiếp vào các server này như 1 Websocket Client để tiếp nhận, hoặc gởi thông tin thông qua Websocket.
+In some other applications, we have a WebSockets server to perform real-time tasks such as mobile applications, web applications. In this case, ESP8266 can directly connect to these servers as a WebSocket Client to receive, or send data via WebSockets.
 
-Một số dịch vụ sử dụng Websocket điển hình như dịch vụ tin nhắn https://slack.com[Slack], dịch vụ cơ sở dữ liệu thời gian thực https://firebase.google.com[Firebase]
+Some famous services use WebSockets such as messenger service https://slack.com[Slack], real-time database service https://firebase.google.com[Firebase]
 
-Ở phần này, chúng ta sẽ sử dụng Node.js để tự xây dựng 1 Web server, vừa đóng vai trò là 1 Websocket Server. Có những tính năng:
+In this part, we will use Node.js to build a Web server, it plays the roll of a WebSocket server. Which has features on:
 
-* Có thể cung cấp file `index.html` chứa các đoạn mã javascript tạo kết nối Websocket giữa trình duyệt với Server, giống như phần <<server-nodejs>>
-* Cho phép kết nối Websocket đến, bao gồm từ trình duyệt, hay từ ESP8266
-* Server sẽ broadcast tất cả các gói tin từ bất kỳ 1 client nào gởi đến, tới tất cả các client còn lại.
+* Provide the file `index.html` including javascript snippet code to create a WebSockets connection between browser and Server, it is like <<server-nodejs>>
+* Allow WebSockets connections, from web browsers, or from ESP8266
+* Server will broadcast all data packages from any client to all other clients.
 
-Với tính năng như trên thì bạn có thể hình dung như sau: Nếu 1 cửa sổ trình duyệt có kết nối Websocket đến Server, khi nhấn 1 nút kiểm, thì sẽ gởi về server trạng thái của nút kiểm đó. Ví dụ `LED_ON`, server nhận được sẽ gởi dữ liệu `LED_ON` đến các trình duyệt còn lại (hoặc bao gồm cả ESP8266), và trình duyệt còn lại sẽ hiển thị trạng thái nút kiểm này đang bật.
+With the features above, you can imagine like this: If web browser windows has WebSockets connections to Server, when a checkbox is checked, it send to server the checkbox status. For example `LED_ON`, after received, server will broadcast data `LED_ON` to all other browser (or ESP8266), and all other browser will display checkbox status as checked.
 
-.Hai cửa sổ trình duyệt sẽ hiển thị trạng thái nút kiểm giống nhau khi click thay đổi
+.Two browser windows will display checkbox's status the same when checked status changes
 image::07-websocket/same-ctrl.png[width=600, role="center", align="center"]
 
-=== Javascript Websocket Client trên trình duyệt
+=== Websocket Client Javascript on web browser
 
-Với file `index.html` có chứa mã nguồn Javascript tạo kết nối đến Websocket, để cùng thư mục với file `server.js`
+With `index.html` file which includes Javascript code to create connection to WebSockets, placed in the same directory with `server.js`
 
 .index.html
 [source, html]
 ----
-include::code/server/index.html[]
+include::code-en/server/index.html[]
 ----
 
 === Node.js Websocket Server
-Trong phần này chúng ta cần dùng thư viện Websocket `ws` https://github.com/websockets/ws. Bạn có thể cài đặt bằng cách thực thi lệnh:
+In this article, we use WebSockets library `ws` https://github.com/websockets/ws. You can install by run the command line:
 
 `npm install ws`
 
 .server.js
 [source, javascript]
 ----
-include::code/server/server.js[]
+include::code-en/server/server.js[]
 ----
 
 === ESP8266 Websocket Client
@@ -42,8 +42,8 @@ https://github.com/Links2004/arduinoWebSockets
 
 [source, c]
 ----
-include::code/WebSocketClient/WebSocketClient.ino[]
+include::code-en/WebSocketClient/WebSocketClient.ino[]
 ----
 
-.Click nút kiểm sẽ thay đổi trạng thái LED trên board
+.Click the checkbox will change LED's status on board
 image::07-websocket/browser-esp.png[width=600, role="center", align="center"]

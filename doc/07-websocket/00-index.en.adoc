@@ -7,7 +7,7 @@ include::02-esp8266-ws-server.{lang}.adoc[]
 
 include::03-esp8266-ws-client.{lang}.adoc[]
 
-== Tổng kết
+== Summary
 
-Việc sử dụng giao thức websocket sẽ có nhiều lợi ích cho các kết nối 2 chiều, luôn được duy trì và có độ trễ thấp.
+Using WebSocket protocol has bunch of advantages on two-ways connections, stable and minor latency.
 

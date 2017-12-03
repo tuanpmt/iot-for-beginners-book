@@ -1,13 +1,13 @@
-WebSoket là công nghệ hỗ trợ giao tiếp hai chiều giữa client và server bằng cách sử dụng một TCP socket để tạo một kết nối liên tục, hiệu quả và ít tốn kém. Mặc dù được thiết kế để chuyên sử dụng cho các ứng dụng web, lập trình viên vẫn có thể đưa chúng vào bất kì loại ứng dụng nào.
+WebSokets is an advanced technology that support two-ways communication between client and server by using TCP socket to create a  continuous, effective, and low cost connection. Although, it is built for web applications, developers might using it for any kind of projects.
 
-WebSockets mới xuất hiện trong HTML5, cho phép các kênh giao tiếp song song hai chiều và hiện đã được hỗ trợ trong nhiều trình duyệt. Kết nối được mở thông qua một HTTP request (yêu cầu HTTP), với những header đặc biệt thông báo cho Server (có hỗ trợ) chuyển sang kết nối Websocket. Kết nối này được duy trì để bạn có thể gởi và nhận dữ liệu một cách liên tục, không đứt quãng, và không cần bất kỳ HTTP header (overhead) nào nữa.
+WebSockets is newly introduced in HTML5, allowing bidirectional parallel communications and supported by most of web browsers. Communication is opened via an HTTP request, including special headers that notice Server (supported) switch to WebSocket connection. This connection is maintained then you can send and receive data continuously, no interruption, without any other HTTP header needed.
 
-Websocket hỗ trợ cho các trình duyệt phổ biến hiện nay như: Google Chrome, Microsoft Edge, Internet Explorer, Firefox, Safari và Opera.
+WebSockets supports most popular web browsers such as: Google Chrome, Microsoft Edge, Internet Explorer, Firefox, Safari and Opera.
 
-=== Ưu điểm
+=== Advantages
 
-WebSockets cung cấp khả năng giao tiếp hai chiều với kết nối được duy trì, có độ trễ thấp, giúp Server dễ dàng giao tiếp với Client. Do đó, websocket sẽ phù hợp cho các ứng dụng real-time, người dùng sẽ không mất thời gian phải reload lại trình duyệt để cập nhật thông tin mới nhất như khi sử dụng giao thức HTTP.
+WebSockets provides the ability on bidirectional connections which is continuously maintained, low latency, easy to communicate between Client and Server. That is why WebSockets is proper for real-time applications, end user do not need to reload their browser to update data like HTTP protocol.
 
-=== Nhược điểm
+=== Disadvantages
 
-Giao thức Websocket chưa được tất cả các trình duyệt đã có hiện nay hỗ trợ. Websocket cũng đòi hỏi các ứng dụng web trên server để hỗ trợ nó.
+WebSockets protocol has not been supported by all web browsers already. WebSockets also require to supported by web applications on server.

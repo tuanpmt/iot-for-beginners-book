@@ -10,7 +10,7 @@ Mở ví dụ: `File > Examples > ESP8266HTTPUpdateServer > WebUpdater`
 
 [source, c]
 ----
-include::code/WebUpdater/WebUpdater.ino[]
+include::code-vi/WebUpdater/WebUpdater.ino[]
 ----
 
 Cung cấp đúng SSID và mật khẩu mạng WiFi máy tính bạn đang dùng, nạp Firmware `WebUpdater` vào ESP8266 <<select-arduino-board>> và <<arduino-flash>>

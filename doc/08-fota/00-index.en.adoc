@@ -1,13 +1,13 @@
 [[_fota]]
 = Firmware update over the air (FOTA)
 
-Các phương pháp phát triển phần mềm và sản phẩm phổ biến hiện nay, thì xuất bản kết quả từng giai đoạn thường mang lại hiệu quả cao, sản phẩm có thể đến tay người dùng sớm, nhận được phản hồi sớm từ khách hàng, và được điều chỉnh để hợp lý hơn. Chính việc phát hành sản phẩm sớm thường sẽ ít tính năng và cần cập nhật thêm tính năng, nâng cao chất lượng sản phẩm trong tương lai.
+Among nowadays software development and products development processes, partially periodically public the result bring the most effective, products will earlier derive to end user, earlier get user's feedback, and more reasonable customized. The early public make products poor of features and need to update, and enrich products' quality in the future.
 
-Cập nhật ứng dụng từ xa trên các phần mềm điện thoại, máy tính đã rất phổ biến. Các phần mềm được cập nhật hàng tuần, tháng... để sửa lỗi, nâng cấp tính năng.
+Applications update over the air on mobile phone and PC is already popular. Software applications are updated weekly, monthly... to fix issues, upgrade features.
 
-Đối với các sản phẩm phần cứng cũng tương tự, chúng ta nên bổ sung các tính năng cập nhật từ xa ngay từ giai đoạn phát triển sản phẩm. Ngoài việc giúp nâng cấp các tính năng trong tương lai một cách dễ dàng, thì vấn để sửa lỗi, nâng cấp hệ thống từ xa sẽ giúp tiết kiệm được rất nhiều chi phí và nguồn lực.
+It is similar with hardware products, features should be updated over the air since the development phase. Beside the easy to update features in the future, issues fixing, system upgrade over the air will save a lot of costs and resources.
 
-Trong phần này, chúng ta sẽ tìm hiểu các phương pháp cập nhật từ xa cho ESP8266, làm sao để nạp Firmware không dây cho module, làm sao để ESP8266 có thể tự tải Firmware về, làm sao để ESP8266 có thể tự khởi động 1 HTTP Server để có giao diện Web upload firmware lên chip.
+In this article, we will study methods to update over the air for ESP8266, how to wireless flash the firmware for module, how ESP8266 can automatically download the firmware, how ESP8266 can automatically boots up an HTTP server to get the web interface then upload firmware onto chip.
 
 
 include::01-fota.{lang}.adoc[]

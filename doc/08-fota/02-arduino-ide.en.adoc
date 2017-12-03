@@ -1,94 +1,94 @@
-== OTA sử dụng Arduino IDE
+== OTA using Arduino IDE
 
-Thưc hiện OTA với Arduino IDE chỉ nên thưc hiện khi:
+OTA update with Arduino IDE should be done only if:
 
-* Sử dụng nạp firmware cho module ESP8266 thông qua WiFi mà không dùng cổng Serial
-* ESP8266 và máy tính chạy Arduino IDE sử dụng chung mạng WiFi nội bộ
-* ESP8266 đã kết nối thành công vào mạng WiFi
-* Nạp firmware đã hỗ trợ OTA thông qua cổng Serial trước đó
+* To upload firmware for ESP8266 module via WiFi without serial ports
+* ESP8266 and PC which run Arduino IDE are connected to the same local WiFi network
+* ESP8266 is successfully connected to WiFi network
+* Supported OTA firmware is flashed via serial ports previously
 
-Trước khi bắt đầu, cần phải chắc chắn Arduino IDE đã được cài đặt phiên bản mới nhất, bao gồm gói ESP8266 cho Arudino, và Python 2.7
+Before start, it is needed to ensure that the latest version of Arduino IDE is installed, including ESP8266 pack for Arduino, and Python 2.7
 
 [[ota-step1]]
-=== Bước 1: nạp firmware hỗ trợ OTA thông qua cổng Serial
+=== Step 1: Upload OTA supported firmware via serial ports
 
-Mở sketch ví dụ mẫu `BasicOTA.ino`. Vào File > Examples > ArduinoOTA.
+Open sample sketch `BasicOTA.ino`. Open File > Examples > ArduinoOTA.
 
-.Mở sketch ví dụ mẫu OTA
+.Open OTA sample sketch
 image::08-fota/00.png[width=400, role="center", align="center"]
 
-Cung cấp chính xác SSID và mật khẩu mạng WiFi đang dùng để ESP8266 có thể kết nối vào
+Provide the proper SSID and password of WiFi network for ESP8266 to connect
 
-.Cung cấp SSID và password
+.Provide SSID and password
 [source, c]
 ----
 const char* ssid = "..........";
 const char* password = "..........";
 ----
 
-NOTE: Tùy vào phiên bản và board ESP bạn sử dụng, bạn có thể thấy ``Upload Using:`` trong menu. Lựa chọn này sẽ không hoạt động và không ảnh hưởng tới lựa chọn của bạn. Chức năng này tương thích với các phiên bản OTA cũ và bị gỡ bỏ ở platform package version 2.2.0.
+NOTE: Base on IDE's version and using ESP board, you can see ``Upload Using:`` in menu. This option will not take effect to your choice. This feature is compatible with older OTA versions and be uninstall in platform package version 2.2.0.
 
-Upload sketch `Ctrl+U` Khi hoàn thành, mở Serial Monitor `Ctrl+Shift+M` (xem <<arudino-term>>) và kiểm tra module đã trup cập được WIFI chưa
+Upload sketch `Ctrl+U` When completed, open Serial Monitor `Ctrl+Shift+M` (reference <<arudino-term>>) and check if module is accessed to WiFi or not
 
-.Kiểm tra module ESP8266 đã truy cập được mạng WiFi nội bộ chưa
+.Check if ESP8266 module is accessed to local WiFi network or not
 image::08-fota/basicota.png[width=600, role="center", align="center"]
 
-NOTE: ESP module nên được reset sau khi Upload xong firmware
+NOTE: ESP module should be resetted after complete uploading firmware
 
 
 [source, c]
 ----
-include::code/BasicOTA/BasicOTA.ino[]
+include::code-en/BasicOTA/BasicOTA.ino[]
 ----
 
-=== Bước 2: Lựa chọn cổng nạp thông qua OTA
+=== Step 2: Chose uploading port via OTA
 
-Khi module kết nối tới mạng WiFi thành công, sau vài giây, cổng esp8266-ota sẽ xuất hiện trên Arduino IDE. Lúc này bạn hoàn toàn có thể bỏ kết nối Serial từ board mạch đến máy tính. Arduino IDE có thể nạp firmware mới thông qua WiFi. Chọn port với địa chỉ IP hiện trên cửa sổ Serial Monitor ở bước trước.
+When module is successfully connected to WiFi network, after some seconds, esp8266-ota port will appear on Arduino IDE. Now you can totally remove the serial connection from the board to your computer. Arduino IDE can flash new firmwares via WiFi. chose the port with IP address as shown in the Serial Monitor at the previous step.
 
-.Chọn cổng nạp từ Network
+.Chose the flashing port from Network
 image::08-fota/select-port.png[width=400, role="center", align="center"]
 
-NOTE: Nếu cổng OTA không hiện lên, bạn cần thoát Arduino IDE, và mở lại. Kiểm tra lại port OTA. Nếu vẫn tiếp tục không hiển thị cổng OTA, kiểm tra tưòng lửa của máy và các cài đặt trên router.
+NOTE: If OTA port does not appear, you neet to close Arduino IDE and restart. Check the OTA port again. If OTA port still not appears, check the computer firewall and other configurations on router.
 
-=== Bước 3: Sửa firmware mới và nạp lại thông qua WiFi
+=== Step 3: Modify new firmware and re-upload via WiFi
 
-Sau khi đã chọn đúng cổng nạp OTA, bạn hoàn toàn có thể sửa lại firmware mới và nạp thông qua WiFi, tuy nhiên cần lưu ý như sau:
+After chose the correct OTA flash port, you are totally able to modify the new firmware and re-upload via WiFi, but need to notice that:
 
-* Firmware mới phải đảm bảo kết nối đến WiFi không bị mất (ví dụ cấp sai mật khẩu)
-* Firmware mới phải có các hàm khởi tạo và xử lý OTA như <<ota-step1>>
+* New firmware must safely keeps the connection to WiFi (wrong-password-update for example)
+* New firmware must contains the OTA initialize and OTA processing like <<ota-step1>>
 
-.Nạp firmware thành công thông qua OTA
+.Success uploading firmware via OTA
 image::08-fota/ota-ok.png[width=400, role="center", align="center"]
 
-=== Sử dụng mật khẩu
+=== Using password
 
-Bảo vệ quá trình upload OTA với password là một quá trình khá đơn gỉản. Những việc bạn cần làm là bổ sung đoạn mã nguồn:
+Protecting OTA uploading process is quite simple. All you need to do is add the bellow code:
 
 [source, c]
 ----
 ArduinoOTA.setPassword((const char *)"your-password");
 ----
 
-Sau đó upload lại sketch một lần nữa (dùng OTA). Sau khi biên dịch và upload xong, cửa sổ sẽ hiện lên yêu cầu nhập password:
+After that, re-upload the sketch again (using OTA). After completely compile and upload, password requirement window will be shown:
 
-.Password cho OTA
+.Password for OTA
 image::08-fota/ota-pass.png[width=300, role="center", align="center"]
 
-Nhập password, nếu đúng, kết quả là thông báo `Authenticating...OK` và quá trình nạp diễn ra bình thường.
+Enter password, if correct, result is the notice `Authenticating...OK` and uploading process runs normally.
 
-Các lần nạp sau Arduino IDE sẽ nhớ mật khẩu và không hỏi lại, trừ khi bạn thay đổi mật khẩu OTA, và các bước xác thực không thành công, Arduino IDE sẽ hỏi lại bạn.
+Next uplading times, Arduino IDE remember the password and does not ask again, except you change the OTA password, and the authentication step is not success, Arduino IDE will ask it again.
 
-Cần lưu ý là password có thể dễ dàng thấy được, nếu IDE không được đóng sau lần upload cuối cùng. Việc này có thể được thực hiện bằng cách cho phép `Show verbose ouput during: upload` trong `File > Preferences` và upload lên module.
-
-
-=== Những sự cố thường gặp
-
-Nếu việc cập nhật OTA thất bại, bước đầu tiên bạn cần làm là kiểm tra phần báo lỗi hiện trên cửa sổ Log của Arduino IDE. Nếu việc này không giúp được bạn, hãy upload lại khi kiểm tra các thông tin của ESP hiện trên serial port.
+Keep in mind that password is easy to see, if IDE is not closed after the last uploading time. This can be done by `Show verbose ouput during: upload` in `File > Preferences` and upload to module.
 
 
-Các nguyên nhân phổ biến gây lỗi OTA như sau:
+=== Common errors
 
-* Không đủ dung lượng bộ nhớ trên chip (ví dụ như ESP01 với 512KB bộ nhớ flash không đủ cho OTA).
-* Khu vực dữ liệu cho SPIFFS quá nhiều, không còn đủ để chưa firmware, trong trường hợp bạn có 4MB Flash thì trường hợp này không xảy ra.
-* Khu vực bộ nhớ chưa firmware quá ít, tối thiểu là 512KB
-* Không reset module ESP sau lần upload đầu dùng Serial Port.
+If OTA update is failed, the first step you need to do is check the error message at Arduino IDE's Log windows. If it can not help, let's upload again after check informations of ESP on serial port.
+
+
+Popular causes of OTA error:
+
+* There is not enough free space on chip (ESP01 with 512KB flash memory is not enough for OTA).
+* Data zone for SPIFFS is too big, not enough space for firmware, in case you have 4MB Flash, this situation will not occur.
+* Memory zize for firmware is too small, minimum size should be 512KB
+* Do not reset ESP after the first uploading via serial port.

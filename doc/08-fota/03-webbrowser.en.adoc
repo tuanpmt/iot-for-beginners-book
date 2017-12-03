@@ -1,43 +1,43 @@
-== Cập nhật Firmware dùng Web Browser
+== Firmware using Web Browser
 
-Khi thực hiện cập nhật firmware dùng Web Browser, ESP8266 sẽ khởi động 1 HTTP Server, với 1 form upload. Khi truy cập đúng địa chỉ của nó, bạn sẽ được cung cấp 1 giao diện để chọn file binary, và upload lên Chip. Việc này hữu dụng khi không dùng Arudino IDE cho việc cập nhật, sử dụng luôn trình duyệt sẵn có. Hoặc tích hợp vào 1 ứng dụng mà bạn có thể muốn cập nhật nó trong tương.
+When updating firmware using Web Browser, ESP8266 will lunch an HTTP Server, with an uploading form. When access the correct address, you will get an interface to chose binary file, and upload to chip. This is useful if not using Arduino IDE for updating, using the already available browser. Or integrate into an application which you might want to update in the future.
 
-Cập nhật với web browser được thực hiện bằng thư viện `ESP8266HTTPUpdateServer` cùng với 2 thư viện khác `ESP8266WebServer` và `ESP8266mDNS` cho việc nhận diện ESP8266 trong mạng nội bộ.
+Updating via web browser is done by `ESP8266HTTPUpdateServer` library and 2 other libraries `ESP8266WebServer` and `ESP8266mDNS` for recognizing ESP8266 in the local network.
 
-=== Thực hiện
+=== Implementation
 
-Mở ví dụ: `File > Examples > ESP8266HTTPUpdateServer > WebUpdater`
+Open sample: `File > Examples > ESP8266HTTPUpdateServer > WebUpdater`
 
 [source, c]
 ----
-include::code/WebUpdater/WebUpdater.ino[]
+include::code-en/WebUpdater/WebUpdater.ino[]
 ----
 
-Cung cấp đúng SSID và mật khẩu mạng WiFi máy tính bạn đang dùng, nạp Firmware `WebUpdater` vào ESP8266 <<select-arduino-board>> và <<arduino-flash>>
+Provide the correct SSID, WiFi password you are using, flash firmware `WebUpdater` onto ESP8266 <<select-arduino-board>> and <<arduino-flash>>
 
-NOTE: Lưu ý là máy tính phải sử dụng mạng WiFi cùng với ESP8266
+NOTE: Notice that the computer should be in the same WiFi network with ESP8266
 
-Khi bạn không thể truy cập vào module ESP8266 theo công Serial, thì để nhận diện được địa chỉ IP của module trong mạng LAN, bạn cần chạy dịch vụ mDNS trên máy tính. Dịch vụ này sẵn có trong MacOS, tuy nhiên, với Linux thì bạn cần cài đặt Avahi: https://avahi.org/, còn Windows thì Bonjour: https://support.apple.com/downloads/bonjour_for_windows
+If you can not access to module ESP8266 via serial port, to recognize module's IP address in LAN, you can run the service mDNS on your computer. This service is already available in MacOS, however, in Linux, you should install Avahi: https://avahi.org/, and Bonjour for Windows: https://support.apple.com/downloads/bonjour_for_windows
 
-Với dịch vụ mDNS chạy trên máy tính, bạn dễ dàng truy cập vào ESP8266 theo đường dẫn http://esp8266-webupdate.local/update
+With mDNS service on the computer, you can easily access to ESP8266 via http://esp8266-webupdate.local/update
 
-.Giao diện Web cập nhật firmware
+.Web interface to update firmware
 image::08-fota/web-updater.png[width=600, role="center", align="center"]
 
-Bằng cách chọn file và nhấn cập nhật, ESP8266 sẽ tiến hành cập nhật firmware mới do bạn gởi lên. File này có thể được xuất ra bằng cách `Sketch > Export compiled Binary`, và file .bin sẽ nằm trong thư mục của Sketch
+By choosing file and press update, ESP8266 will update the new firmware you upload. This file can be exportd by `Sketch > Export compiled Binary`, and the .bin file will be placed in the folder of Sketch
 
-.Xuất file Binary
+.Export Binary file
 image::08-fota/export-fw.png[width=400, role="center", align="center"]
 
-NOTE: Khi đã nhập http://esp8266-webupdate.local/update mà không thưc hiện được, hãy thay  esp8266-webupdate với địa chỉ IP của module (bạn có thể xem trong modem/router, hay Serial Terminal). Ví dụ, nếu IP của module là `192.168.1.100` thì URL phải là http://192.168.1.100/update. Phương pháp này hữu hiệu trong trường hợp host software cài đặt ở bước 1 không hoạt động.
+NOTE: If you enter http://esp8266-webupdate.local/update but it is not affect, let's change esp8266-webupdate with the new IP address of module (you can find it at modem/router, or Serial Terminal). For example, if module's IP is `192.168.1.100` then the URL should be http://192.168.1.100/update. This method is useful incase of host software which installed at step 1 does not work.
 
-Nếu các bước diễn ra thành công tốt đẹp, thì trên trình duyệt và cửa sổ Serial Terminal (nếu mở) như hình
+If all above step works properly, on web browser and Serial Terminal (if opened) should look like this
 
-.Thực hiện thành công cập nhật Firmware sử dụng WebUpdater
+.Successfully update firmware using WebUpdater
 image::08-fota/finish.png[width=600, role="center", align="center"]
 
-=== Bảo mật
+=== Security
 
-Nếu bổ sung WebUpdater vào sản phẩm của mình, dĩ nhiên bạn sẽ không muốn người khác tự do đưa vào thiết bị 1 firmware khác. Hãy sử dụng hàm `httpUpdater.setup(&httpServer, update_path, update_username, update_password);` với các thông số username, password mà bắt buộc bạn phải nhập đúng mới được phép upload firmware mới.
+If you include WebUpdater into your product, of course you do not want any one else upload another firmware. Let's use the method `httpUpdater.setup(&httpServer, update_path, update_username, update_password);` with parameters username, password which you must enter the correctly to upload the new firmware.
 
-Mở ví dụ : `File > Examples > ESP8266HTTPUpdateServer > SecureWebUpdater` để xem chi tiết
+Open the sample: `File > Examples > ESP8266HTTPUpdateServer > SecureWebUpdater` for details

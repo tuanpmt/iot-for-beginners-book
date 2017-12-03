@@ -24,7 +24,7 @@ Bạn cần cung cấp SSID, mật khẩu WiFi chính xác, thực hiên <<selec
 
 [source, c]
 ----
-include::code/httpUpdate/httpUpdate.ino[]
+include::code-vi/httpUpdate/httpUpdate.ino[]
 ----
 
 <1> Phiên bản firmware của bạn, giả sử bạn thay đổi là `2.0` và đặt lên server, sau đó bạn đổi lại `1.0` và nạp vào board
@@ -52,7 +52,7 @@ Dựa trên kiến thức phần <<server-nodejs>>, chúng ta xây dựng 1 OTA 
 .server.js
 [source, javascript]
 ----
-include::code/ota-server/server.js[]
+include::code-vi/ota-server/server.js[]
 ----
 
 Thực thi `node server.js` để khởi động Server

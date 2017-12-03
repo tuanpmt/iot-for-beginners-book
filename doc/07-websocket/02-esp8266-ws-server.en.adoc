@@ -1,61 +1,61 @@
-== Sử dụng ESP8266 như Websocket Server
+== Using ESP8266 as WebSockets Server
 
-Trong phần này, chúng ta sẽ thiết lập ứng dụng sử dụng ESP8266 như 1 Websocket Server và Trình duyệt như là một Web Socket Client để cập nhật trạng thái nút nhấn, cũng như điều khiển đèn LED trên board thời gian thực thông qua Trình duyệt.
+In this article, we will configure application using ESP8266 as a WebSockets Server and browsers as WebSockets Client to update the status of a button, also control an LED on real-time board via web browser.
 
-=== Yêu cầu
+=== Requirement
 
-* Khởi động 1 Webserver (có hỗ trợ Websocket) trên chip ESP8266.
-* Khi truy cập vào địa chỉ IP của ESP8266 sẽ trả về 1 file HTML bao gồm nội dung của đoạn Javascript thiết lập kết nối Websocket đến ESP8266 đồng thời lắng nghe các gói tin từ ESP8266 Server.
-* Khi nhấn nút trên board ESP8266 sẽ gởi nội dung trạng thái nút nhất đến Web Browser hiển thị dạng hộp kiểm (checkbox), nhấn nút là có kiểm, không nhấn nút là không có kiểm.
-* Đồng thời khi nhấn hộp kiểm trên trình duyệt sẽ thay đổi trạng thái đèn LED trên board ESP8266.
+* Launch a WebServer (WebSockets supported) on ESP8266 MCU.
+* When access to IP address of ESP8266, it will return a HTML file including the content of Javascript that is create WebSockets connection to ESP8266, also listen to data packages from ESP8266 server.
+* When press the button on board, ESP8266 will send the button's status to web browser to display with checkbox, pressed is checked, not pressed not checked.
+* At the same time, when checkbox clicked on browser it will change status of the LED on ESP8266 board.
 
-=== Chuẩn bị
+=== Prepare
 
-Cài đặt thư viện, xem thêm <<install-library>>:
+Install libraries, for more information <<install-library>>:
 
 * https://github.com/me-no-dev/ESPAsyncWebServer
 * https://github.com/me-no-dev/ESPAsyncTCP
 
-==== Giới thiệu về thư viện ESPAsyncWebServer
+==== Introduction about ESPAsyncWebServer library
 
-Thư viện ESPAsyncWebServer dùng cho việc thiết lập HTTP server và websocket server cho module ESP8266, và xử lí các sự kiện trên server-client.
+ESPAsyncWebServer is used to configure HTTP server and WebSockets server for ESP8266 module, and process events on server-client.
 
-Để các chương trình dùng thư viện ESPAsyncWebserver hoat động, ta cần dùng thêm thư viện ESPAsyncTCP.
+In order to use ESPAsyncWebserver and run applications, we need to use ESPAsyncTCP.
 
-=== Đoạn code Javascript để tạo kết nối Web Socket
+=== Javascript snippet code to create Web Socket connection
 
 [source, javascript]
 ----
-include::code/client/client.js[]
+include::code-en/client/client.js[]
 ----
 
-=== Nhúng file HTML chứa đoạn code JS vào ESP8266
+=== Embedded HTML file include JS code into ESP8266
 
 [source, html]
 ----
-include::code/client/index.html[]
+include::code-en/client/index.html[]
 ----
 
-=== Chương trình hoàn chỉnh cho ESP8266
+=== Completed program for ESP8266
 
 [source, c]
 ----
-include::code/websocket/websocket.ino[]
+include::code-en/websocket/websocket.ino[]
 ----
 
-Thực hiện sau khi kiểm tra mã nguồn:
+Execute after check the source code:
 
 - <<select-arduino-board>>
 - <<arduino-flash>>
 
-=== Kết quả
+=== Result
 
-Sau khi biên dịch xong code trên Arduino, ta vào browser, truy cập vào địa chỉ IP của ESP8266 đã trả về trên Serial Monitor cùng với port đã thiết lập trên server, ở trường hợp này là 192.168.1.65:8000
+After completing compile code onto Arduino, open web browser, access into the IP address of ESP8266 returned on Serial Monitor with port configured on server, in this case is 192.168.1.65:8000
 
-.Cửa sổ trình duyệt có thể điều khiển ESP8266 thông qua Web Socket
+.Web browser can control ESP8266 via Web Socket
 image::07-websocket/websocketBrowser.png[width=500, role="center", align="center"]
 
-=== Video kết quả
+=== Result video
 
 video::pN3YSLiWbHk[youtube]
 

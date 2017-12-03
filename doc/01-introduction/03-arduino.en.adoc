@@ -1,43 +1,44 @@
-== Arduino là gì?
+== What is Arduino?
 
-.Board mạch Arduino
+.Arduino Board
 image::01-intro/01.arduino.png[width=300, align="center"]
 
-https://arduino.cc[*Arduino*] là một IDE tích hợp sẵn editor, compiler, programmer và đi kèm với nó là các firmware có bootloader, các bộ thư viện được xây dựng sẵn và dễ dàng tích hợp. Ngôn ngữ sử dụng là `C/C++`. Tất cả đều opensource và được đóng góp, phát triển hàng ngày bởi cộng đồng. Triết lý thiết kế và sử dụng của Arduino giúp cho người mới, không chuyên rất dễ tiếp cận, các công ty, hardware dễ dàng tích hợp. Tuy nhiên, với trình biên dịch `C/C++` và các thư viện chất lượng được xây dựng bên dưới thì mức độ phổ biến ngày càng tăng và hiệu năng thì không hề thua kém các trình biên dịch chuyên nghiệp cho chip khác.
+https://arduino.cc[*Arduino*] is an IDE with integrated editor, compiler, and programmer along with firmwares, pre-built libraries for ease of use. The language of use of `C/C++`. Everything is a collective effort of the community around it. Its philosophy and desgin aim at beginners, amateurs. However, its quality `C/C++` compiler and excellent libraries are what make Arduino popular and on the same league with other professional compilers.
 
-Đại diện cho **Arduino** ban đầu là chip AVR, nhưng sau này có rất nhiều nhà sản xuất sử dụng các chip khác nhau như **ARM, PIC, STM32** gần đây nhất là https://arduino.esp8266.vn[*ESP8266*], https://esp32.vn[*ESP32*], và http://riscv.vn[*RISCV*] với năng lực phần cứng và phần mềm đi kèm mạnh mẽ hơn nhiều.
+One advocate of **Arduino** was initially AVR, but gradually lots of other vendors like **ARM, PIC, STM32** and recently https://arduino.esp8266.vn[*ESP8266*], https://esp32.vn[*ESP32*], http://riscv.vn[*RISCV*] also joined in bringing in more powerful hardware and software capabilities.
 
-=== Một số đặc điểm của Arduino
 
-* Arduino che dấu đi sự phức tạp của điện tử bằng các khái niệm đơn giản, che đi sự phức tạp của phần mềm bằng các thủ tục ngắn gọn. Việc setup output cho 1 MCU bằng cách setup thanh ghi rõ ràng phức tạp đến độ người chuyên cũng phải lật datasheet ra xem, nhưng với Arduino thì chỉ cần gọi 1 hàm.
-* Bởi vì tính phổ biến và dễ dùng, với các thư viện được tích hợp sẵn. Bạn chỉ cần quan tâm đến tính năng sản phẩm mà bỏ qua các tiểu tiết (protocol, datasheet ...) Nên giúp các newbie không chuyên dễ dàng tiếp cận và làm ra các sản phẩm tuyệt vời mà không cần phải biết nhiều về điện tử.
-* Chính vì không quan tâm nhiều đến cách thức hoạt động của các Module đi kèm, nên đa phần người dùng sẽ khó xử lý được khi có các vấn đề phát sinh ngoài tầm của thư viện.
-* Các module prototype làm sẵn cho Arduino có độ bền không cao, mục tiêu đơn giản hóa quá trình làm sản phẩm.
+=== Some of Arduino's features
 
-=== Các lợi ích khi sử dụng Arduino
+* Arduino hides the complication of the hardware layer with simpler concepts, and the complexity of ht software with transparent instructions. Setting up a MCU's output using registers pose a certain degree of difficulty that even professionals need to look up the datasheet regularly, but Arduino does it with a single function.
+* Thanks to its popularity and easiness and vast libraries, you only need to concern with the final product without knowing much about the protocols, datasheet, etc. These things make it more approachable for newbies and enable them to build amazing things without any prior electronics knownledge.
+* On the other hand, not knowing enough is a drawback, the majority often find it impossible to handle issues outside the scope of the libraries.
+* Prototypes made with Arduino are not durable, their purpose is to cut time-to-market.
 
-* Thiết kế IDE tốt, có thể dễ dàng tích hợp nhiều loại compiler, nhiều loại hardware mà không hề giảm hiệu năng. Ví dụ: Arduino gốc cho AVR, nhưng có nhiều phiên bản cho STM32, PIC32, ESP8266, ESP32... tận dụng tối đa các thư viện sẵn có.
-* Các thư viện được viết dựa trên lớp API trên cùng, nên đa số các thư viện cho Arduino có thể dùng được cho tất cả các chip. Điển hình là Arduino cho ESP8266 có thể tận dụng trên 90% các thư viện cho Arduino khác
-* Trình biên dịch cho Arudino là C/C++, bạn có biết là khi biên dịch ESP8266 non-os SDK và ESP8266 Arduino cùng dùng chung trình biên dịch? Vậy thì hiệu năng không hề thua kém
-* Cách tổ chức các thư viện C/C++ theo dạng OOP giúp phân lớp, kế thừa và quản lý cực kỳ tốt cho các ứng dụng lớn .Các MCU ngày càng mạnh mẽ và ứng dụng cho nó sẽ ngày càng lớn. Các mô hình quản lý code đơn giản trước đây (thuần C) sẽ khó.
-* Các project cho Arduino đều opensource, bạn dễ dàng lấy nó và đưa vào sản phẩm production với chất lượng tốt và học hỏi được nhiều từ cách thức thiết kế chương trình của các bậc thầy.
-* Arduino chú trọng tính đa nền tảng, module hóa cao, phù hợp với các ứng dụng từ phức tạp tới cực kỳ phức tạp. Các ứng dụng kiểu này rất phổ biến trong thực tế. Nếu bạn không dùng C++, hoặc arduino mà gặp vấn đề về overcontrol thì nên thử qua Arduino.
-* Bạn sẽ tiết kiệm được rất rất nhiều thời gian cho việc tập trung vào tính năng sản phẩm đấy. Thời buổi này, thời gian là tiền và có quá nhiều thứ để học, làm thì nên ưu tiên đúng chỗ.
+=== Benefits of using Arduino
 
-=== Cộng đồng Arduino trên thế giới
+* IDE are designed to work well with many compilers and different hardwares without sacrificing for efficiency. For instance: Vanilla Arduino for AVR, but there are other versions for STM32, PIC32, ESP8266, ESP32, etc., optimising existing libraries.
+* Libraries are developed upon top layer APIs, thus these can be reused for all chips. In particular, Arduino for ESP8266 can utilise over 90% of Arduino libraries.
+* Arduino use C/C++ compiler. Did you know that ESP8266 non-os SDK and ESP8266 Arduino both use the same compiler? The end result is almost identical.
+* C/C++ libraries are structured using OOP thus benefit from layering, inheritance, and good management in large projects. MCUs will become more powerful and its applications are huge. Prior management model in C will be tough.
+* Projects for Arduino are always open source, you can use these for reference to your product for improvement and learn from the masters in the process
+* Arduino emphasises multi-platforms, high modularity, which is suitable for complex and highly complex applications. These applications are real life issues. If you are not familiar with C++, or experience problem with overcontrol then give Arduino a try
+* You can save a lot of time by focusing on what is important in these devices. Time is critical, so spend it wisely.
 
-* https://www.arduino.cc[*Arduino chính thức(IDE & AVR/ARM/x86 Board)*] https://www.arduino.cc
-* https://github.com/esp8266/Arduino[*Arduino cho ESP8266*] https://github.com/esp8266/Arduino
-* https://github.com/espressif/arduino-esp32[*Arduino cho ESP32*] https://github.com/espressif/arduino-esp32
-* http://chipkit.net/[*Arduino cho PIC32*] http://chipkit.net/
-* http://www.stm32duino.com/[*Arduino cho STM32*] http://www.stm32duino.com/
-* https://www.hackster.io/arduino[*Các dự án Arduino] https://www.hackster.io/arduino
+=== Arduino community around the world
 
-=== Arduino cho ESP8266 & board mạch ESP8266 WiFi Uno
+* https://www.arduino.cc[*Official Arduino website (IDE & AVR/ARM/x86 Board)*] https://www.arduino.cc
+* https://github.com/esp8266/Arduino[*Arduino for ESP8266*] https://github.com/esp8266/Arduino
+* https://github.com/espressif/arduino-esp32[*Arduino for ESP32*] https://github.com/espressif/arduino-esp32
+* http://chipkit.net/[*Arduino for PIC32*] http://chipkit.net/
+* http://www.stm32duino.com/[*Arduino for STM32*] http://www.stm32duino.com/
+* https://www.hackster.io/arduino[*Arduino projects] https://www.hackster.io/arduino
 
-https://github.com/iotmakervn/iot-wifi-uno-hw[Board mạch ESP8266 WiFi Uno] là một dự án mã nguồn mở giúp hỗ trợ môi trường phát triển Arduino cho ESP8266. Giúp bạn có thể viết 1 Sketch sử dụng các thư viện và hàm tương tự của Arduino, có thể chạy trực tiếp trên ESP8266 mà không cần bất kỳ vi điều khiển nào khác.
+=== Arduino for ESP8266 & ESP8266 WiFi Uno Board
 
-ESP8266 Arduino core đi kèm với thư viện kết nối WiFi hỗ trợ TCP, UDP và các ứng dụng HTTP, mDNS, SSDP, DNS Servers. Ngoài ra còn có thể thực hiện cập nhật OTA, sử dụng Filesystem dùng bộ nhớ Flash hay thẻ SD, điều khiển servos, ngoại vi SPI, I2C.
+https://github.com/iotmakervn/iot-wifi-uno-hw[ESP8266 WiFi Uno Board] is a open source project that promotes a development environment for ESP8266 using Arduino. This allows you to write a Sketch with similar libraries and functions to those of Arduino that can run directly on ESP8266 and no additional MCU is required.
+
+ESP8266 Arduino core are bundled with libraries for connecting WiFi that supports TCP, UDP and application protocols such as HTTP, mDNS, SSDP, DNS Servers. In addition, there are libraries for OTA firmware update, Filesystem running from Flash or SD card, servomotors, SPI, I2C peripherals.
 
 Link: https://github.com/iotmakervn/iot-wifi-uno-hw
 

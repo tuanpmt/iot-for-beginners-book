@@ -38,7 +38,7 @@ NOTE: ESP module nên được reset sau khi Upload xong firmware
 
 [source, c]
 ----
-include::code/BasicOTA/BasicOTA.ino[]
+include::code-vi/BasicOTA/BasicOTA.ino[]
 ----
 
 === Bước 2: Lựa chọn cổng nạp thông qua OTA

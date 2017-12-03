@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>ESP8266 WebSocket</title>
+</head>
+<body>
+    <div> Webscoket status <span id="status" style="font-weight: bold;"> disconnected </span> </div>
+    <div> ESP8266 Button Status <input type="checkbox" id="btn" name="btn" /> </div>
+    <div> Control LED <input type="checkbox" id="led" name="led" disabled="true" /> </div>
+
+    <script type="text/javascript">
+        var button = document.getElementById('btn');
+        var led = document.getElementById('led');
+        var url = window.location.host; // return current page's url and port
+        var ws = new WebSocket('ws://' + url + '/ws'); // open a websocket at port 8000
+        ws.onopen = function() // this function is executed when websocket is opened
+        {
+            document.getElementById('status').innerHTML = 'Connected';
+            led.disabled = false; // until websocket is opened, it is allowed
+        };
+
+        ws.onmessage = function(evt) // event triggered when client received data from server
+        {
+            if(evt.data == 'BTN_PRESSED') {
+                button.checked = true;
+            } else if(evt.data == 'BTN_RELEASE') {
+                button.checked = false;
+            }
+        };
+        ws.onclose = function() { // this function is executed when close websocket
+            led.disabled = true;
+            document.getElementById('status').innerHTML = 'Disconnected';
+        };
+
+        led.onchange = function() { // to turn on/off LED
+            var status = 'LED_OFF';
+            if (led.checked) {
+                status = 'LED_ON';
+            }
+            ws.send(status)
+        }
+
+    </script>
+</body>
+</html>
