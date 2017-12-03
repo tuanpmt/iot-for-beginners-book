@@ -223,4 +223,4 @@ footer:
       # content: $footer_recto_right_content
       #content: '{page-number} | {chapter-title}'
     #center:
-      content: 'https://iotmaker.vn'
+      content: 'https://tuanpmt.github.io/iot-for-beginners-book'

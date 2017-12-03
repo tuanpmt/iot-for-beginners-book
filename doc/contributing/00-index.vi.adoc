@@ -1,22 +1,22 @@
 [[_contributors]]
 = Lời kết
 
-=== Các thành viên tham gia đóng góp.
+=== Các thành viên tham gia đóng góp
 
 Để hoàn thiện nội dung của sách còn có sự đóng góp của các thành viên sau:
 
-- 1. https://twitter.com/tuanpmt[*Phạm Minh Tuấn (TuanPM)*] - Chủ biên
-- 2. https://github.com/lamnhatquan[*Lâm Nhật Quân*]
-- 3. https://github.com/trinhduc[*Trịnh Hoàng Đức*]
-- 4. *Lê Phương Trình* - Thực tập sinh tại IoT Maker Việt Nam - Sinh viên Đại Học Bách Khoa, chuyên ngành điện tử viễn thông, khóa học 2014.
-- 5. *Trần Phúc Vinh* - Thực tập sinh tại IoT Maker Việt Nam - Sinh viên Đại Học Bách Khoa, chuyên ngành kĩ thuật điện, khóa học 2014.
+- https://twitter.com/tuanpmt[*Phạm Minh Tuấn (TuanPM)*] - Chủ biên
+- https://github.com/lamnhatquan[*Lâm Nhật Quân*]
+- https://github.com/trinhduc[*Trịnh Hoàng Đức*]
+- *Lê Phương Trình* - Thực tập sinh tại IoT Maker Việt Nam - Sinh viên Đại Học Bách Khoa, chuyên ngành điện tử viễn thông, khóa học 2014.
+- *Trần Phúc Vinh* - Thực tập sinh tại IoT Maker Việt Nam - Sinh viên Đại Học Bách Khoa, chuyên ngành kĩ thuật điện, khóa học 2014.
 
 Các bạn biên dịch sang tiếng Anh:
 
 
 Và sử đóng góp của cộng đồng tại tại https://arduino.esp8266.vn
 
-=== Lời kết.
+=== Lời kết
 
 Thật vui khi bạn đã đồng hành cùng chúng tôi đi đến hết cuốn sách này. Mục đích của cuốn sách là giúp những người mới bắt đầu tìm hiểu về `Internet Of Things (IoT)` có kiến thức cơ bản và hướng đi chính xác để nghiên cứu về IoT một cách nhanh chóng hơn. Hi vọng cuốn sách sẽ đến tay thật nhiều bạn đam mê lĩnh vực công nghệ còn mới mẻ nhưng rất tiềm năng này. Chúc các bạn thành công trên con đường mà mình đã chọn.
 
@@ -24,9 +24,11 @@ Mặc dù đã cố gắng để hoàn thành tốt nhất nội dung cho cuốn
 
 Một số trang web đóng góp cho cộng đồng (mong nhận được sự chia sẻ và đóng góp của các bạn để cộng đồng IoT Việt Nam nói riêng cũng như cộng đồng kĩ thuật ngày một phát triển hơn):
 
-- 1. Về ESP8266 với Arduino : https://arduino.esp8266.vn/
-- 2. Về ESP32 : https://esp32.vn
+- Về ESP8266 với Arduino : https://arduino.esp8266.vn/
+- Về ESP32 : https://esp32.vn
 
 === Giấy phép sử dụng tài liệu.
+
+https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 image::contributions/Cc-by-nc-sa_icon.svg[width="200", role="center", align="center"]
