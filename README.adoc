@@ -7,13 +7,19 @@ image:https://img.shields.io/badge/Donate-PayPal-green.svg[Paypal donate, link="
 
 = Internet Of Things for beginners
 
-== About
-
 Welcome to the first edition of the *Internet Of Things for beginners* book.
 
-You can find this book online at:
+You can find this book online at: https://tuanpmt.github.io/iot-for-beginners-book or https://github.com/tuanpmt/iot-for-beginners-book/releases[Download PDF]
 
 Currently support English and Vietnamese language
+
+== Content
+
+- Ebook content focused on the knowledge that needs to be mastered for making Internet IoT products include the most common protocol standards for *IoT* such as HTTP, MQTT, Web Socket over IP network.
+Commonly used languages are C/C ++, NodeJS/Javascript, HTML, CSS
+- Main issues in releasing an IoT application, such as OTA, Configuring WiFi devices, and launching a Web Server.
+- Sample applications such as bitcoin pricing, temperature/humidity logger, control device over the Internet ...
+- The content is compiled using https://github.com/esp8266/Arduino[Arduino] for http://espressif.com/en/products/hardware/esp8266ex/overview[ESP8266]
 
 == How To Generate the Book
 
