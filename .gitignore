@@ -2,12 +2,7 @@ output
 .DS_Store
 
 # build artifacts
-/index.html
-index.pdf
-index.pdfmarks
-index.epub
-index-kf8.epub
-index.mobi
+
 ref
 diag*
 *.lock
