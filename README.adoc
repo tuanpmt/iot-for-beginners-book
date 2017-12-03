@@ -1,8 +1,8 @@
-image::https://travis-ci.org/tuanpmt/iot-for-beginners-book.png?branch=master[link="https://travis-ci.org/tuanpmt/iot-for-beginners-book"]
-image::http://hits.dwyl.io/tuanpmt/iot-for-beginners-book.svg[link="http://hits.dwyl.io/tuanpmt/iot-for-beginners-book"]
-image::https://img.shields.io/github/downloads/tuanpmt/iot-for-beginners-book/total.svg[Total download]
-image:https://img.shields.io/twitter/follow/espadrine.svg?style=social&label=Follow[Twitter Follow]
-image:https://img.shields.io/github/contributors/cdnjs/cdnjs.svg[GitHub contributors]
+image:https://travis-ci.org/tuanpmt/iot-for-beginners-book.png?branch=master[link="https://travis-ci.org/tuanpmt/iot-for-beginners-book"]
+image:http://hits.dwyl.io/tuanpmt/iot-for-beginners-book.svg[link="http://hits.dwyl.io/tuanpmt/iot-for-beginners-book"]
+image:https://img.shields.io/github/downloads/tuanpmt/iot-for-beginners-book/total.svg[Total download]
+image:https://img.shields.io/twitter/follow/tuanpmt.svg?style=social&label=Follow[Twitter Follow]
+image:https://img.shields.io/github/contributors/tuanpmt/iot-for-beginners-book.svg[GitHub contributors]
 image:https://img.shields.io/badge/Donate-PayPal-green.svg[Paypal donate, link="https://www.paypal.me/tuanpm"]
 
 = Internet Of Things for beginners
