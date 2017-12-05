@@ -5,6 +5,7 @@
 
 Để hoàn thiện nội dung của sách còn có sự đóng góp của các thành viên sau:
 
+<<<<<<< HEAD
 - https://twitter.com/tuanpmt[*Phạm Minh Tuấn (TuanPM)*] - Chủ biên
 - https://github.com/lamnhatquan[*Lâm Nhật Quân*]
 - https://github.com/trinhduc[*Trịnh Hoàng Đức*]
@@ -12,7 +13,6 @@
 - *Trần Phúc Vinh* - Thực tập sinh tại IoT Maker Việt Nam - Sinh viên Đại Học Bách Khoa, chuyên ngành kĩ thuật điện, khóa học 2014.
 
 Các bạn biên dịch sang tiếng Anh:
-
 
 Và sử đóng góp của cộng đồng tại tại https://arduino.esp8266.vn
 
