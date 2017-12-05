@@ -1,24 +1,23 @@
-/* CẤU TRÚC CƠ BẢN CỦA 1 SKETCH */
+/* BASIC STRUCTURE OF A SKETCH */
 void setup() {
   /*
-  Hàm được gọi khi bắt đầu sketch. Dùng để khởi tạo
-  biến, cấu hình chân, khởi tạo thư viện...
-  Code trong setup chỉ chạy 1 lần (khi khởi động hoặc
-  reset board)
+  This function is called at the starting point of sketch.
+  Using to initialize variables, ports configuration, import libraries, etc.
+  This code runs only one time(boots up or reset board)
   */
 }
 void loop() {
-  // Nội dung trong loop() lặp lại liên tục
+  // Infinitely repeated inside loop()
 }
 
-/* LỆNH RẺ NHÁNH */
-if (x < 5)      // thực thi code nếu x<5
+/* CONDITIONAL STATEMENTS */
+if (x < 5)      // execute if x<5
  { code }
-else if (x > 10)// thực thi code nếu x>10
+else if (x > 10)// execute if x>10
 	{ code }
-else { code }   // thực thi code các trường hợp còn lại
+else { code }   // execute in other cases
 
-switch (var) {  // thực thi case có giá trị var
+switch (var) {  // execute the case which match the value of var
 case 1:
 ...
 break;
@@ -29,116 +28,111 @@ default:
 ...
 }
 
-/* CÁC KIỂU VÒNG LẶP */
-/* Thực hiện code nếu x<5 */
+/* LOOPS */
+/* Execute if x<5 */
 while (x < 5) { code };
-/* Thực hiện code, so sánh, nếu x<0 tiếp tục thực hiện
-code */
+/* Execute code, evaluate, if x<0 continue the code */
 do { code } while(x < 0);
-/* Khởi tạo i, thực hiện code và tăng i nếu i < 10 */
+/* Initialize i, execute code then increase i if i < 10 */
 for (int i = 0; i < 10; i++) { code };
-/* Thoát ra vòng lặp (for, while, do-while) ngay lập
-tức */
+/* Quit the loop (for, while, do-while) instantly */
 break;
-/* Đi đến chu kì lặp tiếp theo của vòng lặp hiện tại */
+/* Jump to the next cycle of current loop */
 continue;
 
-/* CÁC ĐỊNH NGHĨA VỀ HÀM*/
+/* FUNCTIONAL DEFINITIONS*/
 <ret. type> <name>(<params>) { ... }
 int func_name(int x) { return x*2; }
-return x; // x phải trùng khớp với kiểủ trả về của hàm
-return;   // loại return dành cho hàm void
+return x; // x must match the return type of the function
+return;   // return type for void function
 
 /* INCLUDE */
-/* include thư viện chuẩn */
+/* include standard library */
 #include <stdio.h>
-/* include thư viện tạo bởi người dùng */
+/* include user’s library */
 #include "your-library.h"
 
-/* DỮ LIỆU KIỂU CHUỖI */
-/* Chuỗi bao gồm kí tự kết thúc chuỗi \0 (null) */
+/* STRING DATA TYPE */
+/* String included the end of string character \0 (null) */
 char str1[8] = {'A','r','d','u','i','n','o','\0'};
-/* Trình biên dịch tự động thêm kí tự \0 vào cuối
-chuỗi */
+/* Compiler automatically add the character \0 into the end of string */
 char str2[8] = {'A','r','d','u','i','n','o'};
-/* Khai báo chuỗi ,không khai báo số phần tử và gán giá
-trị chuỗi*/
+/* String delcareation, without the number of children and assign the value*/
 char str3[] = "Arduino";
-/* Khai báo và gán giá trị cho chuỗi */
+/* Declare and assign the value for string */
 char str4[8] = "Arduino";
 
-/* DỮ LIỆU KIỂU MẢNG */
-/* Khai báo mảng kiểu int có 6 phần tử và gán giá trị
-cho mỗi phần tử */
+/* ARRAY DATA TYPE */
+/* Declare an array of int with 6 children and assign values for each */
 int myPins[] = {2, 4, 8, 3, 6};
-/* Mảng kiểu int 6 phần tử và không gán giá trị */
+/* integer array of 6 children without values assignment */
 int myInts[6];
-myInts[0] = 42; // Gán giá trị 42 cho phần tử đầu tiên
-myInts[6] = 12; // LỖI ! chỉ số của mảng chỉ từ 0 đến 5
+myInts[0] = 42; // Assign the value of 42 for the first child
+myInts[6] = 12; // FAILED ! array index is only from 0 to 5
 
 /*Qualifiers*/
-static    // Không thay đổi giá trị ở các lần gọi
-volatile  // In RAM (Thường dùng trong ngắt)
-const     // Không đổi (chỉ đọc)
-PROGMEM   /* Cho phép lưu trữ dữ liệu trong bộ nhớ
-FLASH thay vì SRAM */
+static    // Does not change the value
+volatile  // In RAM (Usually used with interrupt)
+const     // Constant (read only)
+PROGMEM   /* Allow to save data in FLASH instead of SRAM */
 
-/* CÁC TOẢN TỬ, PHÉP TOÁN THƯỜNG DÙNG */
-/* Các toán tử thường dùng */
-=   toán tử bằng
-+   toán tử cộng
--   toán tử trừ
-*   toán tử nhân
-/   toán tử chia lấy phần nguyên
-%   toán tử chia lấy phần dư
-==  phép so sánh bằng
-!=  phép so sánh không không bằng (khác)
-<   phép so sánh nhỏ hơn
->   phép so sánh lớn hơn
-<=  phép so sánh nhỏ hơn hoặc bằng
->=  phép so sánh lớn hơn hoặc bằng
-&&  phép toán logic (AND)
-\|\|  phép toán logic (OR)
-!   phép toán logic (NOT)
+/* OPERATOS, OPERATIONS */
+/* Popular operators */
+=   assignment operator
++   addition operator
+-   subtraction operator
+*   multiply operator
+/   division operator
+%   modulus operator
+==  equality operator
+!=  inequality operator (different)
+<   less than operator
+>   greater than operator
+<=  less or equal operator
+>=  greater or equal operator &&  logical AND operator (AND)
+||  logical OR operator (OR)
+!   logical NOT operator (NOT)
 
-/* Các toán tử hợp nhất */
-++ tăng 1 đơn vị
--- giảm 1 đơn vị
-+= phép toán cộng và gán giá trị
+/* Compound assignment operators */
+++ increment operator
+-- subtraction operator
++= addition assignment operator
    ex: x = 5; x+= 1; //x = 6
--= phép toán trừ và gán giá trị
+-= subtraction assignment operator
    ex: x = 5; x-= 1; //x = 4
-*= phép toán nhân và gán giá trị
+*= multiplication assignment operator
    ex: x = 5; x*= 3; //x = 15
-/= phép toán chia lấy phần nguyên và gán giá trị
+/= division assignment operator
    ex: x = 6; x/= 2; //x = 3
-&= phép toán logic AND và gán giá trị
+&= logical AND assignment operator
    ex: x = 0b1010; x&= 0110; //x =0b0010
-\|= phép toán logic OR và gán giá trị
+|= logical OR assignment operator
    ex: x = 0b1010; x&= 0110; //x =0b1110
 
-/* Các toán tử trên bit */
+/* Bitwise operators */
 &   and          ^   xor
-<<  dịch trái    >>  dịch phảii
-\|  or           ~   not
+<<  bitwise left shift
+>>  bitwise right shift
+|  or           ~   not
 
-/* Thực thi với con trỏ */
-&reference:  // lấy địa chỉ của biến mà con trỏ trỏ tới
-*dereference:// lấy giá trị của biến mà con trỏ trỏ tới
+/* Pointer operators */
+&reference:  // address-of
+*dereference:// value-of
 
-/* HẰNG SỐ VÀ KIỂU DỮ LIỆU */
-123     Số thập phân
-0b0111  Số nhị phân
-0173    Số Octal - base 8
-0x7B    Số thập lục phân base 16
-123U    Số nguyên không dấu
-123L    Số nguyên có dấu 4 bytes
-123UL   Số nguyên không dấu 4bytes
-123.0   Số thực
-1.23e6  Số thực dùng cơ số mũ ex: 1.23*10^3 = 1230
+/* CONSTANS AND DATA TYPES */
+123     Decimal number
+0b0111  Binary number
+0173    Octal - base 8
+0x7B    Hexal - base 16
+123U    Unsigned integer
+123L    Signed integer 4 bytes
+123UL   Unsigned integer 4bytes
+123.0   Real number
+1.23e6  Real number with exponential
+ex: 1.23*10^3 = 1230
 
-/*PHẠM VI CỦA KIỂU DỮ LIỆU */
-boolean       true \| false
+/* DATA TYPE RANGE */
+boolean       true | false
 char          -128        - 127, 'a' '$' etc.
 unsigned char 0           - 255
 byte          0           - 255
@@ -151,7 +145,7 @@ float         -3.4028e+38 - 3.4028e+38
 double        -3.4028e+38 - 3.4028e+38
 void          i.e., no return value
 
-/* KHAI BÁO BIẾN */
+/* VARIABLES DECLARATION */
 int       a;
 int       a = 0b01111011, b = 0123, c = 1, d;
 float     fa = 1.0f;
@@ -164,287 +158,261 @@ char      *other_pointer = NULL;
  * Pin Input/Output
  * Digital I/O - pins 0-13 A0-A5
  */
-/* Thiết lập cấu hình chân */
+/* Ports configuration */
 pinMode(pin,[INPUT, OUTPUT, INPUT_PULLUP])
-/* Đọc giá trị của pin_6 và gán cho a */
+/* Read the value of port pin_6 and assign to a */
 int a = digitalRead(pin_6);
-/* Cài đặt mức HIGH/LOW cho pin_5 */
+/* Configure the HIGH/LOW level for pin_5 */
 digitalWrite(pin_5, [HIGH, LOW])
-/* Đọc giá trị của pin và gán cho a, pin từ A0-->A5 */
+/* Read values of pins and assign to a, pin A0-->A5 */
 int a = analogRead(pin)
 
-/* PWM ngõ ra - pins 3 5 6 9 10 11
+/* PWM output - pins 3 5 6 9 10 11
  * ESP8266: pin 0..16, range = 0..1023, 1KHz default
  */
-/* Đặt giá trị PWM cho pin */
+/* Assign PWM for pin */
 analogWrite(pin, value)
-/* ESP8266: thay đổi RANGE PWM output */
+/* ESP8266: change the PWM RANGE output */
 analogWriteRange(new_range)
-/* ESP8266: Tần số PWM output */
+/* ESP8266: PWM frequency output */
 analogWriteFreq(new_frequency)
 
 /* ADVANCED I/O */
-/* Tạo sóng vuông tần số freq_Hz với duty cycle=50% */
+/* Generate the square wave with frequency freq_Hz and duty cycle=50% */
 tone(pin, freq_Hz)
-/* Tạo sóng vuông tần số freq_Hz, duration mili giây */
+/* Generate the square wave with frequency freq_Hz, duration mili second */
 tone(pin, freq_Hz, duration_ms)
-/* Ngừng việc tạo sóng vuông khi dùng tone() */
+/* Stop generate the square wave with frequency tone() */
 noTone(pin)
-/* Dịch 1 byte, mỗi lần dịch 1 bit, dịch từ bit cao */
+/* Shift 1 byte, 1 bit each, left end first */
 shiftOut(dataPin, clockPin,[MSBFIRST, LSBFIRST], value)
-/* Trả về (ms) của xung HIGH/LOW trên chân pin */
+/* Return (ms) of pulse HIGH/LOW on port */
 unsigned long pulseIn(pin,[HIGH, LOW])
 
-/* CHỨC NĂNG NGẮT */
-/* Thiết lập chức năng ngắt ở các chân digital */
+/* INTERRUPT FUNCTION */
+/* Configure interrupt function on ports */
 attachInterrupt(interrupt, func, mode)
 /*
-interrupt: số ngắt (thường là chân sử dụng chức năng
-ngắt)
-func : hàm sẽ được gọi khi ngắt xảy ra (lưu ý : hàm
-không có tham số đầu vào cũng như kiểu trả về)
-mode : gồm các chế độ LOW,CHANGE, RISING, FALLING. Ngắt
-sẽ được kích hoạt khi chân ngắt ở mode tương ứng
+interrupt: number of interruption (normally interrupt ports)
+func : called on interrupt (notice : there is no attributes and return type)
+mode : including LOW,CHANGE, RISING, FALLING. Interruption will be triggered when the interrupt ports match the corresponding mode
 */
-/* Vô hiệu hóa ngắt interrupt */
+/* Disable interrupt */
 detachInterrupt(interrupt)
-/* Vô hiệu hóa tấ cả các ngắt */
+/* Disable all interrupts */
 noInterrupts()
-/* Cho phép tái ngắt sau khi dùng noInterrupts() */
+/* Allow interrupt after unsigned noInterrupts() */
 interrupts()
 
 /*************************************************
- *            THƯ VIỆN PHỔ BIẾN                 *
+ *            POPULAR LIBRARIES                 *
  *************************************************/
 
 /*************************************************
  *                     Serial                    *
- *Thư viện giao tiếp với PC hoặc thông qua RX/TX*
+ *Library to communicate with PC or via RX/TX*
  *************************************************/
-/* Thiết lập giao tiếp serial-UART với tốc độ speed */
+/* Configure the connection serial-UART with speed */
 begin(long speed)
-/* Vô hiệu hóa giao tiếp serial */
+/* Disable serial connection */
 end()
-/* Trả về số bytes có sẵn để đọc */
+/* Return number of bytes to read */
 int available()
-/* đọc dữ liệu đến từ serial (trả về byte đầu tiên của
-dữ liệu từ serial hoặc -1 nếu dữ liệu không có */
+/* read data from serial (return the first byte of serial data or -1 if there is no data */
 int read()
-/* Chờ quá trình truyền dữ liệu serial hoàn tất */
+/* Wait for the completion of serial data transfer */
 flush()
-/* In ra serial port dữ liệu data (với bất kì kiểu dữ
-liệu nào được thiết lập */
+/* Output data to serial port (with any type of configured data */
 print(data)
-/* Tương tự như print(data) nhưng sau khi in ra serial
--port, con trỏ sẽ xuống dòng tiếp theo */
+/* Same with print(data) but after print serial-port, cursor jump to the next line */
 println(data)
-/* Gửi dữ liệu value/string/array đến serial port */
+/* Send data value/string/array to serial port */
 write(byte)
-/* Hàm được gọi khi có dữ liệu đến từ chân RX */
+/* Function called when there is data comes from RX pin */
 SerialEvent()
 
 /*************************************************
  *                  Servo.h                      *
- *     Thư viện hỗ trợ điều khiển động cơ servo *
+ *     Library support to control servo motor *
  *************************************************/
 /*
-Thiết lập chân kết nối với servo và độ rộng xung
-pin : Chân kết nối với servo
-[min_uS, max_uS] : Độ rộng xung tính theo us tương ứng
-với góc xoay từ 0 đến 180
+Setup port to connect with servo and the pulse’s width
+pin : Port to connect with servo
+[min_uS, max_uS] : Pulse’s width by us accompany with rotation angle from 0 to 180
 */
 attach(pin, [min_uS, max_uS])
-/* Ghi dữ liệu góc xoay cho động cơ angle từ 0~180 */
+/* Write rotation angle data 0~180 */
 write(angle)
-/* Viết giá trị để điều khiển góc quay cho servo, giá
-trị từ 700 ~ 2300 */
+/* Write the value to control rotation angle for servo, value from 700 ~ 2300 */
 writeMicroseconds(uS)
-/* Đọc giá trị góc xoay (0 đến 180 độ) */
+/* Read the value of rotation angle (0 to 180) */
 int read()
-/* Trả về true nếu biến servo đã kết nối đến pin */
+/* Return true if servo connected to pin */
 bool attached()
-/* Gỡ bỏ biến servo ra khỏi chân đã kết nối */
+/* Detach servo variable from the connected pin */
 detach()
 
 /*************************************************
  *                       Wire.h                  *
- *               Dùng trong giao tiếp I2C        *
+ *               Used with I2C connection        *
  *************************************************/
- /* Master khởi tạo thư viện Wire với giao tiếp I2C */
+ /* Master initialize the Wire library with I2C connection */
 begin()
-/* Slave tham gia vào kết nối i2C, addr là 7 bits địa
-chỉ của slave */
+/* Slave join the i2C connection, addr is the 7 address bits of slave */
 begin(addr)
 /*
-Master yêu cầu 1 số byte từ slave:
-address: 7bits địa chỉ của slave.
-count: Số lượng byte master yêu cầu
-stop: Kiểu boolean, nếu true, master tín hiệu stop sau
-khi yêu cầu và giải phóng bus I2C, nếu false, master
-gửi yêu cầu restart để giữ kết nối
+Master request some bytes from slave:
+address: 7bits of address of slave.
+count: Number of requested bytes from master
+stop: Boolean, if true, master stop after request and release I2C bus, if false, master request to restart to keep the connection
 */
 requestFrom(address, count, stop)
-/* Gửi tín hiệu bắt đầu, truyền dữ liệu đến slave có
-địa chỉ addr */
+/* Send the begin signal, data send to the slave with address addr */
 beginTransmission(addr)
-/* Gửi dữ liệu (1 byte)đến slave */
+/* Send data (1 byte) to slave */
 send(byte)
-/* Gửi dữ liệu (string) đến slave */
+/* Send data (string) to slave */
 send(char * string)
-/* Gửi dữ liệu (1 mảng )với số byte là size */
+/* Send data (an array )with number of byte is size */
 send(byte * data, size)
-/* Gửi tín hiệu kết thúc truyền dữ liệu tới slave */
+/* Send stop signal to slave */
 endTransmission()
-/* Trả về số byte availabe sau khi đọc bởi read() */
+/* Return available byte after read by read() */
 int available()
-/* truy xuất đến 1 byte đã truyền từ slave đến master
-hoặc truyền ở chiều ngược lại khi nhận được
-requestFrom. Trả về byte tiếp theo đã nhận được */
+/* Access to 1 byte transmitted from slave to master
+Or in the reverse direction when received the requestFrom. Return the next received byte */
 byte receive()
-/* Hàm handler sẽ được gọi khi slave nhận dữ liệu */
+/* handler function is called when slave received data */
 onReceive(handler)
-/* Handler sẽ được gọi khi master yêu cầu dữ liệu */
+/* Handler is called when master request data */
 onRequest(handler)
 
 /*************************************************
  *                    ESP8266                   *
  *************************************************/
 
-/* Dùng khi chương trình cần thực thi nhiều tác vụ cùng
-một lúc, thư viện hỗ trợ <Scheduler.h> */
+/* Use when the program need to executes multiple tasks at the same time, support library <Scheduler.h> */
 void yield();
-/* Reset chip ESP */
+/* Reset ESP */
 void ESP.reset();
-/* Trả về kích thước vùng nhớ trống ở heap */
+/* Return the size of free memory in heap */
 uint32_t ESP.getFreeHeap();
-/* Trả về ID của chip ESP */
+/* Return ID of ESP chip */
 uint32_t ESP.getChipId();
 
-/*  CHẾ ĐỘ CẤU HÌNH WIFI STATION */
-/* Thiết lập chế độ station */
+/*  WIFI STATION CONFIGURATION MODE */
+/* Station mode configuration */
 WiFi.mode(WIFI_STA);
-/* Kết nối đến AP */
+/* Connect to AP */
 WiFi.begin(ssid, password);
-/* Ngắt kết nối đến network wifi hiện tại */
+/* Disconnect to the current network wifi */
 bool WiFi.disconnect();
-/* Trả về địa chỉ IP của station */
+/* Return IP address of current station */
 WiFi.localIP();
-/* Trả về trạng thái khi kết nối đến AP */
+/* Return connection status when connected to AP */
 WiFi.status();
-/* Trả về tên của netwwork WiFi đã kết nối */
+/* Return the name of connected network WiFi */
 WiFi.SSID();
-/* Trả về cường độ của WiFi (đơn vị dBm) */
+/* Return strength of WiFi (dBm) */
 WiFi.RSSI();
-/* Bắt đầu thiết lập chế độ WPS */
+/* Begin configure WPS mode */
 WiFi.beginWPSConfig();
-/* Bắt đầu thiết lập chế độ smart config */
+/* Begin configure the smart configure mode */
 WiFi.beginSmartConfig();
 
-/* CHẾ ĐỘ CẤU HÌNH WIFI SOFT ACCESS POINT (AP) */
-/* Khởi tạo 1 AP với tên và password */
+/* WIFI SOFT ACCESS POINT (AP) MODE */
+/* Declare an AP with name and password */
 WiFi.softAP(ssid, password);
-/* Khởi tạo 1 AP và thiết lập cấu hình cho AP gồm địa
-chỉ IP, gateway và subnet */
+/* Declare an AP and set up the AP with IP address, gateway and subnet */
 WiFi.softAPConfig (local_ip, gateway, subnet);
-/* Trả về số station đã kết nối đến AP */
+/* Return the number of stations connected to AP */
 WiFi.softAPgetStationNum();
-/* Ngắt kết nối của các station */
+/* Disconnect stations */
 WiFi.softAPdisconnect(wifioff);
-/* Trả về địa chỉ IP của AP */
+/* Return IP address of AP */
 WiFi.softAPIP();
-/* Trả về địa chỉ MAC của AP */
+/* Return MAC address of AP */
 WiFi.softAPmacAddress(mac);
 
 /* WIFI FEATURES */
 /* SCAN */
-/* Thiết lập chế độ Station */
+/* Set up station mode */
 WiFi.mode(WIFI_STA);
-/* Scan và trả về số lượng network avalable */
+/* Scan and return the number of available network */
 WiFi.scanNetworks();
-/* Trả về tên của network (kiểu string) ở vị trí num */
+/* Return name of network (string format) at position num */
 WiFi.SSID(num).c_str();
-/* Trả về thông tin của tất cả các network */
+/* Return information of all networks */
 WiFi.getNetworkInfo(networkItem,&ssid,
 &encryptionType, &RSSI,*&BSSID, &channel, &isHidden)
 
 /* DIAGNOSTICS */
 /*
-* Mục đích : chuẩn đoán, cung cấp thông tin và khắc
-* phục sự cố khi không kết nối đến net work WiFi
+* Objectives : Analyze, provide information an repair when there is no connection to WiFi network
 */
-/* In ra serial các chuẩn đoán thông tin của network */
+/* Print out serially diagnostic result of network */
 WiFi.printDiag(Serial);
-/* Enable chế độ debug */
+/* Enable debug mode */
 Serial.setDebugOutput(true);
 
 /* WEBSERVER */
-/* Máy chủ TCP tại port 80 sẽ phản hồi các HTTP request
-được gửi lên từ client */
+/* Host TCP at port 80 response HTTP requests from client */
 ESP8266WebServer server (80);
-/* Server bắt đầu lắng nghe các client */
+/* Server begins to listen clients */
 server.begin();
-/* Viết dữ liệu đến các client */
+/* Write data to clients */
 server.write(buf, len)
-/* Khởi tạo server ở địa chỉ URL, handleRoot là nội
-dung hoặc hàm sẽ thực hiện */
+/* Set up server at URL, handleRoot is the content or function will be executed */
 server.on ( "URL", handleRoot );
-/* Server tương tác với client để gửi, nhận dữ liệu */
+/* Server react with clients to send, receive data */
 server.handleClient();
-/* Trả về 1 nếu biến val có tồn tại trên server */
+/* Return 1 if val is exist on server */
 server.hasArg(val)
-/* Lấy giá trị của biến val trên server */
+/* Get value of variable val on server */
 server.arg(val);
-/* Gửi yêu cầu cập nhật dữ liệu từ server:
+/* Request update data from server:
 code : HTTP code
-text/html : Định dạng trả về là file HTML
-content: Nội dung sẽ trả về từ phía server */
+text/html : Returned format is HTML
+content: Content returned from server */
 server.send (code, "text/html",content);
 
 /* MQTT */
 /*
-Các thư viện hỗ trợ giao thức MQTT dành cho ESP8266
-trên arduino thường sử dụng là ESP8266MQTTClient
-và PubSubClient. Phần này giải thích các hàm của các
-thư viện
+Libraries which support MQTT prototype for ESP8266
+on arduino usually used is ESP8266MQTTClient and PubSubClient. Bellow content explain functions of libraries
 */
-/* Các hàm của thư viện ESP8266MQTTClient*/
-/* Khai báo 1 biến mqtt thuộc class MQTTClient */
+/* Functions of ESP8266MQTTClient library*/
+/* Declare a MQTTClient variable mqtt */
 MQTTClient mqtt;
-/* Lấy dữ liệu nhận được từ topic đã subcribe */
+/* Get data from subscribed topic */
 mqtt.onData([](String topic, String data, bool cont)
-/* Hủy subcribe topic /qos0 */
+/* Unsubscribe topic /qos0 */
 mqtt.unSubscribe("/qos0");
-/* Thực hiện subscribe topic và publish các message */
+/*Subscribe topic and publish messages */
 mqtt.onSubscribe([](int sub_id)
-/* Publish 1 message "qos0" đến topic /qos0 với QoS =0,
-và Retain = 0 */
+/* Publish a message "qos0" to topic /qos0 with QoS =0,
+and Retain = 0 */
 mqtt.publish("/qos0", "qos0", 0, 0);
-/* Kết nối đến server MQTT */
+/* Connect to server MQTT */
 mqtt.onConnect([]()
-/* Subscribe topic và nhận message tại topic /qos0 */
+/* Subscribe topic and receive message at topic /qos0 */
 mqtt.subscribe("/qos0", 0)
-/* Bắt đầu truyền nhận dữ liệu với broker MQTT có url
-mqtt://test.mosquitto.org tại port 1883 */
+/* Begin to transfer data with broker MQTT at url
+mqtt://test.mosquitto.org port 1883 */
 mqtt.begin("mqtt://test.mosquitto.org:1883")
-/* Hàm được gọi trong loop() nhằm khởi tạo MQTT, kiểm
-tra xử lí các dữ liệu từ các topic, kiểm tra các thuộc
-tính của giao thức như gói keep-a-live, QoS... */
+/* Function called inside loop() to initialize MQTT, check and process data from topics, check attributes of prototypes such as keep-a-live, QoS... */
 mqtt.handle();
 
-/* Các hàm của thư viện PubSubClient*/
-/* Khai báo biến espClient thuộc đối tượng client trong
-class PubSubClient */
+/* Functions of PubSubClient library*/
+/* Declare PubSubClient variable espClient */
 PubSubClient client(espClient);
-/* Publish gói tin "Connected!" đến topic ESP8266 */
+/* Publish data pack "Connected!" to topic ESP8266 */
 client.publish("ESP8266", "Connected!");
-/* Subscribe để nhận các message từ topic ESP8266 */
+/* Subscribe to receive messages from topic ESP8266 */
 client.subscribe("ESP8266");
-/* Cài đặt server lắng nghe client ở port 1883 */
+/* Set up server to listen client at port 1883 */
 client.setServer(url_server, 1883);
-/* Gọi hàm callback để thực hiện các chức năng
-publish/subcribe */
+/* Callback function to publish/subscribe */
 client.setCallback(callback);
-/* Hàm được gọi trong loop() nhằm khởi tạo MQTT, kiểm tra
-xử lí các dữ liệu từ các topic, kiểm tra các thuộc tính
-của giao thức như gói keep-a-live, gói tin QoS... */
+/* Function called inside loop() to initialize MQTT, check and process data from topics, check attributes of prototypes such as keep-a-live, QoS data pack... */
 client.loop();

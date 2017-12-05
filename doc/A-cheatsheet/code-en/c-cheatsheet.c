@@ -1,28 +1,25 @@
-/* CẤU TRÚC CƠ BẢN */
-Viết chú thích trên 1 dòng dùng //
-      ex: x++ ; // tăng x 1 đơn vị
-/* */ Viết chú thích trên nhiều dòng.
+/* BASIC STRUCTURE */
+Comment on one line using //
+      ex: x++ ; // increase x by 1
+/* */ Comment on multiple lines.
 ex : /*************************
-      * Chú thích được viết   *
-      *    trên nhiều dòng    *
+      * Comment on   *
+      *    multiple lines *
       ************************/
-/* CẤU TRÚC 1 CHƯƠNG TRÌNH */
-#include <stdio.h>//include thư viện chuẩn của C
-#include "iLib.h" //include thư viện tạo bởi người dùng
-int global_var;   //biến được dùng  trong chương trình
-/* Khai báo hàm bắt đầu của 1 chương trình C với kiểu
-trả về là integer. Đối số arg kiểu int được truyền vào
-hàm */
+/* PROGRAM STRUCTURE */
+#include <stdio.h>//include the C standard library #include "iLib.h" //include user’s library
+int global_var;   //global variable
+/* Declare begin function, return type is integer. Attribute arg of type integer */
 int main (int arg){
- float local_var ; // Biến chỉ được dùng trong hàm main
- Lệnh 1
+ float local_var ; // Local variable for main function
+ Statement 1
  ...
- Lệnh n ;
-return 0; //chương trình thực hiện thành công và thoát
+ Statement n ;
+return 0; //program successfully run then return
 }
 
-/*KIỂU DỮ LIỆU VÀ PHẠM VI */
-boolean       true \| false
+/*DATA TYPE AND RANGE */
+boolean       true | false
 char          -128         -  127, 'a' '$' etc.
 unsigned char 0            -  255
 byte          0            -  255
@@ -35,131 +32,114 @@ float         -3.4028e+38  -  3.4028e+38
 double        -3.4028e+38  -  3.4028e+38
 void          i.e., no return value
 
-/* ĐẶT TÊN BIẾN */
-/* Đặt tên đúng */
-int x;            // Một biến
-int x = 1;        // Biến được khai báo và khởi tạo
-float x, y, z;    // Nhiều biến cùng kiểu dữ liệu
-const int x = 88; // Biễn tĩnh, không ghi được
-int tenBien1ok;   // Đặt tên biến này đúng
+/* VARIABLE NAMING */
+/* Correct naming */
+int x;            // A variable
+int x = 1;        // Variable declared and initialized
+float x, y, z;    // Multiple variables with the same type
+const int x = 88; // Constant variable, can not override
+int tenBien1ok;   // Correct naming
 int ten_bien_nay_ok;
-/* Đặt tên sai */
-int 2001_tensai;  // Vì số ở đầu
-int ten-sai;      // Dấu '-' không phải là alphanumberic
-int while;        // Sai, vì dùng từ khóa vòng lặp while
+/* Incorrect naming */
+int 2001_tensai;  // Incorrect, starting with number character
+int ten-sai;      // '-' is not alphanumberic
+int while;        // Wrong, using keyword while
 
-/* HẰNG SỐ VÀ KIỂU DỮ LIỆU */
-123      Số thập phân
-0b0111   Số nhị phân
-0173     Số Octal - base 8
-0x7B     Số thập lục phân base 16
-123U     Số nguyên không dấu
-123L     Số nguyên có dấu 4 bytes
-123UL    Số nguyên không dấu 4bytes
-123.0    Số thực
-1.23e6   Số thực dùng cơ số mũ ex: 1.23*10^3 = 1230
-/* định nghĩa hằng số a kiểu nguyên, có giá trị là 1 */
+/* CONSTANTS AND DATA TYPES */
+123     Decimal number
+0b0111  Binary number
+0173    Octal - base 8
+0x7B    Hexal - base 16
+123U    Unsigned integer
+123L    Signed integer 4 bytes
+123UL   Unsigned integer 4bytes
+123.0   Real number
+1.23e6  Real number with exponential
+ex: 1.23*10^3 = 1230
+/* Define integer constant a, with value 1 */
 const int a = 1;
-/* Định nghĩa hằng số x kiểu thực, có giá trị là 4.0 */
+/* Define float constant x, with value 4.0 */
 const float x = 4;
-/* Định nghĩa hằng số c kiểu integer có giá trị 49 */
-const c = ‘1’; // Kí tự 1 trong mã ASCII là 49
-/* Định nghĩa str là hằng số kiểu con trỏ, trỏ tới
-chuỗi “Cheasheet C” */
+/* Define integer constant c with value 49 */
+const c = ‘1’; // Character 1 in the ASCII table has value 49
+/* Define str  as a pointer constant, pointed to string “Cheasheet C” */
 const char * str = “Cheasheet C”;
 
-/* KHAI BÁO BIẾN */
-/* Khai báo biến a kiểu nguyên và không gán giá trị */
+/* VARIABLE DECLAREATION */
+/* Declare integer variable a without assign value */
 int a;
-/* khai báo a kiểu binary, b kiểu base8, c kiểu số
-nguyên, d kiểu số nguyên và không gán giá trị */
+/* Declare binary variable a, base8 b, integer c, integer without assign value d */
 int a = 0b01111011, b = 0123, c = 1, d;
-/* Khai báo biến fa thuộc kiểu số thực float */
+/* Declare float variable fa */
 float fa = 1.0f;
-/* Khai báo biến da thuộc kiểu số thực double */
+/* Declare double variable da */
 double da = 1.0;
-/* Khai báo biến con trỏ và trỏ đến 1 vùng nhớ không
-xác định */
+/* Declare pointer variable point to an undefined memory address */
 char *pointer;
-/* Khai báo biến con trỏ và trỏ về NULL (0)*/
+/* Declare pointer variable pointed to NULL (0)*/
 char *other_pointer = NULL;
 
-/* CHUỖI KÍ TỰ */
-/* Chuỗi bao gồm kí tự kết thúc chuỗi \0 (null) */
+/* CHARACTERS */
+/* String include the end of string character \0 (null) */
 char str1[8] = {'A','r','d','u','i','n','o','\0'};
-/* Trình biên dịch tự động thêm kí tự \0 vào cuối
-chuỗi */
+/* Compiler automatically add the character \0 to the end */
 char str2[8] = {'A','r','d','u','i','n','o'};
-/* Khai báo chuỗi ,không khai báo số phần tử và gán giá
-trị chuỗi */
+/* String declaration, without the number of children and assign the value*/
 char str3[] = "Arduino";
-/* Khai báo và gán giá trị cho chuỗi */
+/* Declare and assign the value for string */
 char str4[8] = "Arduino";
-
-/* Các hàm xử lí chuỗi thường dùng */
-/* Nối các kí tự từ chuỗi source tiếp vào vị trí cuối
-của chuỗi dest */
+/* Common functions to process string of characters */
+/* Connect source string to the end of dest string */
 strcat(dest, source)
-/* Tìm vị trí xuất hiện đầu tiên của kí tự c trong
-source, trả về con trỏ chỉ tới vị trí đó hoặc null nếu
-không tìm thấy c trong source */
+/* Find the position of first c in source, return pointer to c or null if there is no c in source */
 strchr(source, c)
-/* Hàm trả về độ dài của chuỗi st */
+/* Return length of st string */
 strlen(st)
-/* copy và thay các kí tự của chuỗi soure vào dest */
+/* copy and replace characters of source into dest */
 strcpy(dest, source)
-/* chép kí tự từ đầu đến n từ chuỗi source vào dest */
+/* copy characters from begin to n from source to dest */
 strncpy(dest, source, n)
 
-/* MẢNG */
-/* Khai báo mảng 1 chiều 6 phần tử kiểu integer và gán
-giá trị cho mỗi phần tử */
+/* ARRAY */
+/* Declare an array of integer with 6 children and assign values for each */
 int myPins[] = {2, 4, 8, 3, 6};
-/* Khai báo mảng 1 chiều 6 phần tử kiểu integer và
-không gán giá trị */
+/* integer array of 6 children without values assignment */
 int myInts[6];
-myInts[0] = 42; // Gán giá trị 42 cho phần tử đầu tiên
-myInts[6] = 12; // LỖI ! chỉ số của mảng chỉ từ 0 đến 5
-/* Lấy giá trị của phần tử thứ 3 trong mảng myInts */
-int c = myInts[2]; // Có thể dùng *(myInts + 2)
-/* Lấy địa chỉ của phần tử thứ 3 trong mảng myInts */
-int c = &myInts[2]; // Có thể dùng int c = myInts + int
-/* Trả về chiều dài của mảng myInts */
+myInts[0] = 42; // Assign the value of 42 for the first child
+myInts[6] = 12; // FAILED ! array index is only from 0 to 5
+/* Get the value of 3rd child in myInts array */
+int c = myInts[2]; // Can use *(myInts + 2)
+/* Get the address of 3rd child in myInts array */
+int c = &myInts[2]; // Can use c = myInts + int
+/* Return the length of myInts array */
 int length = sizeof(myInts) / sizeof(myInts[0]);
-/* Khai báo 2 mảng kiểu float, arr1 có 5 phần tử, arr2
-có 10 phần tử */
+/* Declare 2 float arrays, arr1 has 5 children, arr2 has 10 */
 float arr1[5], arr2[10];
-/* Khai báo mảng số nguyên arr có 2 dòng, 5 cột. Tổng
-cộng có 10 phần tử */
+/* Declare integer array has 2 rows and 5 columns. Totally, 10 children */
 int a[2][5];
 
-/* KHỐI LỆNH VÀ CÁC LỆNH DÙNG TRONG VÒNG LẶP */
-{} // bao gồm nhiều lệnh, thường được sử dụng trong hàm
-/* Goto : chương trình sẽ nhảy đến nhãn (nhãn phải có
-mặt trong câu lệnh chứa goto) */
-goto nhãn;
-/* Continue : Chỉ dùng trong các lệnh có vòng lặp sẽ
-chuyển qua chu kì mới của vòng lặp trong cùng nhất */
+/* CODE BLOCK AND LOOP'S COMMANDS */
+{} // Include a block of code, usually used in functions
+/* Goto : programs jump to the label (label must be included in goto command) */
+goto label;
+/* Continue : Only used in loops. Program jump to the next cycle of the most deep loop */
 continue; /*
-/* Break : Dùng với các vòng lặp thoát khỏi vòng lặp
-trong cùng nhất, hoặc dùng trong cấu trúc switch..case
-để thoát ra khỏi case tương ứng */
+/* Break : Used to quit the most deep loop, or use with switch..case loop to quit the corresponding case */
 break; /*
 /* Return */
-/* Dùng cho hàm không có kiểu trả về (void) */
+/* Used for void functions */
 return;
-/* Value có thể là hằng số, biến, biểu thức hoặc gọi
-đến 1 hàm khác để trả về giá trị */
+/* Value can be a constant, a variable, a formula, or call to an other method which returns the value */
 return <value>;
 
-/* LỆNH RẺ NHÁNH */
-if (x < 5)      // thực thi code nếu x<5
+/* CONDITIONAL STATEMENTS */
+if (x < 5)      // execute if x<5
  { code }
-else if (x > 10)// thực thi code nếu x>10
+else if (x > 10)// execute if x>10
 	{ code }
-else { code }   // thực thi code các trường hợp còn lại
+else { code }   // execute in other cases
 
-switch (var) {  // thực thi case có giá trị var
+switch (var) {  // execute the case which match the value of var
 case 1:
 ...
 break;
@@ -170,132 +150,119 @@ default:
 ...
 }
 
-/* CÁC KIỂU VÒNG LẶP */
-/* While: Thực hiện code nếu x<5 */
+/* LOOPS */
+/* While: Execute if x<5 */
 while (x < 5) { code };
-/* Do-While : Thực hiện code, so sánh, nếu x<0 tiếp tục
-thực hiện code */
+/* Do-While : Execute code, evaluate, if x<0 continue the code */
 do { code } while(x < 0);
-/* for : Khởi tạo và gán giá trị cho i, thực hiện code
-tăng i nếu i < 10 */
+/* for : Initialize i, execute code then increase i if i < 10 */
 for (int i = 0; i < 10; i++) { code };
 
-/* PHÉP TOÁN VÀ TOÁN TỬ THƯỜNG DÙNG
-/* Các toán tử thường dùng */
-=   toán tử bằng
-+   toán tử cộng
--   toán tử trừ
-*   toán tử nhân
-/   toán tử chia lấy phần nguyên
-%   toán tử chia lấy phần dư
-==  phép so sánh bằng
-!=  phép so sánh không không bằng (khác)
-<   phép so sánh nhỏ hơn
->   phép so sánh lớn hơn
-<=  phép so sánh nhỏ hơn hoặc bằng
->=  phép so sánh lớn hơn hoặc bằng
-&&  phép toán logic (AND)
-\|\|  phép toán logic (OR)
-!   phép toán logic (NOT)
+/* OPERATOS, OPERATIONS */
+/* Popular operators */
+=   assignment operator
++   addition operator
+-   subtraction operator
+*   multiply operator
+/   division operator
+%   modulus operator
+==  equality operator
+!=  inequality operator (different)
+<   less than operator
+>   greater than operator
+<=  less or equal operator
+>=  greater or equal operator &&  logical AND operator (AND)
+||  logical OR operator (OR)
+!   logical NOT operator (NOT)
 
-/* Các toán tử hợp nhất */
-++   tăng 1 đơn vị
---   giảm 1 đơn vị
-+=   phép toán cộng và gán giá trị
-     ex: x = 5; x+= 1; //x = 6
--=   phép toán trừ và gán giá trị
-     ex: x = 5; x-= 1; //x = 4
-*=   phép toán nhân và gán giá trị
-     ex: x = 5; x*= 3; //x = 15
-/=   phép toán chia lấy phần nguyên và gán giá trị
-     ex: x = 6; x/= 2; //x = 3
-&=   phép toán logic AND và gán giá trị
-     ex: x = 0b1010; x&= 0110; //x =0b0010
-\|=   phép toán logic OR và gán giá trị
-     ex: x = 0b1010; x&= 0110; //x =0b1110
+/* Compound assignment operators */
+++ increment operator
+-- subtraction operator
++= addition assignment operator
+   ex: x = 5; x+= 1; //x = 6
+-= subtraction assignment operator
+   ex: x = 5; x-= 1; //x = 4
+*= multiplication assignment operator
+   ex: x = 5; x*= 3; //x = 15
+/= division assignment operator
+   ex: x = 6; x/= 2; //x = 3
+&= logical AND assignment operator
+   ex: x = 0b1010; x&= 0110; //x =0b0010
+|= logical OR assignment operator
+   ex: x = 0b1010; x&= 0110; //x =0b1110
 
-/* Các toán tử trên bit */
+/* Bitwise operators */
 &   and          ^   xor
-<<  dịch trái    >>  dịch phảii
-\|  or           ~   not
+<<  bitwise left shift
+>>  bitwise right shift
+|  or           ~   not
 
-/* THỰC THI VỚI CON TRỎ */
-&reference:  // lấy địa chỉ của biến mà con trỏ trỏ tới
-*dereference:// lấy giá trị của biến mà con trỏ trỏ tới
-/* khai báo biến con trỏ kiểu int trỏ tới địa chỉ của
-biến a */
+/* POINTER OPERATORS */
+&reference:  // address-of
+*dereference:// value-of
+/* declare a pointer variable points to integer variable a */
 int a = 5; int *pointer = &a;
 
-/* CÁC KÍ TỰ ĐIỀU KHIỂN VÀ KÍ TỰ ĐẶC BIỆT */
-\n  Nhảy xuống dòng kế tiếp canh về cột đầu tiên
-\t  Canh cột tab ngang.
-\r  Nhảy về đầu hàng, không xuống hàng.
-\a  Tiếng kêu bip.
-\\  In ra dấu \
-\"  In ra dấu "
-\'  In ra dấu '
-%%: In ra dấu %
-\b ~ backspace (xóa 1 ký tự ngay trước)
+/* CONTROLLING CHARACTERS AND SPECIAL CHARACTERS */
+\n  Jump to the first column of the next line
+\t  Jump to the next horizontal tab
+\r  Jump to the start to current line
+\a  Bip
+\\  Print out the \ character
+\"  Print out the " character
+\'  Print out the ' character
+%%: Print out the % character
+\b ~ backspace (delete the right before character)
 
-/* HÀM VÀ CÁC VẤN ĐỀ LIÊN QUAN */
-/* Khai báo prototype của hàm max, có 2 đối số đầu vào
-là a và b thuộc kiểu số nguyên, kết quả trả về của hàm
-kiểu số nguyên */
+/* FUNCTIONS AND RELATED PROBLEMS */
+/* Declare prototype of max function, which has 2 integer input parameters
+a and b, it's return type is also integer */
 int max(int a, int b);
-/* Khai báo biến c là giá trị trả về của hàm max */
+/* Declare the variable c, which is the return value of max function */
 int c = max(5,4);
-/* Khai báo prototype của hàm không có đối số và không
-có kiểu trả về (void) */
+/* Declare prototype of non-parameter, non-return function (void) */
 void none();
 
-/* TYPEDEF- Định nghĩa kiểu dữ liệu */
-/* Định nghĩa kiểu unsigned char là BYTE, khai báo các
-biến a, b thuộc kiểu BYTE */
+/* TYPEDEF- Definition of data type */
+/* Define the type of unsigned char is BYTE, declare BYTE type variables a, b */
 typedef unsigned char BYTE;  BYTE  a, b;
 
-/* KIỂU LIỆT KÊ - ENUMERATION (enum) */
-/* khai báo kiểu dữ liệu enum là các ngày trong tuần */
+/* LIST DATA TYPE - ENUMERATION (enum) */
+/* Declare enum data type weekdays */
 enum daysOfWeek { sunday, monday, tuesday, wednesday };
-/* Tạo biến toDay thuộc daysOfWeek và gán giá trị */
+/* Declare the variable toDay belongs to daysOfWeek data type and assign the value */
 daysOfWeek toDay = wednesday;
 
-/* STRUCT - KIỂU DỮ LIỆU DO NGƯỜI DÙNG ĐỊNH NGHĨA */
-/* Khai báo struct sinhVien */
-struct sinhVien{
-  char tenSinhVien;
-  char MSSinhVien;
-  int tuoiSinhVien;
+/* STRUCT - DATA TYPE DEFINED BY USER */
+/* Define struct student */
+struct student{
+  char studentName;
+  char studentID;
+  int studentAge;
 };
-/* Truy xuất đến thành phần MSSinhVien trong struct
-sinhVien */
-sinhVien.MSSinhVien;
-/* Đổi tên struct sinhVien thành 1 biến duy nhất là
-SINHVIEN */
-typedef struct sinhVien SINHVIEN;
-/* Khai báo biến sinhVienA thuộc struct SINHVIEN */
-SINHVIEN sinhVienA;
+/* Access to the parameter studentID in student struct */
+student.studentID;
+/* Rename the struct student to a variable named STUDENT */
+typedef struct student STUDENT;
+/* Declare a variable studentA belongs to struct STUDENT */
+STUDENT studentA;
 
-/* CÁC LỆNH XỬ LÝ TẬP TIN (#include <stdio.h>) */
-/* Khai báo 1 biến con trỏ là đường dẫn của 1 file */
-const char *filePath = "Đường/dẫn/file/document.txt";
-/* Tạo 1 biến con trỏ thuộc kiểu FILE */
+/* FILE PROCESSING COMMANDS (#include <stdio.h>) */
+/* Declare a pointer variable is a file path */
+const char *filePath = "file/path/document.txt";
+/* Declare a pointer variable of FILE type */
 FILE *file;
-/* Mở 1 file ở đường dẫn filePath và đọc dữ liệu */
-file = fopen(filePath, "r");// Trả về NULL nếu thất bại
-/* Đóng 1 file đã mở, trả về 0 nếu thành công , ngược
-lại trả về EOF */
+/* Open a file at filePath and read the data */
+file = fopen(filePath, "r");// Return NULL if failed
+/* Close the opened file, return 0 if success, otherwise return EOF */
 fclose(file);
-/* Viết kí tự c lên file đang mở, trả về EOF nếu ghi
-thất bại, trả về mã ASCII của c nếu thành công */
+/* Write the c character onto opening file, return OEF if failed, return ASCII code of c if success */
 int fputc(int c, FILE *f);
-/* Viết chuỗi "hello" lên file đang mở */
+/* Write the string "hello" onto opening file */
 int c = fputs("hello", file);
-/* Đọc (255-1) kí tự từ file đang mở, kết quả đọc được
-sẽ lưu vào mảng str, việc đọc bị dừng nếu gặp kí tự
-'\n' hoặc EOL */
+/* Read (255-1) characters on opening file, the result will be saved into str array, reading process will be closed if meet the '\n' or EOL character */
 fgets(str, 255, file);
-/* Thay đổi vị trí trỏ đến trong file của con trỏ
-internal file position indicator về lại đầu file */
+/* Change the position of cursor in file, internal file position indicator jump to the starting point of file */
 int fseek(file, 0, SEEK_SET);
-/* Trả về kích thước của nội dung có trong file */
+/* Return the size of file's content */
 ftell(file);
