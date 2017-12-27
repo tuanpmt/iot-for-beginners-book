@@ -7,6 +7,6 @@ include::02-mqtt-client.{lang}.adoc[]
 
 include::03-mqtt-broker.{lang}.adoc[]
 
-= Tổng kết
+= Summary:
 
-Từ những nội dung đã trình bày ở trên, chúng ta phần nào hiểu rõ về cách thức hoạt động của giao thức MQTT cũng như vai trò của nó trong các ứng dụng IoT. Những nội dung được trình bày ở phần này chỉ là phần cơ bản của giao thức, vì đây là giao thức quan trọng và thường sử dụng trong IoT nên chúng ta hãy dành nhiều thời gian hơn để nghiên cứu thêm về hoạt động của các gói QoS, Keep alive, cũng như các vấn đề chứng thực tài khoản, vấn đề bảo mật dữ liệu khi sử dụng MQTT.
+After reading this chapter, you should understand the basic principle of MQTT protocol and its role in IoT applications. Because of its importance and usefulness, you should spend more time to explore the QoS, Keep Alive message, the account verification and the data security when using MQTT.

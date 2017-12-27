@@ -1,42 +1,41 @@
 == HTTP Client
 
-=== Giao thức HTTP
-`HTTP` - Hypertext Transfer Protocol (giao thức truyền dẫn siêu văn bản), là giao thức để truyền dữ liệu giữa các máy tính qua `www` (World Wide Web), với dữ liệu có thể là dạng text, file, ảnh, hoặc video.
+=== HTTP Protocol
+`HTTP` - Hypertext Transfer Protocol, is a protocol for transmitting data among computers in the `www` (World Wide Web), the data can be text, file, image, or video.
 
-HTTP được thiết kế để trao đổi dữ liệu giữa Client và Server trên nền TCP/IP, nó vận hành theo cơ chế `yêu cầu/trả lời`, `stateless - không lưu trữ trạng thái`. Trình duyệt Web chính là Client, và một máy chủ chứa Web Site là Server. Client sẽ kết nối tới Server, gởi dữ liệu đến server bao gồm các thông tin header. Server nhận được thông tin và căn cứ trên đó gởi phản hồi lại cho Client. Đồng thời đóng kết nối.
+HTTP is designed for data exchange between a client and a server using TCP/IP, the working principle is `request/respond`, and `stateless`. A web browser is a client, any machine that hosts web stie is a server. A client connects to a server, sends data composed which includes headers to it. The server receives it and responds based on what it gets, the channel is terminated after each connection.
 
-Một ví dụ điển hình là khi bạn gõ địa chỉ vào thanh địa chỉ của trình duyệt và nhấn `Enter`, thì ngay lập tức Web Client sẽ thực hiện việc gởi yêu cầu tới Web Server có địa chỉ mà bạn vừa gõ. Web Server sẽ trả lời bằng nội dung Web Site mà bạn cần xem.
+For instance, when a URL is put in the address bar and `Enter` is pressed, the Web Client will immediately send the request to the Web Server with the provided address. The Web Server will then send back the content of the web page.
 
-Trong giao thức HTTP, việc thiết lập kết nối chỉ có thể xuất phát từ phía client ( lúc này có thể gọi là HTTP Client ). Khi client gửi yêu cầu, cùng với *URL* và payload ( dữ liệu muốn lấy ) tới server. Server ( HTTP Server ) lắng nghe mọi yêu cầu từ phía client và trả lời các yêu cầu ấy. Khi trả lời xong kết nối được chấm dứt.
+In HTTP protocol, connection is only made from the client side (or HTTP Client). When the client sends the request along with the *URL* and the payload (what to get) to the server. Server (HTTP Server) listens for any request from the client and responds accordingly. After that, the connection is terminated.
 
-
-.Cách thức HTTP hoạt động
+.How HTTP works
 image::03-wifi/http1-req-res-details.png[Cách thức HTTP hoạt động, role="center", align="center", width=400]
 
-Khi nhắc tới HTTP thì Hyperlink, hay URL (Uniform Resource Locator) là những khái niệm được thấy hàng ngày
+When talking about HTTP, Hyperlink, or URL (Uniform Resource Locator), is a common concept.
 
-*URL* được dùng để định dạng địa chỉ Website, chứa các thông tin yêu cầu từ client và server dựa vào đó xử lý, cấu trúc của nó như hình:
+*URL* defines a website's address and contains the request details from the client, which the server uses to process. Its structure is as follows:
 
-.Cấu trúc 1 URL
+.A URL structure
 image::03-wifi/http1-url-structure.png[URL, role="center", align="center", width=400]
 
-Ví dụ bạn có thể gởi thông tin về nhiệt độ đến server thông qua đường dẫn: `http://esp8266.vn/log.php?nhiet_do=30`
+For instance, sending a sensor data to a server can be done via: `http://esp8266.vn/log.php?nhiet_do=30`
 
-.Cấu trúc 1 URL
+.A URL structure
 [source]
 ....
 
 |scheme  | host      |port |path            |query                |fragment|
  http:// server.com: 8080  /path/to/log.php ?nhiet_do=30&do_am=80 #test
 ....
-<1> `scheme` xác định giao thức truyền tới server, nếu là `https` thì sẽ được mã hóa.
-<2> `host` địa chỉ server.
-<3> `port` port server dùng để phục vụ, nếu ko có thì mặc định là `80` cho web.
-<4> `path` thông tin client muốn truy suất.
-<5> `query` thông tin client muốn gởi lên.
-<6> `fragment` thuộc tính này giúp browser đi đến vị trí của trang.
+<1> `scheme` defines the protocol to communicate with the server, if it is `https` then it will be encrypted.
+<2> `host` is the server's address.
+<3> `port` is where the service is provided, if not defined then port 80 will be used.
+<4> `path` information the client wants to get.
+<5> `query` information the client wants to send.
+<6> `fragment` this attribute directs the browser to a specific location.
 
-Với đường dẫn như trên, khi bạn gõ vào trình duyệt, thì trình duyệt sẽ thực hiện kết nối và gởi dữ liệu như sau.
+With the above URL put into the address bar, the browser will initiate a connection and send the following information.
 
 ----
 GET /log.php?nhiet_do=30 HTTP/1.1
@@ -46,7 +45,7 @@ Accept: */*
 
 ----
 
-Dữ liệu trả về:
+Received information:
 
 ----
 HTTP/1.1 200 OK
@@ -57,70 +56,69 @@ Connection: keep-alive
 data
 ----
 
-NOTE: Trên linux, bạn có thể sử dụng curl để xem chi tiết dữ liệu raw truyền nhận, gõ lệnh  `curl -v http://esp8266.vn/log.php?nhiet_do=30` trên terminal
+NOTE: On linux, curl can be used to digest raw data, type  `curl -v http://esp8266.vn/log.php?nhiet_do=30` in the terminal.
 
-==== Giao thức HTTP định nghĩa một số phương thức (method) truyền đến Server:
+==== HTTP defines some methods for communicating with Server:
 
-* `GET` là phương thức yêu cầu dữ liệu đơn giản và thường sử dụng nhất của HTTP. Phương thức *GET* yêu cầu server chỉ trả về dữ liệu bằng việc cung cấp các thông tin truy vấn trên URL, thông thường Server căn cứ vào thông tin truy vấn đó trả về dữ liệu mà không thay đổi nó. `path` và `query` trong *URL* chứa thông tin truy vấn.
-* `POST` tương tự như `GET`, nhưng `POST` có thể gởi dữ liệu về Server.
-* `PUT` là phương thức yêu cầu tạo mới một dữ liệu, giống `POST` nhưng đánh dấu cho Server biết, nếu dữ liệu không tồn tại trong cơ sở dữ liệu thì tạo mới, hoặc sửa đổi nó.
-* `DELETE` Tương tự như `GET`, nhưng báo cho Server biết về việc xóa dữ liệu thông qua URL.
+* `GET` is the most common and widely used method of HTTP. *GET* retrieves whatever information (in the form of an entity) is identified by the URL, usually the Server returns the data based on the query information it receives without modifying it. `path` and `query` in the *URL* contains query information.
+* `POST` Similar to `GET`, but `POST` can send data to the Server.
+* `PUT` is a method for creating new resources, similar to `POST` but it informs the server that if the resource does not  exist, the server should create new resource or otherwise modify it.
+* `DELETE` Similar to `GET`, but requests that the origin server deletes the resource identified by the URL.
 
-Các phương thức thông thường chỉ dùng `GET` và `POST`, các phương thức còn lại thường sử dụng trong API server (RESTful). Một số điểm khác biệt giữ `POST` và `GET`.
+Commonly used methods are `GET`and `POST`; other methods are utilised in API server (RESTful). Differences between `POST` and `GET`.
 
-* `GET` có thể bị cache (lưu trữ ở trình duyệt và sử dụng lại sau đó), nội dung request có thể lưu trữ ở lịch sử trình duyệt, có thể được đánh dấu (bookmark).
-* `GET` không nên sử dụng để gởi các dữ liệu nhạy cảm.
-* `GET` bị giới hạn độ lớn dữ liệu cần gởi.
-* `GET` chỉ nên dùng để lấy dữ liệu về.
+* `GET` can be cached (saved by the browser for future use), the requested content is stored in the history and can be bookmarked.
+* `GET` should not be used to send sensitive information.
+* `GET` is restricted in terms of data length.
+* `GET` should only be used to query for data.
 
-* `POST` không bị catch, không tồn tại dữ liệu gởi trong lịch sử trình duyệt, không thể đánh dấu (bookmark).
-* `POST` không giới hạn bởi độ lớn dữ liệu cần gởi.
+* `POST` is not cached, not saved in browser history, and cannot be bookmarked.
+* `POST` does not limit the payload amount.
 
 ==== HTTP Header & Status Code
 
-Dữ liệu trả về bao giờ cũng có phần thông tin header với dòng đầu tiên chưa Status Code `HTTP/1.1 200 OK` có nghĩa là status code = 200, request được trả về phù hợp.
-Theo sau đó là các cặp header chứa thông tin Server muốn trao đổi với Client, mà nếu là trình duyệt thì nó bị ẩn đi (người dùng bình thường không thể thấy). Các cặp header này định dạng theo kiểu `name: value` và kết thúc bằng ký tự xuống dòng không thấy bằng mắt thường (`0x0D 0x0A` hay `\r\n`).
-Trong ví dụ trên, thông tin header `Content-Type: text/html; charset=utf-8` báo cho trình duyệt biết rằng định dạng dữ liệu gởi về là dạng text, mã hóa utf-8. `Transfer-Encoding: chunked` chiều dài dữ liệu không được biết trước và gởi cho tới khi server đóng kết nối.
+The response always include a header with the first line containing the Status Code `HTTP/1.1 200 OK`, i.e. status code = 200, the response is valid.
+It is then followed by header pairs with information that the Server wants to exchange with the Client, which is hidden from the users. These header pairs are defined as `name: value` and are terminated with invisible control characters (`0x0D 0x0A` or `\r\n`).
+In the above example, the header `Content-Type: text/html; charset=utf-8` informs the browser the return content is text, utf-8 encoding. `Transfer-Encoding: chunked` unknown data length, which is send until the server closes the connection.
 
-Một số HTTP status code thường thấy:
+Some common HTTP status code:
 
-* *1xx*: Mã trạng thái thông tin. Bản chất của mã trạng thái này, chỉ để thông báo với client rằng request đã được chấp nhận. Các mã trạng thái thông tin này được quy định trong *HTTP/1.1*, còn phiên bản *HTTP/1.0* hay trước đó thì không có, có thể bỏ qua phần mã trạng thái này. Các mã hay gặp:
-** *100 Continue*: Thông báo cho Client biết là có thể gửi tiếp phần request còn lại nếu còn, kết thúc nếu đã hết. Nếu trong request POST, phần thân request lớn sẽ bị server từ chối và để giải quyết điều này thì client phải gửi *Expect: 100-continue* theo sau phần header ban đầu.
-* **2xx**: Nhóm mã trạng thái này thông báo với Client rằng request đã được nhận, hiểu và xử lý thành công. Với một số mã thường thấy:
-** *200 OK*: Thông báo cho Client biết là request đã gửi thành công. Có thể thấy mã trạng thái này trong các phương thức *GET*, *HEAD*, *POST*, *TRACE*.
-** *201 Created*: Cho biết request đã xử lý thành công và tài nguyên đã được khởi tạo. Được sử dụng để xác nhận sự thành công của một request *PUT* hoặc *POST*.
-** *204 No Content*: Thông báo không có phần thân message trong response.
+* *1xx*: Informational responses. An informational response indicates that the request was received and understood. These status code is defined in *HTTP/1.1*, which is not available in *HTTP/1.0* or previous versions. These status code can be ignored. Common status codes:
+** *100 Continue*: Informs the client that it can continue by sending the remainder of the request or, if the request has already been completed, ignore this response. In a POST request, the server will reject it if the body is too large. To resolve this, the client must send *Expect: 100-continue* after the initial header.
+* **2xx**: Success. This class of status codes indicates the action requested by the client was received, understood, accepted, and processed successfully. Common status codes:
+** *200 OK*: The request has succeeded. This can be seen in these methods *GET*, *HEAD*, *POST*, *TRACE* .
+** *201 Created*: The request has been fulfilled, resulting in the creation of a new resource. This is used to verify *PUT* or *POST* success.
+** *204 No Content*: The server successfully processed the request and is not returning any content.
 
-* **3xx**: Nhóm mã trạng thái thông báo Client còn phải thực hiện thêm hành động để hoàn thành request. Mã trạng thái thường gặp trong nhóm:
-** *301 Moved Permanently*: Thông báo tài nguyên được yêu cầu đã được chuyển hướng sang một URL mới và server sẽ gửi URL mới này trong response cho Client biết.
-* *4xx*: Nhóm mã thông báo các lỗi từ phía Client. Được sử dụng khi server cho rằng phía Client đang xảy ra lỗi, với một request, hoặc tài nguyên không hợp lệ, hoặc một request không đúng. Các mã thông dụng:
-** *400 Bad Request*: Thông báo request đã gửi là sai.
-** *401 Unauthorized*: Chỉ ra rằng request cần được xác thực. Client có thể gửi lại request với header đã được xác thực. Trường hợp đã đính kèm header xác thực nhưng vẫn nhận được thông báo này tức là header xác thực chưa hợp lệ.
-** *403 Forbidden*: Server từ chối quyền truy cập của Client.
-** *404 Not Found*: Thông báo tài nguyên không hợp lệ và không tồn tại trên server.
-** *409 Conflict*: Server không thể hoàn thành yêu cầu vì Client cố chỉnh sửa tài nguyên mới hơn so với *timestamp* của Client. Xung đột xảy ra chủ yếu trong các request *PUT* trong quá trình hợp tác chỉnh sửa tài nguyên.
-* *5xx*: Nhóm lệnh thông báo server đang ở trong tình trạng lỗi hoặc không có khả năng thực hiện yêu cầu. Một số mã thường gặp:
-** *500 Internal Server Eror*: Cho biết là không thể thực hiện request của Client.
-** *501 Not Implemented*: Thông báo server không có phương thức được yêu cầu hoặc không có khả năng hổ trợ chức năng mà Client đã request.
-** *503 Service Unavailable*: Xảy ra khi hệ thống của server đang bảo dưỡng hoặc quá tải.
+* **3xx**: This class of status code indicates the client must take additional action to complete the request. Common status codes:
+** *301 Moved Permanently*: The requested resource has been assigned a new permanent URI and any future references to this resource should use one of the returned URIs.
+* *4xx*: These are intended for situations in which the error seems to have been caused by the client. The server assumes that the Client is experiencing errors with a request or an invalid resource. Common status codes:
+** *400 Bad Request*: The request could not be understood by the server due to malformed syntax.
+** *401 Unauthorized*:The request requires user authentication. The client can re-send the request a validated header. If the header includes the authentication but is still refused then the authentication data is wrong.
+** *403 Forbidden*: The server understood the request, but is refusing to fulfill it.
+** *404 Not Found*: The resource is invalid or cannot be found on the server.
+** *409 Conflict*: The Server cannot complete the response because the Client intentionally modify a resource that is different to *timestamp* của Client. Conflicts are most likely to occur in response to a PUT request.
+* *5xx*: These code indicate cases in which the server is aware that it has erred or is incapable of performing the request. Common status codes:
+** *500 Internal Server Eror*: The server encountered an unexpected condition which prevented it from fulfilling the request.
+** *501 Not Implemented*: The server does not recognize the request method and is not capable of supporting it for any resource.
+** *503 Service Unavailable*: Occurs when the server is under maintenance or overloaded.
 
 === JSON
 
-JSON (JavaScript Object Notation) là 1 định dạng trao đổi dữ liệu để giúp việc đọc và viết dữ liệu trở nên dễ dàng hơn, máy tính cũng sẽ dễ phân tích và tạo ra JSON. Chúng là cơ sở dựa trên tập hợp của ngôn ngữ lập trình JavaScript. JSON là 1 định dạng kiểu text mà hoàn toàn độc lập với các ngôn ngữ hoàn chỉnh, thuộc họ hàng với các ngôn ngữ trong họ hàng của C, gồm có C, C++, C#, Java, JavaScript, Perl, Python, và nhiều ngôn ngữ khác. Những đặc tính đó đã tạo nên JSON 1 ngôn ngữ hoán vị dữ liệu lý tưởng.
+is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language. JSON is a text format that is completely language independent but uses conventions that are familiar to programmers of the C-family of languages, including C, C++, C#, Java, JavaScript, Perl, Python, and many others. These properties make JSON an ideal data-interchange language.
 
-JSON được xây dựng trên 2 cấu trúc:
+JSON is built on two structures:
 
-* Là tập hợp của các cặp tên và giá trị name-value. Trong những ngôn ngữ khác nhau, đây có thể là 1 object, record, struct, dictionary, hash table, keyed list hay associative array.
-* Là 1 tập hợp các giá trị đã được sắp xếp. Trong hầu hết các ngôn ngữ, dữ liệu này được xem như array, véc tơ, list hay sequence.
-Đây là 1 cấu trúc dữ liệu phổ dụng. Hầu như tất cả các ngôn ngữ lập trình hiện đại đều hổ trợ. Chúng tạo nên ý nghĩa của 1 định dạng hoán vị dữ liệu với các ngôn ngữ lập trình cũng đã được cơ sở hoá trên cấu trúc này.
+* A collection of name/value pairs. In various languages, this is realized as an object, record, struct, dictionary, hash table, keyed list, or associative array.
+* An ordered list of values. In most languages, this is realized as an array, vector, list, or sequence.
 
-**Cú pháp**
+**Syntax**
 
-* Dữ liệu nằm trong các cặp name/value
-* Các dữ liệu được ngăn cách bởi dấy phẩy `,`
-* Các đối tượng (name/value) nằm giữa hai dấu ngoặc kép `"`
-* Tất cả các đối tượng nằm bên trong hai dấu ngoặc nhọn `{}`
-* Dữ liệu của JSON được viết theo từng cặp name/value. Một cặp name/value bao gồm trường `name` ( nằm trong hai dấu ngoặc kép `"`, theo sau là dấu hai chấm `:`, và sau cùng là trường `value` (cũng được nằm trong hai dấu ngoặc kép `"`. Ví dụ: `"name":"John"`
+* An object is an unordered set of name/value pairs.
+* Values are separated by , `,`
+* An object (name/value) starts and ends with `"`
+* All objects reside inside a pair of `{}`
+*  JSON data is grouped into pairs of name/value. Each name/value composes of a `name` field ( lies inside a `"`, followed by a `:`, then `value`field comes next (also lies inside a `"`. For instance: `"name":"John"`
 
 [source, json]
 ----
@@ -132,37 +130,37 @@ JSON được xây dựng trên 2 cấu trúc:
 }
 ----
 
-=== Ứng dụng xem giá Bitcoin
+=== Bitcoin value monitoring application
 
-Một ứng dụng đơn giản sử dụng giao thức HTTP để lấy tỉ giá Bitcoin (BTC)/USD từ các trang Web giao dịch, hiển thị lên màn hình OLED.
+A simple application using HTTP to get Bitcoin (BTC)/USD rate form exchange market web, then display on the OLED.
 
-Chúng ta có rất nhiều nguồn lấy tỉ giá, một trong số đó là https://www.cryptocompare.com/. Với tài liệu được cung cấp, và nhu cầu là chỉ lấy tỉ giá Bitcoin/USD, chúng ta chỉ cần ESP8266 gởi 1 HTTP Request đến https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD thì sẽ nhận được một chuỗi JSON dạng như:
+There are many sites to choose from, for instance https://www.cryptocompare.com/. With the provided information, and the objective is to get the exhcnage rate of Bitcoin/USD, ESP8266 will send a HTTP Request to https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD and get back a JSON packet as follows:
 
 [source, json]
 ----
 {"USD":4731.44}
 ----
 
-và giá trị của trường `USD` chính là giá trị chúng ta muốn hiển thị.
+The `USD` field is the desired data.
 
-NOTE: Đa số các dịch vụ Web hiện nay đều sử dụng giao thức bảo mật `HTTPS`, về cơ bản nó cũng là HTTP, nhưng quá trình truyền nhận được mã hóa dữ liệu, thực hiện xác thực trước khi gửi giữa Client và Server.
+NOTE: Most websites now offer `HTTP` encryption, basically it's still HTTP, but the transmission process is encrypted, and verification is done before the request is sent.
 
-Khi dùng HTTPS, chúng ta cần cung cấp SHA1 Fingerpint để Client có thể xác thực server. Bạn có thể dùng trình duyệt để truy cập trước để lấy. Nếu là `Chrome`, sau khi truy cập vào địa chỉ https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD, Nhấn Ctrl+Shift+I (Shift + ⌘ + I với MacOS) và đi đến `Security > View Certificate > Details > Thumbprint`. Bạn sẽ thấy hình như bên dưới, và copy nó.
+When using HTTPS, SHA1 Fingerprint must be provied so that the Client can verify the Server. A browser can be use to access it in advance. In `Chrome`, after connecting to https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD, press Ctrl+Shift+I (Shift + ⌘ + I in MacOS), proceed to `Security > View Certificate > Details > Thumbprint`. The result will be as follows.
 
 .HTTPS Fingerprint
 image::03-wifi/fingerprint.png[HTTPS Finger print, role="center", align="center", width=500]
 
-Đây là đoạn Code lấy giá Bitcoin, cứ mỗi 5 giây, ESP8266 sẽ kết nối đến Cryptocompare server để lấy thông tin và hiển thị lên OLED.
+A source code to check for Bitcion price that repeats every 5 seconds, ESP8266 will establish a connection with Cryptocompare server to get the information and print out to the OLED display.
 
 [source, c]
 ----
 include::code-{lang}/BitcoinTicket/BitcoinTicket.ino[]
 ----
 
-Thực hiện sau khi kiểm tra mã nguồn:
+Proceed after checking the source code:
 
 - <<select-arduino-board>>
 - <<arduino-flash>>
 
-.Kết quả lấy giá Bitcoin và hiện thị mỗi 5 giây
+.Check for Bitcoin value every 5 seconds
 image::03-wifi/btc.png[BTC Price, role="center", align="center", width=500]

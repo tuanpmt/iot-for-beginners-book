@@ -1,15 +1,15 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WiFiMulti.h>
-// Khai báo biến wifiMulti thuộc class ESP8266WiFiMulti để sử dụng các chức năng của class này.
+// Declare wifiMulti variable of class ESP8266WiFiMulti to use functions of this class.
 ESP8266WiFiMulti wifiMulti;
-// Biến connectioWasAlive nhằm kiểm tra kết nối của ESP8266 đến mạng wifi.
+// connectioWasAlive variable to check for ESP8266 wifi connection.
 boolean connectioWasAlive = true;
 
 void setup()
 {
   Serial.begin(115200);
   Serial.println();
-  // Add vào các mạng wifi mà ESP8266 được chỉ định sẽ kết nối
+  // Add the pre-defined networks for ESP8266
   wifiMulti.addAP("primary-network-name", "pass-to-primary-network");
   wifiMulti.addAP("secondary-network-name", "pass-to-secondary-network");
   wifiMulti.addAP("tertiary-network-name", "pass-to-tertiary-network");
@@ -17,8 +17,8 @@ void setup()
 
 void monitorWiFi()
 {
-  // Kiểm tra nếu chưa kết nối đến 1 mạng wifi nào sẽ cài đặt connectioWasAlive = false
-  // đồng thời in ra dấu "." sau mỗi 500ms nếu chưa được kết nối.
+  // Check if there is no WiFi connection then set connectioWasAlive = false
+  // while print out "." every 500ms when there is no connection.
   if (wifiMulti.run() != WL_CONNECTED)
   {
     if (connectioWasAlive == true)
@@ -29,9 +29,9 @@ void monitorWiFi()
     Serial.print(".");
     delay(500);
   }
-  // Nếu đã kết nối đến 1 trong các mạng wifi sẽ in ra tên mạng wifi và set connectioWasAlive = true
-  // để khi mất kết nối chương trình sẽ vào phần if (connectioWasAlive == true) nhằm thông báo đang
-  // tìm kiếm mạng wifi
+   // If a connection is established then set connectioWasAlive = true
+  // so when the connection is terminated the program will jump into if (connectioWasAlive == true),
+  // annoucing the WiFi scanning process
   else if (connectioWasAlive == false)
   {
     connectioWasAlive = true;

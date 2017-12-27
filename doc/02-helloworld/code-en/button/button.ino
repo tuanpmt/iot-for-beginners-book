@@ -1,5 +1,5 @@
-int ledPin = 16;                 // LED nối vào chân 16
-int btnPin = 0;                  // Nút nhấn nối vào chân 0
+int ledPin = 16;                 // LED is connected to pin GPIO16
+int btnPin = 0;                  // Push button is connected to pin GPIO0
 int ledState = LOW;
 
 void blink()
@@ -14,13 +14,13 @@ void blink()
 }
 void setup()
 {
-  pinMode(ledPin, OUTPUT);      // sets the digital pin as output
-  pinMode(btnPin, INPUT_PULLUP); // Cấu hình nút nhấn là ngõ vào pull-up
-  attachInterrupt(btnPin, blink, FALLING); //cài đặt ngắt cho chân LED
-  Serial.begin(115200);
+  pinMode(ledPin, OUTPUT);      // Sets the digital pin as OUTPUT
+  pinMode(btnPin, INPUT_PULLUP); // The push button is configured as a pull-up input
+  attachInterrupt(btnPin, blink, FALLING); //set interrupt in btnPin
+  Serial.begin(115200); // Sets the data rate in bits per second (baud) 115200 for serial data transmission
 }
 
 void loop()
 {
-  //Không phải làm gì
+  //do nothing
 }

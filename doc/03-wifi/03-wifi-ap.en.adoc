@@ -1,24 +1,24 @@
-== Chế độ WiFi Access Point
+== WiFi Access Point Mode
 
-=== ESP8266 hoạt động ở chế độ Access Point
+=== ESP8266 in Access Point Mode
 
-ESP8266 có khả năng cho phép các thiết bị khác (Station - STA) truy cập vào và hoạt động như là 1 Access Point, có thể tự thiết lập 1 mạng WiFi nội bộ, với khả năng khởi động DHCP Client và cung cấp được IP cho các Client kết nối tới. Do giới hạn về RAM, nên số lượng tối đa các STA có thể kết nối đến một ESP8266 hiện tại là 5.
+ESP8266 allows other devices (Station - STA) to connect when operating as an Access Point. It can initiate a local WiFi network with DHCP Client enabled to assign IP to connected Clients. Due to RAM constraints, maximum number of STA concurrent connections is 5.
 
-==== Khởi tạo mạng
+==== Initiate a network
 
-Đầu tiên bạn cần include `<ESP8266WiFi.h>`, thư viện này chứa hàm `softAP` dùng để cấu hình Access Point mềm (soft AP) để khởi tạo một mạng WiFi.
+`<ESP8266WiFi.h>` is needed, this library contains `softAP` which is used to configure soft Access Point (soft AP) for a WiFi network.
 
-Một mạng WiFi đơn giản nhất chỉ cần cung cấp tên SSID và không mật khẩu `WiFi.softAP(ssid)`. Phức tạp hơn, bạn cung cấp mật khẩu cho mạng WiFi `WiFi.softAP(ssid, password)`, hoặc chi tiết `WiFi.softAP(ssid, password, channel, hidden)` khi cung cấp chính xác kênh truyền (1..13), mặc định 1 và ẩn nó đi, không hiển thị ra khi `hidden = true`
+A simple WiFi network only needs to provide SSID without password `WiFi.softAP(ssid)`. If a password is desired, `WiFi.softAP(ssid, password)` can be called. More options are available using `WiFi.softAP(ssid, password, channel, hidden)`, default channel is 1 and initially hidden, which can be made invisible by setting `hidden = true`
 
-Nhớ rằng `ssid` sử dụng chuỗi ký tự không quá 63, và mật khẩu (có thể không cần) với tối thiểu 8 ký tự cho mạng WPA2-PSK
+`ssid` should not exceed 63 characters, and the (optional) password is at least 8 characters long for WPA2-PSK
 
-Hàm `softAP` sẽ trả về `true` nếu khởi tạo thành công mạng WiFi
+`softAP` will return `true` if the WiFi network is successfully established
 
-NOTE: Lưu ý rằng, mạng WiFi khởi tạo bởi hàm `softAP` sẽ sử dụng địa chỉ IP mặc định là `192.168.4.1`, và chạy 1 DHCP Server cung cấp dải IP cho client kết nối tới là `192.168.1.x`. Bạn có thể thay đổi địa chỉ IP mặc định này bằng hàm `softAPConfig`. Ngoài ra, ESP8266 có thể chạy được song song 2 chế độ Station và Access Point, nhưng lưu ý, chỉ được 1 channel, và channel của softAP sử dụng bởi channel của Station.
+NOTE: Remember that the WiFi network created by calling `softAP` will have a default IP of `192.168.4.1` and run a DHCP Server to provide connected clients with IP in the `192.168.1.x` range. The default IP can be modified by calling `softAPConfig`. Moreover, ESP8266 can operate in both Station and Access Point modes. Take note that the two modes operate on the same channel, softAP channel will be utilised by Station mode.
 
-`WiFi.softAPConfig (local_ip, gateway, subnet)` dùng để cấu hình IP cho Access Point
+`WiFi.softAPConfig (local_ip, gateway, subnet)` is used to modify Access Point IP.
 
-.Cấu hình địa chỉ IP cho ESP8266 AP là `192.168.4.22`
+.Modify ESP8266 AP's IP to `192.168.4.22`
 [source, c]
 ----
 IPAddress local_IP(192,168,4,22);
@@ -27,22 +27,22 @@ IPAddress subnet(255,255,255,0);
 WiFi.softAPConfig(local_IP, gateway, subnet)
 ----
 
-`WiFi.softAPgetStationNum()` sẽ trả về số lượng client đang kết nối tới Access Point
+`WiFi.softAPgetStationNum()` returns the number of clients connecting to the Access Point
 
-=== Khởi tạo mạng WiFi sử dụng ESP8266
+=== Establish WiFi network using ESP8266
 
-Với đoạn code này, bạn có thể tạo ra một mạng WiFi cục bộ có SSID là `AP-XXXXXX` và có thể dùng máy tính để kết nối trực tiếp vào với password là `password`
+With the following code, a local WiFI network with a SSID of `AP-XXXXXX` is established and available for connection for computers using the `password` password
 
 [source, c]
 ----
 include::code-{lang}/WiFiAccessPoint/WiFiAccessPoint.ino[]
 ----
 
-Thực hiện sau khi kiểm tra mã nguồn:
+Proceed after checking the source code:
 
 - <<select-arduino-board>>
 - <<arduino-flash>>
 
-.Khi khởi động 1 WiFiAccesspoint
+.When initiating a WiFiAccesspoint
 image::03-wifi/ap.png[WiFiAccesspoint, role="center", align="center", width=200]
 

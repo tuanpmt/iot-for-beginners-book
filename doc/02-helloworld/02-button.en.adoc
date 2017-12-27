@@ -1,38 +1,38 @@
 == Nút nhấn
 
-=== Kiến thức
-Nút nhấn sẽ giúp việc ESP8266 khởi động một hành động nào đó khi cần thiết. Trong nhiều ứng dụng chúng ta hầu như đều cần những kích hoạt từ bên ngoài. Xuyên suốt cuốn sách này, sẽ dùng nút nhấn để kích hoạt chạy các ứng dụng mẫu cũng như đèn LED để thông báo các trạng thái. Trong phần này, nhấn nút đèn LED sẽ chuyển trạng thái (từ sáng -> tắt và ngược lại).
+=== Knowledge
+Buttons help the ESP8266 to activate a process when necessary. In many applications, we often require some sort of external trigger. Throughout this book, we will use buttons to activate some demonstrations as well as LEDs for status indication. In this part, pushing the button will change the LED status (from on -> of and vice versa).
 
-Đây là ví dụ đơn giản, trong thực tế việc xử lý nút nhấn khá phiền phức. Bởi vì nút nhấn vật lý khi được nhấn sẽ tạo ra hàng loạt các xung lên xuống (nhiễu, bouncing...). Thường thì chỉ cần đảm bảo mức Logic của chân đo được đã được giữ ổn định trong khoảng 100 mili giây là được xem đã ổn định.
+This is a simplified demonstration, in reality, processing a button is quite complicated. Mechanical button often produces a chain of pulses (noise, bouncing, etc.). Usually a logic state of a pin should be maintained for 100 milliseconds to be considered stable.
 
-Ngoài cách dùng ngắt để xác định nút nhấn có được nhấn hay không - cách này sẽ tiết kiệm tài nguyên tính toán của CPU, nó chỉ được gọi khi có sự kiện xảy ra, thì còn một cách nữa là hỏi vòng: Cách này đỏi hỏi CPU liên tục kiểm tra xem mức Logic của nút nhấn. Đồng thời việc đáp ứng cũng không nhanh bằng sử dụng ngắt.
+Besides using interrupt for button detection – this method also helps conserve CPU resources, which only occurs when there is an expected event, there is another method called polling: This method requires the CPU to constantly check for the button status. However its responsiveness is inferior to that of interrupt.
 
 image::02-helloworld/button-circuit.jpg[width=300, align="center", role="center"]
 
-NOTE: Yêu cầu: Nhấn nút (GPIO0) thì chớp tắt đèn LED (GPIO6) và in ra cổng Serial
+NOTE: Requirement: button (GPIO0) for blinking LED (GPIO6) and print out to Serial port.
 
-TIP: Mạch ESP8266 WiFi Uno đấu sẵn nút nhấn vào GPIO0
+TIP: ESP8266 WiFi Uno with pre-built button on GPIO0
 
-Thực hiện sau khi kiểm tra mã nguồn:
+Proceed after checking the source code:
 
 - <<select-arduino-board>>
 - <<arduino-flash>>
 
-=== Mã nguồn dùng hỏi vòng
+=== Source code using polling
 
 [source, c]
 ----
 include::code-{lang}/button-poll/button-poll.ino[]
 ----
 
-=== Mã nguồn dùng ngắt
+=== Source code using interrupt
 
 [source, c]
 ----
 include::code-{lang}/button/button.ino[]
 ----
 
-=== Các khái niệm
-* **Ngắt** Ngắt là một khái niệm liên quan nhiều đến phần cứng, một sự kiện nào đó xảy ra, bắt buộc CPU phải dừng các tác vụ bình thường khác đang thực thi để thực hiện tác vụ Ngắt. Ví dụ, cấu hình ngắt khi có thay đổi mức logic từ 1 về 0 (cạnh xuống) của GPIO, thì khi mức logic thay đổi trên GPIO đó, CPU sẽ ngay lập tức dừng và lưu các trạng thái tại chương trình chính và nhảy vào hàm ngắt để thực thi các lệnh trong đó.
-* **pull-up/pull-down** Đa số các chân GPIO của Chip đều có thể có 3 trạng thái, trạng thái là ngõ ra mức cao (logic 1), trạng thái là ngõ ra mức thấp (logic 0) và trạng thái ngõ vào (input). Ở trạng thái Input, thì các GPIO được cấu hình trở kháng cao (Hi-Z), hay còn gọi là trạng thái cách ly, không cho dòng điện đi qua, nhưng vẫn cảm nhận được điện áp. Ở trạng thái Hi-Z, nếu không xác định mức logic trước cho GPIO thì GPIO này bị thả trôi, nghĩa là rất dễ ảnh hưởng bởi môi trường, khi đọc về sẽ không đoán định được mức Logic. Pull-up là nối 1 điện trở với GPIO này lên mức logic 1, xác định trước 1 điện áp cho nó để đảm bảo không không có tác động điện nào thì nó là mức logic 1. Tương tự, pull-down xác định trước mức logic 0 cho GPIO.
+=== Some concepts
+* **Interrupt** Interrupt is a hardware-related concept; an arbitrary event occurs, which requires the CPU to halt all on-going tasks to server the Interrupt routine. For instance, an interrupt is activated when there is a change from logic 1 to 0 (falling edge) of a GPIO, when the change occurs on that GPIO, CPU will immediately halt, save the main program’s context and jump to the Interrupt service routine to execute the instructions.
+* **pull-up/pull-down** Most GPIO pins have 3 states, one is output high (logic 1), another one is output low (logic 0) and the last one is input. In input state, a GPIO assumes high impedance (Hi-Z) state or isolated state, no current can pass through although the pin can still sense voltage level. In this Hi-Z state, if no initial logic is defined, the GPIO will float, which means it is susceptible to external factors; when read it will not have a consistent logic state. Pull-up means pulling a resistor connected to a GPIO to logic 1, defining an initial logic level of 1 to ensure it remains that way unless externally modified. Similarly, pull-down defines GPIO’s initial logic level of 0.
 

@@ -1,28 +1,28 @@
 [[_wifi]]
 = ESP8266 WiFi
 
-Kết nối WiFi chính điểm mạnh nhất của chip ESP8266, nó có thể kết nối đến các Router sẵn có trong gia đình, các Access Point với các tiêu chuẩn kết nối thông dụng hiện nay ở tần số 2.4GHz - ở chế độ STA. Ngoài ra, ESP8266 còn hỗ trợ chế độ AP (Access Point), tức là nó có thể khởi động một (hoặc nhiều) Access Point và cho phép các client khác có thể kết nối vào, hoặc chạy đồng thời cả chế độ STA và AP.
+WiFi connection is ESP8266's selling point, it can connect to existing Router at home and Access Point with the most current standard in the 2.4Ghz frequency range - in STA mode. In addition, ESP8266 also supports AP mode (Access Point), i.e. it will initiate an Access Point and allow clients to connect, or it can run in mode STA and AP mode.
 
-Trong đa phần các ứng dụng thì chế độ STA được sử dụng rất nhiều, nó giúp thiết bị kết nối đến  mạng WiFi cục bộ, có internet để kết nối đến Server và gởi dữ liệu. Một số trường hợp khác thì chế độ AP được sử dụng để trao đổi dữ liệu với ESP8266 và máy tính (hoặc thiết bị có hỗ trợ trình duyệt). Ví dụ như điều khiển đóng tắt đèn thông qua Web Server chạy trên ESP8266.
+STA mode is frequently used in many applications, it will connect to a local WiFi with Internet enabled and send data to a server. Other occasions see it operating in AP mode, which is is programmed to exchange data between ESP8266 and a computer (or other device with a browser), e.g. controlling a LED using ESP8266 as a Web Server
 
-WiFi Access Point là một thiết bị xử lý kết nối trung tâm và phân phối các luồng dữ liệu. Như là việc xử lý các gói tin IP để định địa chỉ mạng LAN, định tuyến các gói tin từ Internet về các máy trạm (Station).
+WiFi Access Point is a central networking device in charge of directing data streams, e.g. process IP packets to identify LAN address, forwarding packets from the Internet to the stations.
 
 .WiFi Access Point
 image::03-wifi/router.jpg[WiFi Access Point, role="center", align="center", width=400]
 
-Thiết bị kết nối đến Access Point được gọi là Station, các máy tính Laptop, máy tính có card WiFi khi kết nối vào Access Point thì đều được gọi là Station
+A deviced connecting to an Access Point is called a Station. Any laptop or desktop with WiFi card connecting to an Access Point is identified as a Station.
 
-.Mạng WiFi
+.WiFi Network
 image::03-wifi/ap-sta.png[WiFi Network, role="center", align="center", width=400]
 
-Các Station khi muốn kết nối vào Access Point thì cần xác định thông qua `BSSID`, thông thường chúng ta hay gọi là `SSID` - hay mạng WiFi. Bạn có thể dễ dàng xem danh sánh SSID xung quanh mình khi scan wifi trên máy tính để kết nối mạng Internet.
+All Stations when attempting to connect to a Access Point need to identify a desired `BSSID`, it is commonly called `SSID` when refering to a WiFi network. A list of nearby SSIDs can be scanned on a computer when using WiFi.
 
-Trong phần này chúng ta sẽ tìm hiểu về các chế độ WiFi của ESP8266
+The following modes will be coverd in this chapter
 
-* Chế độ `Station - STA` kết nối tới Access Point sẵn có.
-* Sử dụng `HTTPClient` để gởi và lấy dữ liệu từ Internet.
-* Chế độ `Access Point - AP` cho phép Client khác kết nối vào.
-* `Web Server` chạy trên ESP8266, dùng để bật tắt đèn LED.
+* `Station - STA` mode connects to a existing Access Point.
+* Using `HTTPClient` to request and receive data from the Internet.
+* `Access Point - AP` mode allows connections from other clients.
+* `Web Server` running on ESP8266 for toggling LEDs.
 
 include::01-wifi-sta.{lang}.adoc[]
 
@@ -34,8 +34,8 @@ include::04-webserver.{lang}.adoc[]
 
 include::05-wifi-p2p.{lang}.adoc[]
 
-== Tổng kết
+== Summary
 
-Trong phần này, chúng ta đã nắm rõ các chế độ hoạt động của ESP8266, các giao thức truyền TCP/IP, HTTP và các định dạng HTML, CSS, Javascript. Ngoài các ví dụ thực tiễn sử dụng ESP8266 như HTTP Client ở hướng dẫn trên, bạn có thể sử dụng HTTPClient để kết nối đến các Server tự tạo, gởi dữ liệu cảm biến đến Server, cũng như lấy dữ liệu từ Server để thực thi các tác vụ.
+In this chapter, we have gone through all ESP8266 modes, protocols such as TCP/IP, HTTP and the HTML, CSS, Javascript trio languages. Other than some demonstrations using ESP8266 as a HTTP Client above, HTTPClient can connect to a custom-built server, send sensor data, as well as receiving data to process.
 
-Chế độ WiFi Access Point và Web Server chạy trên ESP8266 thường sử dụng để cấu hình các thông số cho sản phẩm, sử dụng giao diện Web có ở bất kỳ máy tính nào để cung cấp các thông số phức tạp cho ứng dụng một cách dễ dàng.
+WiFi Access Point mode and Web Server running on ESP8266 are ususally used to configure products's specs. All computers with a web interface can access it and provice the applications with sophisticated data.

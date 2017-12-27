@@ -1,10 +1,11 @@
 /* BASIC STRUCTURE OF A SKETCH */
 void setup() {
   /*
-  This function is called at the starting point of sketch.
-  Using to initialize variables, ports configuration, import libraries, etc.
-  This code runs only one time(boots up or reset board)
-  */
+   * This function is called at the starting point of 
+   * sketch. Using to initialize variables, ports 
+   * configuration, import libraries, etc. This
+   * code runs only one time (boots up or reset board)
+   */
 }
 void loop() {
   // Infinitely repeated inside loop()
@@ -17,7 +18,8 @@ else if (x > 10)// execute if x>10
 	{ code }
 else { code }   // execute in other cases
 
-switch (var) {  // execute the case which match the value of var
+// Execute the case which match the value of var
+switch (var) {  
 case 1:
 ...
 break;
@@ -29,18 +31,20 @@ default:
 }
 
 /* LOOPS */
-/* Execute if x<5 */
+// Execute if x<5
 while (x < 5) { code };
-/* Execute code, evaluate, if x<0 continue the code */
+// Execute code, evaluate, if x<0 continue the code
 do { code } while(x < 0);
-/* Initialize i, execute code then increase i if i < 10 */
+/* Initialize i, execute code then increase i 
+ * if i < 10 
+ */
 for (int i = 0; i < 10; i++) { code };
 /* Quit the loop (for, while, do-while) instantly */
 break;
 /* Jump to the next cycle of current loop */
 continue;
 
-/* FUNCTIONAL DEFINITIONS*/
+/* FUNCTIONAL DEFINITIONS */
 <ret. type> <name>(<params>) { ... }
 int func_name(int x) { return x*2; }
 return x; // x must match the return type of the function
@@ -53,28 +57,38 @@ return;   // return type for void function
 #include "your-library.h"
 
 /* STRING DATA TYPE */
-/* String included the end of string character \0 (null) */
+/* String included the end of string character \0 */
 char str1[8] = {'A','r','d','u','i','n','o','\0'};
-/* Compiler automatically add the character \0 into the end of string */
+/* Compiler automatically add the character \0 into the 
+ * end of string 
+ */
 char str2[8] = {'A','r','d','u','i','n','o'};
-/* String delcareation, without the number of children and assign the value*/
+/* String delcareation, without the number of children 
+ * and assign the value 
+ */
 char str3[] = "Arduino";
-/* Declare and assign the value for string */
+// Declare and assign the value for string
 char str4[8] = "Arduino";
 
 /* ARRAY DATA TYPE */
-/* Declare an array of int with 6 children and assign values for each */
+/* Declare an array of int with 6 children and assign 
+ * values for each 
+ */
 int myPins[] = {2, 4, 8, 3, 6};
-/* integer array of 6 children without values assignment */
+/* integer array of 6 children without values 
+ * assignment 
+ */
 int myInts[6];
-myInts[0] = 42; // Assign the value of 42 for the first child
-myInts[6] = 12; // FAILED ! array index is only from 0 to 5
+/* Assign the value of 42 for the first child */
+myInts[0] = 42; 
+/* FAILED ! array index is only from 0 to 5 */
+myInts[6] = 12; 
 
-/*Qualifiers*/
-static    // Does not change the value
-volatile  // In RAM (Usually used with interrupt)
-const     // Constant (read only)
-PROGMEM   /* Allow to save data in FLASH instead of SRAM */
+/* Qualifiers */
+static   // Does not change the value
+volatile // In RAM (Usually used with interrupt)
+const    // Constant (read only)
+PROGMEM  // Allow to save data in FLASH instead of SRAM
 
 /* OPERATOS, OPERATIONS */
 /* Popular operators */
@@ -90,7 +104,7 @@ PROGMEM   /* Allow to save data in FLASH instead of SRAM */
 >   greater than operator
 <=  less or equal operator
 >=  greater or equal operator &&  logical AND operator (AND)
-||  logical OR operator (OR)
+\|\|  logical OR operator (OR)
 !   logical NOT operator (NOT)
 
 /* Compound assignment operators */
@@ -106,14 +120,14 @@ PROGMEM   /* Allow to save data in FLASH instead of SRAM */
    ex: x = 6; x/= 2; //x = 3
 &= logical AND assignment operator
    ex: x = 0b1010; x&= 0110; //x =0b0010
-|= logical OR assignment operator
+\|= logical OR assignment operator
    ex: x = 0b1010; x&= 0110; //x =0b1110
 
 /* Bitwise operators */
 &   and          ^   xor
 <<  bitwise left shift
 >>  bitwise right shift
-|  or           ~   not
+\|  or           ~   not
 
 /* Pointer operators */
 &reference:  // address-of
@@ -132,7 +146,7 @@ PROGMEM   /* Allow to save data in FLASH instead of SRAM */
 ex: 1.23*10^3 = 1230
 
 /* DATA TYPE RANGE */
-boolean       true | false
+boolean       true \| false
 char          -128        - 127, 'a' '$' etc.
 unsigned char 0           - 255
 byte          0           - 255
@@ -158,6 +172,7 @@ char      *other_pointer = NULL;
  * Pin Input/Output
  * Digital I/O - pins 0-13 A0-A5
  */
+
 /* Ports configuration */
 pinMode(pin,[INPUT, OUTPUT, INPUT_PULLUP])
 /* Read the value of port pin_6 and assign to a */
@@ -178,11 +193,17 @@ analogWriteRange(new_range)
 analogWriteFreq(new_frequency)
 
 /* ADVANCED I/O */
-/* Generate the square wave with frequency freq_Hz and duty cycle=50% */
+/* Generate the square wave with frequency freq_Hz and
+ * duty cycle=50% 
+ */
 tone(pin, freq_Hz)
-/* Generate the square wave with frequency freq_Hz, duration mili second */
+/* Generate the square wave with frequency freq_Hz, 
+ * duration mili second 
+ */
 tone(pin, freq_Hz, duration_ms)
-/* Stop generate the square wave with frequency tone() */
+/* Stop generate the square wave with frequency 
+ * tone(). 
+ */
 noTone(pin)
 /* Shift 1 byte, 1 bit each, left end first */
 shiftOut(dataPin, clockPin,[MSBFIRST, LSBFIRST], value)
@@ -193,10 +214,14 @@ unsigned long pulseIn(pin,[HIGH, LOW])
 /* Configure interrupt function on ports */
 attachInterrupt(interrupt, func, mode)
 /*
-interrupt: number of interruption (normally interrupt ports)
-func : called on interrupt (notice : there is no attributes and return type)
-mode : including LOW,CHANGE, RISING, FALLING. Interruption will be triggered when the interrupt ports match the corresponding mode
-*/
+ * interrupt: number of interruption (normally interrupt
+ * ports).
+ * func : called on interrupt (notice : there is no 
+ * attributes and return type).
+ * mode : including LOW,CHANGE, RISING, FALLING. 
+ * Interruption will be triggered when the interrupt 
+ * ports match the corresponding mode.
+ */
 /* Disable interrupt */
 detachInterrupt(interrupt)
 /* Disable all interrupts */
@@ -218,17 +243,23 @@ begin(long speed)
 end()
 /* Return number of bytes to read */
 int available()
-/* read data from serial (return the first byte of serial data or -1 if there is no data */
+/* read data from serial (return the first byte of 
+ * serial data or -1 if there is no data 
+ */
 int read()
 /* Wait for the completion of serial data transfer */
 flush()
-/* Output data to serial port (with any type of configured data */
+/* Output data to serial port (with any type of 
+ * configured data 
+ */
 print(data)
-/* Same with print(data) but after print serial-port, cursor jump to the next line */
+/* Same with print(data) but after print serial-port, 
+ * cursor jump to the next line 
+ */
 println(data)
 /* Send data value/string/array to serial port */
 write(byte)
-/* Function called when there is data comes from RX pin */
+/* Function called when data comes from RX pin */
 SerialEvent()
 
 /*************************************************
@@ -236,14 +267,17 @@ SerialEvent()
  *     Library support to control servo motor *
  *************************************************/
 /*
-Setup port to connect with servo and the pulse’s width
-pin : Port to connect with servo
-[min_uS, max_uS] : Pulse’s width by us accompany with rotation angle from 0 to 180
-*/
+ * Setup port to connect with servo, the pulse’s width
+ * pin : Port to connect with servo
+ * [min_uS, max_uS] : Pulse’s width by us accompany with
+ * rotation angle from 0 to 180
+ */
 attach(pin, [min_uS, max_uS])
 /* Write rotation angle data 0~180 */
 write(angle)
-/* Write the value to control rotation angle for servo, value from 700 ~ 2300 */
+/* Write the value to control rotation angle for servo,
+ * value from 700 ~ 2300 
+ */
 writeMicroseconds(uS)
 /* Read the value of rotation angle (0 to 180) */
 int read()
@@ -256,18 +290,24 @@ detach()
  *                       Wire.h                  *
  *               Used with I2C connection        *
  *************************************************/
- /* Master initialize the Wire library with I2C connection */
+/* Master initialize the Wire lib with I2C connection */
 begin()
-/* Slave join the i2C connection, addr is the 7 address bits of slave */
+/* Slave join the i2C connection, addr is the 7 address
+ * bits of slave 
+ */
 begin(addr)
 /*
-Master request some bytes from slave:
-address: 7bits of address of slave.
-count: Number of requested bytes from master
-stop: Boolean, if true, master stop after request and release I2C bus, if false, master request to restart to keep the connection
-*/
+ * Master request some bytes from slave:
+ * address: 7bits of address of slave.
+ * count: Number of requested bytes from master.
+ * stop: Boolean, if true, master stop after request and
+ * release I2C bus, if false, master request to restart
+ * to keep the connection.
+ */
 requestFrom(address, count, stop)
-/* Send the begin signal, data send to the slave with address addr */
+/* Send the begin signal, data send to the slave with
+ * address addr.
+ */
 beginTransmission(addr)
 /* Send data (1 byte) to slave */
 send(byte)
@@ -280,10 +320,12 @@ endTransmission()
 /* Return available byte after read by read() */
 int available()
 /* Access to 1 byte transmitted from slave to master
-Or in the reverse direction when received the requestFrom. Return the next received byte */
+ * Or in the reverse direction when received the 
+ * requestFrom. Return the next received byte 
+ */
 byte receive()
-/* handler function is called when slave received data */
-onReceive(handler)
+/* handl function is called when slave received data */
+onReceive(handl)
 /* Handler is called when master request data */
 onRequest(handler)
 
@@ -291,7 +333,9 @@ onRequest(handler)
  *                    ESP8266                   *
  *************************************************/
 
-/* Use when the program need to executes multiple tasks at the same time, support library <Scheduler.h> */
+/* Use when the program need to executes multiple tasks
+ * at the same time, support library <Scheduler.h> 
+ */
 void yield();
 /* Reset ESP */
 void ESP.reset();
@@ -323,7 +367,9 @@ WiFi.beginSmartConfig();
 /* WIFI SOFT ACCESS POINT (AP) MODE */
 /* Declare an AP with name and password */
 WiFi.softAP(ssid, password);
-/* Declare an AP and set up the AP with IP address, gateway and subnet */
+/* Declare an AP and set up the AP with IP address,
+ * gateway and subnet 
+ */
 WiFi.softAPConfig (local_ip, gateway, subnet);
 /* Return the number of stations connected to AP */
 WiFi.softAPgetStationNum();
@@ -340,29 +386,33 @@ WiFi.softAPmacAddress(mac);
 WiFi.mode(WIFI_STA);
 /* Scan and return the number of available network */
 WiFi.scanNetworks();
-/* Return name of network (string format) at position num */
+/* Return name of network(string format)at num */ 
 WiFi.SSID(num).c_str();
 /* Return information of all networks */
 WiFi.getNetworkInfo(networkItem,&ssid,
 &encryptionType, &RSSI,*&BSSID, &channel, &isHidden)
 
 /* DIAGNOSTICS */
-/*
-* Objectives : Analyze, provide information an repair when there is no connection to WiFi network
-*/
+/* Objectives : Analyze, provide information an repair
+ * when there is no connection to WiFi network.
+ */
 /* Print out serially diagnostic result of network */
 WiFi.printDiag(Serial);
 /* Enable debug mode */
 Serial.setDebugOutput(true);
 
 /* WEBSERVER */
-/* Host TCP at port 80 response HTTP requests from client */
+/* Create a host TCP at port 80 response HTTP requests
+ * from client
+ */
 ESP8266WebServer server (80);
 /* Server begins to listen clients */
 server.begin();
 /* Write data to clients */
 server.write(buf, len)
-/* Set up server at URL, handleRoot is the content or function will be executed */
+/* Set up server at URL, handleRoot is the content or 
+ * function will be executed 
+ */
 server.on ( "URL", handleRoot );
 /* Server react with clients to send, receive data */
 server.handleClient();
@@ -371,16 +421,20 @@ server.hasArg(val)
 /* Get value of variable val on server */
 server.arg(val);
 /* Request update data from server:
-code : HTTP code
-text/html : Returned format is HTML
-content: Content returned from server */
+ * code : HTTP code
+ * text/html : Returned format is HTML
+ * content: Content returned from server 
+ */
 server.send (code, "text/html",content);
 
 /* MQTT */
 /*
-Libraries which support MQTT prototype for ESP8266
-on arduino usually used is ESP8266MQTTClient and PubSubClient. Bellow content explain functions of libraries
-*/
+ * Libraries which support MQTT prototype for ESP8266
+ * on arduino usually used is ESP8266MQTTClient and 
+ * PubSubClient. Bellow content explain functions of 
+ * libraries.
+ */
+
 /* Functions of ESP8266MQTTClient library*/
 /* Declare a MQTTClient variable mqtt */
 MQTTClient mqtt;
@@ -388,22 +442,27 @@ MQTTClient mqtt;
 mqtt.onData([](String topic, String data, bool cont)
 /* Unsubscribe topic /qos0 */
 mqtt.unSubscribe("/qos0");
-/*Subscribe topic and publish messages */
+/* Subscribe topic and publish messages */
 mqtt.onSubscribe([](int sub_id)
 /* Publish a message "qos0" to topic /qos0 with QoS =0,
-and Retain = 0 */
+ * and Retain = 0 
+ */
 mqtt.publish("/qos0", "qos0", 0, 0);
 /* Connect to server MQTT */
 mqtt.onConnect([]()
 /* Subscribe topic and receive message at topic /qos0 */
 mqtt.subscribe("/qos0", 0)
 /* Begin to transfer data with broker MQTT at url
-mqtt://test.mosquitto.org port 1883 */
+ * mqtt://test.mosquitto.org port 1883 
+ */
 mqtt.begin("mqtt://test.mosquitto.org:1883")
-/* Function called inside loop() to initialize MQTT, check and process data from topics, check attributes of prototypes such as keep-a-live, QoS... */
+/* Function called inside loop() to initialize MQTT,
+ * check and process data from topics, check attributes
+ * of prototypes such as keep-a-live, QoS... 
+ */
 mqtt.handle();
 
-/* Functions of PubSubClient library*/
+/* Functions of PubSubClient library */
 /* Declare PubSubClient variable espClient */
 PubSubClient client(espClient);
 /* Publish data pack "Connected!" to topic ESP8266 */
@@ -414,5 +473,8 @@ client.subscribe("ESP8266");
 client.setServer(url_server, 1883);
 /* Callback function to publish/subscribe */
 client.setCallback(callback);
-/* Function called inside loop() to initialize MQTT, check and process data from topics, check attributes of prototypes such as keep-a-live, QoS data pack... */
+/* Function called inside loop() to initialize MQTT,
+ * check and process data from topics, check attributes
+ * of prototypes such as keep-a-live, QoS data pack... 
+ */
 client.loop();

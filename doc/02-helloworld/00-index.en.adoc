@@ -1,18 +1,17 @@
 [[_hello_world]]
 = Hello World
 
-Bất kỳ một chương trình học nào cũng cần nên bắt đầu một cách từ từ. Bởi vì thời điểm này chúng ta đều mới bắt đầu, nhiều khái niệm, kiến thức về lĩnh mực này gần như không có nhiều. `Helloworld` giúp các bạn có thể nắm được các kiến thức cơ bản, làm sao để biên dịch, nạp được chương trình. Làm sao để sử dụng các thư viện công cộng. Cũng như nắm được một số kiến thức về kiến trúc chương trình Arduino.
+Any learning journey should be taken slowly. As you first start, your knowledge and understanding about the field are limited. `Hello world` helps you with the basics: how to compile, how to upload the program, how to use libraries as well as get a hold of Arduino programming structure.
 
 
 include::01-blink.{lang}.adoc[]
 include::02-button.{lang}.adoc[]
 include::03-oled.{lang}.adoc[]
 
-== Tổng kết
+== Summary
 
-Thông qua các ví dụ mẫu về điều khiển đèn LED, nút nhấn và OLED, chúng ta có thể triển khai thêm nhiều ví dụ khác sử dụng GPIO của ESP8266, cũng như hiểu rõ hơn về cách làm việc của Arduino IDE, cách nạp chương trình, sử dụng thư viện ...
-
-Một trong những ứng dụng có thể sử dụng các kiến thức này như là trò chơi Flappy Bird, bạn có thể thử nghiệm tại đây: https://github.com/esp8266vn/arduino-flappybird[https://github.com/esp8266vn/arduino-flappybird]
+Through some examples with LEDs, buttons and OLED, we can extend to other uses of GPIO in ESP8266, and gain some in-depth understanding on how Arduino IDE works, how to upload and use libraries, etc.
+One application that makes use of said knowledge is Flappy Bird. You can try it out here: https://github.com/esp8266vn/arduino-flappybird[https://github.com/esp8266vn/arduino-flappybird]
 
 .Arduino FlappyBird
 image::02-helloworld/arduino-flappybird.jpg[Aduino Flappybird, width=400, role="center", align="center"]

@@ -1,20 +1,19 @@
-// tạo biến mqtt sử dụng các chức năng của module mqtt 
-var mqtt = require('mqtt') 
-// tạo biến client sử dụng thuộc tính connect để kết nối đến broket MQTT với hostname mqtt://iot.eclipse.org
+// declare a "mqtt" variable to use mqtt module's features.
+var mqtt = require('mqtt')
+// declare a "client" variable and use the "connect" attribute to connect to a MQTT broker with hostname mqtt://iot.eclipse.org
 var client = mqtt.connect('mqtt://iot.eclipse.org')
-// function có chức năng subscribe 1 topic nếu đã kết nối thành công đến broker
+// This function will subscribe to a topic after successfully connecting to broker.
 client.on('connect', function() {
     console.log('Client B connected')
-    // client subcribe topic /client-b/sub
-    client.subscribe('/client-b/sub') 
-    // publish gói tin 'Hello from client B' đến topic /client-a/sub 
+    // subscribe to the topic /client-b/sub
+    client.subscribe('/client-b/sub')
+    // publish the message 'Hello from client B' to topic /client-a/sub
     client.publish('/client-a/sub', 'Hello from client B')
 })
-
 client.on('message', function(topic, message) {
-	// in ra màn hình console 1 message ở định dạng string
+    // print to console a "string" type message.
     console.log(message.toString())
-    // đóng kết nối của client 
+    // disconnect from server
     client.end()
 })
 console.log('Client B started')

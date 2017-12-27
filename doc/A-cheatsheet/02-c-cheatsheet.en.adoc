@@ -25,12 +25,12 @@ include::code-{lang}/c-cheatsheet.c[lines=179..244]
 |
 [source, c]
 ----
-include::code-{lang}/c-cheatsheet.c[lines=245..272]
+include::code-{lang}/c-cheatsheet.c[lines=245..292]
 ----
 |
 [source, c]
 ----
-include::code-{lang}/c-cheatsheet.c[lines=273..302]
+include::code-{lang}/c-cheatsheet.c[lines=293..337]
 ----
 |===
 

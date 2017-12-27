@@ -4,7 +4,7 @@
 const char* ssid = "........";
 const char* password = "........";
 const int led = 16; //LED pin = gpio16
-/* HTML sẽ được gởi xuống client */
+/* HTML sent to the clien */
 const char *html = \
 "<html>\
   <head>\
@@ -16,12 +16,12 @@ const char *html = \
   </body>\
 </html>";
 
-/* Web Server lắng nghe ở port 80 */
+/* Web Server listening on port 80 */
 ESP8266WebServer server(80);
 
-/* hàm này được gọi khi trình duyệt truy vấn đến '/on'
- * sẽ bật đèn LED (0 = on), sau đó chuyển hướng trình duyệt
- * về lại trang chủ '/'
+/* The function is called when the browser queries '/on'
+ * turn on the LED (0 = on), the redirect the browser
+ * back to the main page '/'
  */
 void handleOn() {
   digitalWrite(led, 0);
@@ -29,9 +29,9 @@ void handleOn() {
   server.send(301);
 }
 
-/* hàm này được gọi khi trình duyệt truy vấn đến '/off'
- * sẽ tắt đèn LED (1 = off), sau đó chuyển hướng trình duyệt
- * về lại trang chủ '/'
+/* The function is called when the browser queries '/off'
+ * turn off the LED (1 = off), the redirect the browser
+ * back to the main page '/'
  */
 void handleOff() {
   digitalWrite(led, 1);
@@ -39,8 +39,8 @@ void handleOff() {
   server.send(301);
 }
 
-/* hàm này được gọi khi trình duyệt truy vấn đến trang chủ '/'
- * sẽ gởi dữ liệu HTML, cung cấp các thông tin để bật, tắt LED
+/* The function is called when the browser queries the main page '/'
+ * send the HTML content, providing the options to toggle the LED
  */
 void handleRoot() {
   server.send(200, "text/html", html);
@@ -61,8 +61,8 @@ void setup(void){
   Serial.println(ssid);
   Serial.print("IP address: ");
 
-  /* Chúng ta có thể biết IP của ESP8266
-   * để kết nối tới nhờ gọi hàm này
+   /* We can scan for ESP8266's IP
+   * using the following function
    */
   Serial.println(WiFi.localIP());
 

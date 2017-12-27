@@ -1,26 +1,25 @@
 [preface]
-= Lời mở đầu
+= Introduction
 
-*Internet Of Things (IoT)* – *Internet vạn vật* dường như đang đứng trước một bước ngoặt để đi đến giai đoạn tiếp theo cho một thế giới hiện đại, văn minh. Đó là viễn cảnh mà mọi vật đều có thể kết nối với nhau thông qua Internet không dây. Các doanh nghiệp đang có xu hướng ứng dụng sản phẩm công nghệ IoT vào sản xuất ngày càng nhiều bởi thị trường sáng tạo tiềm năng và chi phí sản xuất ngày càng thấp.
+*Internet Of Things (IoT)* –  *The Internet of Things* seems to be in the forefront of a modern, civilized world. It's a scenario where everything can be connected via the wireless Internet. Businesses are increasingly adopting IoT technology into production because of the potential market for innovation and lower production costs.
 
-Chứng kiến sự phát triển như vũ bão của các sản phẩm ứng dụng công nghệ IoT và thị trường công nghệ Start up tiềm năng đang ngày càng sôi động hơn bao giờ hết, quyển sách này cung cấp các nội dung về IoT với triết lí Không chỉ là thực tế – không rời rạc, hướng đến những người trẻ tuổi đã, đang và muốn tập trung năng lực của mình cho không gian Internet Of Things. Mong muốn cho ra đời những sản phẩm độc đáo, sáng tạo, ngày càng hoàn thiện và đồng bộ để có thể đáp ứng nhu cầu của cuộc sống.
+Seeing the fast-paced development of IoT technology products and the potential start-up technology market, this book provides IoT content with a coherence, fact, towards young people who have been and want to focus their energies on the Internet of Things. Desire to create unique products, creative, increasingly perfect and synchronized to meet the needs of life.
 
-Nội dung được thiết kế một cách cơ bản giúp học viên có cái nhìn tổng quan về việc xây dựng hệ thống, sản xuất thiết bị và dễ dàng tham gia vào lĩnh vực IoT mới mẻ.
+The content is designed essentially to give students an overview of system construction, equipment production and easy access to the IoT.
 
-=== Đôi lời về tác giả
+=== About author
+The author of book is a Mr. https://twitter.com/tuanpmt[Phạm Minh Tuấn](https://github.com/tuanpmt[TuanPM]), he has many years of experience working in the IoT and developing the open source library for the community. He wants to share a little of his knowledge to the development very potential this industry.
 
-Chủ biên của cuốn sách là ông https://twitter.com/tuanpmt[Phạm Minh Tuấn](https://github.com/tuanpmt[TuanPM]), có nhiều năm kinh nghiệm làm việc trong mảng IoT và phát triển các thư viện mã nguồn mở cho cộng đồng. Tác giả xây dựng cuốn sách này với mục đích đóng góp 1 phần nhỏ những kiến thức của mình vào sự phát triển của ngành công nghiệp vẫn còn mới mẻ nhưng rất tiềm năng này.
+=== Terminology used
+* `IoT` - Internet Of Things.
+* `ESP8266` - Wi-Fi microcontroller.
+* `Git` - version control system .
+* `Github` - A social network for developer based on Git.
+* `IDE` -  Integrated Development Enviroment.
+* `Compiler` - A software program that transforms high-level source code that is written by a developer in a high-level programming language into a low level object code (binary code) in machine language.
+* `Logic Level` - The voltage level for the chip to understand (1 or 0).
 
-=== Thuật ngữ hay sử dụng
-* `IoT` - Internet Of Things hay internet vạn vật.
-* `ESP8266` - Chip xử lí tích hợp thu phát WiFi.
-* `Git` - Trình quản lý phiên bản.
-* `Github` - Mạng xã hội dành cho lập trình viên.
-* `IDE` - Viết tắt của Integrated Development Enviroment - môi trường phát triển tích hợp.
-* `Compiler` - Trình biên dịch.
-* `Logic Level` - Mức điện áp để chip hiểu được (1 hay 0).
-
-=== Giải thích code trong bài
+=== Explain the source code
 
 [source, c]
 ----
@@ -32,5 +31,5 @@ void setup()
 }
 ----
 
-<1> Dòng này giải thích đây là comment (chú thích).
-<2> Dòng này giải thích biến `a` tăng thêm 1 đơn vị.
+<1> This line explains this as a comment.
+<2> This line explains the variable `a` which adds 1 unit.

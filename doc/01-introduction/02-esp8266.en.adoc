@@ -25,7 +25,7 @@ image::01-intro/01.esp8266-soc.svg[ESP8266EX pin mapping, width=500, align="cent
 * Integrate TCP/IP
 * Support for many types of antennae
 * 16 GPIO pins
-* SDIO 2.0, UART, SPI, I²C, PWM,I²S với DMA
+* SDIO 2.0, UART, SPI, I²C, PWM,I²S with DMA.
 * 1 ADC 10-bit
 * Operating Temperature Range : -40C ~ 125C
 
