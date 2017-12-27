@@ -1,11 +1,11 @@
 #include "ESP8266WiFi.h"
-// Ten va mat khau cua ESP8266 AP lam server se vao
+// Name and password of the ESP8266 AP acting as a server
 const char *ssid = "yourSSID";
 const char *password = "yourPassword";
 
 IPAddress server_ip(192, 168, 4, 1);
 #define PORT  23
-// port 23 la port cua esp8226 lam AP da khoi tao.
+// Port 23 is the ESP8266 AP port.
 WiFiClient client;
 
 void setup() {
@@ -16,8 +16,8 @@ void setup() {
   Serial.print("\nConnecting to ");
   Serial.println(ssid);
 
-  // Kiem tra tình trang ket noi, neu chua ket noi duoc
-  // se in chuoi "connecting..." tren man hinh serial terminal.
+  // Check the connection status, if none is established,
+  // print out "connecting..." on the Serial Terminal.
   while (WiFi.status() != WL_CONNECTED) {
     Serial.println("Connecting...");
     delay(500);
@@ -27,9 +27,9 @@ void setup() {
 unsigned long previousMillis = 0;
 void loop() {
   if (WiFi.status() == WL_CONNECTED) {
-    // Kiem tra neu client(STA) chua duoc ket noi.
-    // Kiem tra tiep tuc neu khong duoc ket noi den IP va PORT cua server(AP
-    // thi in ra serial terminal chuoi "connection failed".
+    // Check client(STA) connection status.
+    // Continously check connection using IP and port of the AP, 
+    // if fail then print out "connection failed" on the Serial Terminal.
     while (!client.connected()) {
       if (!client.connect(server_ip, PORT)) {
         Serial.println("connection failed");
@@ -37,8 +37,8 @@ void loop() {
         return;
       }
     }
-    // Neu client(STA) duoc ket noi thi se doc du lieu tu server(AP)
-    // den khi gap ki tu \r va in ra seria terminal du lieu nhan duoc.
+    // If client(STA) has connected to the server(AP) then read all data
+    // until reaching \r and print out all received data.
     while (client.available()) {
 
       String line = client.readStringUntil('\r');

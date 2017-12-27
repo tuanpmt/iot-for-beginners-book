@@ -1,66 +1,66 @@
 == MQTT Broker
 
-Ở phần trước chúng ta sử dụng các dịch vụ MQTT Broker miễn phí để thử nghiệm, tuy nhiên ta có thể sẽ phải trả phí dịch vụ với những ứng dụng lớn cần băng thông rộng và tốc độ đáp ứng nhanh, cộng với việc dữ liệu có thể bị tấn công do độ bảo mật thông tin chưa cao. Do đó, ở phần này, chúng ta sẽ tự mình xây dựng 1 MQTT Broker. Việc tự thiết lập 1 MQTT broker giúp chúng ta có thể sử dụng giao thức MQTT trên máy local mà không cần kết nối đến các dịch vụ  MQTT Broker ở mạng internet. Quá trình truyền, nhận và xử lí dữ liệu diễn ra 1 cách nhanh chóng cũng như bảo mật thông tin của người dùng. Tuy nhiên, để tạo được 1 MQTT Broker với đầy đủ tính năng của giao thức MQTT đòi hỏi chúng ta phải có kiến thưc tốt về  giao thức MQTT cũng như các ngôn ngữ lập trình bổ trợ cho việc xây dựng nó. Để bắt đầu, ta sẽ tạo ra 1 MQTT Broker đơn giản bằng cách dùng 1 module hỗ trợ sẵn có đó là `Mosca`.
+At the previous part, we have practised free MQTT Broker services, but we may need to pay for service fee in case of huge application which require high bandwidth and high responsive, additionally data may be attached because of low level security. So, in this article, we will build a MQTT Broker ourself. By setting up a MQTT Broker helps us to use MQTT protocol locally without connection to MQTT Broker services on the internet. The sending, receiving and processing data will be performed in high speed, and securely protect user's information. However, to set up a MQTT Broker with full features of MQTT protocol require us a good knowledge on MQTT protocol and supported programming languages to build it up. To start up, we will create a simple MQTT Broker by using an exist supported module named `Mosca`.
 
 === MOSCA
 
-Mosca là 1 trong số rất nhiều server MQTT Broker của giao thức MQTT. Có thể kế đến các server khác như HiveMQ, Apache Apollo, Mosquitto, Mongoose. Mosca có 1 số đặc điểm như sau:
+Mosca is one of many MQTT Broker server of MQTT protocol. It can be list out other servers such as: HiveMQ, Apache Apollo, Mosquitto, Mongoose. Mosca has some special characters as below:
 
-* Nó là 1 Node.js Broker, được viết bằng ngôn ngữ JavaScript vì vậy để có thể xây dựng MQTT Broker, chúng ta cần Node.js để chạy. Mosca có thể nhúng vào ứng dụng của bạn nếu ứng dụng này được viết bằng Node.js
+* It is a Node.js Broker, written by JavaScript then can build a MQTT Broker, we need Node.js to run. Mosca can embedded into your application if it is written by Node.js
 
-* Mosca là 1 multi-transport MQTT Broker, có nghĩa là nó hỗ trợ tất cả các chức năng publish, subscribe của các broker khác. Danh sách các publish/subscribe broker được hỗ trợ bao gồm RabbitMQ, Redis, Mosquitto, ZeroMQ. Ở phần này chúng ta sẽ tạo ta 1 MQTT Broker đơn giản dùng Mosca với sự hỗ trợ của cơ sở dữ liệu `Mongodb`
+* Mosce is a multi-transport MQTT Broker, means it supported all publish, subscribe features of other brokers. List of supported publish/subscribe brokers includes: RabbitMQ, Redis, Mosquitto, ZeroMQ. In this article we will create a simple MQTT Broker using Mosca with supporting by `Mongodb` database.
 
-==== Mục tiêu
+==== Objectives
 
-* Chúng ta sẽ tạo 1 MQTT Client là ESP8266 và 1 MQTT Client trên máy tính sử dụng MQTT.js nhằm kết nối đến MQTT Broker , subscribe topic và publish các message.
-* Dùng Mosca tạo 1 MQTT Broker trên máy tính cá nhân nhằm broadcast messages (truyền bá các gói tin) đến các MQTT Client.
+* We will create a MQTT Client by ESP8266 and a MQTT Client on the computer by MQTT.js in order to connect to MQTT Broker, subscribing topics and publishing messages.
+* Using Mosca to create MQTT Broker on personal computer to broadcast messages to MQTT Clients.
 
-==== Các bước thực hiện
+==== Performing steps
 
-* **Bước 1 :** Trước tiên, chúng ta nên tạo 1 folder để  thiết lập 1 MQTT Broker trên máy local. Đi đến folder này, tạo file package.js bằng lệnh `npm init` và thiết lập các thông tin của dự án. Tiếp theo, cài đặt module mosca bằng lệnh `npm install mosca --save`. Để lắng nghe các kết nối đến từ client cũng như lưu trữ dữ liệu về thông tin kết nối và nội dung các message ta cần công cụ hỗ trợ đó là `MongoDB`, bạn cũng có thể chọn Redis, Mosquitto, RabbitMQ... và tìm hiểu thêm về điểm mạnh, yếu của các cơ sở dữ liệu này. Để cài đặt MongoDB, chúng ta sẽ truy cập vào điạ chỉ https://docs.mongodb.com/manual/administration/install-community/, tùy theo hệ điều hành để chọn gói cài đặt thích hợp. Sau khi cài đặt xong, chúng ta sẽ mở port 27017 (port mặc định khi dùng mongodb, chúng ta có thể  điều chỉnh port ở file cấu hình của mongodb) để lắng nghe các kết nối từ client thông qua lệnh
-`sudo service mongod start`. Trên hệ điều hành Linux, có thể kiểm tra các kết nối trên hệ thống bằng lệnh `Netstat` như hình dưới:
+* **Step 1 :** First, we should create a folder to set up a MQTT Broker on local. Navigate to this folder, create package.js file by `npm init` command and configure project's information. Next, install mosca module by `npm install mosca --save` command. To listening connections from clients and saving data about connections and messages content, we need the `MongoDB`, you can choose Redis, Mosquitto, RabbitMQ, etc. and study about the advantages, disadvantages of these databases. To install MongoDB, we will access to https://docs.mongodb.com/manual/administration/install-community/, base on your OS, choose the suitable installer package. After installation, we will open port 27017 (dafault port for using mongodb, we can change the port at configuration file of mongodb) to listening to connections from clients via
+`sudo service mongod start` command. On Linux, connections on system can be checked by `Netstat` command as shown in bellow image:
 
-.Hình ảnh port 27017 đã mở thành công và lắng nghe các kết nối
+.Image of the port 27017 is successfully opened and listening to connections
 image::06-mqtt/netstatPort.png[width=600, align="center"]
 
-* **Bước 2 :** Tạo file Javascript để viết mã nguồn cho MQTT Broker. Ví dụ về mã nguồn của file serverMosca.js được viết bên dưới:
+* **Step 2 :** Create Javascript file to write the source code for MQTT Broker. Example of serverMosca.js file source code is written bellow:
 
-==== Mã nguồn file serverMosca.js
+==== serverMosca.js file source code
 
 [source, javascript]
 ----
 include::code-{lang}/mosca-server/moscaServer.js[]
 ----
 
-* **Bước 3 :** Viết mã nguồn cho ESP8266. Để nhanh chóng, chúng ta sẽ dùng mã nguồn của thư viện ESP8266MQTTClient đã viết ở mục trước. Sửa đổi địa chỉ của MQTT Broker từ `mqtt.begin("mqtt://iot.eclipse.org:1883");` thành `mqtt.begin("mqtt://your-local-ip:1883");` với your-local-ip là địa chỉ IP của máy tính (ví dụ 192.168.1.7), chú ý rằng ESP8266 và MQTT Broker phải kết nối chung 1 network WiFi.
+* **Step 3 :** Write the source code for ESP8266. For quickly study, we will use ESP8266MQTTClient library's source code wrote at the previous article. Modify the MQTT Broker's address from `mqtt.begin("mqtt://iot.eclipse.org:1883");` to `mqtt.begin("mqtt://your-local-ip:1883");` with your-local-ip is the IP address of computer (ex:192.168.1.7), notice that ESP8266 and MQTT Broker must connect to the same local WiFi network.
 
-* **Bước 4 :** Tạo MQTT Client dùng MQTT.js. Chúng ta sẽ tạo 1 folder để chứa các file của MQTT Client. Tương tự như bước 1 , dùng `npm init` để tạo file package.js và thiết lập các thông tin của dự án. Tiếp theo cài đặt module mqtt bằng lệnh `npm install mqtt --save` và tạo file Javascript để viết nội dung cho MQTT Client. Ví dụ về mã nguồn file `moscaClient.js` được trình bày bên dưới:
+* **Step 4 :** Create MQTT Client using MQTT.js. We will create a folder to containing MQTT Client's files. Similar to step 1, using `npm init` to create package.js file and configure project's information. Next, install mqtt module by `npm install mqtt --save` command and create the Javascript file to write the content of MQTT Client. Example of `moscaClient.js` file source code is shown bellow:
 
-==== Mã nguồn file moscaClient.js
+==== moscaClient.js file source code
 
 [source, javascript]
 ----
 include::code-{lang}/mosca-client/moscaClient.js[]
 ----
 
-==== Kết quả
+==== Result
 
-Trên terminal, đi đến thư mục chứa file `moscaServer.js` và khởi chạy server bằng lệnh `node moscaServer.js`. Server sẽ khởi động và lắng nghe các kết nối đến từ các MQTT Client. Tiếp theo, nạp chương trình trên Arduino cho ESP8266, sau đó khởi chạy MQTT Client trên máy tính bằng lệnh `node moscaClient.js`. Khi có các sự kiện kết nối , ngắt kết nối, pushlish 1 message hay subcrible 1 topic đến từ các client thì bên phía server đều sẽ hiển thị nội dung và thông tin. Các terminal hiển thị kết quả như hình bên dưới:
+On terminal, navigate to the folder contains `moscaServer.js` file and launch the server by `node moscaServer.js` command. Server will start and listen to connections from MQTT Clients. Next, load the program on Arduino to ESP8266, the run the MQTT Client on the computer by `node moscaClient.js` command. When there are connections, disconnection, publishing a message or subscribing a topic comes from clients then on server side will display the content and information. Terminals display the result as in the figure bellow:
 
-.Hình ảnh thông tin nhận được từ các client ở server mosca
+.Image of information received from clients at mosca server
 image::06-mqtt/moscarServer.png[width=600, align="center"]
 
-.Hình ảnh thông tin nhận được ở client mqtt.js và client ESP8266
+.Image of information received from mqtt.js client and ESP8266 client
 image::06-mqtt/mqttjsArduino.png[width=600, align="center"]
 
-=== Một số MQTT Broker sử dụng cho sản phẩm thực tế
+=== Some MQTT Brokers used for real life products
 
 ==== Mosquitto
 
-Mosquitto là 1 MQTT Broker viết bằng ngôn ngữ lập trình C. Một số đặc điểm nổi bật của mosquitto là tốc độ truyền nhận và xử lí dữ liệu nhanh, độ ổn định cao, được sử dụng rộng rãi và phù hợp với những ứng dụng embedded. Thích hợp cho các hệ thống nhỏ chạy trên máy local như Raspberry Pi, bên cạnh đó Mosquitto cũng được hỗ trợ các giao thức TLS/SSL (các giao thức nhằm xác thực server và client, mã hóa các message để bảo mật dữ liệu).
+Mosquitto is a MQTT Broker written by C programming language. Some special characters of mosquitto is high speed of data transmission and data processing, good stability, widely used and suitable for embedded applications. Suitable for small systems run on local such as Raspberry Pi, moreover Mosquitto also supported TLS/SSL protocols (protocol for server and client authorising purpose, encrypting messages for data protection).
 
-Một số nhược điểm của mosquitto là khó thiết kế khi làm những ứng dụng lớn và ít phương thức xác thực thiết bị nên khả năng bảo mật vẫn chưa tối ưu.
+Some disadvantages of mosquitto are difficult to design when using for huge applications and poor of devices authority methods, so the ability of security is not optimized.
 
 ==== EMQ
 
-EMQ (Erlang MQTT Broker) là một MQTT Broker được viêt bằng ngôn ngữ lập trình Erlang. Ưu điểm của EMQ là tính ổn định cao, thích hợp để thiết kế các hệ thống lớn do khả năng mở rộng ứng dụng dễ dàng cũng như khá dễ để cài đặt. Ngoài ra EMQ còn hỗ trợ nhiều phương thức xác thực người dùng, phát triển và cập nhật tính năng liên tục bởi cộng đồng developer. Tuy nhiên điểm yếu của MQTT broker này là khó đối với những người mới bắt đầu. Thông tin về EMQ có thể xem tại trang http://emqttd-docs.readthedocs.io/en/latest/#
+EMQ (Erlang MQTT Broker) is a MQTT Broker written by Erlang programming language. Advantages of EMQ is high stability, suitable for design huge systems because of easy to expand the application, easy to install. Moreover, EMQ also support a bunch of users authentication methods, developing and features update frequently by developers community. But, disadvantages of this MQTT broker is difficult for new users. Information about EMQ can be seen at http://emqttd-docs.readthedocs.io/en/latest/#

@@ -5,22 +5,22 @@ const char* password = "your-password";
 
 void setup() {
 
-  // Thiết lập truyền dữ liệu nối tiếp ở tốc độ 115200 bits/s
+  // Initiate a serial connection at 115200 bits/s
   Serial.begin(115200);
   delay(10);
   Serial.print("Connecting to ");
 
-  // In ra tên mạng wifi sẽ kết nối đến
+  // Print out the name fo the WiFi (SSID)
   Serial.println(ssid);
 
-  // Thiết lập ESP8266 ở chế độ station và kết nối đến mạng wifi đã chỉ định
+ // Configure the ESP8266 in station mode and connect to a pre-defined WiFi network
   WiFi.begin(ssid, password);
-  // Đoạn code in ra dấu . nếu ESP8266 chưa được kết nối
+  // Print out . when ESP8266 trying to connect to the network
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-  // In ra dòng "WiFi connected" và địa chỉ IP của ESP8266
+  // Print out "WiFi connected" and IP of ESP8266
   Serial.println("");
   Serial.println("WiFi connected");
   Serial.println("IP address: ");

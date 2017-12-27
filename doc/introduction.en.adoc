@@ -1,45 +1,46 @@
 [abstract]
-== Giới thiệu nội dung
+== Introduction to contents
 
-Nội dung quyển sách này bao gồm các hướng dẫn chi tiết cho người đọc lập trình ứng dụng IoT sử dụng Chip WiFi phổ biến hiện này là ESP8266 để kết nối với Server, gởi, nhận dữ liệu và thực thi các lệnh từ Server. Internet Of Things dựa và các kết nối Internet khá nhiều, do vậy các nội dung cũng tập trung nhiều vào các giao thức (prototcol), các phương pháp quản lý cũng như cấu hình kết nối.
+The contents of this book include detailed instructions for IoT application developers using the popular WiFi chip ESP8266, to connect to the server, send and receive data, and execute commands from the server. Internet Of Things depends on the Internet connection, so the content is also focused on protocols, management methods as well as connection configuration.
 
-Phần cứng sử dụng chính là System On Chip (SoC) **ESP8266** - có khả năng kết nối WiFi và lập trình được với giá thành rẻ và phổ biến trên thế giới. Board mạch sử dụng là board phần cứng mở. https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno] có sơ đồ chân tương thích với các board Arduino Uno.
+The main hardware used is System On Chip (SoC). ** ESP8266 ** - WiFi and programmable with cheap price and popular in the world. The circuit board used is the hardware open. https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno]  has a legacy mapping board compatible with Arduino Uno.
 
-Phần mềm sử dụng lập trên máy tính cho Chip ESP8266 là https://arduino.cc[*Arduino*], ngôn ngữ lập trình `C/C++`.
+The software used on the computer for the ESP8266 chip is https://arduino.cc[*Arduino*], the `C/C++` programming language.
 
-Các phần liên quan đến Server chạy trên máy tính sử dụng https://nodejs.org[NodeJS] với ngôn ngữ lập trình `Javascript`.
+The parts related to Server running on the computer use https://nodejs.org[NodeJS] and `Javascript` programming.
 
-Ngoài ra, bạn sẽ cần tìm hiểu một số công cụ và khái niệm thường xuyên được sử dụng trong quyển sách này như sau:
+In addition, you will need to learn some of the tools and concepts that are frequently used in this book:
 
-* **Git** - Trình quản lý phiên bản sử dụng rất rộng rãi trên thế giới, **Github** là một mạng xã hội cho lập trình viên dựa trên Git. Git giúp bạn quản lý được mã nguồn, làm việc nhóm, xử lý các thao tác hợp nhất, lịch sử mã nguồn ... Có thể trong quá trình làm việc với quyển sách này, bạn sẽ cần sử dụng các thư viện mã nguồn mở cho Arduino từ Github, nên việc cài đặt và sử dụng công cụ khá cần thiết cho việc đó. Chưa kể, nó sẽ giúp bạn quản lý mã nguồn và dự án ngày càng chuyên nghiệp hơn.
-* **Sublime Text** - Là một trình soạn thảo phổ biến, nhanh, nhẹ và nhiều tính năng hay. Sử dụng để lập trình. Javascript (NodeJS)
-* Code formater - Dùng để định dạng mã nguồn phù hợp, dễ đọc, dễ sửa chữa.
-* Editorconfig - Là một công cụ cộng thêm vào cho các Editor, giúp việc đồng bộ hóa các tiêu chuẩn như Indent, Align, Space ... để đảm bảo code khi được mở ở các Editor không bị thay đổi.
+* **Git** - is a version control system for tracking changes in computer files and coordinating work on those files among multiple people, **Github** is a social network for developer based on Git. Git helps you manage source code, group work, merge operations, source code history ... Probably in the process of working with this book, you will need to use open source libraries for Arduino from Github, so the installation and use of the tool is quite necessary for that. It will help you manage the source code and project more and more professional.
+
+* **Sublime Text** - A popular, fast, lightweight and feature rich editÚe Use for programming. Javascript (NodeJS)
+* Code formater - Used to format the source code, easy to read, easy to repair.
+* Editorconfig - An additional tool for the Editor, which helps to synchronize standards such as Indent, Align, Space ... to ensure that code is opened in the Editor is not changed.
 
 
-NOTE: Tuy phần cứng chính thức sử dụng là board mạch phần cứng mở https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno], nhưng bạn hoàn toàn có thể sử dụng bất kỳ board ESP8266 nào khác trên thị trường cho cuốn sách này, ví dụ như: `NODEMCU`, `Wemos`, ...
+NOTE: Although the official hardware is hardware open https://github.com/iotmakervn/iot-wifi-uno-hw[IoT WiFi Uno], but you can use any board ESP8266 on the market for this book, eg: `NODEMCU`,` Wemos`, ...
 
-TIP: Các nội dung trong quyển sách này tập trung vào hướng dẫn các giao thức, cách thức làm việc với có hệ thống với board ESP8266, Server ..., còn các dự án mẫu, hướng dẫn chi tiết có thể tìm thêm tại **https://arduino.esp8266.vn**.
+TIP: The content in this book focuses on protocol guidance, how to work with systems using ESP8266, Server ..., and sample projects.
 
-TIP: Tất cả các phần Code đều không giải thích rõ chi tiết API cho mỗi tính năng. Mà thay vào đó được cung cấp tại phụ lục Cheat Sheet (Arduino và C).
+TIP: All Code sections do not explain the API details for each feature. Instead, it is provided in the Appendix Cheat Sheet (Arduino and C).
 
-=== Ai có thể sử dụng?
+=== Who can use?
 
-- Các lập trình viên phần mềm/Mobile App, Web App… muốn tham gia làm sản phẩm `IoT`.
-- Sinh viên muốn nâng cao kỹ năng, bổ sung kiến thức.
-- Cá nhân muốn tự mình làm các sản phẩm phục vụ cuộc sống, phục vụ công việc.
-- Startup Tech không chuyên về phần cứng hoặc phần mềm.
+- Software developers / Mobile App, Web App ...the person who wants to participate as `IoT` products.
+- Students want to improve their skills and additional knowledge.
+- Individuals want to make their own products for life, serving the work.
+- Startup Tech does not specialize in hardware or software.
 
-=== Mục tiêu mang lại cho người đọc
+=== Target of this book
 
-- Giúp cho người không chuyên về phần cứng tiếp cận để làm sản phẩm IoT dễ dàng.
-- Có thể tự phát triển hệ thống tích hợp cho sản phẩm IoT.
-- Hiểu biết về quy trình tạo ra sản phẩm phần cứng, đi vào mảng sản xuất thiết bị.
-- Tránh những sai sót không đáng có khi phát triển và thiết kế sai hệ thống.
+- Help for non-hardware approach to make the product easy IoT.
+- Can be integrated system development for IoT products.
+- Understanding the process of creating hardware products, go into the production of equipment.
+- Avoid unnecessary errors when developing and designing the system.
 
-=== Chuẩn bị
+=== Preparation
 
-- Ít nhất bạn cần 1 board mạch ESP8266 lập trình được, tốt nhất nên sử dụng các board mạch tương tích với Arduino IDE (đã có các module nạp cho chip).
-- Nên có thêm các module khác như cảm biến, động cơ để thực hành, một bộ StarterKit là phù hợp.
-- 1 máy tính cá nhân (Windows, MacOS hoặc Linux).
-- C & Arduino ESP8266 Cheatsheet (Mục lục cuối quyển sách này).
+- You need a programmable ESP8266 board, it is best to use a board that is compatible with the Arduino IDE (which has modules for the chip).
+- There should be additional modules such as sensors, motors to practice, a set of StarterKit is suitable.
+- 1 personal computer (Windows, MacOS or Linux).
+- C & Arduino ESP8266 Cheatsheet (Contents at the end of this book).

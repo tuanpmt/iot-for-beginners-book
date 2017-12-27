@@ -1,39 +1,34 @@
-
-var mosca = require('mosca');   // Khai báo biến mosca sử dụng các thuộc tính của module mosca
-// Sử dụng thư viện ascoltatore nhằm hỗ trợ publish message, subscribe topic đến  từ các Broker/Protocol
+// declare a "mosca" variable to use mosca module's features.
+var mosca = require('mosca');
+// Using ascoltatore library to publish a message, subscribe to a topic on Broker/Protocol.
 var ascoltatore = {
-
-  type: 'mongo',
-  url: 'mongodb://localhost:27017/mqtt', // url: địa chỉ url của mongodb, server sẽ lắng nghe các client ở địa
-                                         // chỉ localhost:27017
-  pubsubCollection: 'ascoltatori',       // pubsubCollection: Nơi để lưu trữ các message của mongodb
-  mongo: {}                              // mongo: Cài đặt dành cho kết nối của mongo. Không sử dụng
+    type: 'mongo',
+    url: 'mongodb://localhost:27017/mqtt', // url of MongoDB, server will listen for
+    // client's request at localhost:27017
+    pubsubCollection: 'ascoltatori', // pubsubCollection: Store MongoDB's message
+    mongo: {} // mongo: MongoDB connection setting. Don't use this parameter in this project.
 };
 var settings = {
-  port: 1883,          // port kết nối đến server
-  backend: ascoltatore // ascoltatore sẽ được gọi và thực thi khi tạo server được tạo để thiết lập các kết nối
+    port: 1883, // Server's port
+    backend: ascoltatore // "ascoltatore" will be called and executed to initiate connections when a server is created.
 };
-
-// Lệnh tạo server sử dụng mosca
+// Declare "server" variable using mosca.
 var server = new mosca.Server(settings);
-
-// Thực hiện hàm setup, in ra màn hình console nếu có sự kiện ready của server
+// This function setups and prints message to console when the Mosca server is ready.
 server.on('ready', setup);
-function setup() {
-  console.log('Mosca server is up and running');
-}
 
-// In ra dòng chữ client connected và id của client khi có sự kiện client kết nối thành công đến server
+function setup() {
+    console.log('Mosca server is up and running');
+}
+// This function prints "Client connected" and client's id to console when a client successfully connects to a server.
 server.on('clientConnected', function(client) {
     console.log('client connected', client.id);
 });
-
-// In ra dòng chữ client disconnected và id của client khi có sự kiện client ngắt kết nối với server
+// This function prints "Client disconnected" and client's id to console when a client disconnects from server.
 server.on('clientDisconnected', function(client) {
     console.log('client disconnected', client.id);
 });
-
-// In ra message của client gửi ở dạng string khi có sự kiện client publish 1 message
+// This function prints the content of client's message to console in "string" when a client published a message.
 server.on('published', function(packet, client) {
-  console.log('Published', packet.payload.toString());
+    console.log('Published', packet.payload.toString());
 });

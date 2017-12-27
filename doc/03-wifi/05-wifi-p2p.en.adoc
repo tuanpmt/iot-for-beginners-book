@@ -1,20 +1,20 @@
-== Trao đổi dữ liệu giữa 2 ESP8266
+== Data exchange between 2 ESP8266
 
-Thông thường, muốn hai hay nhiều ESP8266 có thể liên lạc, trao đổi dữ liệu với nhau sẽ cần đến một router hay access-point, các module ESP8266 này sẽ kết nối vào Access Point rồi sau đó giao tiếp với nhau.
+Usually, communication between two ESP8266 or more requires existing router or access point, these modules then connect to a single access point and start talking to each other.
 
-Có một số ứng dụng đơn giản để kết nối 2 ESP8266 với nhau mà không cần Access Point, chúng ta có thể khởi tạo 1 board hoạt động như là  WiFi Access Point, đồng thời khởi tạo 1 TCP Server. Board khác hoạt động như 1 WiFi client thông thường, kết nối vào mạng WiFi đã được tạo, và khởi động 1 TCP Client kết nối vào TCP Server kia.
+Some applications requires no Access Point when connecting 2 ESP8266 together. We can configure one board to act as an Access Point which then creates a TCP Server. Another will act as a usual WiFi Client which then connects to the previously created WiFi, and then initialise a TCP Client to connect to the TCP Server.
 
-=== Yêu cầu
+=== Requirements
 
-- Không cần bất kỳ một Router, hay Access Point nào, thực hiện việc kết nối giao tiếp giữa 2 ESP8266 thông qua mạng WiFi, 2 Board này sẽ truyền dữ liệu với nhau mỗi giây, và hiển thị lên Serial Terminal
+- No router or access point is needed, Communication between two ESP8266 is done in a WiFi network, they will exchange data every second, and then print on the Serial Terminal
 
-=== Hướng dẫn thực hiện
+=== Procedure
 
-Để trao đổi dữ liệu giữa 2 ESP8266 cần đáp ứng các điều kiện sau:
+Requirements for 2 ESP8266 in operation:
 
-* 1 ESP8266 sẽ khởi động _SoftAP_ để tạo mạng WiFi, đồng thời khởi động 1 TCP Server để làm Server.
-* 1 ESP8266 phải là client với chế độ _WiFi Station_ và kết nối đến ESP8266 server đã tạo ở trên.
-* Sau mỗi giây, Board ESP8266 này sẽ gởi dữ liệu vào Board kia, board nhận được dữ liệu sẽ in ra cổng Serial và gởi ngược lại.
+* A ESP8266 will start _SoftAP_ to create a WiFi network, then initialise a TCP Port for a Server.
+* Another ESP8266 acts as a client in _WiFi Station_ mode and connects to the ESP8266 server above.
+* Per second, the two will communicate with each other, the one that receive data with print out to the Serial port and send an acknowledgement.
 
 === Code
 
@@ -30,7 +30,7 @@ include::code-{lang}/WiFiP2P/p2p-server.ino[]
 include::code-{lang}/WiFiP2P/p2p-client.ino[]
 ----
 
-Thực hiện sau khi kiểm tra mã nguồn:
+Proceed after checking the source code:
 
 - <<select-arduino-board>>
 - <<arduino-flash>>

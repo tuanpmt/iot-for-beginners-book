@@ -9,7 +9,7 @@ include::code-{lang}/arduino-cheatsheet.c[lines=1..57]
 |
 [source, c]
 ----
-include::code-{lang}/arduino-cheatsheet.c[lines=58..114]
+include::code-{lang}/arduino-cheatsheet.c[lines=58..113]
 ----
 |
 [source, c]
@@ -19,26 +19,26 @@ include::code-{lang}/arduino-cheatsheet.c[lines=114..179]
 |
 [source, c]
 ----
-include::code-{lang}/arduino-cheatsheet.c[lines=180..244]
+include::code-{lang}/arduino-cheatsheet.c[lines=180..245]
 ----
 |
 [source, c]
 ----
-include::code-{lang}/arduino-cheatsheet.c[lines=245..311]
+include::code-{lang}/arduino-cheatsheet.c[lines=246..312]
 ----
 |
 [source, c]
 ----
-include::code-{lang}/arduino-cheatsheet.c[lines=312..378]
+include::code-{lang}/arduino-cheatsheet.c[lines=313..379]
 ----
 |
 [source, c]
 ----
-include::code-{lang}/arduino-cheatsheet.c[lines=379..415]
+include::code-{lang}/arduino-cheatsheet.c[lines=379..428]
 ----
 |
 [source, c]
 ----
-include::code-{lang}/arduino-cheatsheet.c[lines=416..450]
+include::code-{lang}/arduino-cheatsheet.c[lines=429..480]
 ----
 |===

@@ -12,9 +12,9 @@ void loop() {
   if (currentMillis - previousMillis >= interval) {
     previousMillis = currentMillis;
     if (ledState == LOW)
-      ledState = HIGH;  // Đổi trạng thái
+      ledState = HIGH;  // change status
     else
-      ledState = LOW;   // Đổi trạng thái
+      ledState = LOW;   // change status
     digitalWrite(ledPin, ledState);
   }
 }

@@ -1,19 +1,19 @@
 #include <ESP8266WiFi.h>
 
 #define PORT  23
-// Gioi han so luong clients ket noi
+// Limit the maximum clients
 #define MAX_CLIENTS 3
 
-// Ten va mat khau cua ESP8266 AP se tao
+// Name and passwork of the ESP8266 AP
 const char *ssid = "yourSSID";
 const char *password = "yourPassword";
 
-//khoi tao IP adress
+// Creating IP address
 IPAddress local_IP(192, 168, 4, 1);
 IPAddress gateway(192, 168, 4, 1);
 IPAddress subnet(255, 255, 255, 0);
 
-// Khoi tao port de clients ket noi.
+// Creating port for client connection.
 WiFiServer server(PORT);
 WiFiClient clients[MAX_CLIENTS];
 
@@ -22,11 +22,11 @@ void setup() {
   Serial.println();
   Serial.print("Setting soft-AP configuration ... ");
 
-  //Cau hinh acces point, cai dat soft AP de client ket noi vao.
+  // Configure acces point and soft AP to allow client connection.
   WiFi.softAPConfig(local_IP, gateway, subnet);
   WiFi.softAP(ssid, password);
 
-  //In ra local_IP cua AP.
+  // Print out local_IP of the AP.
   Serial.print("AP IP address: ");
   Serial.println(WiFi.softAPIP());
   Serial.println("Telnet server started");
@@ -35,7 +35,7 @@ void setup() {
 
 void loop() {
   uint8_t i;
-  // kiem tra co client moi ket noi khong
+  // Check the status of the new client connection
   if (server.hasClient())  {
     for (i = 0; i < MAX_CLIENTS; i++) {
       if (!clients[i] || !clients[i].connected())
@@ -48,9 +48,9 @@ void loop() {
     WiFiClient serverClient = server.available();
     serverClient.stop();
   }
-  // Kiem tra neu so client ket noi MAX_CLIENTS
-  // co client, client duoc ket noi va o trang thai available
-  // doc du lieu tu client, va gui lai du lieu cho client do.
+   // Compare the number of existing clients with MAX_CLIENTS
+  // including connected clients and available clients
+  // read data from the clients, and then respond.
   for (i = 0; i < MAX_CLIENTS; i++) {
     if (clients[i] && clients[i].connected()) {
       if (clients[i].available()) {
@@ -58,7 +58,7 @@ void loop() {
         Serial.print("Server receive from Client:");
         Serial.println(line);
 
-        //Gui thong tin hoai dap cho client
+        // Send the resonse back to the client
         String resp = String(line.reserve(line.length() - 1));
         Serial.print(" Then, response back to client:");
         Serial.println(resp);

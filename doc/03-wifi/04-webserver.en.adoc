@@ -1,33 +1,32 @@
 [[web-server]]
 == Web Server
 
-=== Web Server là gì?
+=== What is Web Server?
 
-Web Server là một máy chủ Web mà khi có bất kỳ một Web Client nào (chẳng hạn Web Browser) truy cập vào, thì nó sẽ căn cứ trên các thông tin yêu cầu truy cập để xử lý, và phản hồi lại nội dung. Đa phần các nội dung Web Server phục vụ là HTML, Javascript, CSS, JSON và bao gồm cả các dữ liệu Binary.
+When there is a request from a Web Client (e.g. Web Browser), a Web Server will respond and analyse it based on the information it recevies. Web Servers process mostly HTML, JavaScript, CSS, JSON, and other binary data.
 
-Mặc định các Web Server phục vụ trên Port 80, và 443 cho dịch vụ Web có bảo mật `HTTPS`
+Web Servers usually process requests on Port 80, and Port 443 for websites with `HTTPS`.
 
 === HTML - Javascript - CSS
 
-HTML, Javascript và CSS là ba ngôn ngữ để xây dựng và phát triển Web. Những hiểu biết cơ bản về chúng sẽ tạo điều kiện thuận lợi cho các quá trình tiếp theo sau được dễ dàng hơn.
+HTML, Javascript, and CSS are a triad of cornerstone technologies for web development. Some basic knowledge about these would be a benefit for the upcoming chapters.
 
 ==== HTML
 
-Viết đầy đủ là *Hyper Text Markup Language* - ngôn ngữ đánh dấu siêu văn bản dùng để cấu trúc nội dung của một trang Web, ví dụ như: chỉ định các đoạn văn bản, tiêu đề, bảng dữ liệu, hoặc nhúng hình ảnh hoặc video vào Web. Mỗi trang Web chứa một loạt các liên kết đến các trang khác được gọi là `hyperlinks` (siêu liên kết). Mỗi trang được tạo ra từ nhiều `tag` (thẻ) khác nhau, với cấu trúc một `tag` như sau
+An acronym for *Hyper Text Markup Language*, HTML is used for document structuring, defining title, tables, or embedding images and other objects into a web page. Each webpage has various links to other webpages called `hyperlinks`. Each page is made of different `tags`, with each tag defined as follows
 
-.Cấu trúc 1 tag
+.A tag structure
 [source]
 ....
 
 <tagname> nội dung tag...</tagname>
 
 ....
+** Tags come in pair, starting with <tagname> and ending with </tagname>
 
-** Các tag thường đi theo cặp, bắt đầu bởi <tagname> và kết thúc bằng </tagname>
+IMPORTANT: Ending tag must have a forward slash `/` in front of its name.
 
-IMPORTANT: Tag kết thúc phải có dấu gạch chéo `/` phía trước tên thẻ.
-
-Trang HTML cơ bản có thể được thấy như sau:
+A simple HTML page is arranged as follows:
 
 [source,html]
 ----
@@ -45,23 +44,23 @@ Trang HTML cơ bản có thể được thấy như sau:
 </html>
 ----
 
-Với một số tag cơ bản như sau:
+Some basic tags:
 
-* `<!DOCTYPE html>` cho biết là HTML5.
-* `<html>` root của trang HTML.
-* `<head>` chứa thông tin về tài liệu.
-* `<title>` phần tiêu đề trang.
-* `<body>` phần chứa nội dung trang hiển thị.
-* `<h1>` nơi chứa phần tiêu đề chính.
-* `<p>` phần ghi các đoạn văn bản.
+* `<!DOCTYPE html>` defines the page as HTML5.
+* `<html>` root of a HTML page.
+* `<head>` contains metadata.
+* `<title>` title of the page.
+* `<body>` the content that will be presented.
+* `<h1>` header type 1.
+* `<p>` paragraph.
 
 ==== Javascript
 
-Javascript là một ngôn ngữ được thiết kế chủ yếu để thêm tương tác vào các trang Web, và tạo ra các ứng dụng Web.
+Javascript is a language designed to make a website interactive, and for Web application (Web App)
 
-Các chương trình Javascript có thể được nhúng trực tiếp vào HTML của Web. Và tùy vào mục đích cụ thể, script có thể chạy khi mở trang Web, nhấp chuột, gõ phím, gửi biểu mẫu, cập nhật dữ liệu, giao tiếp với cơ sở dữ liệu...
+JavaScript application can be embedded directly into a web's HTML. Depending on particular purposes, script can run when accessing a webpage, clicking, typing, sendind forms, updating data, communicating with database.
 
-Để nhúng chương trình viết bằng Javascript vào trang HTML, chỉ cần thêm tag `<script>` và thuộc tính `type`. Có thể thêm phần này ở phần `<head>` hoặc phần `<body>` của HTML. Ví dụ sau đây minh họa việc thêm một chương trình Javascript vào phần thân (<body>) của HTML:
+To embed a Javascript program into a HTML page, a `<script>` is added withh `type` element. This can be done inside `<head>` or `<body>` of the HTML content. Below is an example on how to implement Javascript inside the <body>:
 
 [source,html]
 ----
@@ -74,8 +73,8 @@ Các chương trình Javascript có thể được nhúng trực tiếp vào HTM
 
 
   <script type="text/javascript">
-    // chương trình Javascript nên được viết ở đây
-    // ngay trước </body>
+    // Javascript code is written here
+    // before </body>
   </script>
 </body>
 </html>
@@ -84,20 +83,20 @@ Các chương trình Javascript có thể được nhúng trực tiếp vào HTM
 
 ==== CSS
 
-CSS là từ viết tắt của *Cascading Style Sheets*, là một ngôn ngữ được thiết kế để xử lý giao diện Web, giúp các trang Web được đẹp hơn. CSS có thể kiểm soát được màu sắc của văn bản, phong chữ, kích cỡ chữ, khoảng cách giữa các đoạn văn, hình nền hoặc màu nền, và nhiều hiệu ứng khác.
+CSS stands for *Cascading Style Sheets*, a language for web layout design, which is used to enhance a webpage's presentation. CSS can control the colour, font, size, spacing, and background, etc. of a web document.
 
-Một đoạn CSS bao gồm 4 phần như thế này:
+A example CSS snippet with 4 parts:
 
 [source, css]
 ----
-vùng-chọn {
-   thuộc-tính-a: giá-trị-x;
-   thuộc-tính-b: giá-trị-y;
+selector {
+   property-a: value-x;
+   property-b: value-y;
    .....
 }
 ----
 
-Ví dụ về sử dụng CSS trong HTML
+A CSS implementation in HTML
 
 [source, html]
 ----
@@ -126,25 +125,25 @@ Ví dụ về sử dụng CSS trong HTML
 </html>
 ----
 
-Với đoạn HTML bên trên, thì màu nền của tag div có id = `id-select` sẽ có màu xanh lá cây, tag div có class = `class-select` sẽ có màu đỏ, và chữ của tất cả những thẻ div có màu xanh nước biển.
+With the above HTML document, tag div with id = `id-select` will have a green background, tag div with class = `class-select` will have a red background, and all div tag will have a green font.
 
-=== Ứng dụng điều khiển đèn LED thông qua Webserver
+=== Controlling a LED using WebServer
 
-ESP8266 hoàn toàn có thể thực hiện vai trò Web Server để phục vụ cho một vài kết nối đến, tận dụng giao diện Web để điều khiển, cấu hình cho nó.
+ESP8266 can act as a Web Server to process any request, which can be controlled and configured.
 
 
 === ESP8266 Web Server
 
-Với ứng dụng này, ESP8266 sẽ khởi tạo 1 Web Server, khi có bất kỳ client nào kết nối tới (Web Browser) thì ESP8266 sẽ gởi về 1 trang HTML với các thông tin để Client có thể điều khiển chớp tắt đèn LED của board.
+With this application, ESP will initiate a Web Server. When there is a client establishing a connection, ESP8266 will send back a HTML with options for the client to toggle LEDs on the board.
 
 [source, c]
 ----
 include::code-{lang}/WebServer/WebServer.ino[]
 ----
 
-Thực hiện sau khi kiểm tra mã nguồn:
+Proceed after checking the source code:
 
 - <<select-arduino-board>>
 - <<arduino-flash>>
 
-=== Kết hợp WiFi AP và Web Server
+=== Combining WiFi API and Web Server

@@ -1,135 +1,134 @@
-== Cài đặt và chuẩn bị
+== Installation and Preparation Requirements
 
 === Arduino IDE
 
-*Bước 1*: Cài đặt Arduino IDE.
+*Step 1*: install the Arduino software.
 
-Download và cài đặt arduino từ trang chủ của arduino. Link donwload:
+Download and install Arduino IDE from arduino's homepage. Link donwload:
 https://www.arduino.cc/en/Main/Software.
 
-Tùy hệ điều hành mà chọn gói cài đặt thích hợp.
+Depending on the operating system, you may choose the appropriate installation package.
 
-*Bước 2*: Cài đặt bộ công cụ, trình biên dịch, SDK hỗ trợ chip ESP8266 trong Arudino IDE.
+*Step 2*: Install the toolkit, compiler, SDK. That supports the ESP8266 chip in the Arudino IDE.
 
-Với bộ công cụ này, chúng ta có thể dễ dàng lập trình, biên dịch và sử dụng các thư viện dành cho ESP8266 trực tiếp trên Arduino IDE. Mở Arduino IDE, trên thanh Menu chọn `File` -> `Preferecens`, trong tab `settings` chọn các tùy chọn như hình dưới:
+With this toolkit, we can easily program, compile, and use libraries for the ESP8266 directly on the Arduino IDE. Open Arduino IDE in the menu bar, select `File` -> `Preferecens`, in `settings` tab, you need to choose optionsthe options like the image below:
 
-.Thêm file thông tin board ESP8266
+.Add the ESP8266 board information file
 image::01-intro/preferences.png[Thêm file hỗ trợ cài đặt board ESP8266, align="center", width=400]
 
-`Sketchbook location` là đường dẫn mà bạn muốn lưu Sketch (file chương trình), trên các hệ điều hành Unix liked đường dẫn mặc định là: `/home/name_your_computer/Arduino`. Đây cũng sẽ là vị trí lưu những thư viện mà chúng ta sẽ thêm vào sau này.
+`Sketchbook location` is the path, which you want to save the sketch (program file), On the Unix-like systems the default path is: `/home/name_your_computer/Arduino`. This will also be the location of the libraries that we will add later.
 
-Mục `Additional Board Manager URLs field` nhập đường dẫn `http://arduino.esp8266.com/stable/package_esp8266com_index.json`.
+In the `Additional Board Manager URLs field`, enter path `http://arduino.esp8266.com/stable/package_esp8266com_index.json`.
 
-*Bước 3*: Cài đặt board ESP8266.
+*Step 3*: Install ESP8266 board.
 
+Open `Boards Manager` in the `Tools` on menu bar -> find the board you want to use with keyword `Generic 8266` -> select the board ti install as image below and click install.
 
-Mở `Boards Manager` ở mục `Tools` trên thanh menu-bar -> tìm board cần sử dụng với keyword `Generic 8266` -> chọn board cần cài đặt như hình và nhấn vào install.
-
-.Cài đặt board ESP8266
+.Install ESP8266 board
 image::01-intro/install_board_generic8266.png[Board manager, align="center", width=400]
 
 [[install-library]]
-=== Cài đặt thư viện Arduino
+=== Install arduino library
 
-Một số thư viện do các nhà phát triển khác công bố và được tự do sử dụng có thể cài đặt trực tiếp bằng công cụ Library Manager của Arduino.
+Some libraries published by other developers, you can install it directly using Arduino's Library Manager.
 
-Khởi động arduino IDE và chọn mục `Sketch` => `include library` => `Manage libraries`:
+Start the arduino IDE and select the item `Sketch` => `include library` => `Manage libraries`:
 
-.Khởi động Library Manager
+.start the library Manager
 image::01-intro/library.png[Khởi động Library Manager, width=400, align="center"]
 
-Trong mục `libbrary manager` nhập nội dung thư viện cần tìm tại hộp thoại text box, chọn phiên bản, rồi nhấn `install`, Những thư viện đã được cài đặt sẽ có text hiển thị `INSTALLED` ở đầu mỗi thư viện.
-Ví dụ tìm thư viện OLED liên quan đến ESP8266:
+In the `libbrary manager` , you need to enter the contents of the library in the textbox, select the version, and then press `install`, the installed libraries will have the text `INSTALLED` displayed at the top of each library.
+For example, we will find the OLED library related to ESP8266 as shown below::
 
-.Cài đặt thư viện
+.install library
 image::01-intro/library-1.png[Cài đặt thư viện, width=400, align="center"]
 
 
 === USB CDC driver.
 
-Board ESP8266 WiFi Uno được kết nối với máy tính qua cổng USB MicroB và sử dụng chip **CH340** để chuyển đổi USB sang UART. Vì vậy cần cài USB driver để máy tính và board có thể giao tiếp với nhau.
+The ESP8266 WiFi Uno board is connected to the computer via a USB MicroB and uses the chip **CH340** to convert USB to UART. Therefore, you need to install USB driver software to communicate with the board.
 
-Thực hiện kết nối cable USB với board, đảm bảm đèn LED khoanh tròn sáng như ở hình dưới:
+Connect the USB cable to the board, making sure the LEDs in the circle the light as shown below:
 
 .Connect USB
 image::01-intro/connect_USB.jpg[Connect USB, align="center", width=400]
 
 ==== Windows & Linux
 
-Tải bản cài đặt USB driver cho Windows http://www.wch.cn/download/CH341SER_ZIP.html và cho Linux http://www.wch.cn/download/CH341PAR_LINUX_ZIP.html Làm theo các yêu cầu cài đặt.
-Sau khi cài đặt, kết quả hiển thì trên Arduino như hình:
+Download the USB driver installation for Windows http://www.wch.cn/download/CH341SER_ZIP.html and Linux http://www.wch.cn/download/CH341PAR_LINUX_ZIP.html . Follow the installation requirements.
+After installation, the result is displayed on the Arduino as image
 
-.Kết nối thành công
+.Connection succeeded
 image::01-intro/connect_ok.png[Kết nối thành công, align="center", width=400]
 
 ==== Mac OS
 
-Tải bản cài đặt: https://arduino.esp8266.vn/_static/download/CH34x_Install_V1.3.pkg
+Download the installation: https://arduino.esp8266.vn/_static/download/CH34x_Install_V1.3.pkg
 
-Đối với **Mac OS Sierra** trở về sau nếu gặp vấn đề bị RESET máy thì xử lý như sau:
+For **Mac OS Sierra** and later versions if you have problems with RESET your machine, you need to handle the following:
 
-* Mở ứng dụng "Terminal" `cmd + space` --> Enter Terminal
-* Xóa driver: `sudo rm -rf /System/Library/Extensions/usb.kext`
-* Với một số máy, bạn phải thực thi thêm `sudo rm -rf /Library/Extensions/usbserial.kext`
-* Nếu không thể thực hiện được lệnh trên, bạn cần phải thay đổi `Security and Privacy` trong phần `System Preference`. Chọn `Allow Apps Downloaded From` từ `Mac App Store and Identified Developers` sang `Anywhere` - Và tải https://arduino.esp8266.vn/_static/download/CH34x_Install_V1.3.pkg[CH34x_Install_V1.3.pkg] về cài đặt lại.
+* Open "Terminal" `cmd + space` --> Enter Terminal
+* delete driver: `sudo rm -rf /System/Library/Extensions/usb.kext`
+* With some machines, you have to do extra work `sudo rm -rf /Library/Extensions/usbserial.kext`
+* If you can not do the command above, you need to change `Security and Privacy` in `System Preference`. Select `Allow Apps Downloaded From` form `Mac App Store and Identified Developers` to `Anywhere` - and download https://arduino.esp8266.vn/_static/download/CH34x_Install_V1.3.pkg[CH34x_Install_V1.3.pkg] to install again.
 
-.Lựa chọn Allow Apps Downloaded From Anywhere
+.Select Allow Apps Downloaded From Anywhere
 image::01-intro/mac.png[Lựa chọn Allow Apps Downloaded From Anywhere, align="center", width=400]
 
 [[select-arduino-board]]
-=== Chọn Board ESP8266 WiFi Uno trong Arduino IDE
+=== Select Board ESP8266 WiFi Uno in Arduino IDE
 
-Sau khi kết nối và cài đặt xong, sẽ xuất hiện cổng COM ảo trên máy tính (Tùy từng loại hệ điều hành mà có những tên cổng như: `COM1`, `COM2` ... đối với Windows, `/dev/tty.wchusbserial1420` trên Mac OS, `/dev/ttyUSB0` trên Linux)
-Mở Arduino IDE và lựa chọn (tham khảo cấu hình kết nối như hình dưới):
+After the connection and installation are complete, a virtual COM port will appear on your computer. (Depending on the type of operating system that has port names like `COM1`, `COM2` ... for Windows, `/dev/tty.wchusbserial1420` on Mac OS, `/dev/ttyUSB0` on Linux)
+Open Arduino IDE and select (refer to connection configuration as image below):
 
-.Cấu hình Board ESP8266 WiFi Uno
+. Select the configuration for the ESP8266 WiFi Uno Board
 image::01-intro/port-setup.png[Cấu hình Board ESP8266 WiFi Uno, align="center", width=400]
 
 * Board: `Generic ESP8266 Module`.
 * Flash Size: `4M (3M SPIFFS)`.
-* Port: chọn cổng khi gắn thiết bị vào sẽ thấy xuất hiện.
-* Upload speed: Chọn cao nhất, nếu nạp không được chọn thấp dần.
+* Port: Select the port when the device plugged
+* Upload speed: choose the highest speed, if the computer loaded program is faulty, we will choose the lower speed.
 
 [[arduino-flash]]
-=== Nạp chương trình xuống board dùng Arduino IDE
+=== Load the program file into the board using the Arduino IDE
 
-Trên giao diện Arduino có 2 nút, ngoài cùng bên trái là nút `Verify`, để biên dịch chương trình, tương đương với `Sketch > Verify/Compile`, nút tiếp theo là `Upload`, tương đương `Sketch > Upload`. Khi đã lựa chọn board phù hợp, chương trình không có lỗi, thì nhấn `Upload` sẽ nạp chương trình vào board và thực thi sau đó.
+On the Arduino interface there are two buttons, the leftmost is the `Verify` button, for compiling the program, which is equivalent to the `Sketch> Verify / Compile` function. The next button is `Upload`, which is equivalent to the function `Sketch> Upload`. After selecting the appropriate board, the program has no errors, then click `Upload` to load the program into the board.
 
-.Nạp chương trình
+.Upload program
 image::01-intro/program.png[Nạp chương trình xuống board dùng Arduino IDE, align="center", width=400]
 
 [[export-binary]]
-=== Xuất firmware binary trong Arduino IDE
-Với bất kỳ tình huống nào cần file Binary, bạn có thể được xuất ra bằng cách `Sketch > Export compiled Binary`, và file .bin sẽ nằm trong thư mục của Sketch.
+=== export firmware binary in Arduino IDE
+If we need a `binary file` , we can export the file by `Sketch> Export compiled Binary`, and the .bin file will be in the Sketch folder.
 
-.Xuất file Binary
+.Export Binary file
 image::08-fota/export-fw.png[width=400, role="center", align="center"]
 
 
 === Serial Terminal
 
-Có nhiều ứng dụng miễn phí để tương tác với cổng Serial trên máy tính:
+There are many free applications to interact with the Serial port on your computer:
 
 * Windows: PuTTY, realterm
 * Linux: minicom, screen
 * MacOS: minicom, screen
 
 [[arudino-term]]
-==== Sử dụng Arduino IDE Serial Monitor
+==== using Arduino IDE Serial Monitor
 
-Arduino có tích hợp sẵn Serial Monitor, khi chọn đúng cổng Serial, thì có thể nhấn biểu tượng Serial trên IDE để mở:
+Arduino has a built-in Serial Monitor, when you select the correct Serial port, you can press the Serial icon on the IDE to open:
 
 .Arduino IDE Serial Monitor
 image::01-intro/term.png[Nạp chương trình xuống board dùng Arduino IDE, align="center", width=400]
 
 === Node.js
 
-Tải và cài đặt Node.js tại: https://nodejs.org/en/download/
+Download and install Node.js : https://nodejs.org/en/download/
 
 === Sublime Text
 
-Tải và cài đặt tại: https://www.sublimetext.com/
+Download and install Sublime text : https://www.sublimetext.com/
 
 === Git
 
-Một công cụ hỗ trợ khác bạn cũng nên cài đặt và tập sử dụng, nó không giúp bạn trở thành 1 lập trình viên, nhưng nó giúp 1 lập trình viên trở nên chuyên nghiệp và làm việc hiệu quả: https://git-scm.com/
+This is a support tool that you should also install and use, it does not help you become a programmer, but it helps a programmer become professional and effective https://git-scm.com/
