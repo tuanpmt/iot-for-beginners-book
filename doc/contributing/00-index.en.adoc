@@ -13,9 +13,9 @@ To complete the content of the book also contributed by the following members:
 
 And translated to English group:
 
-- Trần Thiên Hoàng, from Eletrical Engineering, International University.
+- Trần Thiên Hoàng, from Electrical Engineering, International University.
 - Lương Hoàng Thiện, from Telecommunications engineering, Ho Chi Minh City University of Technology.
-- Đức Hiếu, managerment at NguyenPhong IOT.
+- https://github.com/duchieu1307[Đức Hiếu], manager at https://www.facebook.com/NguyenPhongIOT/[NguyenPhong IOT].
 
 
 And use the community contributions at https://arduino.esp8266.vn
