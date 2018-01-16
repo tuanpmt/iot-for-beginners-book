@@ -14,7 +14,7 @@ To complete the content of the book also contributed by the following members:
 And translated to English group:
 
 - Trần Thiên Hoàng, from Electrical Engineering, International University.
-- Lương Hoàng Thiện, from Telecommunications engineering, Ho Chi Minh City University of Technology.
+- Lương Hoài Thiện, from Telecommunications engineering, PFIEV, Ho Chi Minh City University of Technology.
 - https://github.com/duchieu1307[Đức Hiếu], manager at https://www.facebook.com/NguyenPhongIOT/[NguyenPhong IOT].
 
 
